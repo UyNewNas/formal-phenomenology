@@ -146,6 +146,28 @@ theorem appearing_independence_implies_nonExhaustible_iff_capture_refutes_indepe
     exact (nonExhaustible_iff_not_captured M.base p).mpr (fun hc => h p hp hc hi)
 
 /--
+The exact appearing-domain premise can also be stated without a universal
+implication: horizon independence implies non-exhaustibility for every
+appearing phenomenon exactly when there is no appearing phenomenon that is
+both captured and horizon-independent.
+
+This is the conflict-witness normal form of the first question's conditioning
+variant.  It introduces no new philosophical predicate and remains a FORMAL
+normalization of the existing relation language.
+-/
+theorem appearing_independence_implies_nonExhaustible_iff_no_captured_independent_witness
+    (M : HorizonConditioning) :
+    (∀ p, M.base.appears p → M.Independent p → M.base.NonExhaustible p) ↔
+      ¬ ∃ p, M.base.appears p ∧ M.base.Captured p ∧ M.Independent p := by
+  constructor
+  · intro h hex
+    obtain ⟨p, hp, hc, hi⟩ := hex
+    exact (nonExhaustible_iff_not_captured M.base p).mp (h p hp hi) hc
+  · intro hn p hp hi
+    exact (nonExhaustible_iff_not_captured M.base p).mpr (fun hc =>
+      hn ⟨p, hp, hc, hi⟩)
+
+/--
 The horizon-by-horizon exhaustive-capture bridge entails the exact condition
 needed on the appearing domain.  This implication is the positive half of the
 strictness claim: the bridge rules out every appearing `Captured ∧ Independent`
