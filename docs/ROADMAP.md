@@ -29,18 +29,19 @@
 - `HasSituatedIndependentExcess` 只作为中性兼容性 profile，不命名为 `Saturated`。
 - `independent_implies_nonExhaustible_iff_capture_refutes_independence` 把 `Independent p → NonExhaustible p` 的**确切点态逻辑条件**写成 `Captured p → ¬ Independent p`。因此点态最弱要求只是排除同一 p 上的 `Captured ∧ Independent`，不需要新增 philosophical primitive。
 - `appearing_independence_implies_nonExhaustible_iff_capture_refutes_independence` 把同一逻辑正规化提升到首问真正使用的**实际显现域**：`∀p, appears p → Independent p → NonExhaustible p` 等价于 `∀p, appears p → Captured p → ¬Independent p`。这避免无理由把要求加强到 `Phenomenon` 类型所有居民。
-- `ExhaustiveCaptureConditions` 则隔离出一种更强的结构化充分 bridge；已有反模型证明它不是定义展开。Marion 1996 primary text 并未把这条 extensional bridge 升级为历史归属。
+- `ExhaustiveCaptureConditions` 隔离出一种更强的结构化充分 bridge；已有反模型证明它不是定义展开。Marion 1996 primary text 并未把这条 extensional bridge 升级为历史归属。
 - `captured_independent_refutes_exhaustiveCaptureConditions` 给出该较强 bridge 的 witness-level 冲突判据：若同一个 p 同时 `Captured` 且 `Independent`，则 bridge 必然失败。它只闭合当前模型中的逻辑，不把 `Captured` 解释成 Marion 的 “saturates a horizon”。
+- `exact_appearing_condition_is_strictly_weaker_than_exhaustiveCaptureConditions` 进一步用 `displacedCaptureConditioning` 证明“较强”是**严格较强**：在 `ConditioningIsSituated` 下，所有实际显现可以满足精确排斥 `Captured → ¬Independent`，同时 `ExhaustiveCaptureConditions` 仍失败。原因是 exhaustive horizon 与 conditioning horizon 可以是两个不同的 related horizons。
 
 ### 当前范围决定
 
-本轮的形式推进只加入**一条量词提升 theorem**，没有新增自由谓词或扩大 saturation 语言。prior-art 审计确认它只是已有 `NonExhaustible ↔ ¬Captured` 与点态正规化的 Lean Core 量词闭包；`novaspivack/phenomenology-lean` 当前固定版本没有同型 horizon API，GitHub 全局搜索也未发现外部 formal-philosophy 同型声明，因此没有必要引入 Mathlib、LogiKEy 或其他重依赖。
+本轮形式推进只加入一个最小有限分离模型和一条 strictness theorem，没有新增 philosophical primitive 或扩大 saturation 语言。prior-art 增量审计确认 GitHub 上没有同名／同型 external formal-philosophy API；该结论只是当前关系语言中的有限模型分离，因此继续保持 Lean Core，不引入 Mathlib、LogiKEy 或其他重依赖。
 
 Marion 1996 primary text 与 crosswalk 已经足以说明：完整 saturation 的 horizon 关系比“无视域”或“逐一不可穷尽”更复杂。根据 prior-art gate，当前继续**不新增** `priorDelimits`、horizon-combination、intention/intuition primitive：
 
 - 现有 `conditions` 已足以承载首问所需的最弱先行条件接口；
 - 点态和实际显现域的 `Independent → NonExhaustible` 确切形式条件已经写清，不需要再造 bridge primitive；
-- `ExhaustiveCaptureConditions` 保留为一个较强的结构化压力测试，而非“最弱必要条件”；
+- `ExhaustiveCaptureConditions` 保留为一个较强的结构化压力测试，而且其相对精确显现域条件的 strictness 已由有限模型证明；
 - horizon combination 属于完整 saturation 的进一步语义，不影响 `UniversalStructure ↛ ClosureBridge`；
 - intention/intuition/constitution 对完整 Marion 理论重要，但不是否定首问纯逻辑蕴含所必需。
 
@@ -53,7 +54,7 @@ Marion 1996 primary text 与 crosswalk 已经足以说明：完整 saturation �
 - `Horizonless`：Marion 1996 p. 117 直接使其不适合作为默认 saturation 编码。
 - 点态 `Independent → NonExhaustible`：其确切 FORMAL 条件为 `Captured → ¬Independent`，但这不自动获得任何历史归属。
 - 显现域 `Independent → NonExhaustible`：其确切 FORMAL 条件是在 `appears` 范围内排除 `Captured ∧ Independent`；该量词范围正好匹配首问，不扩大历史主张。
-- `ExhaustiveCaptureConditions`：继续为 MODEL/QUESTION；没有原典或同题研究把 `situated ∧ Exhausts → conditions` 规定成定理，并且它现在明确只是比点态／显现域排斥更强的充分机制。
+- `ExhaustiveCaptureConditions`：继续为 MODEL/QUESTION；没有原典或同题研究把 `situated ∧ Exhausts → conditions` 规定成定理，而且现在已经形式证明它严格强于显现域的精确排斥条件。
 
 ### 尚未通过的停止门
 
