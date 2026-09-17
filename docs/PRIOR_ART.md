@@ -204,3 +204,29 @@ Jean-Luc Marion, “The Saturated Phenomenon,” *Philosophy Today* 40(1), 1996,
 首问继续保持轻量 Lean Core 是合理选择。现阶段没有外部形式化提供可直接替换本项目 horizon 首问的同型实现；formal philosophy 的方法、Marion horizon 的解释 prior art、以及 Merleau-Ponty / Marion 的直接比较研究都已明确存在。
 
 当前最有价值的复用分成四类：一是采用 Miller / Mackinlay / Steinbock 的 BG/ED 双版本引注，避免重新猜测翻译页码；二是采用 Falabretti / Djian / Murga 等既有比较与解释工作限制历史新颖性表述并保存竞争读法；三是采用 Moran / Routledge 的明确重印 provenance 扩展合法 direct-primary 获取路径；四是直接复用本仓 `NonExhaustible ↔ ¬Captured` 及已有 bridge consequences，用无新 primitive 的正规化／层级 theorem 给出 `Independent → NonExhaustible` 的点态、实际显现域确切条件，以及 `ExhaustiveCaptureConditions` 对该精确条件的严格加强。除此之外继续等待 direct-primary 版本核对，不扩张完整 saturation API。
+
+## 9. 本轮增量：构造性 conditioning bridge 层级
+
+本轮拟新增对象是“精确显现域排斥”与“产生 conditioning witness”之间的证明论差别。正式写 Lean 前已完成以下增量查重：
+
+- GitHub 全局代码检索 `Conditioned Independent Captured horizon`；返回结果均为这些普通英文词在无关工程中的命中，没有定位到 external formal-philosophy 同型实现。
+- `novaspivack/phenomenology-lean` 再次固定 `main = 75230e4eab333ad0fc47573747521ccc1a31a163`（2026-05-20），并针对 `horizon` 做仓库检索，无结果；未发现 Marion / horizon / capture-conditioning API 可复用。
+- LogiKEy 再次固定 `master = b29954b0876d7991baf12f17378f31700f9de759`（2026-09-13）。其 semantic embedding / computational metaphysics 方法继续属于先例，但为本轮初等 Lean-Core 正规化引入整套 Isabelle 基础设施不合理。
+- 同题文本层继续复用 Leung 对 *Being Given* pp. 211–212、225–226 的精确二手导航；它支持 conditioning 语汇的重要性，但没有讨论 `¬¬∃ h, conditions p h` 与 `∃ h, conditions p h` 的构造性差别。出版社／正式重印入口本轮仍未合法开放目标原书页，因此没有把 secondary exact quotation 升格为 direct-primary。
+
+本轮没有重新本地构建上述外部仓库；外部项目的构建状态不冒充本轮实测。
+
+**复用决定。** 直接复用本仓 `horizonIndependent_iff_not_conditioned`、`Captured` / `Conditioned` 定义和既有 `displacedCaptureConditioning`；只做薄的 Lean-Core 证明论正规化，不增加 philosophical primitive，不引入 Mathlib / LogiKEy。新增结论不声称直觉主义双重否定逻辑、related/conditioning 区分或 formal-hermeneutic 工作流的原创性。
+
+构造性层级现记录为：
+
+```text
+ExhaustiveCaptureConditions
+⇒ appearing Captured → Conditioned
+⇒ appearing Captured → ¬ Independent
+↔ appearing Captured → ¬¬ Conditioned
+```
+
+其中 `ExhaustiveCaptureConditions` 到 witness-producing `Captured → Conditioned` 的加强是严格的：现有 `displacedCaptureConditioning` 让 exhaustive horizon 与 conditioning horizon 分担角色，所以 witness-producing bridge 与 `ConditioningIsSituated` 成立，而同-horizon 强 bridge 失败。项目**不**为了把 `¬¬ Conditioned` 直接消成 `Conditioned` 而引入 classical double-negation elimination；当前审计仍要求所有列入 `Audit.lean` 的 theorem 无公理依赖。
+
+这一区分只收紧 FORMAL 解释：首问目前的逻辑“确切条件”是排除 `Captured ∧ Independent`，也就是构造性地得到 `Captured → ¬¬ Conditioned`；若解释者要求 capture 实际给出某个 conditioning horizon，则那是更强的 witness-producing bridge，需要独立文本依据。Marion 或 Merleau-Ponty 均未因这条证明论正规化被赋予新前提。完整说明见 [CONSTRUCTIVE_BRIDGE_HIERARCHY.md](CONSTRUCTIVE_BRIDGE_HIERARCHY.md)。
