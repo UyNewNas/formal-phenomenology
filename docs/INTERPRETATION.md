@@ -1,12 +1,12 @@
 # 解释选择登记
 
-版本：v0.9-work，2026-09-17。
+版本：v0.10-work，2026-09-17。
 
 ## 证据层、形式层与外部工作
 
 本项目区分：`MODEL`（人为规定的形式结构）、`FORMAL`（定义和显式前提的 Lean 后果）、`READING`（需要原典支持的解释）、`QUESTION`（尚未解决的解释桥）。证明通过不会自动把 MODEL 升格为某位哲学家的 READING；外部已有解释也必须注明来源，不能因换成 Lean 就变成“新发现”。
 
-来源状态见 [SOURCES.md](SOURCES.md)，Merleau-Ponty / *Being Given* 段落卡见 [PASSAGE_CARDS.md](PASSAGE_CARDS.md)，Marion 1996 作者文本见 [MARION_1996_PRIMARY.md](MARION_1996_PRIMARY.md)，外部查重见 [PRIOR_ART.md](PRIOR_ART.md)。
+来源状态见 [SOURCES.md](SOURCES.md)，Merleau-Ponty / *Being Given* 段落卡见 [PASSAGE_CARDS.md](PASSAGE_CARDS.md)，Marion 1996 作者文本见 [MARION_1996_PRIMARY.md](MARION_1996_PRIMARY.md)，重印与合法访问路径见 [MARION_REPRINT_PROVENANCE.md](MARION_REPRINT_PROVENANCE.md)，外部查重见 [PRIOR_ART.md](PRIOR_ART.md)。
 
 ## 词汇映射
 
@@ -47,7 +47,7 @@ Marion 1996 primary text 进一步确认这一谨慎是必要的：作者本人�
 
 此前 related/conditioned 的分层主要由 Leung、Moran、Murga 等研究文献推动。PDCnet 出版者索引直接提供 Marion 1996 “The Saturated Phenomenon” 的作者正文，因此解释方向已有 primary-text 支撑。Djian 2018 又直接讨论 *Étant donné* §21–22，并引用 ED pp. 304–305，把 horizon 与 I 分析为限制 donation / phenomenality 的 possibility-conditions。
 
-本轮新增的 Falabretti 2015/2016 是更直接的比较 prior art：它把 *Phenomenology of Perception* 与 *Étant donné* 放在同一论文中，p. 90 明确描述 Merleau-Ponty 的开放 horizon 与知觉的不穷尽；p. 98 又以“no horizon / overflowing presence”概括 Marion saturation。后一句与 Marion 1996 p. 117–118、Murga 2024、Djian 2018 形成解释张力，因此它被登记为**竞争 secondary reading**，而不是覆盖 primary evidence。详见 [FALABRETTI_COMPARISON.md](FALABRETTI_COMPARISON.md)。
+Falabretti 2015/2016 是更直接的比较 prior art：它把 *Phenomenology of Perception* 与 *Étant donné* 放在同一论文中，p. 90 明确描述 Merleau-Ponty 的开放 horizon 与知觉的不穷尽；p. 98 又以“no horizon / overflowing presence”概括 Marion saturation。后一句与 Marion 1996 p. 117–118、Murga 2024、Djian 2018 形成解释张力，因此它被登记为**竞争 secondary reading**，而不是覆盖 primary evidence。详见 [FALABRETTI_COMPARISON.md](FALABRETTI_COMPARISON.md)。
 
 因此需要把三个判断分开：
 
@@ -91,7 +91,7 @@ Marion 1996 p. 119 直接把 saturated phenomenon 与过剩的 intuitive givenne
 - 但任何把 `Independent`、`NonExhaustible`、`Captured` 或它们的 conjunction 命名为完整 `Saturated` 的做法都仍不成立。
 - M3 的完整 saturation 理论继续留在后续，不为 theorem count 强行提前。
 
-## `Independent → NonExhaustible` 的确切点态条件
+## `Independent → NonExhaustible` 的确切条件：点态与实际显现域
 
 由于基础层已经构造性证明
 
@@ -99,7 +99,7 @@ Marion 1996 p. 119 直接把 saturated phenomenon 与过剩的 intuitive givenne
 NonExhaustible p ↔ ¬ Captured p
 ```
 
-本轮不增加新的 philosophical primitive，而是把目标蕴含本身规范化。Lean 定理
+项目不增加新的 philosophical primitive，而是把目标蕴含本身规范化。Lean 定理
 `independent_implies_nonExhaustible_iff_capture_refutes_independence` 给出：
 
 ```text
@@ -109,6 +109,17 @@ NonExhaustible p ↔ ¬ Captured p
 ```
 
 因此，对固定 p 而言，**确切逻辑前提就是排除 `Captured p ∧ Independent p`**。这是一条 FORMAL 等价，不是 Marion 或 Merleau-Ponty 的 READING。它把“需要一个 bridge”说得更精确：最弱的点态要求只是 capture 与 independence 不可并存；任何更结构化的 bridge 都需要另外解释。
+
+本轮再把这个正规化提升到首问真正使用的显现域。Lean 定理
+`appearing_independence_implies_nonExhaustible_iff_capture_refutes_independence` 给出：
+
+```text
+(∀ p, appears p → Independent p → NonExhaustible p)
+↔
+(∀ p, appears p → Captured p → ¬ Independent p)
+```
+
+这里 `appears p` 在两边都被保留。其解释意义只是**量词纪律**：如果首问只谈实际显现，那么精确排斥也只需要对实际显现成立；不能无理由把结论加强为对 `Phenomenon` 类型全部居民成立。这仍是 FORMAL 正规化，不增加新的 Marion reading。
 
 这也解释了为什么旧反模型重要：`closedIndependentConditioning` 恰好同时满足 `Captured` 和 `Independent`，所以在没有额外前提时 `Independent → NonExhaustible` 必然失败。
 
@@ -128,7 +139,7 @@ ExhaustiveCaptureConditions M
 → NonExhaustible p
 ```
 
-因此 `ExhaustiveCaptureConditions` 是实现上述点态排斥的一种**结构化充分机制**，但新等价定理同时说明：它不是逻辑上唯一的表达，也不应被误称为“确切最弱前提”。
+因此 `ExhaustiveCaptureConditions` 是实现上述点态排斥的一种**结构化充分机制**，但等价定理同时说明：它不是逻辑上唯一的表达，也不应被误称为“确切最弱前提”。
 
 并且已经完成 witness-level 诊断：
 
@@ -144,6 +155,12 @@ Captured p
 
 Marion 1996 primary text、Djian 2018、Murga 2024、Falabretti 的直接比较论文都没有提供 `situated ∧ Exhausts → conditions` 这一 extensional 蕴含。因此 `ExhaustiveCaptureConditions` 继续保持 MODEL/QUESTION。
 
+## 重印 provenance 对解释门的影响
+
+本轮进一步确认存在正式 Routledge 重印路径：Moran 的作者公开稿把 *Being Given* `Sketch of the Saturated Phenomenon` pp. 199–221 明确登记为重印于 *Phenomenology: Critical Concepts* (Routledge, 2004), vol. 4, pp. 5–28；Routledge / Taylor & Francis 元数据可独立确认该出版物。另有 Fordham / De Gruyter 2013 *The Essential Writings* pp. 108–134 的正式作者文集入口。详见 [MARION_REPRINT_PROVENANCE.md](MARION_REPRINT_PROVENANCE.md)。
+
+这只扩大合法 direct-primary 获取路线，不改变当前解释层级：在目标正文真正可读前，重印目录、书目关系和二手 exact quotation 都不能把 `Independent` 从“有 primary 动机的弱接口”升级为书本版本已冻结的 reading。
+
 ## 首个问题的当前答案
 
 最弱形式问题是：
@@ -156,7 +173,7 @@ Marion 一侧现在也有 direct primary support for the distinction：1996 作�
 
 因此对比较问题最稳妥的结论仍是：
 
-> **“在 horizon 中／有 related horizon”本身不含“可被某个 horizon 穷尽”；若要推出后一命题，必须增加独立 closure 前提。若进一步讨论 Marion 式 horizon-independence，则 `Independent p → NonExhaustible p` 的确切点态条件只是 `Captured p → ¬Independent p`；`ExhaustiveCaptureConditions` 是一个更强的结构化充分机制，而不是文本已经承诺的公理。**
+> **“在 horizon 中／有 related horizon”本身不含“可被某个 horizon 穷尽”；若要推出后一命题，必须增加独立 closure 前提。若进一步讨论 Marion 式 horizon-independence，则对固定 p 的确切条件是 `Captured p → ¬Independent p`，而对实际显现域的确切条件是 `∀p, appears p → Captured p → ¬Independent p`；`ExhaustiveCaptureConditions` 是一个更强的结构化充分机制，而不是文本已经承诺的公理。**
 
 这个比较结论已经相当稳定；尚未完成的是 *Being Given* 版本本身的目标页直接核对。
 
@@ -165,13 +182,14 @@ Marion 一侧现在也有 direct primary support for the distinction：1996 作�
 1. `Structured → Captured` 需要额外前提；共享“horizon”一词不产生蕴含。
 2. `NonExhaustible` 不等于 `Horizonless`。
 3. `Independent` 不等于 `NonExhaustible`；Marion 1996 primary text 也要求保留多个 horizon 关系情形。
-4. 点态上 `Independent → NonExhaustible` 等价于排除 `Captured ∧ Independent`；`ExhaustiveCaptureConditions` 只是实现这一排斥的一个较强充分 bridge，不是哲学家已经承诺的公理。
-5. 抽象谓词可联合一致只证明当前语言的模型论一致性，不证明历史概念独立。
-6. Marion 的 saturated phenomenon 还涉及 intuition/intention/constitution；首问不需要把整个理论提前搬进 Lean。
-7. Falabretti 的 “no horizon” 是竞争二手解释，不能覆盖 Marion 1996 primary evidence；反过来，primary evidence 也不使 Falabretti 作为比较史 prior art 消失。
+4. 点态上 `Independent → NonExhaustible` 等价于排除 `Captured ∧ Independent`；在“实际显现”的量词域上，同样只需在 `appears` 范围内排除该组合。不要把量词域无理由扩到所有类型居民。
+5. `ExhaustiveCaptureConditions` 只是实现这一排斥的一个较强充分 bridge，不是哲学家已经承诺的公理。
+6. 抽象谓词可联合一致只证明当前语言的模型论一致性，不证明历史概念独立。
+7. Marion 的 saturated phenomenon 还涉及 intuition/intention/constitution；首问不需要把整个理论提前搬进 Lean。
+8. Falabretti 的 “no horizon” 是竞争二手解释，不能覆盖 Marion 1996 primary evidence；反过来，primary evidence 也不使 Falabretti 作为比较史 prior art 消失。
 
 ## 当前仍未建立的断言
 
-- 尚未直接看到 *Being Given* pp. 209–212、225–226；二手精确引文、Djian 对法文版的研究、Falabretti 的比较论文以及 Marion 1996 primary text 都不能冒充这一本书的逐页核对。
+- 尚未直接看到 *Being Given* pp. 209–212、225–226；二手精确引文、Djian 对法文版的研究、Falabretti 的比较论文、重印 provenance 以及 Marion 1996 primary text 都不能冒充这一本书的逐页核对。
 - Google Books 已确认 1997 PUF *Étant donné* 的版本和相关索引词，但未开放目标正文，因此不能作为 direct primary passage。
 - 尚未定位 Marion 直接把 Merleau-Ponty 称为“去主体化不彻底前辈”的原文，因此项目不用它作前提。Falabretti 的直接比较研究反而明确避免假定 Marion 会如何直接解释 Merleau-Ponty，并称后者在 *Étant donné* 中仅边缘、脚注式出现；这提高了强归属的证据门槛，但仍不是 Marion 原典本身的证明。

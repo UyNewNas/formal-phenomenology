@@ -2,7 +2,7 @@
 
 核查日期：2026-09-17。
 
-本页处理首个研究问题中 Marion 一侧的文本门，重点是 *Being Given* pp. 209–212、225–226。Marion 1996 作者本人论文已经直接约束解释空间，但它不冒充 2002 目标书页的逐页核查。英法版本的精确页码交叉另见 [MARION_VERSION_CROSSWALK.md](MARION_VERSION_CROSSWALK.md)。
+本页处理首个研究问题中 Marion 一侧的文本门，重点是 *Being Given* pp. 209–212、225–226。Marion 1996 作者本人论文已经直接约束解释空间，但它不冒充 2002 目标书页的逐页核查。英法版本的精确页码交叉另见 [MARION_VERSION_CROSSWALK.md](MARION_VERSION_CROSSWALK.md)，正式重印与合法访问路径见 [MARION_REPRINT_PROVENANCE.md](MARION_REPRINT_PROVENANCE.md)。
 
 ## 1. 状态标签
 
@@ -12,9 +12,10 @@
 - **PRIMARY-METADATA**：出版社、期刊或书目页面核实版本／章节／页码，未看到目标正文。
 - **SECONDARY-EXACT**：可访问学术文献给出精确页码并短引作者原句。
 - **SECONDARY-EXACT-CROSSWALK**：研究文献在同一引注中同时给出 BG 与 ED 页码，可用于版本段落定位，但仍不是 primary text。
+- **SECONDARY-EXACT-REPRINT-PROVENANCE**：研究文献明确登记一个正式重印的来源范围；用于版本／获取路径，不等于直接阅读重印正文。
 - **SECONDARY-INTERPRETIVE**：研究文献给出解释、转述或页码定位。
 
-`Being Given` 停止门仍要求目标段落进入 `PRIMARY-DIRECT-PAGE`，或取得可可靠逐段对应的法文 *Étant donné* 原文。`PRIMARY-DIRECT-INDEXED`、`PRIMARY-PUBLISHER-METADATA` 与 `SECONDARY-EXACT-CROSSWALK` 可以显著缩小核查范围，却不能谎称目标书页已读。
+`Being Given` 停止门仍要求目标段落进入 `PRIMARY-DIRECT-PAGE`，或取得可可靠逐段对应的法文 *Étant donné*／正式重印正文。`PRIMARY-DIRECT-INDEXED`、`PRIMARY-PUBLISHER-METADATA`、`SECONDARY-EXACT-CROSSWALK` 与 `SECONDARY-EXACT-REPRINT-PROVENANCE` 可以显著缩小核查范围，却不能谎称目标书页已读。
 
 ## 2. Marion 1996 直接作者文本
 
@@ -95,13 +96,25 @@ Fanny Lederlin 2023 的 Université Paris Cité 博士论文在可直接查看�
 
 这个纠正避免把“主题相近”误当成“版本逐页对应”。
 
-## 7. 合法作者文集备选路径与 2007 作者侧旁证
+## 7. 正式重印路径与 2007 作者侧旁证
 
-Fordham University Press / De Gruyter Brill 2013 *The Essential Writings* 收录 Jean-Luc Marion “Sketch of the Saturated Phenomenon,” pp. 108–134。出版社页面确认作者、编辑 Kevin Hart、篇名与页码，但当前没有开放正文。没有逐段比对前，本项目不假定它和 *Being Given* §21 完全同文；状态为 **PRIMARY-PUBLISHER-METADATA**，只作为另一条合法获取候选。
+### Fordham 2013
+
+Fordham University Press / De Gruyter Brill 2013 *The Essential Writings* 收录 Jean-Luc Marion `Sketch of the Saturated Phenomenon`, pp. 108–134。出版社页面确认作者、编辑 Kevin Hart、篇名与页码，但当前没有开放正文。没有逐段比对前，本项目不由篇名或总页数推断 BG 页码映射；状态为 **PRIMARY-PUBLISHER-METADATA / ALTERNATE-REPRINT-PATH**。
+
+### Routledge 2004
+
+Dermot Moran 的作者公开稿明确把 *Being Given* `Sketch of the Saturated Phenomenon` pp. 199–221 登记为**重印于** Dermot Moran / Lester Embree 编 *Phenomenology: Critical Concepts* (Routledge, 2004), vol. 4, pp. 5–28。Routledge 官方产品页与 Google Books/Taylor & Francis 元数据独立确认该正式出版物。
+
+状态为 **SECONDARY-EXACT-REPRINT-PROVENANCE + PUBLISHER-METADATA**。这条 provenance 允许今后合法从正式重印正文核对目标段落，但当前环境仍未暴露 vol. 4 pp. 5–28 全文；也不能从整体页段直接推导每一 BG 页的固定数值偏移。
+
+详细记录见 [MARION_REPRINT_PROVENANCE.md](MARION_REPRINT_PROVENANCE.md)。
+
+### Marion 2007
 
 Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378–402。官方期刊页面与英文摘要已直接查看；摘要称 horizon 为 givenness 的 constitutive condition，并将 saturation 连到 intuition surplus、unconditioned / irreducible phenomenality 与主体反转。全文 PDF 在先前运行中未成功取得。
 
-## 8. 对当前 Lean 的决定：精确点态条件已闭合，不再增加 primitive
+## 8. 对当前 Lean 的决定：精确条件已闭合，不再增加 primitive
 
 保留三轴：
 
@@ -118,7 +131,7 @@ Exhausts   -- extensional aspect coverage
 - `nonExhaustible_does_not_imply_horizon_independence`；
 - `related_independent_nonExhaustible_are_jointly_consistent`。
 
-本轮只增加一条不引入新 primitive 的正规化 theorem：
+点态正规化：
 
 ```text
 (Independent p → NonExhaustible p)
@@ -126,23 +139,36 @@ Exhausts   -- extensional aspect coverage
 (Captured p → ¬ Independent p)
 ```
 
-入口 `independent_implies_nonExhaustible_iff_capture_refutes_independence`。它利用已有 `NonExhaustible p ↔ ¬ Captured p`，给出对**同一个 p**的确切逻辑条件：恢复 `Independent → NonExhaustible` 所需且仅需排除 `Captured ∧ Independent`。这只是 FORMAL 结论，不把任何一侧归给 Marion。
+入口 `independent_implies_nonExhaustible_iff_capture_refutes_independence`。
 
-`ExhaustiveCaptureConditions` 继续仅作 MODEL/QUESTION pressure test，并且现在明确解释为实现上述点态排斥的一种**较强结构化充分机制**，不是逻辑上的最弱／唯一 bridge。`captured_independent_refutes_exhaustiveCaptureConditions` 则是该较强 bridge 的 witness-level 冲突诊断。
+本轮再加入首问量词域上的正规化：
+
+```text
+(∀ p, appears p → Independent p → NonExhaustible p)
+↔
+(∀ p, appears p → Captured p → ¬ Independent p)
+```
+
+入口 `appearing_independence_implies_nonExhaustible_iff_capture_refutes_independence`。它显式保留 `appears p`，所以精确回答“对所有实际显现”的 bridge 条件，而不是无理由加强为对所有类型居民成立。
+
+这两条都利用已有 `NonExhaustible p ↔ ¬ Captured p`，只是 FORMAL 逻辑闭包，不把任何一侧归给 Marion。
+
+`ExhaustiveCaptureConditions` 继续仅作 MODEL/QUESTION pressure test，并且明确解释为实现上述排斥的一种**较强结构化充分机制**，不是逻辑上的最弱／唯一 bridge。`captured_independent_refutes_exhaustiveCaptureConditions` 则是该较强 bridge 的 witness-level 冲突诊断。
 
 prior-art 审计后仍**不新增** `priorDelimits`、horizon-combination 或 intention/intuition primitive。新证据与新 theorem 都没有暴露首问必须扩张语言的缺口。
 
 ## 9. 当前最窄剩余门槛
 
-首问纯形式答案已经稳定，而且 `Independent → NonExhaustible` 的点态确切条件已经独立写清。Marion 1996 primary text 直接支持：horizon 不能简单取消，核心是其先行限定角色，而且 saturated phenomenon 可以与 horizon 建立多种关系；Djian 2018 又证明这套 horizon-as-condition 阅读已有明确同题 prior art。双版本引注进一步把书本核对范围精确化。
+首问纯形式答案已经稳定，而且 `Independent → NonExhaustible` 的点态与实际显现域确切条件都已经独立写清。Marion 1996 primary text 直接支持：horizon 不能简单取消，核心是其先行限定角色，而且 saturated phenomenon 可以与 horizon 建立多种关系；Djian 2018 又证明这套 horizon-as-condition 阅读已有明确同题 prior art。双版本引注与正式重印 provenance 进一步把版本核对路线精确化。
 
-剩余停止门现在是二选一：
+剩余停止门现在有三条合法路径：
 
 1. 合法直接查看 BG pp. 209–212、225–226；或
-2. 合法直接查看法文 ED **pp. 292–297、314–315**，并据 [版本交叉表](MARION_VERSION_CROSSWALK.md) 逐段比对 1996 论文在书本中的重写、顺序和术语。
+2. 合法直接查看法文 ED **pp. 292–297、314–315**；或
+3. 在已确认的正式重印中直接读取对应正文，并用文本锚点和 [版本交叉表](MARION_VERSION_CROSSWALK.md) 与 BG/ED 相互核验。
 
-2013 作者文集目前只提供出版社元数据，不能替代上述 direct-primary review。
+随后逐段比对 1996 论文在书本中的重写、顺序和术语。出版社目录、重印 provenance 和 secondary exact quotations 都不能单独代替这一步。
 
 完成 direct-primary 版本核对后，再冻结 `Independent` 只作为“非先行 horizon-conditioned”的弱接口，而 `NonExhaustible` / `Captured` 继续是独立模型轴。若目标页确实要求 intention/intuition 才能忠实陈述**首问本身**，再加入最小接口；否则不把完整 saturation 工程塞进首问停止条件。
 
-在这一步完成前，M1 继续 open；当前解释不确定性已经从“哪些法文页需要找”进一步收缩为两个很窄的直接原典页段。
+在这一步完成前，M1 继续 open。

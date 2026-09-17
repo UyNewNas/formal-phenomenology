@@ -30,7 +30,7 @@ HorizonIndependent  ⟹ Horizonless        ✗
 
 另有一个**联合一致性见证**：同一个显现可以同时有相关视域、没有 horizon 被标记为其条件化关系，并且不被任何相关视域穷尽；该模型还满足“条件化视域必须是相关视域”的一致性约束。入口是 `related_independent_nonExhaustible_are_jointly_consistent`。
 
-本轮进一步把“`Independent p → NonExhaustible p` 到底需要什么”压到点态的确切逻辑条件。利用已有 `NonExhaustible p ↔ ¬ Captured p`，Lean 证明：
+“`Independent → NonExhaustible` 到底需要什么”现在有两层精确答案。点态上：
 
 ```text
 (Independent p → NonExhaustible p)
@@ -38,7 +38,17 @@ HorizonIndependent  ⟹ Horizonless        ✗
 (Captured p → ¬ Independent p)
 ```
 
-入口是 `independent_implies_nonExhaustible_iff_capture_refutes_independence`。因此对同一个 p，确切要求只是排除 `Captured p ∧ Independent p`；这是一条形式正规化，不是新的哲学公理。
+入口是 `independent_implies_nonExhaustible_iff_capture_refutes_independence`。因此对同一个 p，确切要求只是排除 `Captured p ∧ Independent p`。
+
+本轮再把该结论提升到首问实际谈论的**显现域**，而不无理由要求 `Phenomenon` 类型的所有居民都满足它：
+
+```text
+(∀ p, appears p → Independent p → NonExhaustible p)
+↔
+(∀ p, appears p → Captured p → ¬ Independent p)
+```
+
+入口是 `appearing_independence_implies_nonExhaustible_iff_capture_refutes_independence`。这仍只是形式正规化，不是新的哲学公理。
 
 `ExhaustiveCaptureConditions` 则是一个更强的结构化压力测试：**一个相关视域若穷尽现象的全部已编码侧面，就计作条件化该现象。** 在这个 bridge 下：
 
@@ -48,7 +58,7 @@ ExhaustiveCaptureConditions
 ⟹ NonExhaustible
 ```
 
-入口是 `exhaustiveCaptureConditions_independent_implies_nonExhaustible`。若同一个 p 同时 `Captured` 与 `Independent`，则这个较强 bridge 必然失败，入口是 `captured_independent_refutes_exhaustiveCaptureConditions`。所以 `ExhaustiveCaptureConditions` 是实现点态排斥的一种充分机制，但不是逻辑上唯一或最弱的前提；它仍只是压力测试，不归给 Marion 或 Merleau-Ponty。
+入口是 `exhaustiveCaptureConditions_independent_implies_nonExhaustible`。若同一个 p 同时 `Captured` 与 `Independent`，则这个较强 bridge 必然失败，入口是 `captured_independent_refutes_exhaustiveCaptureConditions`。所以 `ExhaustiveCaptureConditions` 是实现排斥的一种充分机制，但不是逻辑上唯一或最弱的前提；它仍只是压力测试，不归给 Marion 或 Merleau-Ponty。
 
 这些都是中性的 model-theoretic 结论，不是 Marion 的 saturated phenomenon 定义。
 
@@ -60,19 +70,19 @@ Marion, *Being Given*, Jeffrey L. Kosky trans., Stanford UP 2002 的版本、§2
 
 作者本人文本方面，Marion 1996 年 “The Saturated Phenomenon” 的 PDCnet 出版者索引已直接返回作者正文和原刊页码：p. 117 明确说不是一般取消 horizon，而是摆脱其先行限定；p. 118 列出一个／多个／超过 horizon 等关系并称 saturated phenomenon 不依赖 horizon 这一 possibility-condition；p. 119 把完整 saturation 连到 intuitive excess 与 constitution reversal。直接 PDF 当前仍返回 403，因此状态记为 `PRIMARY-DIRECT-INDEXED`，不冒充 PDF page-image review。
 
-合法访问路线本轮又增加一个出版社入口：Fordham University Press / De Gruyter Brill 2013 *The Essential Writings* 收录 Marion 的 “Sketch of the Saturated Phenomenon” pp. 108–134。当前页面只公开作者、篇名与页码元数据，没有正文；在逐段核对前也不假定它与 *Being Given* §21 完全同文，因此它只是 alternate reprint path，不关闭目标书页门。
+合法访问路线现已单列 [Marion 重印 provenance](docs/MARION_REPRINT_PROVENANCE.md)。Fordham / De Gruyter 2013 *The Essential Writings* 有 Marion `Sketch` pp. 108–134 的正式章节页；另有更明确的书目链：Dermot Moran 的作者公开稿说明 *Being Given* `Sketch` pp. 199–221 重印于 Moran / Embree 编 *Phenomenology: Critical Concepts*（Routledge, 2004）, vol. 4, pp. 5–28，Routledge / Taylor & Francis 元数据可独立确认该正式出版物。当前这些入口仍没有向本研究环境开放目标正文，所以只扩展合法 direct-primary 获取路径，不关闭停止门。
 
 同题 prior art 方面，Aurélien Djian 2018 直接研究 *Étant donné* 中 horizon 的角色并引用 ED pp. 304–305；Ericson Falabretti 2015/2016 已直接把 *Phenomenology of Perception* 与 *Étant donné* 放在同一比较问题中。因此本项目不把 related/conditioned 的历史区分、或 Merleau-Ponty/Marion 的比较配对本身包装成新发现。
 
-本项目强制进行 [外部工作与复用审计](docs/PRIOR_ART.md)。已经确认：Lean 中存在独立的 `novaspivack/phenomenology-lean` formal-phenomenology 工程，Isabelle/HOL / AFP 与 LogiKEy 也已有成熟 formal philosophy / computational metaphysics / computational hermeneutics 方法。因此本项目**不声称首创“形式化哲学”或“形式化现象学”工作流**。针对本轮点态等价的 GitHub 增量检索没有定位到外部同型 formal-philosophy 声明；由于该结论只是已有 `NonExhaustible ↔ ¬Captured` 的 Lean Core 逻辑闭包，也没有为它引入重依赖。
+本项目强制进行 [外部工作与复用审计](docs/PRIOR_ART.md)。已经确认：Lean 中存在独立的 `novaspivack/phenomenology-lean` formal-phenomenology 工程，Isabelle/HOL / AFP 与 LogiKEy 也已有成熟 formal philosophy / computational metaphysics / computational hermeneutics 方法。因此本项目**不声称首创“形式化哲学”或“形式化现象学”工作流**。本轮重新核对 `novaspivack/phenomenology-lean` 仍停在此前固定的 `75230e4e...`；针对 `Independent / NonExhaustible / Captured / appearing` 的 GitHub 增量检索没有定位到外部同型 formal-philosophy 声明。由于新结论只是已有 `NonExhaustible ↔ ¬Captured` 的 Lean Core 量词闭包，也没有为它引入重依赖。
 
 但 **pp. 209–212、225–226 的 *Being Given* 原书正文仍未由本项目独立逐页核对**。Internet Archive 可确认 1997 法文 *Étant donné* 的受限借阅条目存在，Google Books 也能确认 1997 PUF 版本及索引词，但当前环境都未提供目标页可直接读取正文；项目不会绕过访问控制。因此尚未达到首个研究问题的停止条件。
 
-详见 [段落卡](docs/PASSAGE_CARDS.md)、[来源登记](docs/SOURCES.md) 与 [外部工作审计](docs/PRIOR_ART.md)。
+详见 [段落卡](docs/PASSAGE_CARDS.md)、[来源登记](docs/SOURCES.md)、[重印 provenance](docs/MARION_REPRINT_PROVENANCE.md) 与 [外部工作审计](docs/PRIOR_ART.md)。
 
 ## 工程状态
 
-Lean 4.24.0；不依赖 Mathlib 或其他外部 Lean 包。本分支共有 **8 个库模块、55 个具名引理／定理**，全部列入内核公理依赖审计；最终通过状态以对应提交 CI 为准。
+Lean 4.24.0；不依赖 Mathlib 或其他外部 Lean 包。本分支共有 **8 个库模块、56 个具名引理／定理**，全部列入内核公理依赖审计；最终通过状态以对应提交 CI 为准。
 
 | 检验 | 形式结论 | 入口 |
 |---|---|---|
@@ -81,6 +91,7 @@ Lean 4.24.0；不依赖 Mathlib 或其他外部 Lean 包。本分支共有 **8 �
 | 不依赖视域是否等于无视域 | 否；有相关视域且独立的模型 | `horizon_independence_need_not_be_horizonless` |
 | 不依赖视域是否推出不可穷尽 | 无额外条件时否 | `horizon_independence_does_not_imply_nonExhaustible` |
 | 上条蕴含的确切点态条件是什么 | 等价于 `Captured p → ¬ Independent p` | `independent_implies_nonExhaustible_iff_capture_refutes_independence` |
+| 在实际显现域的确切条件是什么 | 等价于对 `appears p` 排除 `Captured p ∧ Independent p` | `appearing_independence_implies_nonExhaustible_iff_capture_refutes_independence` |
 | 哪个结构化 bridge 足以恢复上条蕴含 | situated + exhaustive → conditioning 足够，但更强 | `exhaustiveCaptureConditions_independent_implies_nonExhaustible` |
 | captured + independent 对该 bridge 意味着什么 | 同一 witness 足以反证 bridge | `captured_independent_refutes_exhaustiveCaptureConditions` |
 | 该 bridge 是否真是额外前提 | 是；旧 closed-independent 反模型违反它 | `closedIndependentConditioning_not_exhaustiveCaptureConditions` |
@@ -112,7 +123,7 @@ FormalPhenomenology/
   Horizon/Basic.lean
   Horizon/Separation.lean
   Horizon/SituatedExcess.lean
-  Horizon/Conditioning.lean      # 三轴分离 + 点态确切条件 + 较强 capture→conditioning bridge
+  Horizon/Conditioning.lean      # 三轴分离 + 点态/显现域确切条件 + 较强 capture→conditioning bridge
   Models/Finite.lean
   Models/Conditioning.lean       # 分离、联合见证及 bridge 反模型审计
   Models/OpenHorizon.lean
@@ -127,10 +138,11 @@ scripts/check.py
 | [原典段落卡](docs/PASSAGE_CARDS.md) | 版本、页码、访问状态、竞争解释 |
 | [解释选择登记](docs/INTERPRETATION.md) | 形式词与哲学词之间的距离 |
 | [来源与阅读状态](docs/SOURCES.md) | 一手／二手证据与未核查项 |
+| [Marion 重印 provenance](docs/MARION_REPRINT_PROVENANCE.md) | 正式重印范围、合法获取路线与证据等级 |
 | [外部工作与复用审计](docs/PRIOR_ART.md) | 形式哲学先例、同题文献、复用/去重决定 |
 | [研究路线与验收条件](docs/ROADMAP.md) | 下一阶段与停止条件 |
 | [协作规则](AGENTS.md) | 代码、证据、模型、查重与验证约定 |
 
 ## 下一步
 
-首要硬门槛仍是**独立核对 Marion *Being Given* pp. 209–212、225–226 的原书正文**，或取得可可靠逐段对应的法文 *Étant donné*。形式层现在不仅拆开相关视域、条件化、穷尽三者，还把 `Independent → NonExhaustible` 的确切点态条件与更强的结构化 bridge 分开。下一轮继续突破合法原典访问门，决定真实文本是否支持任何额外 bridge，而不是继续无边界扩张模型。
+首要硬门槛仍是**独立核对 Marion *Being Given* pp. 209–212、225–226 的原书正文**，或取得可可靠逐段对应的法文 *Étant donné* / 正式重印正文。形式层现在不仅拆开相关视域、条件化、穷尽三者，还把 `Independent → NonExhaustible` 的确切点态条件与实际显现域条件分开，并区分它们和更强的结构化 bridge。下一轮继续突破合法原典访问门，决定真实文本是否支持任何额外 bridge，而不是继续无边界扩张模型。

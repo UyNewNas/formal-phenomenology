@@ -1,6 +1,6 @@
 # 来源与阅读状态
 
-检索／核查日期：2026-09-17。这里严格区分书目元数据、作者本人正文、研究文献和仍待直接核查的目标书页。逐段工作卡见 [PASSAGE_CARDS.md](PASSAGE_CARDS.md)，Marion 1996 作者文本见 [MARION_1996_PRIMARY.md](MARION_1996_PRIMARY.md)，英法目标页交叉见 [MARION_VERSION_CROSSWALK.md](MARION_VERSION_CROSSWALK.md)，外部形式化与方法先例见 [PRIOR_ART.md](PRIOR_ART.md)。
+检索／核查日期：2026-09-17。这里严格区分书目元数据、作者本人正文、研究文献和仍待直接核查的目标书页。逐段工作卡见 [PASSAGE_CARDS.md](PASSAGE_CARDS.md)，Marion 1996 作者文本见 [MARION_1996_PRIMARY.md](MARION_1996_PRIMARY.md)，英法目标页交叉见 [MARION_VERSION_CROSSWALK.md](MARION_VERSION_CROSSWALK.md)，重印与合法访问路径见 [MARION_REPRINT_PROVENANCE.md](MARION_REPRINT_PROVENANCE.md)，外部形式化与方法先例见 [PRIOR_ART.md](PRIOR_ART.md)。
 
 ## 1. 已固定的 Merleau-Ponty 原典
 
@@ -20,12 +20,16 @@ Maurice Merleau-Ponty, *Phenomenology of Perception*, translated by Colin Smith,
 Jean-Luc Marion, *Being Given: Toward a Phenomenology of Givenness*, translated by Jeffrey L. Kosky, Stanford University Press, 2002。ISBN 9780804785723。
 
 - [Google Books 书目与目录](https://books.google.com/books/about/Being_Given.html?id=l0UkDwAAQBAJ)：确认译者、出版社、年份；目录给出 §21 起于 p. 199、§22 起于 p. 212、§23 起于 p. 221。
-- [De Gruyter / Stanford 书页](https://www.degruyterbrill.com/document/doi/10.1515/9780804785723/html)：确认出版信息。
+- [De Gruyter / Stanford 书页](https://www.degruyterbrill.com/document/doi/10.1515/9780804785723/html)：确认出版信息与章节目录。
 - [§21 出版社章节记录](https://www.degruyterbrill.com/document/doi/10.1515/9780804785723-024/html)：确认章节题名 `Sketch of the Saturated Phenomenon: The Horizon` 及 pp. 199–212。
+- [§22 出版社章节记录](https://www.degruyterbrill.com/document/doi/10.1515/9780804785723-025/html)：确认 §22 为 pp. 212–221；当前正文同样受限。
 
 **访问限制仍在**：出版社／Google Books 当前仍未向本研究环境提供可逐页核验的 pp. 209–212、225–226 正文。Internet Archive 有 1997 法文 *Étant donné : essai d'une phénoménologie de la donation*（PUF, ISBN 2130486770，identifier `etantdonneessaid0000mari_w5n7`）的受限借阅记录，但页面标记 `Access-restricted-item: true`、`printdisabled`，没有当前环境可直接读取的文件。本项目不绕过访问控制。
 
-2026-09-17 本轮再次打开 De Gruyter/Stanford 的 §21 与 §23 出版社页面：它们仍只公开章节元数据／目录，目标正文需要机构访问，因此没有把 metadata 提升为 direct-page evidence。另找到一个合法的作者文集入口：Fordham University Press / De Gruyter Brill 2013 *The Essential Writings* 收录 Marion 本人章节 [“Sketch of the Saturated Phenomenon”](https://www.degruyterbrill.com/document/doi/10.1515/9780823292905-006/html)，pp. 108–134。出版社页面确认作者、编辑 Kevin Hart、篇名与页码，但当前同样未公开正文；在未逐段比对前也**不假定该文集章节与 *Being Given* §21 完全同文**。状态记为 **PRIMARY-PUBLISHER-METADATA / ALTERNATE-REPRINT-PATH**，只是后续合法访问候选，不满足停止门。
+合法重印／替代入口现在单列在 [MARION_REPRINT_PROVENANCE.md](MARION_REPRINT_PROVENANCE.md)。其中：
+
+- Fordham University Press / De Gruyter Brill 2013 *The Essential Writings* 的正式章节页确认 Marion 本人 `Sketch of the Saturated Phenomenon` pp. 108–134，但当前页面仍不开放正文；状态保持 **PRIMARY-PUBLISHER-METADATA / ALTERNATE-REPRINT-PATH**。
+- Dermot Moran 的作者公开稿明确登记 *Being Given* `Sketch` pp. 199–221 重印于 Moran / Embree 编 *Phenomenology: Critical Concepts*（Routledge, 2004）, vol. 4, pp. 5–28；Routledge 官方产品页与 Google Books/Taylor & Francis 元数据独立确认该正式出版物。状态记为 **SECONDARY-EXACT-REPRINT-PROVENANCE + PUBLISHER-METADATA**。当前仍未合法暴露重印正文，所以不满足 direct-primary 停止门。
 
 Google Books 另有 1997 PUF 版书目页（ISBN 2130486770 / 9782130486770，452 页）并显示书内索引/常用词，包括 `horizon`、`intuition`、`intentionnalité`、`manifestation` 与 `phénomène saturé`，但仍没有向当前环境开放目标页正文，因此只记为 **PRIMARY-METADATA / INDEX**，不升级为 direct primary passage。
 
@@ -35,7 +39,7 @@ Google Books 另有 1997 PUF 版书目页（ISBN 2130486770 / 9782130486770，45
 
 Jean-Luc Marion, “The Saturated Phenomenon,” translated by Thomas A. Carlson, *Philosophy Today* 40(1), 1996, pp. 103–124, DOI `10.5840/philtoday199640137`。
 
-本项目直接从 Philosophy Documentation Center / PDCnet 的公开搜索索引读取了作者正文及原刊页码。本轮再次尝试直接打开 PDF URL，仍返回 HTTP 403，因此不能声称已经逐页查看 PDF 版面；证据状态继续记为 **PRIMARY-DIRECT-INDEXED**，不是 secondary quotation，也不是 PDF page-image review。
+本项目直接从 Philosophy Documentation Center / PDCnet 的公开搜索索引读取了作者正文及原刊页码。再次尝试直接打开 PDF URL仍返回 HTTP 403，因此不能声称已经逐页查看 PDF 版面；证据状态继续记为 **PRIMARY-DIRECT-INDEXED**，不是 secondary quotation，也不是 PDF page-image review。
 
 关键可核查内容：
 
@@ -65,7 +69,7 @@ Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378�
 
 ### S-JM1 — King-Ho Leung (2022)
 
-“Sartre and Marion on Intentionality and Phenomenality,” *Theory, Culture & Society*。公开文本给出 *Being Given* 精确页码：pp. 211–212 将 horizon 作为 `condition of possibility` 解释“不依赖任何视域”；pp. 225–226 把 saturation 与 intuition 超过 intention、对象 constitution 失败联系起来。它仍是 secondary exact evidence，不能替代目标书页直接阅读。
+“Sartre and Marion on Intentionality and Phenomenality,” *Theory, Culture & Society*。SAGE 出版页面公开文本给出 *Being Given* 精确页码：pp. 211–212 将 horizon 作为 `condition of possibility` 解释“不依赖任何视域”；pp. 225–226 把 saturation 与 intuition 超过 intention、对象 constitution 失败联系起来。它仍是 secondary exact evidence，不能替代目标书页直接阅读。
 
 ### S-JM2 — Brock Mason
 
@@ -73,11 +77,13 @@ Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378�
 
 ### S-JM3 — Shane Mackinlay
 
-*Interpreting Excess: Jean-Luc Marion, Saturated Phenomena, and Hermeneutics*。除解释 horizon 限制与 intentional expectation 外，本轮进一步利用其 BG/ED 双版本引注建立页码交叉：包括 BG 209 / ED 292、BG 211 / ED 295、BG 225 / ED 314、BG 226 / ED 315 等邻近锚点。状态：**SECONDARY-EXACT-CROSSWALK**。
+*Interpreting Excess: Jean-Luc Marion, Saturated Phenomena, and Hermeneutics*。除解释 horizon 限制与 intentional expectation 外，项目利用其 BG/ED 双版本引注建立页码交叉：包括 BG 209 / ED 292、BG 211 / ED 295、BG 225 / ED 314、BG 226 / ED 315 等邻近锚点。状态：**SECONDARY-EXACT-CROSSWALK**。
 
 ### S-JM4 — Dermot Moran (2008)
 
 “Immanence, Self-Experience, and Transcendence in Edmund Husserl, Edith Stein, and Karl Jaspers,” *American Catholic Philosophical Quarterly* 82(2), 265–291。作者公开稿将 saturated phenomenon 概括为 unconditioned / 不受 horizon 条件化，并把它和 horizonality、constituting I 一起讨论；注释指向 *Being Given* p. 211。
+
+本轮还复用了这份作者公开稿的书目脚注：它明确写明 Marion `Sketch of the Saturated Phenomenon` 在 *Being Given* pp. 199–221，并重印于 Moran / Embree 编 *Phenomenology: Critical Concepts* (Routledge 2004), vol. 4, pp. 5–28。该信息只用于合法访问与 provenance，不把二手脚注升级为 Marion primary passage。
 
 ### S-JM5 — Ezequiel Daniel Murga (2024)
 
@@ -117,7 +123,7 @@ Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378�
 
 ## 6. 段落卡与证据状态
 
-当前 `PASSAGE_CARDS.md` 的 8 张原有工作卡保持：Merleau-Ponty 5 张 `reviewed`；*Being Given* 3 张仍为 `proposed-secondary`。Marion 1996 primary evidence 单列在 `MARION_1996_PRIMARY.md`；BG/ED 页码链单列在 `MARION_VERSION_CROSSWALK.md`；Falabretti 的比较 prior art 单列在 `FALABRETTI_COMPARISON.md`，避免把 secondary comparison 和 primary passage card 混用。
+当前 `PASSAGE_CARDS.md` 的 8 张原有工作卡保持：Merleau-Ponty 5 张 `reviewed`；*Being Given* 3 张仍为 `proposed-secondary`。Marion 1996 primary evidence 单列在 `MARION_1996_PRIMARY.md`；BG/ED 页码链单列在 `MARION_VERSION_CROSSWALK.md`；重印来源单列在 `MARION_REPRINT_PROVENANCE.md`；Falabretti 的比较 prior art 单列在 `FALABRETTI_COMPARISON.md`，避免把 secondary comparison、reprint provenance 和 primary passage card 混用。
 
 ## 7. A、B、C 与 conditioning 轴的当前判定
 
@@ -126,7 +132,7 @@ Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378�
 - **C / `HasExcess` / `NonExhaustible`**：可作为 excess 的弱模型影子，但 Marion 1996 primary text 明确展示多个 horizon 关系层次，完整 saturation 不能等同于 C。
 - **`HorizonConditioning.Independent`**：作为“不以 horizon 的先行限定／可能性条件来规定显现”的弱接口，现在不仅有二手研究动机，还有 Marion 1996 作者本人 primary text 支持其方向；Djian 2018 又提供 *Étant donné* 解释层的独立同题 prior art。它仍不是完整 `Saturated` 定义。
 - **`HasHorizonlessAppearance`**：Marion 1996 p. 117 直接反对把一般取消 horizon 当作目标；Falabretti p. 98 的 “no horizon” 是竞争 secondary reading，而不是足以推翻 primary-text boundary 的证据。因此它仍不应作为默认 saturation 编码。
-- **`ExhaustiveCaptureConditions`**：仍是 MODEL/QUESTION。没有 primary text 或同题研究给出 `situated ∧ Exhausts → conditions` 这条 extensional bridge；本轮新增的点态逻辑等价还进一步说明，它只是比“排除同一 p 上的 `Captured ∧ Independent`”更强的一种结构化充分机制。
+- **`ExhaustiveCaptureConditions`**：仍是 MODEL/QUESTION。没有 primary text 或同题研究给出 `situated ∧ Exhausts → conditions` 这条 extensional bridge；点态与显现域逻辑等价说明，它只是比“在相应量词域排除 `Captured ∧ Independent`”更强的一种结构化充分机制。
 
 ## 8. 尚未确立的历史断言
 
@@ -134,9 +140,9 @@ Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378�
 
 ## 9. 当前硬门槛
 
-Marion 1996 作者原文已经使首问的解释空间明显收缩，Djian 2018 又把 *Étant donné* 中 horizon-as-condition 的解释角色进一步固定；Miller / Mackinlay / Steinbock 的双版本引注把版本核对范围缩小。Falabretti 进一步固定了**比较研究本身已有 prior art**。本轮新增的 Fordham/De Gruyter 2013 合法作者文集入口只增加了一个潜在获取路径，并未提供目标正文，所以仍不能代替 target-page direct review。
+Marion 1996 作者原文已经使首问的解释空间明显收缩，Djian 2018 又把 *Étant donné* 中 horizon-as-condition 的解释角色进一步固定；Miller / Mackinlay / Steinbock 的双版本引注把版本核对范围缩小。Falabretti 固定了**比较研究本身已有 prior art**。本轮又把合法来源工程收窄到两条正式重印路径：Fordham 2013 作者文集与 Routledge 2004 vol. 4；后者已有明确 reprint provenance。但当前都没有向研究环境开放目标正文，所以仍不能代替 target-page direct review。
 
-停止门仍未通过，但现在可精确写成：合法直接查看 BG pp. 209–212、225–226，**或者**直接查看对应法文 ED pp. **292–297、314–315**，并逐段核对 1996 论证在书本版本中的重写、顺序和术语。
+停止门仍未通过，但现在可精确写成：合法直接查看 BG pp. 209–212、225–226，**或者**直接查看对应法文 ED pp. **292–297、314–315**，或者在已确认的正式重印中直接找到对应文本锚点并与 BG/ED crosswalk 互证；随后逐段核对 1996 论证在书本版本中的重写、顺序和术语。
 
 在此之前，可以把 `Independent` 视为有 primary-text 动机的**弱候选接口**，但不能把 `Independent`、`NonExhaustible`、`Captured` 或它们的 conjunction 命名为 Marion 的完整 saturated phenomenon。
 
