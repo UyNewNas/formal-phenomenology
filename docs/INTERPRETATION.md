@@ -1,12 +1,12 @@
 # 解释选择登记
 
-版本：v0.3-work，2026-09-17。
+版本：v0.4-work，2026-09-17。
 
-## 证据层与形式层
+## 证据层、形式层与外部工作
 
 本项目区分四种记录：`MODEL` 是人为规定的形式模型；`FORMAL` 是由定义和前提推出的结果；`READING` 是需要原典支持的解释；`QUESTION` 是尚待解决的问题。证明通过不会自动将 `MODEL` 升格为某位哲学家的 `READING`。
 
-来源阅读状态见 [SOURCES.md](SOURCES.md)，逐段卡见 [PASSAGE_CARDS.md](PASSAGE_CARDS.md)。本页不是学说真伪裁决，而是解释接口。
+来源阅读状态见 [SOURCES.md](SOURCES.md)，逐段卡见 [PASSAGE_CARDS.md](PASSAGE_CARDS.md)，外部形式化/方法/同题解释的查重见 [PRIOR_ART.md](PRIOR_ART.md)。本页不是学说真伪裁决，也不以“Lean 中可证明”作为原创性证据。
 
 ## 词汇映射
 
@@ -23,6 +23,7 @@
 | `HasSituatedExcess` | 存在显现 p，p 实际有相关视域，同时所有相关视域都不能穷尽 p | MODEL；排除“没有任何相关视域”造成的空真 |
 | `HorizonConditioning.conditions p h` | h 被单独标记为 p 的条件化视域 | MODEL；用于区分“相关视域”和“作为可能性条件的视域” |
 | `HorizonConditioning.Independent p` | 没有任何 h 条件化 p | MODEL；是 `does not depend on a horizon` 的候选接口，不是已确认的 Marion 定义 |
+| `HorizonConditioning.HasSituatedIndependentExcess` | 存在同一显现：有相关视域、不受任何视域条件化、且不被任何相关视域穷尽 | MODEL；是三条形式轴的兼容性 profile，不命名为 `Saturated` |
 
 把“侧面”当作集合论上可指认的项，是当前基础模型的实质假设。若文本要求意义在经验中生成而非预列侧面，应建立替代模型。
 
@@ -60,30 +61,33 @@ C+ 仍然不是 Marion 饱和的定义。
 
 ## 新增解释轴：related / conditioned / exhaustive
 
-上一版只区分：
-
-1. p 是否有相关视域；
-2. 某相关视域是否穷尽 p。
-
-但 *Being Given* 的二手带页码材料反复出现另一种语义：horizon 作为 `condition of possibility`，或现象是否 `depend on` horizon。若把这一层直接塞进 `situated`，会把两种不同问题混在一起。因此 v0.3 新增 `HorizonConditioning` 包装层：
+*Being Given* 的带页码二手材料和 Murga (2024) 的解释争论都要求区分：一个 horizon **与显现相关**，不等于它作为先行条件**规定**显现，更不等于它**穷尽**显现。因此当前模型使用三个关系：
 
 - `situated p h`：h 与 p 的显现相关；
 - `conditions p h`：h 作为模型中的条件/约束规定 p；
 - `Exhausts p h`：h 容纳当前模型列出的 p 的全部侧面。
 
-这三者没有定义性等同。
+这三者没有定义性等同。Murga 的公开论文已经明确讨论“保留 horizon、批判其形而上学式先行限定”这一解释，因此本项目不把 related/conditioned 的区分包装成新的历史发现；这里的工作是把该解释差异变成可检查的形式接口。
 
-形式上已经给出双向分离：
+形式上此前给出双向分离：
 
 - 一个现象可以 `Structured` 且 `Independent`，所以“无视域依赖”不等于“无相关视域”；
-- `Independent` 不推出 `NonExhaustible`：可有一个被完整捕获、但不把任何视域标记为条件化的模型；
-- `NonExhaustible` 不推出 `Independent`：可有受视域条件化、但任何相关视域仍不足以穷尽的模型。
+- `Independent` 不推出 `NonExhaustible`；
+- `NonExhaustible` 不推出 `Independent`。
+
+本轮再定义中性的 `HasSituatedIndependentExcess`，要求**同一个**显现同时满足：
+
+1. `Structured`；
+2. `Independent`；
+3. `NonExhaustible`。
+
+`splitIndependentConditioning` 提供有限见证，证明这三条形式轴可以共同满足；而且模型满足 `ConditioningIsSituated`。这个定理只回答“我们的抽象语言中有没有矛盾”，并不把该 conjunction 认定为 Marion 的 saturated phenomenon。特别地，因为 `conditions` 当前是一个独立关系，模型的一致性不能替代原典对 related/conditioned 之间约束的论证。
 
 因此当前最稳妥的解释结论是：
 
-> **`does not depend on a horizon`、`is not exhausted by any related horizon`、`has no related horizon` 是三个不同候选命题。**
+> **`has a related horizon`、`does not depend on a horizon as prior condition`、`is not exhausted by any related horizon`、`has no related horizon` 是不同的候选命题；其中前三者在当前中性模型中可以联合一致。**
 
-这一步只清理概念空间。要把 `Independent` 真正归给 Marion 的 saturated phenomenon，仍须直接核对 *Being Given* pp. 210–212 的原书上下文；要把 pp. 225–226 的直观/意向结构形式化，则还需额外关系。
+要把 `Independent` 真正归给 Marion，仍须直接核对 *Being Given* pp. 210–212 的原书上下文；要把 pp. 225–226 的直观/意向结构形式化，则还需额外关系。
 
 ## 当前首个问题的形式答案
 
@@ -95,9 +99,9 @@ Lean 中 `horizon_structure_does_not_entail_closure` 给出否定答案；有限
 
 更强地，`situatedExcess_refutes_closureBridge` 证明：只要已经有一个实际显现、实际有视域、但不可由任何相关视域穷尽的见证，B 就直接失败。
 
-新增条件化层进一步说明：即使将 Marion 的“不依赖视域”候选编码为 `Independent`，也**不能**从中纯逻辑推出 `NonExhaustible`；反向也不成立。若文本要建立两者联系，需要明确的额外原则，而不能靠词义滑移。
+条件化层进一步说明：即使将 Marion 的“不依赖视域”候选编码为 `Independent`，也**不能**从中纯逻辑推出 `NonExhaustible`；反向也不成立。本轮联合见证只证明 `Structured ∧ Independent ∧ NonExhaustible` 可以一致，不证明文本必然要求这个 conjunction。若文本要建立更强联系，需要明确的额外原则，而不能靠词义滑移。
 
-## 三个容易偷换的地方
+## 四个容易偷换的地方
 
 ### 1. 结构不等于封闭
 
@@ -109,17 +113,19 @@ Lean 中 `horizon_structure_does_not_entail_closure` 给出否定答案；有限
 
 ### 3. 不受视域条件化也不等于无法被视域穷尽
 
-新增 `closedIndependentConditioning` 是反例：现象可不依赖任何被标记为条件化的视域，却仍被一个相关视域完整捕获。反方向也由 `splitDependentConditioning` 否定。
+`closedIndependentConditioning` 是反例；反方向由 `splitDependentConditioning` 否定。
 
-所以即使 Marion 原文确认 saturated phenomenon `does not depend on any horizon`，仍不能自动推出当前的 `NonExhaustible`，更不能推出 `HasHorizonlessAppearance`。
+### 4. 三个谓词可联合一致不等于历史概念已被证明独立
+
+`splitIndependentConditioning` 中 `conditions := False` 是模型选择。它证明抽象关系语言不强迫冲突，但 Merleau-Ponty / Marion 的文本可能增加关系公设。外部解释和原典决定这些 bridge，Lean 反模型本身不能决定。
 
 ## 从对话直觉到文献问题
 
 以下口头概括仍不能直接作为公理：
 
 - “梅洛-庞蒂的视域把经验封闭在人类尺度内。”——本轮直接文本证据反而强调开放与未完成。
-- “马里翁的饱和现象完全没有视域。”——二手带页码材料显示他讨论饱和一个、多个乃至溢出视域的情形；直接原书仍待复核。
-- “马里翁的不依赖视域就是不可穷尽。”——新增模型已经证明这两个形式谓词逻辑独立；文本若要连接它们，必须提供额外桥接前提。
+- “马里翁的饱和现象完全没有视域。”——Murga 等研究明确提出相反的竞争解释；Marion 原书关键页仍待直接复核。
+- “马里翁的不依赖视域就是不可穷尽。”——模型证明两个形式谓词互不推出；文本若要连接它们，必须有额外桥接前提。
 - “马里翁明确把梅洛-庞蒂称为去主体化不彻底的前辈。”——尚未定位直接原文。
 
 ## 当前不涉及的结构
