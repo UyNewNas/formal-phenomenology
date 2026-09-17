@@ -146,6 +146,23 @@ theorem appearing_independence_implies_nonExhaustible_iff_capture_refutes_indepe
     exact (nonExhaustible_iff_not_captured M.base p).mpr (fun hc => h p hp hc hi)
 
 /--
+The horizon-by-horizon exhaustive-capture bridge entails the exact condition
+needed on the appearing domain.  This implication is the positive half of the
+strictness claim: the bridge rules out every appearing `Captured ∧ Independent`
+witness.  The converse is refuted by `displacedCaptureConditioning` in the
+models module.
+
+No historical attribution is encoded here; both sides remain MODEL/FORMAL
+conditions in the current relation language.
+-/
+theorem exhaustiveCaptureConditions_implies_exact_appearing_condition
+    (M : HorizonConditioning) (hb : M.ExhaustiveCaptureConditions) :
+    ∀ p, M.base.appears p → M.base.Captured p → ¬ M.Independent p := by
+  intro p _ hc hi
+  have hn := exhaustiveCaptureConditions_independent_implies_nonExhaustible M hb p hi
+  exact (nonExhaustible_iff_not_captured M.base p).mp hn hc
+
+/--
 A captured phenomenon that is nevertheless horizon-independent refutes the
 explicit exhaustive-capture bridge.  This is a witness-level diagnostic for
 that stronger structural hypothesis: it records the bridge failure at the
