@@ -111,7 +111,7 @@ $$
 
 因此，对**固定的同一个现象 p**，要恢复 `Independent p → NonExhaustible p`，逻辑上需要且只需要排除 `Captured p ∧ Independent p`。这不是新的 Marion 前提，而只是对目标蕴含的精确逻辑正规化。
 
-本轮把同一个正规化提升到首问真正使用的“实际显现”量词域，而不偷偷加强到现象类型中的所有对象。新定理
+随后把同一个正规化提升到首问真正使用的“实际显现”量词域，而不偷偷加强到现象类型中的所有对象。定理
 `appearing_independence_implies_nonExhaustible_iff_capture_refutes_independence`
 证明：
 
@@ -151,7 +151,17 @@ $$
 
 `closedIndependentConditioning` 同时有 `Independent` 与 `Captured`，并由 `closedIndependentConditioning_not_exhaustiveCaptureConditions` 证明它违反 E。因此 E 是真正的额外 bridge，不是定义展开。
 
-E 仍是 MODEL/QUESTION，不归给 Marion 或 Merleau-Ponty；点态与显现域两个等价同样只是 FORMAL 正规化，不承担历史归属。
+本轮进一步把“E 更强”从说明文字升级成了形式反模型。`displacedCaptureConditioning` 有两个均 related 的 horizon：`false` horizon 穷尽唯一 aspect，而不同的 `true` horizon 承担 conditioning。因此该模型满足 `ConditioningIsSituated`，并在所有实际显现上满足精确条件 `Captured → ¬ Independent`；但 E 失败，因为 exhaustive 的 `false` horizon 本身并不 conditioning。定理
+`exact_appearing_condition_is_strictly_weaker_than_exhaustiveCaptureConditions`
+正式给出：
+
+$$
+\exists M\,[\mathrm{ConditioningIsSituated}(M)
+\land (\forall p\,(F(p)\to\mathrm{Captured}(p)\to\neg\mathrm{Independent}(p)))
+\land \neg E(M)].
+$$
+
+所以“精确显现域排斥”和“每个 exhaustive horizon 自己必须 conditioning”确实是不同强度的要求，不只是措辞差异。E 仍是 MODEL/QUESTION，不归给 Marion 或 Merleau-Ponty；这个 strictness 结果也只是 FORMAL 模型分离，不承担历史归属。
 
 ## 7. 三条轴的联合一致性
 
@@ -190,10 +200,10 @@ $$
 | `Horizon/SituatedExcess.lean` | 4 | 非空真 excess 与 closure 的直接冲突 |
 | `Horizon/Conditioning.lean` | 10 | related/conditioning 分离、点态与显现域确切前提、capture→conditioning 压力测试 bridge 及 witness-level 诊断、profile 投影 |
 | `Models/Finite.lean` | 11 | 有限见证、最小冲突与首问反例 |
-| `Models/Conditioning.lean` | 12 | conditioning / exhaustion / horizonless 分离及 bridge 反模型 |
+| `Models/Conditioning.lean` | 13 | conditioning / exhaustion / horizonless 分离、bridge 反模型及精确条件与强 bridge 的严格分离 |
 | `Models/OpenHorizon.lean` | 6 | 开放扩展、逐一覆盖和单调性 |
 | `Models/HorizonExtension.lean` | 4 | horizon 域扩展与穷尽性的变化 |
 
-共 **56** 个具名引理／定理，全部列入 `Audit.lean`。任何后续 Lean 改动都必须在其自己的提交重新获得 `lake build`、`scripts/check.py` 与 `#print axioms` 验证，不能继承旧 CI。
+共 **57** 个具名引理／定理，全部列入 `Audit.lean`。任何后续 Lean 改动都必须在其自己的提交重新获得 `lake build`、`scripts/check.py` 与 `#print axioms` 验证，不能继承旧 CI。
 
 *Being Given* 2002 pp. 209–212、225–226 仍待合法直接核对，因此历史解释停止门尚未关闭。
