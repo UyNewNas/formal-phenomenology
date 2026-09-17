@@ -42,6 +42,20 @@ of every horizon admitted as a conditioning relation.
 def HasStructuredIndependentAppearance (M : HorizonConditioning) : Prop :=
   ∃ p, M.base.appears p ∧ M.base.Structured p ∧ M.Independent p
 
+/--
+A neutral compatibility profile combining all three axes used in the first
+research question: the phenomenon has a related horizon, is independent of
+horizons as conditioning relations, and is not exhausted by any related
+horizon.
+
+This is deliberately *not* named `Saturated`: it is a model-theoretic profile,
+not a definition or attribution of Marion's saturated phenomenon.
+-/
+def HasSituatedIndependentExcess (M : HorizonConditioning) : Prop :=
+  ∃ p,
+    M.base.appears p ∧ M.base.Structured p ∧ M.Independent p ∧
+      M.base.NonExhaustible p
+
 end HorizonConditioning
 
 /-- Horizon independence is exactly the negation of existential conditioning. -/
@@ -68,5 +82,19 @@ theorem conditioningIsSituated_notStructured_implies_independent
     (p : M.base.Phenomenon) (hn : ¬ M.base.Structured p) : M.Independent p := by
   intro h hh
   exact hn ⟨h, hc p h hh⟩
+
+/-- The joint profile contains the previously separated structured-independent profile. -/
+theorem situatedIndependentExcess_implies_structuredIndependentAppearance
+    (M : HorizonConditioning) (hs : M.HasSituatedIndependentExcess) :
+    M.HasStructuredIndependentAppearance := by
+  obtain ⟨p, hp, hstruct, hi, _⟩ := hs
+  exact ⟨p, hp, hstruct, hi⟩
+
+/-- The joint profile also contains a non-vacuous situated-excess witness. -/
+theorem situatedIndependentExcess_implies_situatedExcess
+    (M : HorizonConditioning) (hs : M.HasSituatedIndependentExcess) :
+    M.base.HasSituatedExcess := by
+  obtain ⟨p, hp, hstruct, _, hn⟩ := hs
+  exact ⟨p, hp, hstruct, hn⟩
 
 end FormalPhenomenology
