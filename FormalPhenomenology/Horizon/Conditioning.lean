@@ -125,6 +125,27 @@ theorem independent_implies_nonExhaustible_iff_capture_refutes_independence
     exact (nonExhaustible_iff_not_captured M.base p).mpr (fun hc => h hc hi)
 
 /--
+The same exact condition lifted to the scope of the first research question:
+for every *appearing* phenomenon, horizon independence implies
+non-exhaustibility exactly when every appearing captured phenomenon fails to
+be horizon-independent.
+
+The `appears` premise is preserved on both sides instead of silently
+strengthening the claim to every inhabitant of the phenomenon type.  No new
+philosophical relation is introduced; this is the quantified closure of the
+pointwise normalization above.
+-/
+theorem appearing_independence_implies_nonExhaustible_iff_capture_refutes_independence
+    (M : HorizonConditioning) :
+    (∀ p, M.base.appears p → M.Independent p → M.base.NonExhaustible p) ↔
+      (∀ p, M.base.appears p → M.base.Captured p → ¬ M.Independent p) := by
+  constructor
+  · intro h p hp hc hi
+    exact (nonExhaustible_iff_not_captured M.base p).mp (h p hp hi) hc
+  · intro h p hp hi
+    exact (nonExhaustible_iff_not_captured M.base p).mpr (fun hc => h p hp hc hi)
+
+/--
 A captured phenomenon that is nevertheless horizon-independent refutes the
 explicit exhaustive-capture bridge.  This is a witness-level diagnostic for
 that stronger structural hypothesis: it records the bridge failure at the
