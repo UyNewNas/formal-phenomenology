@@ -1,6 +1,6 @@
 # 视域结构与穷尽性的分离
 
-本页给出首个研究问题的形式层。代码中的命题均以 Lean 定义为准；哲学解释与原典证据见 [INTERPRETATION.md](INTERPRETATION.md) 和 [PASSAGE_CARDS.md](PASSAGE_CARDS.md)。
+本页给出首个研究问题的形式层。代码中的命题均以 Lean 定义为准；哲学解释与原典证据见 [INTERPRETATION.md](INTERPRETATION.md) 和 [PASSAGE_CARDS.md](PASSAGE_CARDS.md)，外部工作与复用判断见 [PRIOR_ART.md](PRIOR_ART.md)。
 
 ## 1. 关系语言
 
@@ -70,12 +70,12 @@ $$
 
 所以“不能被任何相关视域穷尽”与“完全没有相关视域”是不同命题。
 
-## 5. 新增：相关视域与条件化视域分层
+## 5. 相关视域、条件化视域与穷尽视域
 
-文本研究显示还必须区分另一组概念：一个视域**与现象相关**，不等于该视域作为先验条件**规定/条件化**现象的可显现性。为避免把 Marion 的 `does not depend on a horizon` 偷换成 `¬ Structured`，新增包装结构 `HorizonConditioning`：
+`HorizonConditioning` 增加关系
 
 $$
-K(p,h)=\text{“h 在当前解释中条件化 p”}.
+K(p,h)=\text{“h 在当前解释中条件化 p”},
 $$
 
 并定义：
@@ -83,19 +83,18 @@ $$
 $$\begin{aligned}
 \mathrm{Conditioned}(p)&\iff \exists h\,K(p,h),\\
 \mathrm{Independent}(p)&\iff \forall h\,\neg K(p,h).
-\end{aligned}
-$$
+\end{aligned}$$
 
-`conditions` 与旧的 `situated` 是两个不同关系。可选一致性条件 `ConditioningIsSituated` 只说：若 h 条件化 p，则 h 也必须是 p 的相关视域。
+`conditions` 与旧的 `situated` 是两个不同关系；可选一致性条件 `ConditioningIsSituated` 只说条件化视域必须也是相关视域。
 
 Lean 已证明：
 
-- `horizonIndependent_iff_not_conditioned`：不依赖任何条件化视域等价于不存在条件化视域。
-- `horizon_independence_need_not_be_horizonless`：一个显现可以有相关视域，同时不受任何视域条件化。
-- `horizon_independence_does_not_imply_nonExhaustible`：视域独立不推出不可穷尽；一个被完整捕获的显现也可在条件化层上独立。
-- `nonExhaustible_does_not_imply_horizon_independence`：不可穷尽也不推出视域独立；一个现象可以被标记为受视域条件化，同时仍没有任何相关视域穷尽它。
+- `horizonIndependent_iff_not_conditioned`；
+- `horizon_independence_need_not_be_horizonless`；
+- `horizon_independence_does_not_imply_nonExhaustible`；
+- `nonExhaustible_does_not_imply_horizon_independence`。
 
-因此当前模型严格分开三件事：
+因此当前模型严格分开：
 
 $$
 \boxed{\text{有相关视域}}\qquad
@@ -110,9 +109,40 @@ $$
 \mathrm{NonExhaustible}\not\Rightarrow\mathrm{Independent}.
 $$
 
-这不是对 Marion 文本的最终归属，而是为原典中“horizon as condition of possibility”提供不混词的形式接口。
+## 6. 新增：三条形式轴可以在同一显现上联合一致
 
-## 6. 逐一覆盖不等于整体覆盖
+为避免前述两两分离被误读成“它们不能同时成立”，本轮定义中性 profile：
+
+$$
+\mathrm{HasSituatedIndependentExcess}(M)
+$$
+
+表示存在同一个显现 p，使：
+
+$$
+F(p)\land \mathrm{Structured}(p)\land
+\mathrm{Independent}(p)\land \mathrm{NonExhaustible}(p).
+$$
+
+`splitIndependentConditioning_hasSituatedIndependentExcess` 在有限 `splitModel` 上给出见证；`related_independent_nonExhaustible_are_jointly_consistent` 进一步证明：
+
+$$
+\boxed{
+\exists M\,[\mathrm{ConditioningIsSituated}(M)\land
+\mathrm{HasSituatedIndependentExcess}(M)]
+}.
+$$
+
+所以即使要求所有“条件化视域”都是相关视域，也可以同时出现：**有相关视域、没有视域作为条件化关系、没有任何相关视域穷尽该显现**。
+
+这个结果只是一致性见证。`conditions` 仍是人为给出的独立关系；它不证明 Marion 的概念必然满足这组三条件，也不把 conjunction 定义成 saturated phenomenon。已有 Marion 解释文献已经讨论“保留 horizon 但拒绝其先行限定作用”的读法，因此这里的贡献是将一个已有解释空间显式模型化，而不是宣称发现新的历史命题。
+
+两个投影定理记录该 profile 与旧接口的关系：
+
+- `situatedIndependentExcess_implies_structuredIndependentAppearance`；
+- `situatedIndependentExcess_implies_situatedExcess`。
+
+## 7. 逐一覆盖不等于整体覆盖
 
 `IndividuallyCoverable p` 表达：
 
@@ -124,23 +154,23 @@ $$\forall a\,\exists h\quad\not\Rightarrow\quad\exists h\,\forall a.$$
 
 `individual_cover_does_not_imply_capture` 由有限 `splitModel` 给出反模型。
 
-## 7. 持续扩展仍可不穷尽；理想视域会改变结论
+## 8. 持续扩展仍可不穷尽；理想视域会改变结论
 
 在 `expandingModel` 中，H=D=ℕ，R(h,a) 定义为 a<h。每个侧面最终可被某个更大视域容纳，但没有最终穷尽视域。`completedModel` 再人为加入一个理想全覆盖视域后，不可穷尽性消失。这显示“哪些视域进入量词域”本身是解释前提。
 
-## 8. 证明地图
+## 9. 证明地图
 
 | 文件 | 具名定理数 | 作用 |
 |---|---:|---|
 | `Horizon/Basic.lean` | 0 | 基础关系语言 |
 | `Horizon/Separation.lean` | 9 | 基本等价、蕴含和 A/B/C 条件冲突 |
 | `Horizon/SituatedExcess.lean` | 4 | 非空真 excess 与 closure 的直接冲突 |
-| `Horizon/Conditioning.lean` | 3 | 分离“相关视域”与“条件化视域” |
+| `Horizon/Conditioning.lean` | 5 | 分离“相关/条件化”，并投影联合 profile |
 | `Models/Finite.lean` | 11 | 有限见证、最小冲突与首问反例 |
-| `Models/Conditioning.lean` | 9 | 条件化/穷尽/无视域的双向分离反模型 |
+| `Models/Conditioning.lean` | 11 | 条件化/穷尽/无视域分离及三轴联合见证 |
 | `Models/OpenHorizon.lean` | 6 | 开放扩展、逐一覆盖和单调性 |
 | `Models/HorizonExtension.lean` | 4 | 域扩展与穷尽性变化 |
 
-共 **46** 个具名引理／定理，全部列入 `Audit.lean`。执行 `python3 scripts/check.py` 进行根模块覆盖、禁用证明占位符、`lake build` 与逐项 `#print axioms` 检查。
+共 **50** 个具名引理／定理，全部列入 `Audit.lean`。执行 `python3 scripts/check.py` 进行根模块覆盖、禁用证明占位符、`lake build` 与逐项 `#print axioms` 检查。
 
-形式结论已经把首问中的逻辑偷换拆开；历史解释仍有一个硬门槛：Marion *Being Given* pp. 210–212、225–226 尚未由本项目独立查看原书正文。对应最终结论必须等待该原典门通过，不能用二手引文或本页的模型论事实代替。
+形式结论已经把首问中的逻辑偷换拆开；历史解释仍有硬门槛：Marion *Being Given* pp. 210–212、225–226 尚未由本项目独立查看原书正文。对应最终结论必须等待该原典门通过，不能用二手引文、外部解释或本页模型论事实代替。
