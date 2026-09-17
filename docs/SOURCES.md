@@ -25,15 +25,17 @@ Jean-Luc Marion, *Being Given: Toward a Phenomenology of Givenness*, translated 
 
 **访问限制仍在**：出版社／Google Books 当前仍未向本研究环境提供可逐页核验的 pp. 209–212、225–226 正文。Internet Archive 有 1997 法文 *Étant donné : essai d'une phénoménologie de la donation*（PUF, ISBN 2130486770，identifier `etantdonneessaid0000mari_w5n7`）的受限借阅记录，但页面标记 `Access-restricted-item: true`、`printdisabled`，没有当前环境可直接读取的文件。本项目不绕过访问控制。
 
-Google Books 另有 1997 PUF 版书目页（ISBN 2130486770 / 9782130486770，452 页）并显示书内索引/常用词，包括 `horizon`、`intuition`、`intentionnalité`、`manifestation` 与 `phénomène saturé`，但仍没有向当前环境开放目标页正文，因此只记为 **PRIMARY-METADATA / INDEX**，不升级为 direct-page evidence。
+2026-09-17 本轮再次打开 De Gruyter/Stanford 的 §21 与 §23 出版社页面：它们仍只公开章节元数据／目录，目标正文需要机构访问，因此没有把 metadata 提升为 direct-page evidence。另找到一个合法的作者文集入口：Fordham University Press / De Gruyter Brill 2013 *The Essential Writings* 收录 Marion 本人章节 [“Sketch of the Saturated Phenomenon”](https://www.degruyterbrill.com/document/doi/10.1515/9780823292905-006/html)，pp. 108–134。出版社页面确认作者、编辑 Kevin Hart、篇名与页码，但当前同样未公开正文；在未逐段比对前也**不假定该文集章节与 *Being Given* §21 完全同文**。状态记为 **PRIMARY-PUBLISHER-METADATA / ALTERNATE-REPRINT-PATH**，只是后续合法访问候选，不满足停止门。
 
-本轮通过多条学术双版本引注把 direct-primary 搜索范围显著收窄：BG pp. 209–212 对应的目标法文段落集中于 ED pp. 292–297；BG pp. 225–226 集中于 ED pp. 314–315。详细证据见 [MARION_VERSION_CROSSWALK.md](MARION_VERSION_CROSSWALK.md)。这些仍是 **SECONDARY-EXACT-CROSSWALK**，不等于直接读过 Marion 原页。
+Google Books 另有 1997 PUF 版书目页（ISBN 2130486770 / 9782130486770，452 页）并显示书内索引/常用词，包括 `horizon`、`intuition`、`intentionnalité`、`manifestation` 与 `phénomène saturé`，但仍没有向当前环境开放目标页正文，因此只记为 **PRIMARY-METADATA / INDEX**，不升级为 direct primary passage。
+
+多条学术双版本引注已把 direct-primary 搜索范围显著收窄：BG pp. 209–212 对应的目标法文段落集中于 ED pp. 292–297；BG pp. 225–226 集中于 ED pp. 314–315。详细证据见 [MARION_VERSION_CROSSWALK.md](MARION_VERSION_CROSSWALK.md)。这些仍是 **SECONDARY-EXACT-CROSSWALK**，不等于直接读过 Marion 原页。
 
 ## 3. PRIMARY：Marion 1996 “The Saturated Phenomenon”
 
 Jean-Luc Marion, “The Saturated Phenomenon,” translated by Thomas A. Carlson, *Philosophy Today* 40(1), 1996, pp. 103–124, DOI `10.5840/philtoday199640137`。
 
-本项目直接从 Philosophy Documentation Center / PDCnet 的公开搜索索引读取了作者正文及原刊页码。直接 PDF URL 在当前环境打开时返回 HTTP 403，因此不能声称已经逐页查看 PDF 版面；证据状态记为 **PRIMARY-DIRECT-INDEXED**，不是 secondary quotation，也不是 PDF page-image review。
+本项目直接从 Philosophy Documentation Center / PDCnet 的公开搜索索引读取了作者正文及原刊页码。本轮再次尝试直接打开 PDF URL，仍返回 HTTP 403，因此不能声称已经逐页查看 PDF 版面；证据状态继续记为 **PRIMARY-DIRECT-INDEXED**，不是 secondary quotation，也不是 PDF page-image review。
 
 关键可核查内容：
 
@@ -85,7 +87,7 @@ Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378�
 
 “L’horizon et le destin de la phénoménologie,” *Philosophiques* 45(2), 343–364, DOI `10.7202/1055267ar`。Érudit 的开放索引／全文检索直接返回论文正文片段与期刊页码。Djian 在讨论 *Étant donné* §21–22 时，把 horizon 分析为 phenomenality 的 possibility-condition 和对 intuition 的限制，并引用 ED pp. 304–305 来说明 horizon 与 I 作为限制 donation 的两项条件。
 
-用途：这是比一般二手概述更贴近本项目首问的同题 prior art。它进一步说明 `conditions` 轴是在形式化一个既有解释问题，而不是项目新发现；但 Djian 没有给出 `situated ∧ Exhausts → conditions` 的 extensional bridge，所以不能替代 `ExhaustiveCaptureConditions` 的解释审查。**本轮页码交叉纠正了一处潜在混淆：ED 304–305 是稍后的同题段落，不是 BG 211–212 的法文对应页；目标 §21 段落主要对应 ED 292–297。**
+用途：这是比一般二手概述更贴近本项目首问的同题 prior art。它进一步说明 `conditions` 轴是在形式化一个既有解释问题，而不是项目新发现；但 Djian 没有给出 `situated ∧ Exhausts → conditions` 的 extensional bridge，所以不能替代 `ExhaustiveCaptureConditions` 的解释审查。**页码交叉纠正了一处潜在混淆：ED 304–305 是稍后的同题段落，不是 BG 211–212 的法文对应页；目标 §21 段落主要对应 ED 292–297。**
 
 ### S-JM7 — Adam S. Miller (2008)
 
@@ -124,7 +126,7 @@ Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378�
 - **C / `HasExcess` / `NonExhaustible`**：可作为 excess 的弱模型影子，但 Marion 1996 primary text 明确展示多个 horizon 关系层次，完整 saturation 不能等同于 C。
 - **`HorizonConditioning.Independent`**：作为“不以 horizon 的先行限定／可能性条件来规定显现”的弱接口，现在不仅有二手研究动机，还有 Marion 1996 作者本人 primary text 支持其方向；Djian 2018 又提供 *Étant donné* 解释层的独立同题 prior art。它仍不是完整 `Saturated` 定义。
 - **`HasHorizonlessAppearance`**：Marion 1996 p. 117 直接反对把一般取消 horizon 当作目标；Falabretti p. 98 的 “no horizon” 是竞争 secondary reading，而不是足以推翻 primary-text boundary 的证据。因此它仍不应作为默认 saturation 编码。
-- **`ExhaustiveCaptureConditions`**：仍是 MODEL/QUESTION。没有 primary text 或同题研究给出 `situated ∧ Exhausts → conditions` 这条 extensional bridge；1996 p. 118 的多种 horizon 关系反而要求对它保持警惕。
+- **`ExhaustiveCaptureConditions`**：仍是 MODEL/QUESTION。没有 primary text 或同题研究给出 `situated ∧ Exhausts → conditions` 这条 extensional bridge；本轮新增的点态逻辑等价还进一步说明，它只是比“排除同一 p 上的 `Captured ∧ Independent`”更强的一种结构化充分机制。
 
 ## 8. 尚未确立的历史断言
 
@@ -132,7 +134,7 @@ Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378�
 
 ## 9. 当前硬门槛
 
-Marion 1996 作者原文已经使首问的解释空间明显收缩，Djian 2018 又把 *Étant donné* 中 horizon-as-condition 的解释角色进一步固定；Miller / Mackinlay / Steinbock 的双版本引注把版本核对范围缩小。Falabretti 进一步固定了**比较研究本身已有 prior art**，但它仍不能代替目标书页的 direct-primary review。
+Marion 1996 作者原文已经使首问的解释空间明显收缩，Djian 2018 又把 *Étant donné* 中 horizon-as-condition 的解释角色进一步固定；Miller / Mackinlay / Steinbock 的双版本引注把版本核对范围缩小。Falabretti 进一步固定了**比较研究本身已有 prior art**。本轮新增的 Fordham/De Gruyter 2013 合法作者文集入口只增加了一个潜在获取路径，并未提供目标正文，所以仍不能代替 target-page direct review。
 
 停止门仍未通过，但现在可精确写成：合法直接查看 BG pp. 209–212、225–226，**或者**直接查看对应法文 ED pp. **292–297、314–315**，并逐段核对 1996 论证在书本版本中的重写、顺序和术语。
 
