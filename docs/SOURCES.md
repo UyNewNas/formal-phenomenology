@@ -1,19 +1,21 @@
 # 来源与阅读状态
 
-检索／核查日期：2026-09-17。这里区分“找到书目”“读过研究文献”“已经核对原典段落”。前两者不冒充第三者。逐段记录见 [PASSAGE_CARDS.md](PASSAGE_CARDS.md)，外部形式化与方法先例见 [PRIOR_ART.md](PRIOR_ART.md)。
+检索／核查日期：2026-09-17。这里严格区分书目元数据、作者本人正文、研究文献和仍待直接核查的目标书页。逐段工作卡见 [PASSAGE_CARDS.md](PASSAGE_CARDS.md)，Marion 1996 作者文本的本轮核查见 [MARION_1996_PRIMARY.md](MARION_1996_PRIMARY.md)，外部形式化与方法先例见 [PRIOR_ART.md](PRIOR_ART.md)。
 
-## 1. 已固定的原典版本
+## 1. 已固定的 Merleau-Ponty 原典
 
-### P-MP — Merleau-Ponty, *Phenomenology of Perception*
+### P-MP — *Phenomenology of Perception*
 
 Maurice Merleau-Ponty, *Phenomenology of Perception*, translated by Colin Smith, Routledge Classics, London, 2002。ISBN 0415278414 / 9780415278416；该译本原版 1962。
 
-- [National Diet Library 书目记录](https://ndlsearch.ndl.go.jp/books/R100000002-I000008443193)：确认作者、Colin Smith、Routledge Classics 2002、ISBN 与 xxiv + 544 页。
-- [CiNii 书目记录](https://cir.nii.ac.jp/crid/1971712334799317042)：独立确认同一版及“Originally published ... 1962”。
+- [National Diet Library 书目记录](https://ndlsearch.ndl.go.jp/books/R100000002-I000008443193)：确认作者、译者、Routledge Classics 2002、ISBN 与 xxiv + 544 页。
+- [CiNii 书目记录](https://cir.nii.ac.jp/crid/1971712334799317042)：独立确认同一版及原版年份。
 
-已直接查看与该版页码、前置信息一致的电子扫描，并核查 printed pp. 78–82、384–386 及上下文。关键事实：pp. 79–82 把知觉中的视域综合描述为推定、开放而非最终完成；pp. 384–386 更直接说没有一个透视穷尽世界、视域持续开放、综合从未完成。
+本项目已直接查看与该版页码一致的电子扫描，并核查 printed pp. 78–82、384–386 及上下文。pp. 79–82 将视域综合描述为推定、开放而非最终完成；pp. 384–386 更直接强调没有一个透视穷尽世界、视域持续开放、综合从未完成。
 
-### P-JM — Marion, *Being Given*
+## 2. 已固定但仍有直接访问缺口的 Marion 书本版本
+
+### P-JM-BG — *Being Given*
 
 Jean-Luc Marion, *Being Given: Toward a Phenomenology of Givenness*, translated by Jeffrey L. Kosky, Stanford University Press, 2002。ISBN 9780804785723。
 
@@ -21,91 +23,83 @@ Jean-Luc Marion, *Being Given: Toward a Phenomenology of Givenness*, translated 
 - [De Gruyter / Stanford 书页](https://www.degruyterbrill.com/document/doi/10.1515/9780804785723/html)：确认出版信息。
 - [§21 出版社章节记录](https://www.degruyterbrill.com/document/doi/10.1515/9780804785723-024/html)：确认章节题名 `Sketch of the Saturated Phenomenon: The Horizon` 及 pp. 199–212。
 
-**访问限制仍在**：Google Books / 出版社页面仍未向当前研究环境提供可逐页核验的 pp. 210–212、225–226 正文。
+**访问限制仍在**：出版社／Google Books 当前仍未向本研究环境提供可逐页核验的 pp. 209–212、225–226 正文。Internet Archive 有 1997 法文 *Étant donné : essai d'une phénoménologie de la donation*（PUF, ISBN 2130486770，identifier `etantdonneessaid0000mari_w5n7`）的受限借阅记录，但页面标记 `Access-restricted-item: true`、`printdisabled`，没有当前环境可直接读取的文件。本项目不绕过访问控制。
 
-本轮另确认 Internet Archive 有 Jean-Luc Marion 1997 年法文 *Étant donné : essai d'une phénoménologie de la donation*（PUF, ISBN 2130486770）的馆藏记录，identifier `etantdonneessaid0000mari_w5n7`。该页面明确标记 `Access-restricted-item: true`、`printdisabled`，当前未登录环境的下载区显示没有可直接读取文件。因此这只是一个**合法借阅线索**，不是原文已读取；项目不会绕过借阅或访问控制。
+## 3. 新增 PRIMARY：Marion 1996 “The Saturated Phenomenon”
 
-## 2. 已查看的研究资料
+Jean-Luc Marion, “The Saturated Phenomenon,” translated by Thomas A. Carlson, *Philosophy Today* 40(1), 1996, pp. 103–124, DOI `10.5840/philtoday199640137`。
 
-### S-R1：Pierre-Jean Renaudie
+本轮直接从 Philosophy Documentation Center / PDCnet 的公开搜索索引读取了作者正文及原刊页码。直接 PDF URL 在当前环境打开时返回 HTTP 403，因此不能声称已经逐页查看 PDF 版面；证据状态记为 **PRIMARY-DIRECT-INDEXED**，不是 secondary quotation，也不是 PDF page-image review。
 
-Pierre-Jean Renaudie, *Ways of Being Given: Investigating the Bounds of Givenness through Marion and Husserl*。作者公开稿用于比较对胡塞尔范畴直观的不同解释，并提醒“限制”“直观”“给予性”之间不能同义替换。
+关键可核查内容：
 
-### S-M1：Ted Toadvine, SEP
+- **p. 117**：Marion 先说明显现通常有 horizon 先行等待并限定出现，随后明确说问题不是一般地取消 horizon——那会阻止 manifestation——而是摆脱 horizon 的 `delimiting anteriority`。
+- **p. 118**：作者本人列出 saturated phenomenon 与 horizon 的多种关系：在一个 horizon 中 saturation、多个 concurrent horizons、超过 horizon，以及极端的“没有 horizon 或 horizon 组合能够承受”；即便 disfiguration 仍保持 manifestation。随后把不依赖 horizon 这一 `condition of possibility par excellence` 称为 unconditioned。
+- **p. 119**：直观给予的过剩使通常接收框架显得过窄，主体不能按普通对象方式完成 constitution，constituting / constituted 的方向发生反转。
 
-Ted Toadvine, *Maurice Merleau-Ponty*, Stanford Encyclopedia of Philosophy。只作阅读导航；关于开放视域的归属已经回到 Colin Smith 译本具体页码。
+形式影响记录于 [MARION_1996_PRIMARY.md](MARION_1996_PRIMARY.md)：这直接反对把 Marion 的 saturation 默认编码成 `Horizonless`，支持把“有相关 horizon”与“horizon 作为先行条件”分开；同时也显示完整 saturation 不能被 `NonExhaustible` 一条集合式关系取代。
 
-### S-JM1：King-Ho Leung (2022)
+该 1996 论文是作者本人 primary text，但**不冒充已核对 *Being Given* 2002 指定页**。它把剩余任务缩小为版本／重写核对，而不是取消该门槛。
 
-King-Ho Leung, “Sartre and Marion on Intentionality and Phenomenality,” *Theory, Culture & Society*。公开文本给出 *Being Given* 的具体页码：§21 pp. 211–212 用 horizon 作为 `condition of possibility` 的语义解释“不依赖任何视域”；pp. 225–226 将饱和与直观超过意向、对象构成失败联系起来。
+## 4. 另一条作者本人旁证：Marion 2007
 
-用途：定位原典和识别“条件化”语义。**不能作为直接原典证据完成 M1。**
+Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378–402。斯洛伐克科学院哲学研究所的期刊官方页面已直接查看，确认作者、卷期、页码，并公开英文摘要与 PDF 入口。
 
-### S-JM2：Brock Mason
+官方摘要把 horizon 描述为 givenness 的 constitutive condition，并把 saturated phenomenon 与 intuition surplus、unconditioned / irreducible phenomenality、超出 intentional meaning 以及主体反转联系起来。PDF 抓取在先前运行中超时，因此这里只把官方页面／摘要作为直接作者侧证据，不把全文标记为已阅读。
 
-Brock Mason, “Saturated Phenomena, the Icon, and Revelation,” *Aporia*。讨论 *Being Given* pp. 210–211，将 Marion 在视域上的关系概括为：饱和一个视域、溢出而要求多个视域、以及任何视域组合都不能容纳绝对现象。
+## 5. 已查看的研究资料
 
-用途：对“`does not depend on any horizon` = 完全没有视域”这一翻译构成警告；仍需回原书核验。
+### S-R1 — Pierre-Jean Renaudie
 
-### S-JM3：Shane Mackinlay
+*Ways of Being Given: Investigating the Bounds of Givenness through Marion and Husserl*。用于比较胡塞尔范畴直观的不同解释，并提醒“限制”“直观”“给予性”不能同义替换。
 
-Shane Mackinlay, *Interpreting Excess: Jean-Luc Marion, Saturated Phenomena, and Hermeneutics*。相关讨论同样定位 *Being Given* pp. 210–211，并把视域限制与意向预期联系起来。
+### S-M1 — Ted Toadvine, SEP
 
-用途：与 S-JM1/S-JM2 交叉定位语义，不增加“原典票数”。
+*Maurice Merleau-Ponty*。只作阅读导航；关于开放视域的归属已经回到 Colin Smith 译本具体页码。
 
-### S-JM4：Dermot Moran (2008)
+### S-JM1 — King-Ho Leung (2022)
 
-Dermot Moran, “Immanence, Self-Experience, and Transcendence in Edmund Husserl, Edith Stein, and Karl Jaspers,” *American Catholic Philosophical Quarterly* 82(2), 265–291。作者公开稿在讨论 Marion 时明确把 saturated phenomenon 概括为 `unconditioned` / 不受 horizon 条件化，并将这一区分与 horizonality、constituting I 一起讨论；注释明确指向 *Being Given* p. 211。
+“Sartre and Marion on Intentionality and Phenomenality,” *Theory, Culture & Society*。公开文本给出 *Being Given* 精确页码：pp. 211–212 将 horizon 作为 `condition of possibility` 解释“不依赖任何视域”；pp. 225–226 把 saturation 与 intuition 超过 intention、对象 constitution 失败联系起来。它仍是 secondary exact evidence，不能替代目标书页直接阅读。
 
-用途：独立于 Leung 的第二条学术交叉线索，支持把“条件化”与“是否存在相关视域”分开。但它仍是二手研究。
+### S-JM2 — Brock Mason
 
-### S-JM5：Ezequiel Daniel Murga (2024)
+“Saturated Phenomena, the Icon, and Revelation,” *Aporia*。对 *Being Given* pp. 210–211 的整理区分：一个 horizon 的 saturation、多个 horizons、以及任何 horizon 组合都不能承受绝对现象。用于警告 `NonExhaustible` 的逐一量化不能冒充最强组合命题。
 
-Ezequiel Daniel Murga, “La posibilidad de una horizonticidad no metafísica en Jean-Luc Marion,” *Logos. Anales del Seminario de Metafísica* 57(2), 309–325, DOI 10.5209/asem.94542。已直接查看期刊公开全文，而不仅是摘要。
+### S-JM3 — Shane Mackinlay
 
-论文的核心解释是：Marion 批判 horizon 的形而上学式、先行限定的使用，并不简单等于放弃 horizon 本身。Murga 引 Marion 的相关文本强调：一般地取消 horizon 会危及 manifestation，问题是改变 horizon 的使用方式，使显现不再受其“先行限定”支配。论文还讨论 revelation 在 horizon 中以 saturation 的方式显现，并把 Merleau-Ponty 的 flesh 列入可充当 horizon 的现象学结构示例之一。
+*Interpreting Excess: Jean-Luc Marion, Saturated Phenomena, and Hermeneutics*。相关讨论定位 *Being Given* pp. 210–211，并将 horizon 限制与 intentional expectation 联系起来。
 
-用途：这是与“Marion = 完全无任何视域”读法直接竞争的二手解释，并与本项目 `situated` / `conditions` 分层高度重合。因此这种分层应标为**对已有解释争论的形式化接口**，而不是本项目的新历史发现。Murga 引用的 Marion 原文仍必须回到相应原书自行核对，不能借二手全文跳过 primary-text gate。
+### S-JM4 — Dermot Moran (2008)
 
-## 3. 段落卡状态
+“Immanence, Self-Experience, and Transcendence in Edmund Husserl, Edith Stein, and Karl Jaspers,” *American Catholic Philosophical Quarterly* 82(2), 265–291。作者公开稿将 saturated phenomenon 概括为 unconditioned / 不受 horizon 条件化，并把它和 horizonality、constituting I 一起讨论；注释指向 *Being Given* p. 211。
 
-当前 [PASSAGE_CARDS.md](PASSAGE_CARDS.md) 有 8 张工作卡：
+### S-JM5 — Ezequiel Daniel Murga (2024)
 
-| 范围 | 数量 | 状态 |
-|---|---:|---|
-| Merleau-Ponty | 5 | `reviewed`，固定 Colin Smith / Routledge Classics 2002，已看正文 |
-| Marion | 3 | `proposed-secondary`，版本与页码已定位，原书正文待独立复核 |
+“La posibilidad de una horizonticidad no metafísica en Jean-Luc Marion,” *Logos. Anales del Seminario de Metafísica* 57(2), 309–325, DOI `10.5209/asem.94542`。已查看期刊公开全文。论文主张 Marion 批判的是 horizon 的形而上学式先行限定使用，而不是简单取消 horizon；这与本项目 `situated` / `conditions` 分层高度重合，因此这种区分属于已有解释争论的形式接口，不是本项目的新历史发现。
 
-## 4. A、B、C 与条件化轴的当前证据判定
+## 6. 段落卡与证据状态
 
-- **A / `UniversalStructure`**：`有证据支持，但需削弱理解`。Merleau-Ponty 的对象—视域结构直接支持“显现伴随视域”的方向；当前存在量词仍省略身体、时间、探索和内外视域。
-- **B / `ClosureBridge`**：`不对应本轮核查的 Merleau-Ponty 文本`。相关段落恰恰强调开放、未完成和不穷尽。B 保留为压力测试前提。
-- **C / `HasExcess`**：`对 Marion 仅是弱候选影子`。二手带页码材料支持“饱和溢出/不受视域限制”的方向，但完整饱和概念还需要直观—意向、构成和主体反转等结构。
-- **`HorizonConditioning.Independent`**：`新的形式接口，但解释区分有明确 prior art`。S-JM1/S-JM4 把 p. 211 的 horizon 读成条件语义；S-JM5 更直接提出“保留 horizon / 去掉其形而上学先行限定”的竞争解释。因此 `Independent` 与 `Structured` 可并置是有文献动机的候选，而非靠模型自由度发现的历史事实。
-- **`HasSituatedIndependentExcess`**：仅为本项目的中性联合 profile。它证明 related + independent + non-exhaustible 在当前关系语言中可共同满足；尚无证据把这个 conjunction 当作 Marion 的定义。
-- **`HasHorizonlessAppearance`**：仍没有足够证据把它当作 Marion 饱和的正确编码。
+当前 `PASSAGE_CARDS.md` 的 8 张原有工作卡保持：Merleau-Ponty 5 张 `reviewed`；*Being Given* 3 张仍为 `proposed-secondary`。Marion 1996 新取得的 primary evidence 暂单列在 `MARION_1996_PRIMARY.md`，避免把不同出版物页码混入 *Being Given* 卡片。
 
-## 5. 尚未确立的历史断言
+## 7. A、B、C 与 conditioning 轴的当前判定
 
-目前仍未找到并直接核对“马里翁明确把梅洛-庞蒂列为去主体化不彻底的前辈”的原典段落。项目不采用该断言作为前提。
+- **A / `UniversalStructure`**：Merleau-Ponty 有直接证据支持，但当前 Lean 是非常弱的存在量词压缩。
+- **B / `ClosureBridge`**：不对应已核查 Merleau-Ponty 段落；文本方向反而是开放、未完成和不穷尽。B 只保留为压力测试前提。
+- **C / `HasExcess` / `NonExhaustible`**：可作为 excess 的弱模型影子，但 Marion 1996 primary text 明确展示多个 horizon 关系层次，完整 saturation 不能等同于 C。
+- **`HorizonConditioning.Independent`**：作为“不以 horizon 的先行限定／可能性条件来规定显现”的弱接口，现在不仅有二手研究动机，还有 Marion 1996 作者本人 primary text 支持其方向；它仍不是完整 `Saturated` 定义。
+- **`HasHorizonlessAppearance`**：Marion 1996 p. 117 直接反对把一般取消 horizon 当作目标，因此它更不应作为默认 saturation 编码。
+- **`ExhaustiveCaptureConditions`**：仍是 MODEL/QUESTION。没有 primary text 给出 `situated ∧ Exhausts → conditions` 这条 extensional bridge；1996 p. 118 的多种 horizon 关系反而要求对它保持警惕。
 
-## 6. 本轮检索结论与硬门槛
+## 8. 尚未确立的历史断言
 
-本轮外部查重确认 formal philosophy / formal phenomenology 已有实质工程和方法先例，详见 `PRIOR_ART.md`；相关现象学解释也已明确讨论“horizon 仍在但不再作为先行可能性条件”这一方向。因此项目后续不再把 related/conditioned 的区分表述为原创解释。
+目前仍未找到并直接核对“Marion 明确把 Merleau-Ponty 列为去主体化不彻底的前辈”的原典段落。项目不采用该断言作为前提。
 
-同时，Internet Archive 只提供受限借阅线索，没有使 Marion 原典门自动通过。停止门保持不变：必须通过合法可用来源独立看到 *Being Given* pp. 210–212、225–226（或能够可靠对照的原法文对应段落）正文及上下文，再冻结最终归属。
+## 9. 当前硬门槛
 
-## 7. 工具来源
+Marion 1996 作者原文已经使首问的解释空间明显收缩，但停止门尚未通过：仍需合法直接查看 *Being Given* pp. 209–212、225–226，或取得能可靠逐段对应的法文 *Étant donné* 原文，以核对 1996 论证在书本版本中的重写、顺序和术语。
 
-Lean 工具链固定为 `leanprover/lean4:v4.24.0`。GitHub 工作流使用按提交哈希固定的 `lean-action`；以仓库内 `.github/workflows/lean.yml` 为配置依据。
+在此之前，可以把 `Independent` 视为有 primary-text 动机的**弱候选接口**，但不能把 `Independent`、`NonExhaustible`、`Captured` 或它们的 conjunction 命名为 Marion 的完整 saturated phenomenon。
 
-## 8. 新增作者本人文本线索：*The Saturated Phenomenon*
+## 10. 工具来源
 
-本轮新增一条比二手研究更接近原始理论表述、但仍**不替代 `Being Given` 指定页门槛**的作者本人来源：
-
-- Jean-Luc Marion, “The Saturated Phenomenon,” *Philosophy Today* 40(1), 1996, pp. 103–124, DOI `10.5840/philtoday199640137`。多条独立书目记录确认该文献。
-- *Filozofia* 62(5), 2007, pp. 378–402 刊载 Jean-Luc Marion “A Saturated Phenomenon”。斯洛伐克科学院哲学研究所的期刊官方页面已直接查看，页面确认作者、卷期、页码，并公开英文摘要与 PDF 下载入口。
-
-官方摘要直接把 horizon 描述为给予的 constitutive condition，并将 saturated phenomenon 描述为 intuition 的 surplus、unconditioned / irreducible、超出 intentional meaning，同时指出这会反转主体的 constituting 地位。这为“条件化”轴提供了**作者本人文本层面的独立动机**，并进一步说明单纯的 `NonExhaustible` 仍远不足以定义 saturation。
-
-访问状态需严格区分：本轮直接查看了期刊官方页面与摘要；点击其 PDF 下载入口时当前网络抓取超时，因此**没有把 2007 全文标记为已逐页阅读**。它也不是 *Being Given* pp. 210–212、225–226 本身，所以 M1 的指定原典停止门继续保持。
+Lean 工具链固定为 `leanprover/lean4:v4.24.0`。GitHub 工作流使用仓库 `.github/workflows/lean.yml` 固定的 action 版本；实际通过状态以对应提交的 CI 为准。
