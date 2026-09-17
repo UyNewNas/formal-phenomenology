@@ -1,6 +1,6 @@
 # 解释选择登记
 
-版本：v0.2-work，2026-09-17。
+版本：v0.3-work，2026-09-17。
 
 ## 证据层与形式层
 
@@ -15,14 +15,16 @@
 | `Phenomenon` | 被量化的对象类型 | MODEL；没有规定对象如何个体化，也未承诺现象可以完全对象化 |
 | `appears p` | 模型中 p 被标记为显现 | MODEL；未编码显现过程、给予性或体验强度 |
 | `Horizon` | 本模型允许谈论的视域类型 | MODEL；必须交代是实际、可达、可能还是理想视域 |
-| `situated p h` | h 是 p 的相关视域 | MODEL；不是把一切视域都当作可交换容器 |
+| `situated p h` | h 是 p 的相关视域 | MODEL；只表达“相关/所在”，不表达 h 是 p 显现的先验条件 |
 | `Aspect`、`presents p a` | 选定描述语言中的侧面及关联 | MODEL；不等于感觉数据或信息比特 |
 | `admits h a` | h 在模型中容纳侧面 a | MODEL；没有度量，也不直接表示概念理解或意向充实 |
 | `Exhausts p h` | h 容纳所有被编码为 p 的侧面 | MODEL；只相对于所选侧面词汇 |
 | `NonExhaustible p` | 每个相关 h 都不能穷尽 p | MODEL；不是 Marion “饱和”的定义 |
-| `HasSituatedExcess` | 存在显现 p，p 实际有相关视域，同时所有相关视域都不能穷尽 p | MODEL；排除“没有任何相关视域”造成的空真，适合表达“开放于视域而不被视域穷尽”的弱结构 |
+| `HasSituatedExcess` | 存在显现 p，p 实际有相关视域，同时所有相关视域都不能穷尽 p | MODEL；排除“没有任何相关视域”造成的空真 |
+| `HorizonConditioning.conditions p h` | h 被单独标记为 p 的条件化视域 | MODEL；用于区分“相关视域”和“作为可能性条件的视域” |
+| `HorizonConditioning.Independent p` | 没有任何 h 条件化 p | MODEL；是 `does not depend on a horizon` 的候选接口，不是已确认的 Marion 定义 |
 
-把“侧面”当作集合论上可指认的项，是当前模型的实质假设。若文本要求意义在经验中生成而非预列侧面，应建立替代模型。
+把“侧面”当作集合论上可指认的项，是当前基础模型的实质假设。若文本要求意义在经验中生成而非预列侧面，应建立替代模型。
 
 ## A、B、C 的归属更新
 
@@ -52,9 +54,36 @@
 
 存在显现，它有至少一个相关视域，同时不能被任何相关视域穷尽。
 
-这是本轮新增的**非空真版本**。它特别适合表达 P-MP-1b / P-MP-2a 的弱关系结构：显现并非“无视域”，但视域不构成最终封闭。Lean 证明表明 C+ 单独就足以反驳 B；不再需要额外借助 A 来排除 horizonless vacuity。
+这是**非空真版本**。它适合表达 Merleau-Ponty 已核查段落里的弱关系结构：显现并非“无视域”，但视域不构成最终封闭。Lean 证明表明 C+ 单独就足以反驳 B。
 
-C+ 仍然不是 Marion 饱和的定义。Marion 的“不依赖任何视域”可能是“不受视域条件化”，而不是 `¬ Structured`；其完整形式化还需要 intention/intuition/constitution。
+C+ 仍然不是 Marion 饱和的定义。
+
+## 新增解释轴：related / conditioned / exhaustive
+
+上一版只区分：
+
+1. p 是否有相关视域；
+2. 某相关视域是否穷尽 p。
+
+但 *Being Given* 的二手带页码材料反复出现另一种语义：horizon 作为 `condition of possibility`，或现象是否 `depend on` horizon。若把这一层直接塞进 `situated`，会把两种不同问题混在一起。因此 v0.3 新增 `HorizonConditioning` 包装层：
+
+- `situated p h`：h 与 p 的显现相关；
+- `conditions p h`：h 作为模型中的条件/约束规定 p；
+- `Exhausts p h`：h 容纳当前模型列出的 p 的全部侧面。
+
+这三者没有定义性等同。
+
+形式上已经给出双向分离：
+
+- 一个现象可以 `Structured` 且 `Independent`，所以“无视域依赖”不等于“无相关视域”；
+- `Independent` 不推出 `NonExhaustible`：可有一个被完整捕获、但不把任何视域标记为条件化的模型；
+- `NonExhaustible` 不推出 `Independent`：可有受视域条件化、但任何相关视域仍不足以穷尽的模型。
+
+因此当前最稳妥的解释结论是：
+
+> **`does not depend on a horizon`、`is not exhausted by any related horizon`、`has no related horizon` 是三个不同候选命题。**
+
+这一步只清理概念空间。要把 `Independent` 真正归给 Marion 的 saturated phenomenon，仍须直接核对 *Being Given* pp. 210–212 的原书上下文；要把 pp. 225–226 的直观/意向结构形式化，则还需额外关系。
 
 ## 当前首个问题的形式答案
 
@@ -66,7 +95,7 @@ Lean 中 `horizon_structure_does_not_entail_closure` 给出否定答案；有限
 
 更强地，`situatedExcess_refutes_closureBridge` 证明：只要已经有一个实际显现、实际有视域、但不可由任何相关视域穷尽的见证，B 就直接失败。
 
-这与本轮 Merleau-Ponty 原典的方向一致；但这仍不是“Lean 证明了 Merleau-Ponty 正确”，而是文本解释与一个明确模型结论发生了可追踪的对应。
+新增条件化层进一步说明：即使将 Marion 的“不依赖视域”候选编码为 `Independent`，也**不能**从中纯逻辑推出 `NonExhaustible`；反向也不成立。若文本要建立两者联系，需要明确的额外原则，而不能靠词义滑移。
 
 ## 三个容易偷换的地方
 
@@ -76,20 +105,21 @@ Lean 中 `horizon_structure_does_not_entail_closure` 给出否定答案；有限
 
 ### 2. 无法穷尽不等于完全没有视域
 
-`splitModel` 与 `expandingModel` 都有实际相关视域，同时不可穷尽。新增 `HasSituatedExcess` 把这点直接编码；`situated_excess_need_not_be_horizonless` 给出有限模型见证。
+`splitModel` 与 `expandingModel` 都有实际相关视域，同时不可穷尽。`HasSituatedExcess` 把这点直接编码。
 
-因此即使 Marion 说 saturated phenomenon “does not depend on any horizon”，也不能未经论证翻译为 `HasHorizonlessAppearance`。
+### 3. 不受视域条件化也不等于无法被视域穷尽
 
-### 3. 无限多个侧面不等于饱和
+新增 `closedIndependentConditioning` 是反例：现象可不依赖任何被标记为条件化的视域，却仍被一个相关视域完整捕获。反方向也由 `splitDependentConditioning` 否定。
 
-有限 `splitModel` 已能区分逐一覆盖与整体覆盖。自然数模型只展示持续扩展；不声称过剩等于元素无限。`completedModel` 加入理想全覆盖视域后结论变化，说明量词域本身属于解释选择。
+所以即使 Marion 原文确认 saturated phenomenon `does not depend on any horizon`，仍不能自动推出当前的 `NonExhaustible`，更不能推出 `HasHorizonlessAppearance`。
 
 ## 从对话直觉到文献问题
 
 以下口头概括仍不能直接作为公理：
 
 - “梅洛-庞蒂的视域把经验封闭在人类尺度内。”——本轮直接文本证据反而强调开放与未完成。
-- “马里翁的饱和现象完全没有视域。”——二手带页码材料显示他讨论多个饱和/溢出视域的情形；直接原书仍待复核。
+- “马里翁的饱和现象完全没有视域。”——二手带页码材料显示他讨论饱和一个、多个乃至溢出视域的情形；直接原书仍待复核。
+- “马里翁的不依赖视域就是不可穷尽。”——新增模型已经证明这两个形式谓词逻辑独立；文本若要连接它们，必须提供额外桥接前提。
 - “马里翁明确把梅洛-庞蒂称为去主体化不彻底的前辈。”——尚未定位直接原文。
 
 ## 当前不涉及的结构
