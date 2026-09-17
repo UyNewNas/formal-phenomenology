@@ -77,6 +77,17 @@ theorem closedIndependentConditioning_capture :
   exact closedModel_capture () True.intro
 
 /--
+The closed-independent countermodel to `Independent → NonExhaustible` fails the
+new bridge: its related horizon exhausts the appearance but is not marked as a
+conditioning horizon.  This confirms that the bridge is a genuine extra premise.
+-/
+theorem closedIndependentConditioning_not_exhaustiveCaptureConditions :
+    ¬ closedIndependentConditioning.ExhaustiveCaptureConditions := by
+  intro hb
+  exact closedIndependentConditioning_independent ()
+    (hb () () True.intro (fun _ _ => True.intro))
+
+/--
 Not being conditioned by any horizon does not by itself imply failure of
 exhaustive capture.  The two notions answer different questions.
 -/
