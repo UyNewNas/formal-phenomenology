@@ -1,0 +1,6 @@
+name = "formal-phenomenology"
+version = "0.1.0"
+defaultTargets = ["FormalPhenomenology"]
+
+[[lean_lib]]
+name = "FormalPhenomenology"

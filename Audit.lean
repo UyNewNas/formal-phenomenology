@@ -1,0 +1,29 @@
+import FormalPhenomenology
+
+#print axioms FormalPhenomenology.captured_implies_structured
+#print axioms FormalPhenomenology.nonExhaustible_iff_not_captured
+#print axioms FormalPhenomenology.captured_implies_individuallyCoverable
+#print axioms FormalPhenomenology.universalCapture_iff_structure_and_bridge
+#print axioms FormalPhenomenology.structure_bridge_excess_inconsistent
+#print axioms FormalPhenomenology.universalCapture_excludes_excess
+#print axioms FormalPhenomenology.structure_excludes_horizonless
+#print axioms FormalPhenomenology.horizonless_implies_excess
+#print axioms FormalPhenomenology.structure_excess_has_situated_witness
+#print axioms FormalPhenomenology.splitModel_structure
+#print axioms FormalPhenomenology.splitModel_excess
+#print axioms FormalPhenomenology.splitModel_individual
+#print axioms FormalPhenomenology.closedModel_capture
+#print axioms FormalPhenomenology.unsituatedModel_bridge
+#print axioms FormalPhenomenology.unsituatedModel_horizonless
+#print axioms FormalPhenomenology.minimal_conflict
+#print axioms FormalPhenomenology.individual_cover_does_not_imply_capture
+#print axioms FormalPhenomenology.expandingModel_structure
+#print axioms FormalPhenomenology.expandingModel_no_horizon_exhausts
+#print axioms FormalPhenomenology.expandingModel_excess
+#print axioms FormalPhenomenology.expandingModel_individual
+#print axioms FormalPhenomenology.expandingModel_monotone
+#print axioms FormalPhenomenology.open_horizon_compatibility
+#print axioms FormalPhenomenology.finite_horizon_agrees
+#print axioms FormalPhenomenology.completedModel_capture
+#print axioms FormalPhenomenology.completedModel_no_excess
+#print axioms FormalPhenomenology.horizon_domain_changes_exhaustibility
