@@ -6,7 +6,7 @@
 
 ## M1 — 原典映射（最高优先级）
 
-围绕 Merleau-Ponty 与 Marion 建立版本、页码、访问状态、候选解释、竞争解释与形式化损失的可追溯记录。Merleau-Ponty / *Being Given* 工作卡见 [PASSAGE_CARDS.md](PASSAGE_CARDS.md)，*Being Given* 二手精确引文门见 [MARION_HORIZON_GATE.md](MARION_HORIZON_GATE.md)，Marion 1996 作者本人文本见 [MARION_1996_PRIMARY.md](MARION_1996_PRIMARY.md)。
+围绕 Merleau-Ponty 与 Marion 建立版本、页码、访问状态、候选解释、竞争解释与形式化损失的可追溯记录。Merleau-Ponty / *Being Given* 工作卡见 [PASSAGE_CARDS.md](PASSAGE_CARDS.md)，*Being Given* 原典门见 [MARION_HORIZON_GATE.md](MARION_HORIZON_GATE.md)，Marion 1996 作者本人文本见 [MARION_1996_PRIMARY.md](MARION_1996_PRIMARY.md)，BG/ED 双版本定位见 [MARION_VERSION_CROSSWALK.md](MARION_VERSION_CROSSWALK.md)。
 
 ### 已完成的文本层推进
 
@@ -15,8 +15,10 @@
 - Leung、Mason、Mackinlay、Moran、Lee、Lahaie 等研究已对这些页形成带页码交叉；Murga (2024) 已被直接查看，明确提出 non-metaphysical horizontality 的竞争解释。
 - Marion, “The Saturated Phenomenon,” *Philosophy Today* 40(1), 1996, pp. 103–124 的 PDCnet 出版者索引在本项目中直接返回作者正文和原刊页码。p. 117 明确说不是一般取消 horizon，而是摆脱其 `delimiting anteriority`；p. 118 列出一个／多个／超过 horizon 等关系并称 saturated phenomenon 不依赖 horizon 这一 condition of possibility；p. 119 把完整 saturation 连到 intuitive excess 与 constitution reversal。直接 PDF 在当前环境返回 403，因此该证据标为 `PRIMARY-DIRECT-INDEXED`，不是 PDF page-image review。
 - Marion 2007 *Filozofia* 官方页面／摘要也已直接查看，继续支持 horizon-as-condition、intuition surplus 与 subject reversal，但全文 PDF 尚未成功读取。
-- **新增同题 prior art**：Aurélien Djian (2018), “L’horizon et le destin de la phénoménologie” 的 Érudit 开放索引／全文检索直接返回期刊正文片段。其对 *Étant donné* §21–22 的讨论引用 ED pp. 304–305，把 horizon 与 I 分析为限制 donation 的 possibility-conditions。它进一步固定 `conditions` 轴属于已有解释问题，而非本项目的新历史发现；但它没有给出 `situated ∧ Exhausts → conditions` 这种 extensional bridge。
-- Google Books 1997 PUF *Étant donné* 书目页确认 ISBN 2130486770 / 9782130486770、452 页，并显示 `horizon`、`intuition`、`intentionnalité`、`manifestation`、`phénomène saturé` 等书内索引词；当前仍不开放目标页正文，因此只作 PRIMARY-METADATA/INDEX，不计 direct-page evidence。
+- Aurélien Djian (2018), “L’horizon et le destin de la phénoménologie” 的 Érudit 开放索引／全文检索直接返回期刊正文片段。其对 *Étant donné* §21–22 的讨论引用 ED pp. 304–305，把 horizon 与 I 分析为限制 donation 的 possibility-conditions。它固定 `conditions` 轴属于已有解释问题，而非本项目的新历史发现；但没有给出 `situated ∧ Exhausts → conditions` 这种 extensional bridge。
+- **新增版本交叉**：Miller 2008、Mackinlay 与 Steinbock 的双版本引注将 BG 209–212 的目标法文范围收窄到 **ED 292–297**，其中 horizon 三种 saturation 主要在 ED 293–295；将 BG 225–226 收窄到 **ED 314–315**。这些是 `SECONDARY-EXACT-CROSSWALK`，不是 primary-page review。
+- **新增边界纠正**：Djian 所引 ED 304–305 与 BG 209–212 不是同一版本段落。ED 304–305 仍是重要的 horizon/I possibility-condition 证据，但不再被含混地视作 §21 目标页法文 counterpart。Lederlin 2023 的 Université Paris Cité 官方论文短引 ED p. 305，独立确认其 intentional-horizon 主题位置。
+- Google Books 1997 PUF *Étant donné* 书目页确认 ISBN 2130486770 / 9782130486770、452 页，并显示 `horizon`、`intuition`、`intentionnalité`、`manifestation`、`phénomène saturé` 等书内索引词；当前仍不开放目标正文，因此只作 PRIMARY-METADATA/INDEX，不计 direct-page evidence。
 
 ### 已完成的形式层推进
 
@@ -29,7 +31,7 @@
 
 ### 当前范围决定
 
-Marion 1996 primary text 已经直接证明：完整 saturation 的 horizon 关系比“无视域”或“逐一不可穷尽”更复杂。根据 prior-art gate，当前**不新增** `priorDelimits`、horizon-combination、intention/intuition primitive：
+本轮的实质新证据是**版本页码交叉**，不是形式逻辑缺口，因此不新增 theorem。Marion 1996 primary text 与 crosswalk 已经足以说明：完整 saturation 的 horizon 关系比“无视域”或“逐一不可穷尽”更复杂。根据 prior-art gate，当前继续**不新增** `priorDelimits`、horizon-combination、intention/intuition primitive：
 
 - 现有 `conditions` 已足以承载首问所需的最弱先行条件接口；
 - horizon combination 属于完整 saturation 的进一步语义，不影响 `UniversalStructure ↛ ClosureBridge`；
@@ -46,9 +48,9 @@ Marion 1996 primary text 已经直接证明：完整 saturation 的 horizon 关�
 
 ### 尚未通过的停止门
 
-首个研究问题**尚未完成**，但剩余门已经从“Marion 是否真的区分这些 horizon 角色”缩小为版本核对：
+首个研究问题**尚未完成**，但版本门已经从“找哪一段法文”进一步缩小为两个精确页段：
 
-1. 合法直接查看 *Being Given* pp. 209–212、225–226，或取得可可靠逐段对应的法文 *Étant donné* 原文；核对 1996 论文中的 horizon / conditioning / manifestation / constitution 论证在书本版本中的重写与顺序。
+1. 合法直接查看 BG pp. 209–212、225–226，**或者**直接查看法文 ED **pp. 292–297、314–315**；利用 [MARION_VERSION_CROSSWALK.md](MARION_VERSION_CROSSWALK.md) 核对 1996 论文中的 horizon / conditioning / manifestation / constitution 论证在书本版本中的重写与顺序。
 2. 据此最终冻结 `Independent` 的弱历史归属，并确认 `NonExhaustible` 只是一条独立模型轴，不把它或 `Captured` 偷换成完整 saturation。
 3. 若目标书页显示首问本身必须显式引入 intention/intuition 才能忠实陈述，则只增加最小必要接口；否则不为扩大项目进入完整 M3。
 4. 最终解释冻结后重新执行 `lake build`、`python3 scripts/check.py`、根导入覆盖与全部 `#print axioms` 审计，并核查对应 master CI。
