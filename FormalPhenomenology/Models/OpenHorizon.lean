@@ -17,7 +17,7 @@ def expandingModel : Presentation where
 
 theorem expandingModel_structure : expandingModel.UniversalStructure := by
   intro _ _
-  exact ⟨0, True.intro⟩
+  exact ⟨Nat.zero, True.intro⟩
 
 theorem expandingModel_no_horizon_exhausts (h : Nat) :
     ¬ expandingModel.Exhausts () h := by
