@@ -101,9 +101,21 @@ Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378�
 
 *Que peut la critique ?*, Université Paris Cité 博士论文。官方大学 PDF 已直接查看；相关页脚注短引 ED p. 305，语境说明 intentional aiming 不能在 horizon 之外实行。用途：确认 ED 304–305 的主题位置并支持 conditioning 解释，但同时帮助排除“ED 304–305 = BG 211–212 counterpart”的误读。状态：**SECONDARY-EXACT**。
 
+### S-MPJ1 — Ericson Falabretti (2015/2016)
+
+“Merleau-Ponty e Marion: o problema da ambiguidade entre uma fenomenologia da percepção e uma fenomenologia da doação,” *Revista de Filosofia Moderna e Contemporânea* 3(2), 87–102, DOI `10.26512/rfmc.v3i2.12514`。Universidade de Brasília 期刊官方页面与官方 PDF 正文已直接读取；PDF page-image 截图请求在当前环境超时，所以状态记为 **SECONDARY-DIRECT-PDF-TEXT / PAGE-IMAGE-NOT-REVIEWED**。详细审计见 [FALABRETTI_COMPARISON.md](FALABRETTI_COMPARISON.md)。
+
+用途有三点：
+
+1. 这是直接把 *Phenomenology of Perception* 与 *Étant donné* 放在同一比较问题中的 prior art，因此“比较 Merleau-Ponty 与 Marion”及其开放视域／donation 对照本身不能作为本项目的新历史发现。
+2. 论文 p. 90 把 Merleau-Ponty 的知觉写成保持开放的时空 horizon field，并说知觉从不穷尽被知觉者或知觉行为；这与项目已核对的 Merleau-Ponty primary text 方向一致。
+3. 论文 p. 98 又把 saturated phenomenon 概括为“没有 horizon、而是 overflowing presence”。该二手表述与 Marion 1996 p. 117–118、Murga 2024、Djian 2018 形成解释张力，因此只作为**竞争 reading**，不把 `Horizonless` 升级为默认 Marion 编码。
+
+论文 p. 88 还明确说不能假定 Marion 会如何直接解释 Merleau-Ponty，并称 Merleau-Ponty 在 *Étant donné* 中只处于边缘位置、仅三次明确引用且均在脚注。它因此支持继续保留“Marion 是否直接把 Merleau-Ponty 当作去主体化不彻底前辈”为**未核实**，而不是将其写成历史前提。
+
 ## 6. 段落卡与证据状态
 
-当前 `PASSAGE_CARDS.md` 的 8 张原有工作卡保持：Merleau-Ponty 5 张 `reviewed`；*Being Given* 3 张仍为 `proposed-secondary`。Marion 1996 primary evidence 单列在 `MARION_1996_PRIMARY.md`；本轮 BG/ED 页码链单列在 `MARION_VERSION_CROSSWALK.md`，避免把不同出版物页码混进同一段落卡。
+当前 `PASSAGE_CARDS.md` 的 8 张原有工作卡保持：Merleau-Ponty 5 张 `reviewed`；*Being Given* 3 张仍为 `proposed-secondary`。Marion 1996 primary evidence 单列在 `MARION_1996_PRIMARY.md`；BG/ED 页码链单列在 `MARION_VERSION_CROSSWALK.md`；Falabretti 的比较 prior art 单列在 `FALABRETTI_COMPARISON.md`，避免把 secondary comparison 和 primary passage card 混用。
 
 ## 7. A、B、C 与 conditioning 轴的当前判定
 
@@ -111,16 +123,16 @@ Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378�
 - **B / `ClosureBridge`**：不对应已核查 Merleau-Ponty 段落；文本方向反而是开放、未完成和不穷尽。B 只保留为压力测试前提。
 - **C / `HasExcess` / `NonExhaustible`**：可作为 excess 的弱模型影子，但 Marion 1996 primary text 明确展示多个 horizon 关系层次，完整 saturation 不能等同于 C。
 - **`HorizonConditioning.Independent`**：作为“不以 horizon 的先行限定／可能性条件来规定显现”的弱接口，现在不仅有二手研究动机，还有 Marion 1996 作者本人 primary text 支持其方向；Djian 2018 又提供 *Étant donné* 解释层的独立同题 prior art。它仍不是完整 `Saturated` 定义。
-- **`HasHorizonlessAppearance`**：Marion 1996 p. 117 直接反对把一般取消 horizon 当作目标，因此它更不应作为默认 saturation 编码。
+- **`HasHorizonlessAppearance`**：Marion 1996 p. 117 直接反对把一般取消 horizon 当作目标；Falabretti p. 98 的 “no horizon” 是竞争 secondary reading，而不是足以推翻 primary-text boundary 的证据。因此它仍不应作为默认 saturation 编码。
 - **`ExhaustiveCaptureConditions`**：仍是 MODEL/QUESTION。没有 primary text 或同题研究给出 `situated ∧ Exhausts → conditions` 这条 extensional bridge；1996 p. 118 的多种 horizon 关系反而要求对它保持警惕。
 
 ## 8. 尚未确立的历史断言
 
-目前仍未找到并直接核对“Marion 明确把 Merleau-Ponty 列为去主体化不彻底的前辈”的原典段落。项目不采用该断言作为前提。
+目前仍未找到并直接核对“Marion 明确把 Merleau-Ponty 列为去主体化不彻底的前辈”的原典段落。项目不采用该断言作为前提。Falabretti 的直接比较研究反而明确提醒不能假定 Marion 会如何直接解释 Merleau-Ponty，并称 *Étant donné* 中 Merleau-Ponty 的出现是边缘而脚注式的；这不是 primary proof，但进一步提高了采用强直接归属所需的证据门槛。
 
 ## 9. 当前硬门槛
 
-Marion 1996 作者原文已经使首问的解释空间明显收缩，Djian 2018 又把 *Étant donné* 中 horizon-as-condition 的解释角色进一步固定；本轮 Miller / Mackinlay / Steinbock 的双版本引注把版本核对范围进一步缩小。
+Marion 1996 作者原文已经使首问的解释空间明显收缩，Djian 2018 又把 *Étant donné* 中 horizon-as-condition 的解释角色进一步固定；Miller / Mackinlay / Steinbock 的双版本引注把版本核对范围缩小。Falabretti 进一步固定了**比较研究本身已有 prior art**，但它仍不能代替目标书页的 direct-primary review。
 
 停止门仍未通过，但现在可精确写成：合法直接查看 BG pp. 209–212、225–226，**或者**直接查看对应法文 ED pp. **292–297、314–315**，并逐段核对 1996 论证在书本版本中的重写、顺序和术语。
 
