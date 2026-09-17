@@ -89,7 +89,7 @@ $$
 
 必须分开。
 
-## 6. “Independent → NonExhaustible”的确切前提：点态与显现域
+## 6. “Independent → NonExhaustible”的确切前提：点态、显现域与冲突见证
 
 首先不增加任何新的哲学 primitive，只利用已经证明的
 
@@ -126,6 +126,21 @@ $$
 
 也就是说，若问题只谈**会显现的现象**，确切条件也只需在该显现域内排除 `Captured ∧ Independent`；不需要对从不 `appears` 的类型居民施加无关限制。该 theorem 仍只是 FORMAL 量词正规化，不增加历史归属。
 
+本轮再把同一个条件压成冲突见证正规形。定理
+`appearing_independence_implies_nonExhaustible_iff_no_captured_independent_witness`
+证明：
+
+$$
+\boxed{
+\begin{aligned}
+&\bigl[\forall p\,(F(p)\to\mathrm{Independent}(p)\to\mathrm{NonExhaustible}(p))\bigr]\\
+&\qquad\iff
+\neg\exists p\,[F(p)\land\mathrm{Captured}(p)\land\mathrm{Independent}(p)].
+\end{aligned}}
+$$
+
+因此首问的 conditioning 变体所需的**精确兼容性条件**也可以直接说成：不存在一个实际显现同时 `Captured` 与 `Independent`。这条等价没有新增 predicate 或哲学 bridge；它只利用 `NonExhaustible ↔ ¬ Captured` 把已有显现域条件改写成“是否存在冲突 witness”的形式。
+
 项目此前定义的压力测试前提
 
 $$
@@ -140,7 +155,7 @@ $$
 
 入口 `exhaustiveCaptureConditions_independent_implies_nonExhaustible`。
 
-本轮把“E 比显现域精确条件更强”的正向关系也显式内核化。定理
+定理
 `exhaustiveCaptureConditions_implies_exact_appearing_condition`
 证明：
 
@@ -149,7 +164,7 @@ E(M)\to
 \forall p\,[F(p)\to\mathrm{Captured}(p)\to\neg\mathrm{Independent}(p)].
 $$
 
-证明只复用上一条 bridge theorem 与 `NonExhaustible p ↔ ¬ Captured p`；没有新增 philosophical primitive。它与下面的 converse countermodel 合起来，才完整形式化“严格更强”。
+证明只复用上一条 bridge theorem 与 `NonExhaustible p ↔ ¬ Captured p`；没有新增 philosophical primitive。它与下面的 converse countermodel 合起来，完整形式化“严格更强”。
 
 同一 bridge 还有 witness-level 诊断：若某个具体 p 同时 `Captured` 且 `Independent`，则 E 不可能成立：
 
@@ -190,7 +205,7 @@ $$
 2. p. 118 在同一讨论中允许一个 horizon 的 saturation、多个 horizons、超过 horizon，并称 saturated phenomenon 不依赖 horizon 这一 condition of possibility。故 `Independent` 不能按词义直接定义成 `NonExhaustible`；已有 Lean 反模型与作者文本方向一致。
 3. p. 119 又引入 intuitive excess 与 constitution reversal，所以完整 `Saturated` 远强于本项目任何单一 coverage/conditioning 谓词。
 
-特别地，Marion 文本中的 “saturates a horizon” **没有**被本项目定义为 `Captured`；`Captured` 是对 aspect coverage 的 extensional surrogate。正因此，当前只保留形式问题：点态或在实际显现域上，`Independent → NonExhaustible` 都等价于相应范围内的 `Captured → ¬Independent`；若进一步有人接受较强的 `ExhaustiveCaptureConditions`，它会提供这一排斥关系的充分结构机制。文本是否支持任何这样的 bridge 仍必须另证。
+特别地，Marion 文本中的 “saturates a horizon” **没有**被本项目定义为 `Captured`；`Captured` 是对 aspect coverage 的 extensional surrogate。正因此，当前只保留形式问题：点态或在实际显现域上，`Independent → NonExhaustible` 都等价于相应范围内的 `Captured → ¬Independent`，也等价于不存在实际显现的 `Captured ∧ Independent` 冲突见证；若进一步有人接受较强的 `ExhaustiveCaptureConditions`，它会提供这一排斥关系的充分结构机制。文本是否支持任何这样的 bridge 仍必须另证。
 
 ## 9. 量词次序与开放视域
 
@@ -209,12 +224,12 @@ $$
 | `Horizon/Basic.lean` | 0 | 基础关系语言 |
 | `Horizon/Separation.lean` | 9 | 基本等价、蕴含和 A/B/C 条件冲突 |
 | `Horizon/SituatedExcess.lean` | 4 | 非空真 excess 与 closure 的直接冲突 |
-| `Horizon/Conditioning.lean` | 11 | related/conditioning 分离、点态与显现域确切前提、强 bridge → 精确条件、capture→conditioning 压力测试及 witness-level 诊断、profile 投影 |
+| `Horizon/Conditioning.lean` | 12 | related/conditioning 分离、点态/显现域/冲突见证确切前提、强 bridge → 精确条件、capture→conditioning 压力测试及 witness-level 诊断、profile 投影 |
 | `Models/Finite.lean` | 11 | 有限见证、最小冲突与首问反例 |
 | `Models/Conditioning.lean` | 13 | conditioning / exhaustion / horizonless 分离、bridge 反模型及精确条件与强 bridge 的严格分离 |
 | `Models/OpenHorizon.lean` | 6 | 开放扩展、逐一覆盖和单调性 |
 | `Models/HorizonExtension.lean` | 4 | horizon 域扩展与穷尽性的变化 |
 
-共 **58** 个具名引理／定理，全部列入 `Audit.lean`。任何后续 Lean 改动都必须在其自己的提交重新获得 `lake build`、`scripts/check.py` 与 `#print axioms` 验证，不能继承旧 CI。
+共 **59** 个具名引理／定理，全部列入 `Audit.lean`。任何后续 Lean 改动都必须在其自己的提交重新获得 `lake build`、`scripts/check.py` 与 `#print axioms` 验证，不能继承旧 CI。
 
 *Being Given* 2002 pp. 209–212、225–226 仍待合法直接核对，因此历史解释停止门尚未关闭。
