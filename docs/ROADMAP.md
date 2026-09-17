@@ -13,29 +13,32 @@
 - 已固定 Merleau-Ponty, *Phenomenology of Perception*, Colin Smith trans., Routledge Classics 2002，并直接查看关键正文页。
 - 已完成 5 张 Merleau-Ponty `reviewed` 卡。pp. 79–82 与 384–386 对“视域开放、综合未完成、透视不穷尽”的证据使 B / `ClosureBridge` 不应归给 Merleau-Ponty。
 - 已固定 Marion, *Being Given*, Jeffrey L. Kosky trans., Stanford UP 2002，并由出版社／Google Books 元数据定位 §21 pp. 199–212、§23 起于 p. 221。
-- 已建立 3 张 Marion 工作卡，但仅标记为 `proposed-secondary`：二手研究提供了 pp. 210–212、225–226 的页码与短引文／转述，尚未独立看到原书正文。
-- 形式层新增 `HasSituatedExcess`，排除“完全没有相关视域”导致的空真；新增 `horizon_structure_does_not_entail_closure`，把首个问题直接写成可证伪蕴含，并由有限模型给出反例。
+- 已建立 3 张 Marion 工作卡，但仍为 `proposed-secondary`：二手研究提供 pp. 210–212、225–226 的页码与短引文／转述，尚未独立看到原书正文。
+- 已新增二手交叉核查：Leung、Moran 均将 p. 211 的 horizon 读成条件/条件化语义；Mason 与 Murga 的研究又提示 Marion 并非简单删除一切 horizon，而需要区分视域的不同功能。
+- 形式层已新增 `HasSituatedExcess` 与 `horizon_structure_does_not_entail_closure`，直接反驳“有视域必然可穷尽”的纯逻辑蕴含。
+- 形式层进一步新增 `HorizonConditioning`，把 `situated`（相关视域）、`conditions`（条件化视域）与 `Exhausts`（穷尽）分开。Lean 反模型证明 `Independent` 与 `NonExhaustible` 互不蕴含，且 `Independent` 不等于 horizonless。
 
 ### 当前 M1 验收状态
 
 - A：**有直接证据支持，但当前形式化是弱压缩**。
 - B：**不对应本轮核查的 Merleau-Ponty 段落；文本方向反而是开放和未完成**。
 - C：**对 Marion 只能作为弱候选影子，不等于饱和现象的完整定义**。
-- “不依赖视域”与“没有任何相关视域”已经在解释层和代码层分开。
+- “不依赖视域”“不能被视域穷尽”“没有任何相关视域”已经在解释层和代码层正式分开。
+- 关于“是否需要新增条件化关系”的工程判断：**已完成，答案为需要分层，而非改写旧 `situated`。** 该形式层决定由多个二手来源交叉支持，但 Marion 归属仍等待原书正文。
 
 ### 尚未通过的停止门
 
 首个研究问题**尚未完成**。仍至少需要：
 
-1. 独立查看 Marion *Being Given* pp. 210–212、225–226 的原书正文，核对二手文献给出的页码和语境。
-2. 据原书判断“does not depend on a horizon”究竟需要新增“条件化／依赖”关系，还是当前 `NonExhaustible` 的弱结论已足以承载首个比较命题；不得把它偷换成 `¬ Structured`。
-3. 对最终命题的全部相关 Lean 代码重新执行 `lake build`、`python3 scripts/check.py`、根导入覆盖及 `#print axioms` 审计，并以对应最终提交的 CI 为准。
+1. 独立查看 Marion *Being Given* pp. 210–212、225–226 的原书正文，核对二手文献给出的页码和上下文。
+2. 依据原文最终决定：`Independent` 可否作为“不受视域条件化”的弱归属，以及 `NonExhaustible` 是否只能作为另一条独立弱后果；不得把任何一个偷换成完整 saturated phenomenon。
+3. 在最终解释冻结后，对最终提交重新执行 `lake build`、`python3 scripts/check.py`、根导入覆盖及 `#print axioms` 审计，并检查对应 master CI。
 
-只有上述文本门和证明门同时通过，才允许把首个研究问题标记为完成并停止自动推进。
+只有文本门和证明门同时通过，才允许把首个研究问题标记完成并停止自动推进。
 
 ## M2 — 具身与时态索引
 
-仅在 M1 的文本证据表明确有必要后，引入主体、身体状态、时间及实际可达的视域变化。比较“每一时刻不能穷尽”“某个主体不能穷尽”“所有可能主体都不能穷尽”等不同量词配置。
+仅在 M1 的直接文本证据表明确有必要后，引入主体、身体状态、时间及实际可达的视域变化。比较“每一时刻不能穷尽”“某个主体不能穷尽”“所有可能主体都不能穷尽”等不同量词配置。
 
 验收：至少两个索引化模型；说明旧模型如何嵌入／忘却到新模型；每个新增桥接前提须有使用点或反模型。不得把身体状态直接等同为无解释数值。
 
