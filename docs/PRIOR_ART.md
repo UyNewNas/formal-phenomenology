@@ -82,7 +82,7 @@ Ericson Falabretti, “Merleau-Ponty e Marion: o problema da ambiguidade entre u
 
 这次交叉还纠正一个重要边界：Djian 的 ED 304–305 是稍后的 horizon/I possibility-condition 段落，**不是** BG 211–212 的法文 counterpart。Fanny Lederlin 2023 的 Université Paris Cité 官方博士论文短引 ED p. 305，进一步确认这一页的 intentional-horizon 主题，但不能改变其版本位置。
 
-## 4. 既有形式 profile 的复用判断
+## 4. 既有形式 profile 与本轮确切前提 theorem 的复用判断
 
 当前项目中的以下结果逻辑内容都很初等，不作为原创性主张：
 
@@ -93,9 +93,21 @@ Ericson Falabretti, “Merleau-Ponty e Marion: o problema da ambiguidade entre u
 - `ExhaustiveCaptureConditions` 下 `Independent → NonExhaustible`；
 - `Captured p ∧ Independent p → ¬ ExhaustiveCaptureConditions` 的点态桥接反证。
 
-先前针对最后一条 theorem 的外部代码检索没有找到同型 formal-philosophy 声明；全局 `HorizonIndependent` / `NonExhaustible` 检索只命中本仓。该 theorem 只是对本项目已显式 bridge 的逻辑闭包，因此不为它引入 Mathlib、LogiKEy 或另一个 phenomenology 仓库。
+本轮拟进一步精确回答“`Independent p → NonExhaustible p` 的确切前提是什么”，因此在写代码前做了增量查重：
 
-**本轮仍不新增 theorem。** 新证据填补的是直接比较 prior art 与解释竞争关系，而非逻辑 API 缺口；在这种情况下继续增加 unconstrained predicates 或 theorem count 反而违背 prior-art gate。
+- 复用本仓已证明的 `nonExhaustible_iff_not_captured`，不再造新的 exhaustion 语义；
+- 针对 `Independent` / `NonExhaustible` / `Captured` 的 GitHub 全局代码搜索没有定位到外部 formal-philosophy 同型声明；命中主要是本仓和无关词典数据；
+- `novaspivack/phenomenology-lean` 的已固定版本仍没有 horizon / Marion / saturation 同型 API；LogiKEy / AFP 属于方法和逻辑基础 prior art，不值得为这一命题引入重依赖。
+
+因此只新增一条**Lean Core 级正规化 theorem**：
+
+```text
+(Independent p → NonExhaustible p)
+↔
+(Captured p → ¬ Independent p)
+```
+
+入口 `independent_implies_nonExhaustible_iff_capture_refutes_independence`。这只是由 `NonExhaustible p ↔ ¬ Captured p` 得出的命题逻辑闭包，不作为原创数学或原创哲学结果。它的价值是把“需要 bridge”改写成精确的点态条件：排除同一 p 上 `Captured ∧ Independent`。
 
 ## 5. `ExhaustiveCaptureConditions` 的 prior-art 状态
 
@@ -106,6 +118,8 @@ situated p h ∧ Exhausts p h → conditions p h
 ```
 
 同题文本支持 related / conditioning 的区分，却没有给出这条 extensional exhaustion→conditioning 蕴含。因此它继续是本项目内 MODEL/QUESTION，不归给 Marion 或 Merleau-Ponty。
+
+本轮的点态等价说明了它的逻辑地位应再收紧：`ExhaustiveCaptureConditions` 是使 capture 与 independence 冲突的一种**结构化充分机制**，但它比“对固定 p 排除 `Captured p ∧ Independent p`”更强，不再称作逻辑上的确切最弱 bridge。
 
 现有 `closedIndependentConditioning` 已显示没有 bridge 时可以同时 `Independent` 与 `Captured`，并证明该模型违反 bridge。`captured_independent_refutes_exhaustiveCaptureConditions` 则把这一事实提升为任意模型、任意具体 witness 的一般定理：只要 `Captured p` 与 `Independent p` 同时成立，bridge 就失败。
 
@@ -134,4 +148,4 @@ Jean-Luc Marion, “The Saturated Phenomenon,” *Philosophy Today* 40(1), 1996,
 
 首问继续保持轻量 Lean Core 是合理选择。现阶段没有外部形式化提供可直接替换本项目 horizon 首问的同型实现；formal philosophy 的方法、Marion horizon 的解释 prior art、以及 Merleau-Ponty / Marion 的直接比较研究都已明确存在。
 
-当前最有价值的复用分成两类：一是采用 Miller / Mackinlay / Steinbock 的 BG/ED 双版本引注，避免重新猜测翻译页码；二是采用 Falabretti / Djian / Murga 等既有比较与解释工作限制历史新颖性表述并保存竞争读法。形式层不新增结构，继续等待 direct-primary 版本核对。
+当前最有价值的复用分成三类：一是采用 Miller / Mackinlay / Steinbock 的 BG/ED 双版本引注，避免重新猜测翻译页码；二是采用 Falabretti / Djian / Murga 等既有比较与解释工作限制历史新颖性表述并保存竞争读法；三是直接复用本仓 `NonExhaustible ↔ ¬Captured`，只用一条无新 primitive 的正规化 theorem 给出 `Independent → NonExhaustible` 的确切点态条件。除此之外继续等待 direct-primary 版本核对，不扩张完整 saturation API。

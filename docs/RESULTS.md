@@ -89,15 +89,35 @@ $$
 
 必须分开。
 
-## 6. 显式 bridge：`ExhaustiveCaptureConditions`
+## 6. “Independent → NonExhaustible”的确切点态前提与一个较强 bridge
 
-压力测试前提：
+首先不增加任何新的哲学 primitive，只利用已经证明的
 
 $$
-E(M):\forall p,h\,[S(p,h)\land\mathrm{Exhausts}(p,h)\to K(p,h)].
+\mathrm{NonExhaustible}(p)\iff\neg\mathrm{Captured}(p)
 $$
 
-在 E 下，Lean 证明：
+即可把目标蕴含规范化。新定理
+`independent_implies_nonExhaustible_iff_capture_refutes_independence`
+证明：
+
+$$
+\boxed{
+\bigl(\mathrm{Independent}(p)\to\mathrm{NonExhaustible}(p)\bigr)
+\iff
+\bigl(\mathrm{Captured}(p)\to\neg\mathrm{Independent}(p)\bigr)
+}.
+$$
+
+因此，对**固定的同一个现象 p**，要恢复 `Independent p → NonExhaustible p`，逻辑上需要且只需要排除 `Captured p ∧ Independent p`。这不是新的 Marion 前提，而只是对目标蕴含的精确逻辑正规化。
+
+项目此前定义的压力测试前提
+
+$$
+E(M):\forall p,h\,[S(p,h)\land\mathrm{Exhausts}(p,h)\to K(p,h)]
+$$
+
+即 `ExhaustiveCaptureConditions`，则是一个**更强、结构化、足够但非点态最弱**的机制。在 E 下，Lean 证明：
 
 $$
 E(M)\land\mathrm{Independent}(p)\to\mathrm{NonExhaustible}(p).
@@ -105,7 +125,7 @@ $$
 
 入口 `exhaustiveCaptureConditions_independent_implies_nonExhaustible`。
 
-本轮补上同一 bridge 的**点态反向诊断**：若某个具体 p 同时 `Captured` 且 `Independent`，则 E 不可能成立：
+同一 bridge 还有 witness-level 诊断：若某个具体 p 同时 `Captured` 且 `Independent`，则 E 不可能成立：
 
 $$
 \mathrm{Captured}(p)\land\mathrm{Independent}(p)
@@ -116,7 +136,7 @@ $$
 
 `closedIndependentConditioning` 同时有 `Independent` 与 `Captured`，并由 `closedIndependentConditioning_not_exhaustiveCaptureConditions` 证明它违反 E。因此 E 是真正的额外 bridge，不是定义展开。
 
-E 仍是 MODEL/QUESTION，不归给 Marion 或 Merleau-Ponty。
+E 仍是 MODEL/QUESTION，不归给 Marion 或 Merleau-Ponty；新的点态等价同样只是 FORMAL 正规化，不承担历史归属。
 
 ## 7. 三条轴的联合一致性
 
@@ -128,13 +148,13 @@ E 仍是 MODEL/QUESTION，不归给 Marion 或 Merleau-Ponty。
 
 ## 8. Marion 1996 primary text 对现有形式结果的约束
 
-本轮直接从 PDCnet 出版者索引读取 Jean-Luc Marion 1996 “The Saturated Phenomenon” 的 p. 117–119 作者正文。它**没有改变上述 Lean 定理真假**，但显著改变了解释边界：
+本项目直接从 PDCnet 出版者索引读取 Jean-Luc Marion 1996 “The Saturated Phenomenon” 的 p. 117–119 作者正文。它**没有改变上述 Lean 定理真假**，但显著改变了解释边界：
 
 1. p. 117 明确说一般取消 horizon 会阻止 manifestation；问题是摆脱 horizon 的 `delimiting anteriority`。所以 `Horizonless` 不是合适的默认 Marion 编码。
 2. p. 118 在同一讨论中允许一个 horizon 的 saturation、多个 horizons、超过 horizon，并称 saturated phenomenon 不依赖 horizon 这一 condition of possibility。故 `Independent` 不能按词义直接定义成 `NonExhaustible`；已有 Lean 反模型与作者文本方向一致。
 3. p. 119 又引入 intuitive excess 与 constitution reversal，所以完整 `Saturated` 远强于本项目任何单一 coverage/conditioning 谓词。
 
-特别地，Marion 文本中的 “saturates a horizon” **没有**被本项目定义为 `Captured`；`Captured` 是对 aspect coverage 的 extensional surrogate。正因此，当前只保留一个形式问题：若有人额外接受 `ExhaustiveCaptureConditions`，可以恢复 `Independent → NonExhaustible`；而若又主张某个 p 同时 `Captured` 与 `Independent`，新定理会准确指出这三者不能共存。文本是否支持任何一条桥接仍必须另证。
+特别地，Marion 文本中的 “saturates a horizon” **没有**被本项目定义为 `Captured`；`Captured` 是对 aspect coverage 的 extensional surrogate。正因此，当前只保留形式问题：点态上，`Independent → NonExhaustible` 等价于 `Captured → ¬Independent`；若进一步有人接受较强的 `ExhaustiveCaptureConditions`，它会提供这一排斥关系的充分结构机制。文本是否支持任何这样的 bridge 仍必须另证。
 
 ## 9. 量词次序与开放视域
 
@@ -153,12 +173,12 @@ $$
 | `Horizon/Basic.lean` | 0 | 基础关系语言 |
 | `Horizon/Separation.lean` | 9 | 基本等价、蕴含和 A/B/C 条件冲突 |
 | `Horizon/SituatedExcess.lean` | 4 | 非空真 excess 与 closure 的直接冲突 |
-| `Horizon/Conditioning.lean` | 8 | related/conditioning 分离、capture→conditioning 压力测试 bridge 及点态反证、profile 投影 |
+| `Horizon/Conditioning.lean` | 9 | related/conditioning 分离、点态确切前提、capture→conditioning 压力测试 bridge 及 witness-level 诊断、profile 投影 |
 | `Models/Finite.lean` | 11 | 有限见证、最小冲突与首问反例 |
 | `Models/Conditioning.lean` | 12 | conditioning / exhaustion / horizonless 分离及 bridge 反模型 |
 | `Models/OpenHorizon.lean` | 6 | 开放扩展、逐一覆盖和单调性 |
 | `Models/HorizonExtension.lean` | 4 | horizon 域扩展与穷尽性的变化 |
 
-共 **54** 个具名引理／定理，全部列入 `Audit.lean`。任何后续 Lean 改动都必须在其自己的提交重新获得 `lake build`、`scripts/check.py` 与 `#print axioms` 验证，不能继承旧 CI。
+共 **55** 个具名引理／定理，全部列入 `Audit.lean`。任何后续 Lean 改动都必须在其自己的提交重新获得 `lake build`、`scripts/check.py` 与 `#print axioms` 验证，不能继承旧 CI。
 
 *Being Given* 2002 pp. 209–212、225–226 仍待合法直接核对，因此历史解释停止门尚未关闭。
