@@ -96,6 +96,35 @@ theorem related_independent_captured_are_jointly_consistent :
   exact ⟨(), True.intro⟩
 
 /--
+Merely combining universal horizon structure with the coherence requirement
+that every conditioning horizon be related to the phenomenon still does not
+force the exact appearing-domain incompatibility between capture and horizon
+independence.
+
+The closed-independent model is already maximally structured at its sole
+appearance and satisfies `ConditioningIsSituated` vacuously, yet that appearance
+is both `Captured` and `Independent`.  Thus neither "every appearance has a
+horizon" nor "conditioning horizons must be related" supplies the missing
+bridge from horizon-independence to non-exhaustibility.
+-/
+theorem structure_and_conditioning_coherence_do_not_imply_exact_appearing_condition :
+    ¬ (∀ M : HorizonConditioning,
+      M.base.UniversalStructure →
+      M.ConditioningIsSituated →
+      ∀ p, M.base.appears p → M.base.Captured p → ¬ M.Independent p) := by
+  intro h
+  have hstructure : closedIndependentConditioning.base.UniversalStructure := by
+    intro p _
+    cases p
+    exact ⟨(), True.intro⟩
+  have hcoherent : closedIndependentConditioning.ConditioningIsSituated := by
+    intro _ _ hf
+    exact False.elim hf
+  have hexcl := h closedIndependentConditioning hstructure hcoherent
+  exact (hexcl () True.intro closedIndependentConditioning_capture)
+    closedIndependentConditioning_independent
+
+/--
 The closed-independent countermodel to `Independent → NonExhaustible` fails the
 new bridge: its related horizon exhausts the appearance but is not marked as a
 conditioning horizon.  This confirms that the bridge is a genuine extra premise.
