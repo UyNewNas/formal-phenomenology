@@ -54,13 +54,25 @@ Aurélien Djian, “L’horizon et le destin de la phénoménologie,” *Philoso
 
 **复用判断。** 这比只引用 Murga 更直接地覆盖了本项目 `conditions` 所要压缩的解释轴，所以“related horizon 与 conditioning horizon 必须区分”绝不能作为新的历史发现。本项目的增量只能是：把这条既有解释差异压成一个显式 Lean relation，并检查它与 extensional `Exhausts` 的逻辑关系。Djian 没有给出 `situated ∧ Exhausts → conditions` 这种集合式 bridge，因此 `ExhaustiveCaptureConditions` 仍是本项目压力测试，不是文献复用结果。
 
+### Falabretti (2015/2016)：直接 Merleau-Ponty / Marion 比较
+
+Ericson Falabretti, “Merleau-Ponty e Marion: o problema da ambiguidade entre uma fenomenologia da percepção e uma fenomenologia da doação,” *Revista de Filosofia Moderna e Contemporânea* 3(2), 87–102，DOI `10.26512/rfmc.v3i2.12514`。期刊官方页面与官方 PDF 均已直接读取；PDF page-image 截图请求在当前研究环境超时，所以证据状态记为 **SECONDARY-DIRECT-PDF-TEXT / PAGE-IMAGE-NOT-REVIEWED**。详细审计见 [FALABRETTI_COMPARISON.md](FALABRETTI_COMPARISON.md)。
+
+这项工作直接比较 *Phenomenology of Perception* 与 *Étant donné*，因此对本项目的新颖性边界比一般 Marion 二手研究更直接：
+
+- 期刊 p. 90 将 Merleau-Ponty 的知觉写成持续开放的时空 horizon field，并明确说知觉不会穷尽被知觉者或知觉行为本身。这已经覆盖“开放视域／不穷尽”的历史比较动机；本项目不能把这一比较配对本身包装成新发现。
+- 期刊 p. 98 又把 saturated phenomenon 二手概括成“没有 horizon，而是 overflowing presence”。这与 Marion 1996 p. 117–118 的已核验作者文本以及 Murga / Djian 的解释空间存在张力，所以必须登记为**竞争 secondary reading**，不能直接升级 `Horizonless` 为默认 Marion 编码。
+- 期刊 p. 88 明确说作者不能假定 Marion 会如何直接解释 Merleau-Ponty，并称 Merleau-Ponty 在 *Étant donné* 中只处于边缘位置、明确引用仅三次且都在脚注；论文还说 *Étant donné* 并不直接回答其比较问题。这为仓库已有“Marion 是否直接批评 Merleau-Ponty”未决项提供了具体 caution。
+
+**复用判断。** 比较研究本身已有 prior art；本项目的可交付增量只能是把相关／条件化／穷尽的不同解释压成显式接口，再以 Lean 检查其逻辑蕴含、反模型和 bridge。Falabretti 的 `no horizon` 表述不直接复用为定义；它正好说明 secondary literature 内部也需要竞争解释登记。
+
 ### Leung / Mason / Mackinlay / Moran / Lee / Lahaie
 
 这些来源的角色已经在 `SOURCES.md` 与 `MARION_HORIZON_GATE.md` 分层登记：它们带页码地定位 *Being Given* 209–226，支持区分 horizon 作为相关结构、作为 condition of possibility、一个／多个 horizon 的 saturation，以及 intuition/intention/constitution。它们仍是 secondary evidence，不代替书本目标页直接阅读。
 
-### 本轮新增：Miller / Mackinlay / Steinbock 的双版本页码链
+### Miller / Mackinlay / Steinbock 的双版本页码链
 
-本轮没有找到需要复用的新 formal API，但找到了对版本核对直接有用的解释 prior art：
+没有找到需要复用的新 formal API，但找到了对版本核对直接有用的解释 prior art：
 
 - Adam S. Miller, *Badiou, Marion and St Paul: Immanent Grace*（Continuum, 2008）。Bloomsbury 官方页面确认书目与 “Givenness and Saturation” 专章；可检索文本给出 BG/ED 双版本页码：BG 209–210 / ED 293、BG 210 / ED 293–294、BG 211 / ED 295、BG 212 / ED 296–297。
 - Shane Mackinlay 的 *Interpreting Excess* 独立提供 BG 209 / ED 292、BG 211 / ED 295、BG 225 / ED 314、BG 226 / ED 315 等锚点。
@@ -83,7 +95,7 @@ Aurélien Djian, “L’horizon et le destin de la phénoménologie,” *Philoso
 
 先前针对最后一条 theorem 的外部代码检索没有找到同型 formal-philosophy 声明；全局 `HorizonIndependent` / `NonExhaustible` 检索只命中本仓。该 theorem 只是对本项目已显式 bridge 的逻辑闭包，因此不为它引入 Mathlib、LogiKEy 或另一个 phenomenology 仓库。
 
-**本轮没有新增 theorem。** 新证据填补的是版本交叉与文本定位缺口，而非逻辑 API 缺口；在这种情况下继续增加 unconstrained predicates 或 theorem count 反而违背 prior-art gate。
+**本轮仍不新增 theorem。** 新证据填补的是直接比较 prior art 与解释竞争关系，而非逻辑 API 缺口；在这种情况下继续增加 unconstrained predicates 或 theorem count 反而违背 prior-art gate。
 
 ## 5. `ExhaustiveCaptureConditions` 的 prior-art 状态
 
@@ -108,7 +120,7 @@ situated p h ∧ Exhausts p h → conditions p h
 3. **不提前引入 intention/intuition API。** 它们对完整理论重要，但不是首问否定蕴含所必需。
 4. **保留三轴** `situated / conditions / Exhausts`，以文本约束解释，而非靠新增 theorem count 制造进展。
 
-本轮版本交叉反而加强这一决定：目标法文页已经能够精确到 ED 292–297 和 ED 314–315，应优先直接核查这些页，而不是提前扩张模型。
+直接比较 prior art 进一步加强这一决定：Falabretti 的 horizonless 二手表述与 Marion 1996 / Murga / Djian 的文本空间并不简单同义，新增自由谓词只会把解释分歧伪装成模型自由度。应继续优先核查目标 primary pages。
 
 ## 7. primary source 的当前定位
 
@@ -116,10 +128,10 @@ Jean-Luc Marion, “The Saturated Phenomenon,” *Philosophy Today* 40(1), 1996,
 
 这项发现实质改变下一步：已有作者本人文本确认 horizon 不能简单取消、核心在先行限定、且 horizon-independence 与多种 horizon 关系并存。故不再需要猜测这些区分是否只是二手研究强加给 Marion。
 
-但这**不取消书本版本核对门**。借助本轮 crosswalk，门槛现在可精确成：直接读 BG 209–212、225–226，或法文 ED 292–297、314–315；双版本二手引注只负责定位，不能替代 primary direct reading。
+但这**不取消书本版本核对门**。借助现有 crosswalk，门槛可精确成：直接读 BG 209–212、225–226，或法文 ED 292–297、314–315；双版本二手引注只负责定位，不能替代 primary direct reading。
 
 ## 8. 当前复用结论
 
-首问继续保持轻量 Lean Core 是合理选择。现阶段没有外部形式化提供可直接替换本项目 horizon 首问的同型实现；formal philosophy 的方法与 Marion horizon 的解释 prior art 已明确存在。
+首问继续保持轻量 Lean Core 是合理选择。现阶段没有外部形式化提供可直接替换本项目 horizon 首问的同型实现；formal philosophy 的方法、Marion horizon 的解释 prior art、以及 Merleau-Ponty / Marion 的直接比较研究都已明确存在。
 
-本轮最有价值的复用不是代码，而是**书目交叉**：直接采用 Miller / Mackinlay / Steinbock 已给出的 BG/ED 双版本引注，避免重新猜测翻译页码；同时以 Djian / Murga 等既有解释限制“历史新颖性”表述。形式层不新增结构，继续等待 direct-primary 版本核对。
+当前最有价值的复用分成两类：一是采用 Miller / Mackinlay / Steinbock 的 BG/ED 双版本引注，避免重新猜测翻译页码；二是采用 Falabretti / Djian / Murga 等既有比较与解释工作限制历史新颖性表述并保存竞争读法。形式层不新增结构，继续等待 direct-primary 版本核对。
