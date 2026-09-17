@@ -6,3 +6,4 @@ import FormalPhenomenology.Models.Finite
 import FormalPhenomenology.Models.Conditioning
 import FormalPhenomenology.Models.OpenHorizon
 import FormalPhenomenology.Models.HorizonExtension
+import FormalPhenomenology.ConstructiveBridge
