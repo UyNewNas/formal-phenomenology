@@ -98,3 +98,14 @@ Ezequiel Daniel Murga, “La posibilidad de una horizonticidad no metafísica en
 ## 7. 工具来源
 
 Lean 工具链固定为 `leanprover/lean4:v4.24.0`。GitHub 工作流使用按提交哈希固定的 `lean-action`；以仓库内 `.github/workflows/lean.yml` 为配置依据。
+
+## 8. 新增作者本人文本线索：*The Saturated Phenomenon*
+
+本轮新增一条比二手研究更接近原始理论表述、但仍**不替代 `Being Given` 指定页门槛**的作者本人来源：
+
+- Jean-Luc Marion, “The Saturated Phenomenon,” *Philosophy Today* 40(1), 1996, pp. 103–124, DOI `10.5840/philtoday199640137`。多条独立书目记录确认该文献。
+- *Filozofia* 62(5), 2007, pp. 378–402 刊载 Jean-Luc Marion “A Saturated Phenomenon”。斯洛伐克科学院哲学研究所的期刊官方页面已直接查看，页面确认作者、卷期、页码，并公开英文摘要与 PDF 下载入口。
+
+官方摘要直接把 horizon 描述为给予的 constitutive condition，并将 saturated phenomenon 描述为 intuition 的 surplus、unconditioned / irreducible、超出 intentional meaning，同时指出这会反转主体的 constituting 地位。这为“条件化”轴提供了**作者本人文本层面的独立动机**，并进一步说明单纯的 `NonExhaustible` 仍远不足以定义 saturation。
+
+访问状态需严格区分：本轮直接查看了期刊官方页面与摘要；点击其 PDF 下载入口时当前网络抓取超时，因此**没有把 2007 全文标记为已逐页阅读**。它也不是 *Being Given* pp. 210–212、225–226 本身，所以 M1 的指定原典停止门继续保持。

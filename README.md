@@ -28,9 +28,19 @@ NonExhaustible      ⟹ HorizonIndependent ✗
 HorizonIndependent  ⟹ Horizonless        ✗
 ```
 
-本轮进一步给出一个**联合一致性见证**：同一个显现可以同时有相关视域、没有 horizon 被标记为其条件化关系，并且不被任何相关视域穷尽；该模型还满足“条件化视域必须是相关视域”的一致性约束。入口是 `related_independent_nonExhaustible_are_jointly_consistent`。
+上一轮进一步给出一个**联合一致性见证**：同一个显现可以同时有相关视域、没有 horizon 被标记为其条件化关系，并且不被任何相关视域穷尽；该模型还满足“条件化视域必须是相关视域”的一致性约束。入口是 `related_independent_nonExhaustible_are_jointly_consistent`。
 
-这只是中性的 model-theoretic compatibility profile，不是 Marion 的 saturated phenomenon 定义。
+本轮则把一条原本无效的蕴含所缺的前提精确隔离出来。`ExhaustiveCaptureConditions` 明确假设：**一个相关视域若穷尽现象的全部已编码侧面，就计作条件化该现象。** 在这个 bridge 下：
+
+```text
+ExhaustiveCaptureConditions
+∧ HorizonIndependent
+⟹ NonExhaustible
+```
+
+入口是 `exhaustiveCaptureConditions_independent_implies_nonExhaustible`。原有 `closedIndependentConditioning` 恰好违反这个 bridge，因此它确实是额外前提而不是定义展开。该 bridge 目前只是压力测试，不归给 Marion 或 Merleau-Ponty。
+
+这些都是中性的 model-theoretic 结论，不是 Marion 的 saturated phenomenon 定义。
 
 ## 原典与外部工作核查
 
@@ -38,22 +48,26 @@ HorizonIndependent  ⟹ Horizonless        ✗
 
 Marion, *Being Given*, Jeffrey L. Kosky trans., Stanford UP 2002 的版本、§21（pp. 199–212）和 §23 已定位。Leung、Moran 等二手研究把 p. 211 的“不依赖视域”放在 horizon 作为 `condition of possibility` 的语义下；Mason 与 Murga 的研究又提示 Marion 并非简单删除一切 horizon。正因如此，本项目新增了独立 conditioning 关系，而没有把 `does not depend on a horizon` 错写成 `¬ Structured`。
 
-本项目现在强制进行 [外部工作与复用审计](docs/PRIOR_ART.md)。已经确认：Lean 中存在独立的 `novaspivack/phenomenology-lean` formal-phenomenology 工程，Isabelle/HOL / AFP 与 LogiKEy 也已有成熟 formal philosophy / computational metaphysics / computational hermeneutics 方法。因此本项目**不声称首创“形式化哲学”或“形式化现象学”工作流**。当前未定位到覆盖本项目具体 horizon 首问的同型 Lean 定理；related / conditioned 的解释区分则与既有 Marion horizon 文献高度重合，应视为对已有解释争论的形式接口，而非新的历史发现。
+本轮另增加作者本人文本线索：Marion 1996 年 “The Saturated Phenomenon” 及其 2007 年 *Filozofia* 刊载版本。后者的期刊官方页面与摘要已直接查看；摘要把 horizon 描述为 givenness 的 constitutive condition，并把 saturated phenomenon 与 surplus of intuition、unconditioned / irreducible phenomenality 及主体反转联系起来。这支持 conditioning 轴，但也进一步说明 `NonExhaustible` 远不足以定义 saturation。PDF 下载本轮抓取超时，因此没有冒充全文已读。
 
-但 **pp. 210–212、225–226 的原书正文仍未由本项目独立逐页核对**。Internet Archive 可确认 1997 法文 *Étant donné* 的受限借阅条目存在，但当前访问页面标记为受限且未提供可直接读取文件；项目不会绕过访问控制。因此尚未达到首个研究问题的停止条件，也不把 `Independent`、`HasExcess`、`HasSituatedExcess` 或新的联合 profile 冒称为 saturated phenomenon 的完整定义。
+本项目强制进行 [外部工作与复用审计](docs/PRIOR_ART.md)。已经确认：Lean 中存在独立的 `novaspivack/phenomenology-lean` formal-phenomenology 工程，Isabelle/HOL / AFP 与 LogiKEy 也已有成熟 formal philosophy / computational metaphysics / computational hermeneutics 方法。因此本项目**不声称首创“形式化哲学”或“形式化现象学”工作流**。当前未定位到覆盖本项目具体 horizon 首问的同型 Lean 定理；related / conditioned 的解释区分则与既有 Marion horizon 文献高度重合，应视为对已有解释争论的形式接口，而非新的历史发现。
+
+但 **pp. 210–212、225–226 的原书正文仍未由本项目独立逐页核对**。Internet Archive 可确认 1997 法文 *Étant donné* 的受限借阅条目存在，但当前访问页面标记为受限且未提供可直接读取文件；项目不会绕过访问控制。因此尚未达到首个研究问题的停止条件，也不把 `Independent`、`HasExcess`、`HasSituatedExcess` 或联合 profile 冒称为 saturated phenomenon 的完整定义。
 
 详见 [段落卡](docs/PASSAGE_CARDS.md)、[来源登记](docs/SOURCES.md) 与 [外部工作审计](docs/PRIOR_ART.md)。
 
 ## 工程状态
 
-Lean 4.24.0；不依赖 Mathlib 或其他外部 Lean 包。本分支共有 **8 个库模块、50 个具名引理／定理**，全部列入内核公理依赖审计；最终通过状态以对应提交 CI 为准。
+Lean 4.24.0；不依赖 Mathlib 或其他外部 Lean 包。本分支共有 **8 个库模块、53 个具名引理／定理**，全部列入内核公理依赖审计；最终通过状态以对应提交 CI 为准。
 
 | 检验 | 形式结论 | 入口 |
 |---|---|---|
 | 有视域是否推出可穷尽 | 否；有限反模型 | `horizon_structure_does_not_entail_closure` |
 | 有视域且不可穷尽是否非空真 | 是；有限见证 | `splitModel_situatedExcess` |
 | 不依赖视域是否等于无视域 | 否；有相关视域且独立的模型 | `horizon_independence_need_not_be_horizonless` |
-| 不依赖视域是否推出不可穷尽 | 否；可独立但仍被完整捕获 | `horizon_independence_does_not_imply_nonExhaustible` |
+| 不依赖视域是否推出不可穷尽 | 无额外 bridge 时否 | `horizon_independence_does_not_imply_nonExhaustible` |
+| 哪个显式 bridge 足以恢复上条蕴含 | situated + exhaustive → conditioning 足够 | `exhaustiveCaptureConditions_independent_implies_nonExhaustible` |
+| 该 bridge 是否真是额外前提 | 是；旧 closed-independent 反模型违反它 | `closedIndependentConditioning_not_exhaustiveCaptureConditions` |
 | 不可穷尽是否推出不依赖视域 | 否；可受条件化但仍不可穷尽 | `nonExhaustible_does_not_imply_horizon_independence` |
 | 三轴能否同时成立 | 能；相关 + 独立 + 不可穷尽有同一有限见证 | `related_independent_nonExhaustible_are_jointly_consistent` |
 | 何时产生 A/B/C 冲突 | A、B、C 联合不可满足；任意两条有模型 | `minimal_conflict` |
@@ -82,9 +96,9 @@ FormalPhenomenology/
   Horizon/Basic.lean
   Horizon/Separation.lean
   Horizon/SituatedExcess.lean
-  Horizon/Conditioning.lean      # 相关视域 ≠ 条件化视域
+  Horizon/Conditioning.lean      # 相关/条件化分离 + 显式 capture→conditioning bridge
   Models/Finite.lean
-  Models/Conditioning.lean       # conditioning / excess / horizonless 分离与联合见证
+  Models/Conditioning.lean       # 分离、联合见证及 bridge 反模型审计
   Models/OpenHorizon.lean
   Models/HorizonExtension.lean
 Audit.lean
@@ -103,4 +117,4 @@ scripts/check.py
 
 ## 下一步
 
-首要硬门槛仍是**独立核对 Marion *Being Given* pp. 210–212、225–226 的原书正文**。形式层已经足够说明：相关视域、条件化、穷尽三者既不能互相偷换，也可以在一个明确 profile 中按“相关 + 不受条件化 + 不可穷尽”联合一致。下一轮优先继续突破合法原典访问门，并按 [PRIOR_ART.md](docs/PRIOR_ART.md) 先查重再决定是否需要任何新的 bridge，而不是继续无边界扩张模型。
+首要硬门槛仍是**独立核对 Marion *Being Given* pp. 210–212、225–226 的原书正文**。形式层现在不仅拆开相关视域、条件化、穷尽三者，还精确展示：没有 bridge 时 `Independent → NonExhaustible` 失败；加上 `ExhaustiveCaptureConditions` 后成立。下一轮应继续突破合法原典访问门，决定真实文本是否支持任何类似 bridge，而不是继续无边界扩张模型。

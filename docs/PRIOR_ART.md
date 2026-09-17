@@ -71,17 +71,17 @@ Isabelle/HOL 中已有计算形而上学的正式大规模案例，包括 AOT �
 
 **复用决定。** 当前 `HorizonConditioning` 保留，但只作为上述解释空间的中性接口；`Independent`、`NonExhaustible`、`HasHorizonlessAppearance` 继续保持互不定义。若后续原典要求它们之间有额外约束，必须新增显式 bridge，而不能用未受约束谓词的有限反模型宣称文本概念独立。
 
-## 4. 本轮拟新增命题的查重判断
+## 4. 上一轮联合 profile 的查重判断
 
-拟新增的最小命题是：存在一个模型，其中同一显现同时
+上一轮新增的最小命题是：存在一个模型，其中同一显现同时
 
 1. 有相关视域（`Structured`）；
 2. 不受任何 horizon 作为条件化关系（`Independent`）；
 3. 不被任何相关 horizon 穷尽（`NonExhaustible`）。
 
-在上述 Lean prior art、LogiKEy/AFP 方法基线及当前同题解释文献中，本轮未定位到与这三个**本项目自定义谓词**完全同型的现成声明。该结果本身只是把已有 `splitModel` 与 conditioning 层组合成一个**一致性见证**，逻辑内容很初等，不作为原创性主张。其价值是让 Murga 等文献提示的“horizon 仍在但不再先行限定”与本项目已有“非穷尽”轴可以在一个见证中同时出现，并明确显示还缺哪些文本 bridge。
+在上述 Lean prior art、LogiKEy/AFP 方法基线及当前同题解释文献中，未定位到与这三个**本项目自定义谓词**完全同型的现成声明。该结果本身只是把已有 `splitModel` 与 conditioning 层组合成一个**一致性见证**，逻辑内容很初等，不作为原创性主张。其价值是让 Murga 等文献提示的“horizon 仍在但不再先行限定”与本项目已有“非穷尽”轴可以在一个见证中同时出现，并明确显示还缺哪些文本 bridge。
 
-因此采用**本地最小实现**，不引入重型外部依赖；提交时必须将其描述为 neutral compatibility witness，而不是 saturated phenomenon 的定义或新哲学定理。
+因此采用**本地最小实现**，不引入重型外部依赖；提交时将其描述为 neutral compatibility witness，而不是 saturated phenomenon 的定义或新哲学定理。
 
 ## 5. 尚未闭合的外部/原典审计
 
@@ -93,3 +93,24 @@ Isabelle/HOL 中已有计算形而上学的正式大规模案例，包括 AOT �
 ## 6. 当前复用结论
 
 首个研究问题的形式层仍适合保持轻量 Lean Core 工程；现阶段没有理由为了基础存在量词/关系反模型引入 Mathlib、LogiKEy 或另一套 phenomenology 依赖。真正需要复用的是**方法与解释成果的归属**：明确引用已有 formal philosophy / formal phenomenology 工程，并把 related / conditioned / exhaustive 的区分定位为对已有 Marion horizon 争论的形式化，而非将其包装成从零发现。
+
+## 7. 本轮增量审计：从“穷尽”到“条件化”的显式桥
+
+本轮准备检验的不是新的现象学本体，而是一个精确的缺失前提：若某个**相关视域**已经穷尽模型中现象的全部侧面，是否应因此把该视域计作“条件化”该现象？代码把它命名为 `ExhaustiveCaptureConditions`：
+
+```text
+situated p h ∧ Exhausts p h  →  conditions p h
+```
+
+### 实际查重范围
+
+- 重新核对 `novaspivack/phenomenology-lean` 的固定 `main`：仍为 commit `75230e4eab333ad0fc47573747521ccc1a31a163`；上一轮已经逐文件审计其 manifestation/meta-theory 范围，本轮没有新的 horizon API 可复用。
+- GitHub 以 horizon / exhaust / phenomenon / condition 组合做代码检索，返回的主要是机器学习“long horizon”等同名噪声，没有定位到可复用的形式哲学声明。
+- 同题文本继续核对 Leung、Mason、Mackinlay、Murga：它们支持区分 horizon 的“相关/出现”与“可能性条件/先行限定”作用，却没有给出本项目上式这种从 extensional exhaustion 到 conditioning 的形式蕴含。
+- 新增一条**作者本人文本线索**：Jean-Luc Marion, “The Saturated Phenomenon,” *Philosophy Today* 40(1), 1996, pp. 103–124（DOI `10.5840/philtoday199640137`）。斯洛伐克科学院哲学研究所期刊 *Filozofia* 62(5), 2007, pp. 378–402 又刊有 Marion 的 “A Saturated Phenomenon”；其期刊页面公开摘要明确把 horizon 称作给予的 constitutive condition，并把 saturated phenomenon 描述为 intuition 的 surplus、unconditioned / irreducible 以及超出 intentional meaning。当前环境能直接查看该期刊页面与摘要，但 PDF 下载在本轮超时，所以没有把全文标成已读。
+
+### 复用决定
+
+`ExhaustiveCaptureConditions` 暂定为**项目内压力测试 bridge**，而不是 Marion 或 Merleau-Ponty 的文本归属。它的作用是回答一个纯逻辑问题：现有 `Independent → NonExhaustible` 之所以失败，究竟缺少哪类额外关系假设？在该 bridge 下，这个蕴含可以直接证明；原有 `closedIndependentConditioning` 则明确违反这个 bridge，从而显示它确实是额外前提而非定义展开。
+
+没有发现值得为这个初等 bridge 引入 Mathlib、LogiKEy 或外部 phenomenology 依赖的同型 API。若未来原典或同题研究给出更强、不同方向的 bridge，应保留本声明为压力测试并新增竞争编码，而不是反向把它归给哲学家。

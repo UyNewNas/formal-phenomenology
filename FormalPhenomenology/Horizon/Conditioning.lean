@@ -36,6 +36,15 @@ def ConditioningIsSituated (M : HorizonConditioning) : Prop :=
   ∀ p h, M.conditions p h → M.base.situated p h
 
 /--
+A pressure-test bridge: if a horizon is related to a phenomenon and exhausts
+all of its encoded aspects, then that horizon counts as conditioning the
+phenomenon.  This is deliberately an explicit hypothesis, not an attribution
+to Marion or Merleau-Ponty.
+-/
+def ExhaustiveCaptureConditions (M : HorizonConditioning) : Prop :=
+  ∀ p h, M.base.situated p h → M.base.Exhausts p h → M.conditions p h
+
+/--
 There is an appearing phenomenon which has a related horizon but is independent
 of every horizon admitted as a conditioning relation.
 -/
@@ -82,6 +91,30 @@ theorem conditioningIsSituated_notStructured_implies_independent
     (p : M.base.Phenomenon) (hn : ¬ M.base.Structured p) : M.Independent p := by
   intro h hh
   exact hn ⟨h, hc p h hh⟩
+
+/--
+With the exhaustive-capture bridge made explicit, independence does imply
+non-exhaustibility.  The proof isolates exactly the premise missing from the
+otherwise invalid implication.
+-/
+theorem exhaustiveCaptureConditions_independent_implies_nonExhaustible
+    (M : HorizonConditioning) (hb : M.ExhaustiveCaptureConditions)
+    (p : M.base.Phenomenon) (hi : M.Independent p) :
+    M.base.NonExhaustible p := by
+  intro h hs he
+  exact hi h (hb p h hs he)
+
+/--
+An appearing structured-independent witness becomes a non-vacuous situated
+excess witness under the same explicit bridge.
+-/
+theorem exhaustiveCaptureConditions_structuredIndependent_implies_situatedExcess
+    (M : HorizonConditioning) (hb : M.ExhaustiveCaptureConditions)
+    (hs : M.HasStructuredIndependentAppearance) :
+    M.base.HasSituatedExcess := by
+  obtain ⟨p, hp, hstruct, hi⟩ := hs
+  exact ⟨p, hp, hstruct,
+    exhaustiveCaptureConditions_independent_implies_nonExhaustible M hb p hi⟩
 
 /-- The joint profile contains the previously separated structured-independent profile. -/
 theorem situatedIndependentExcess_implies_structuredIndependentAppearance
