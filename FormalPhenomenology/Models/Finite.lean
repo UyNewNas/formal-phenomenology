@@ -1,4 +1,4 @@
-import FormalPhenomenology.Horizon.Separation
+import FormalPhenomenology.Horizon.SituatedExcess
 
 set_option autoImplicit false
 
@@ -29,6 +29,10 @@ theorem splitModel_excess : splitModel.HasExcess := by
   | true =>
     have bad : false = true := he false True.intro
     cases bad
+
+theorem splitModel_situatedExcess : splitModel.HasSituatedExcess := by
+  exact structure_and_excess_implies_situatedExcess
+    splitModel splitModel_structure splitModel_excess
 
 theorem splitModel_individual : splitModel.IndividuallyCoverable () := by
   intro a _
@@ -94,5 +98,25 @@ theorem individual_cover_does_not_imply_capture :
   cases p
   exact (nonExhaustible_iff_not_captured splitModel ()).mp hn
     (h splitModel () splitModel_individual)
+
+/--
+The first research question, stated model-theoretically: universal horizon
+structure alone does not entail the closure bridge. The split model is a
+finite counterexample with an actually situated excess witness.
+-/
+theorem horizon_structure_does_not_entail_closure :
+    ¬ (∀ M : Presentation, M.UniversalStructure → M.ClosureBridge) := by
+  intro h
+  exact situatedExcess_refutes_closureBridge splitModel splitModel_situatedExcess
+    (h splitModel splitModel_structure)
+
+/--
+Non-exhaustibility need not be produced by a horizonless appearance. This
+finite witness has situated excess and no horizonless appearing phenomenon.
+-/
+theorem situated_excess_need_not_be_horizonless :
+    ∃ M : Presentation, M.HasSituatedExcess ∧ ¬ M.HasHorizonlessAppearance := by
+  exact ⟨splitModel, splitModel_situatedExcess,
+    structure_excludes_horizonless splitModel splitModel_structure⟩
 
 end FormalPhenomenology
