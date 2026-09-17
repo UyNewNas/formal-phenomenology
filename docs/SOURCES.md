@@ -1,6 +1,6 @@
 # 来源与阅读状态
 
-检索／核查日期：2026-09-17。这里严格区分书目元数据、作者本人正文、研究文献和仍待直接核查的目标书页。逐段工作卡见 [PASSAGE_CARDS.md](PASSAGE_CARDS.md)，Marion 1996 作者文本见 [MARION_1996_PRIMARY.md](MARION_1996_PRIMARY.md)，英法目标页交叉见 [MARION_VERSION_CROSSWALK.md](MARION_VERSION_CROSSWALK.md)，重印与合法访问路径见 [MARION_REPRINT_PROVENANCE.md](MARION_REPRINT_PROVENANCE.md)，外部形式化与方法先例见 [PRIOR_ART.md](PRIOR_ART.md)。
+检索／核查日期：2026-09-17。这里严格区分书目元数据、作者本人正文、研究文献和仍待直接核查的目标书页。逐段工作卡见 [PASSAGE_CARDS.md](PASSAGE_CARDS.md)，Marion 1996 作者文本见 [MARION_1996_PRIMARY.md](MARION_1996_PRIMARY.md)，英法目标页交叉见 [MARION_VERSION_CROSSWALK.md](MARION_VERSION_CROSSWALK.md)，2013 分页纠正见 [MARION_2013_PAGINATION_CORRECTION.md](MARION_2013_PAGINATION_CORRECTION.md)，重印与合法访问路径见 [MARION_REPRINT_PROVENANCE.md](MARION_REPRINT_PROVENANCE.md)，外部形式化与方法先例见 [PRIOR_ART.md](PRIOR_ART.md) 及本轮增量 [PRIOR_ART_2013_PAGINATION.md](PRIOR_ART_2013_PAGINATION.md)。
 
 ## 1. 已固定的 Merleau-Ponty 原典
 
@@ -31,9 +31,11 @@ Jean-Luc Marion, *Being Given: Toward a Phenomenology of Givenness*, translated 
 - Fordham University Press / De Gruyter Brill 2013 *The Essential Writings* 的正式章节页确认 Marion 本人 `Sketch of the Saturated Phenomenon` pp. 108–134，但当前页面仍不开放正文；状态保持 **PRIMARY-PUBLISHER-METADATA / ALTERNATE-REPRINT-PATH**。
 - Dermot Moran 的作者公开稿明确登记 *Being Given* `Sketch` pp. 199–221 重印于 Moran / Embree 编 *Phenomenology: Critical Concepts*（Routledge, 2004）, vol. 4, pp. 5–28；Routledge 官方产品页与 Google Books/Taylor & Francis 元数据独立确认该正式出版物。状态记为 **SECONDARY-EXACT-REPRINT-PROVENANCE + PUBLISHER-METADATA**。当前仍未合法暴露重印正文，所以不满足 direct-primary 停止门。
 
-Google Books 另有 1997 PUF 版书目页（ISBN 2130486770 / 9782130486770，452 页）并显示书内索引/常用词，包括 `horizon`、`intuition`、`intentionnalité`、`manifestation` 与 `phénomène saturé`，但仍没有向当前环境开放目标页正文，因此只记为 **PRIMARY-METADATA / INDEX**，不升级为 direct primary passage。
+Google Books 另有 1997 PUF 版书目页（ISBN 2130486770 / 9782130486770，约 452 页）并显示书内索引/常用词，包括 `horizon`、`intuition`、`intentionnalité`、`manifestation` 与 `phénomène saturé`，但仍没有向当前环境开放目标页正文，因此只记为 **PRIMARY-METADATA / INDEX**，不升级为 direct primary passage。
 
-多条学术双版本引注已把 direct-primary 搜索范围显著收窄：BG pp. 209–212 对应的目标法文段落集中于 ED pp. 292–297；BG pp. 225–226 集中于 ED pp. 314–315。详细证据见 [MARION_VERSION_CROSSWALK.md](MARION_VERSION_CROSSWALK.md)。这些仍是 **SECONDARY-EXACT-CROSSWALK**，不等于直接读过 Marion 原页。
+多条学术双版本引注已把**1997 / 早期分页轨道**的 direct-primary 搜索范围显著收窄：BG pp. 209–212 对应 ED pp. 292–297；BG pp. 225–226 对应 ED pp. 314–315。详细证据见 [MARION_VERSION_CROSSWALK.md](MARION_VERSION_CROSSWALK.md)。这些仍是 **SECONDARY-EXACT-CROSSWALK**，不等于直接读过 Marion 原页。
+
+重要版本纠正：2013 PUF Quadrige（ISBN `9782130624813`）是明确标为第四版、修订／校订增订的 533 页版本，不能把上述 1997 页码直接移植到 2013。此前 Cairn 2013 p. 295 的 direct-indexed 页面现在保持 **PRIMARY-DIRECT-INDEXED-BOOK-PAGE**，但同时标记 **UNMAPPED-TO-BG-TARGET**；不再称作 BG p. 211 / 历史 ED p. 295 的“同页号 corroboration”。
 
 ## 3. PRIMARY：Marion 1996 “The Saturated Phenomenon”
 
@@ -77,7 +79,7 @@ Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378�
 
 ### S-JM3 — Shane Mackinlay
 
-*Interpreting Excess: Jean-Luc Marion, Saturated Phenomena, and Hermeneutics*。除解释 horizon 限制与 intentional expectation 外，项目利用其 BG/ED 双版本引注建立页码交叉：包括 BG 209 / ED 292、BG 211 / ED 295、BG 225 / ED 314、BG 226 / ED 315 等邻近锚点。状态：**SECONDARY-EXACT-CROSSWALK**。
+*Interpreting Excess: Jean-Luc Marion, Saturated Phenomena, and Hermeneutics*。除解释 horizon 限制与 intentional expectation 外，项目利用其 BG/ED 双版本引注建立页码交叉：包括 BG 209 / ED 292、BG 211 / ED 295、BG 225 / ED 314、BG 226 / ED 315 等邻近锚点。这里的 ED 页码属于 1997 / 早期分页轨道。状态：**SECONDARY-EXACT-CROSSWALK**。
 
 ### S-JM4 — Dermot Moran (2008)
 
@@ -93,21 +95,33 @@ Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378�
 
 “L’horizon et le destin de la phénoménologie,” *Philosophiques* 45(2), 343–364, DOI `10.7202/1055267ar`。Érudit 的开放索引／全文检索直接返回论文正文片段与期刊页码。Djian 在讨论 *Étant donné* §21–22 时，把 horizon 分析为 phenomenality 的 possibility-condition 和对 intuition 的限制，并引用 ED pp. 304–305 来说明 horizon 与 I 作为限制 donation 的两项条件。
 
-用途：这是比一般二手概述更贴近本项目首问的同题 prior art。它进一步说明 `conditions` 轴是在形式化一个既有解释问题，而不是项目新发现；但 Djian 没有给出 `situated ∧ Exhausts → conditions` 的 extensional bridge，所以不能替代 `ExhaustiveCaptureConditions` 的解释审查。**页码交叉纠正了一处潜在混淆：ED 304–305 是稍后的同题段落，不是 BG 211–212 的法文对应页；目标 §21 段落主要对应 ED 292–297。**
+用途：这是比一般二手概述更贴近本项目首问的同题 prior art。它进一步说明 `conditions` 轴是在形式化一个既有解释问题，而不是项目新发现；但 Djian 没有给出 `situated ∧ Exhausts → conditions` 的 extensional bridge，所以不能替代 `ExhaustiveCaptureConditions` 的解释审查。**页码交叉纠正了一处潜在混淆：ED 304–305 是稍后的同题段落，不是 BG 211–212 的法文对应页；目标 §21 段落在 1997 / early-pagination 轨道主要对应 ED 292–297。**
 
 ### S-JM7 — Adam S. Miller (2008)
 
-*Badiou, Marion and St Paul: Immanent Grace*, Continuum, 2008, ISBN 9780826498700。Bloomsbury 官方产品页确认书目与专章 “Givenness and Saturation”。可检索文本中的双版本引注给出：BG 209–210 / ED 293、BG 210 / ED 293–294、BG 211 / ED 295、BG 212 / ED 296–297。用途：作为 §21 的 **SECONDARY-EXACT-CROSSWALK**，与 Mackinlay 独立交叉；不作为 Marion primary text。
+*Badiou, Marion and St Paul: Immanent Grace*, Continuum, 2008, ISBN 9780826498700。Bloomsbury 官方产品页确认书目与专章 “Givenness and Saturation”。可检索文本中的双版本引注给出：BG 209–210 / ED 293、BG 210 / ED 293–294、BG 211 / ED 295、BG 212 / ED 296–297。用途：作为 §21 的 **SECONDARY-EXACT-CROSSWALK**，与 Mackinlay 独立交叉；这里同样是 1997 / early-pagination 轨道，不作为 Marion primary text。
 
 ### S-JM8 — Anthony J. Steinbock (2010；公开译载 2009)
 
 “The Poor Phenomenon: Marion and the Problem of Givenness,” 收于 Bruce Ellis Benson / Norman Wirzba 编 *Words of Life: New Theological Turns in French Phenomenology*, Fordham University Press, 2010, pp. 120–132，DOI `10.1515/9780823293605-009`。De Gruyter/Fordham 元数据确认出版信息；Ostium 公开译载说明译自英文原文并经作者许可，保留 ED/BG 双版本脚注。
 
-其双版本引注给出 ED 314–329 / BG 225–237 的整体范围，并明确 ED 314 / BG 225、ED 315 / BG 226、ED 316 / BG 227；至少一处脚注直接写为 `Étant donné, p. 315; Being Given, p. 226`。用途：将 §23 的目标 direct-primary 搜索范围收窄到 **ED 314–315**。状态：**SECONDARY-EXACT-CROSSWALK**。
+其双版本引注给出 ED 314–329 / BG 225–237 的整体范围，并明确 ED 314 / BG 225、ED 315 / BG 226、ED 316 / BG 227；至少一处脚注直接写为 `Étant donné, p. 315; Being Given, p. 226`。用途：将 §23 的历史 direct-primary 搜索范围收窄到 **ED 314–315**。状态：**SECONDARY-EXACT-CROSSWALK**。
 
 ### S-JM9 — Fanny Lederlin (2023)
 
 *Que peut la critique ?*, Université Paris Cité 博士论文。官方大学 PDF 已直接查看；相关页脚注短引 ED p. 305，语境说明 intentional aiming 不能在 horizon 之外实行。用途：确认 ED 304–305 的主题位置并支持 conditioning 解释，但同时帮助排除“ED 304–305 = BG 211–212 counterpart”的误读。状态：**SECONDARY-EXACT**。
+
+### S-JM10 — Irina Schulzki (2015)：2013 分页精确锚点
+
+“Love at Loss: Jean-Luc Marion’s Concept of Erotic Reduction and Paul Thomas Anderson’s *Magnolia*,” 2015, pp. 145–172。ResearchGate 暴露的 HTML 可检索全文本轮已直接读取；页面虽以 `(PDF)` 标题展示，本轮没有取得／分析 PDF page image，因此不冒充 PDF screenshot review。
+
+本文在正文中引用 Kosky 英译，并在脚注给出 *Étant donné* 2013 法文原句和页码；书目明确登记 `Étant donné ... PUF, 2013 [1997]`。可核查锚点至少包括：
+
+- Kosky p. 198 ↔ ED 2013 p. 327；
+- Kosky p. 217 ↔ ED 2013 pp. 355–356 邻域，其中 `témoin` 不能总体看见过剩给予的法文短引明确落 p. 356；
+- Kosky p. 225 ↔ ED 2013 p. 370，法文为 intuition 先于、超过并去中心化 intention 的核心句。
+
+用途：建立独立的 **2013 pagination track**，并撤回“2013 p. 295 因页码同为 295 就 corroborate 历史 BG p. 211 ↔ ED p. 295”的错误倾向。它不允许拟合固定页码偏移。状态：**SECONDARY-EXACT-CROSSWALK (2013 pagination)**。详见 [MARION_2013_PAGINATION_CORRECTION.md](MARION_2013_PAGINATION_CORRECTION.md)。
 
 ### S-MPJ1 — Ericson Falabretti (2015/2016)
 
@@ -123,14 +137,14 @@ Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378�
 
 ## 6. 段落卡与证据状态
 
-当前 `PASSAGE_CARDS.md` 的 8 张原有工作卡保持：Merleau-Ponty 5 张 `reviewed`；*Being Given* 3 张仍为 `proposed-secondary`。Marion 1996 primary evidence 单列在 `MARION_1996_PRIMARY.md`；BG/ED 页码链单列在 `MARION_VERSION_CROSSWALK.md`；重印来源单列在 `MARION_REPRINT_PROVENANCE.md`；Falabretti 的比较 prior art 单列在 `FALABRETTI_COMPARISON.md`，避免把 secondary comparison、reprint provenance 和 primary passage card 混用。
+当前 `PASSAGE_CARDS.md` 的 8 张原有工作卡保持：Merleau-Ponty 5 张 `reviewed`；*Being Given* 3 张仍为 `proposed-secondary`。Marion 1996 primary evidence 单列在 `MARION_1996_PRIMARY.md`；BG/ED 历史与 2013 分页轨道单列在 `MARION_VERSION_CROSSWALK.md`；2013 纠错与解释影响单列在 `MARION_2013_PAGINATION_CORRECTION.md`；重印来源单列在 `MARION_REPRINT_PROVENANCE.md`；Falabretti 的比较 prior art 单列在 `FALABRETTI_COMPARISON.md`，避免把 secondary comparison、reprint provenance 和 primary passage card 混用。
 
 ## 7. A、B、C 与 conditioning 轴的当前判定
 
 - **A / `UniversalStructure`**：Merleau-Ponty 有直接证据支持，但当前 Lean 是非常弱的存在量词压缩。
 - **B / `ClosureBridge`**：不对应已核查 Merleau-Ponty 段落；文本方向反而是开放、未完成和不穷尽。B 只保留为压力测试前提。
 - **C / `HasExcess` / `NonExhaustible`**：可作为 excess 的弱模型影子，但 Marion 1996 primary text 明确展示多个 horizon 关系层次，完整 saturation 不能等同于 C。
-- **`HorizonConditioning.Independent`**：作为“不以 horizon 的先行限定／可能性条件来规定显现”的弱接口，现在不仅有二手研究动机，还有 Marion 1996 作者本人 primary text 支持其方向；Djian 2018 又提供 *Étant donné* 解释层的独立同题 prior art。它仍不是完整 `Saturated` 定义。
+- **`HorizonConditioning.Independent`**：作为“不以 horizon 的先行限定／可能性条件来规定显现”的弱接口，现在不仅有二手研究动机，还有 Marion 1996 作者本人 primary text 支持其方向；Djian 2018 又提供 *Étant donné* 解释层的独立同题 prior art。2013 p. 295 只能作为未映射的独立书本 primary-indexed 旁证，不再承担 BG p. 211 版本确认。它仍不是完整 `Saturated` 定义。
 - **`HasHorizonlessAppearance`**：Marion 1996 p. 117 直接反对把一般取消 horizon 当作目标；Falabretti p. 98 的 “no horizon” 是竞争 secondary reading，而不是足以推翻 primary-text boundary 的证据。因此它仍不应作为默认 saturation 编码。
 - **`ExhaustiveCaptureConditions`**：仍是 MODEL/QUESTION。没有 primary text 或同题研究给出 `situated ∧ Exhausts → conditions` 这条 extensional bridge；点态与显现域逻辑等价说明，它只是比“在相应量词域排除 `Captured ∧ Independent`”更强的一种结构化充分机制。
 
@@ -140,11 +154,18 @@ Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378�
 
 ## 9. 当前硬门槛
 
-Marion 1996 作者原文已经使首问的解释空间明显收缩，Djian 2018 又把 *Étant donné* 中 horizon-as-condition 的解释角色进一步固定；Miller / Mackinlay / Steinbock 的双版本引注把版本核对范围缩小。Falabretti 固定了**比较研究本身已有 prior art**。本轮又把合法来源工程收窄到两条正式重印路径：Fordham 2013 作者文集与 Routledge 2004 vol. 4；后者已有明确 reprint provenance。但当前都没有向研究环境开放目标正文，所以仍不能代替 target-page direct review。
+Marion 1996 作者原文已经使首问的解释空间明显收缩；Djian 2018 又把 *Étant donné* 中 horizon-as-condition 的解释角色进一步固定；Miller / Mackinlay / Steinbock 的双版本引注把**早期分页**核对范围缩小；Falabretti 固定了比较研究本身已有 prior art；正式重印 provenance 提供合法替代路线。
 
-停止门仍未通过，但现在可精确写成：合法直接查看 BG pp. 209–212、225–226，**或者**直接查看对应法文 ED pp. **292–297、314–315**，或者在已确认的正式重印中直接找到对应文本锚点并与 BG/ED crosswalk 互证；随后逐段核对 1996 论证在书本版本中的重写、顺序和术语。
+本轮的版本纠正进一步要求停止门分轨：
 
-在此之前，可以把 `Independent` 视为有 primary-text 动机的**弱候选接口**，但不能把 `Independent`、`NonExhaustible`、`Captured` 或它们的 conjunction 命名为 Marion 的完整 saturated phenomenon。
+- **BG**：直接查看 pp. 209–212、225–226；
+- **ED 1997 / early pagination**：直接查看 pp. 292–297、314–315；
+- **ED 2013 Quadrige**：不能再套用早期页码。Schulzki 提供 BG p. 198 ↔ p. 327、BG p. 217 ↔ pp. 355–356、BG p. 225 ↔ p. 370；因此 §21 目前只有约 p. 328–355 的 `ORDER-BOUND SEARCH WINDOW`（前提是修订版保持相关论证顺序），而 §23 的 p. 225 核心句有 p. 370 的 secondary exact anchor；
+- **正式重印**：直接取得对应正文，并与 BG / ED 文本锚点互证。
+
+Cairn 2013 p. 295 单独保持 `PRIMARY-DIRECT-INDEXED-BOOK-PAGE + UNMAPPED-TO-BG-TARGET`，**不计入指定目标页完成度**。
+
+在 direct-primary context 足够之前，可以把 `Independent` 视为有 primary-text 动机的**弱候选接口**，但不能把 `Independent`、`NonExhaustible`、`Captured` 或它们的 conjunction 命名为 Marion 的完整 saturated phenomenon。
 
 ## 10. 工具来源
 

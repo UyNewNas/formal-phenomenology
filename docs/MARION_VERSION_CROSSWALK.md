@@ -2,114 +2,155 @@
 
 核查日期：2026-09-17。
 
-本页只处理首个研究问题的**版本定位**：把 Jeffrey L. Kosky 英译本 *Being Given*（Stanford UP, 2002，简称 BG）的目标页，与法文 *Étant donné*（PUF，简称 ED）的对应段落范围尽可能精确地交叉定位。
+本页只处理首个研究问题的**版本定位**：把 Jeffrey L. Kosky 英译 *Being Given*（简称 BG）的目标页，与法文 *Étant donné*（简称 ED）的对应段落尽可能精确地交叉定位。
 
-它不是原典正文的替代品。除非另行标为 PRIMARY，本页的 BG/ED 配对来自学术研究中的**双版本精确引注**，状态统一记为 **SECONDARY-EXACT-CROSSWALK**。这种证据足以缩小需要合法直接核对的法文页段，但不能把二手引文升级成“原书已直接阅读”。本轮新增一个例外：Cairn/PUF 的公开索引直接返回 ISBN `9782130624813` 的 2013 *Étant donné* p. 295 作者正文片段，状态单列为 **PRIMARY-DIRECT-INDEXED-BOOK-PAGE**；由于 2013 与 1997 版的页码连续性尚未独立核验，它只作为同页号 primary corroboration，不取代原有跨版本交叉。
+关键版本纪律：**ED 1997/早期 Epiméthée 分页与 ED 2013 Quadrige 分页必须分成两条独立轨道。** 2013 版的公开元数据明确标为第四版、校订／修订增订版，533 页；1997 版公开书目约 452 页。上一轮把 2013 p. 295 称作历史 `BG 211 ↔ ED 295` 的“同页号 primary corroboration”，本轮正式撤回这一表述。数字相同不能证明跨版对应。
 
-## 1. 目标页的当前交叉表
+除另行标为 PRIMARY 外，本页的页码配对来自学术研究中的**双版本精确引注**，状态记为 **SECONDARY-EXACT-CROSSWALK**。这种证据足以缩小合法 direct-primary 核查范围，但不能冒充“原书目标页已直接阅读”。
 
-| BG 2002 | ED 1997/后续同页码引用 | 内容定位 | 交叉依据 | 状态 |
+## 1. 历史交叉轨道：BG ↔ ED 1997 / 早期分页
+
+Miller、Mackinlay、Steinbock 等使用的 ED 页码属于 1997 原书／早期引用传统。该轨道目前保持：
+
+| BG / Kosky 英译 | ED 1997 / 早期分页 | 内容定位 | 交叉依据 | 状态 |
 |---|---|---|---|---|
-| pp. 209–210 | p. 293 | 第一种 horizon saturation；intuition 充满 horizon | Adam S. Miller；Shane Mackinlay 的双版本引注 | SECONDARY-EXACT-CROSSWALK |
+| pp. 209–210 | p. 293 | 第一种 horizon saturation；intuition 充满 horizon | Adam S. Miller；Shane Mackinlay | SECONDARY-EXACT-CROSSWALK |
 | p. 210 | pp. 293–294 | 第二种情形：越过单一 horizonal delimitation，并以多个 horizons 接纳同一 saturated phenomenon | Miller；Mackinlay | SECONDARY-EXACT-CROSSWALK |
-| p. 211 | p. 295 | 第三种／“rare but inevitable”情形；多个 horizon 的组合也可能不足；同页还处于 horizon-as-condition / non-dependence 论证邻域 | Miller；Mackinlay；另有 Cairn/PUF 2013 p. 295 direct-indexed primary corroboration | SECONDARY-EXACT-CROSSWALK + PRIMARY-DIRECT-INDEXED-BOOK-PAGE（2013；版本连续性待核） |
+| p. 211 | p. 295 | 第三种／“rare but inevitable”情形；多个 horizon 的组合也可能不足；horizon-as-condition / non-dependence 论证邻域 | Miller；Mackinlay | SECONDARY-EXACT-CROSSWALK |
 | p. 212 | pp. 296–297 | §21 尾部到 modality 分类的过渡 | Miller | SECONDARY-EXACT-CROSSWALK |
-| p. 225 | p. 314（局部句子可延伸至下一法文页） | intuition surplus / §23 的对象与给予结构 | Mackinlay；Steinbock 的邻近双版本引注 | SECONDARY-EXACT-CROSSWALK |
-| p. 226 | p. 315 | passive synthesis / intention 与 intuition、constitution 的邻近讨论 | Steinbock 两处脚注；其他带双版本页码研究的独立旁证 | SECONDARY-EXACT-CROSSWALK |
+| p. 225 | p. 314（局部句子可延伸至下一法文页） | intuition surplus / §23 的对象与给予结构 | Mackinlay；Steinbock | SECONDARY-EXACT-CROSSWALK |
+| p. 226 | p. 315 | passive synthesis / intention、intuition、constitution 邻域 | Steinbock；其他双版本引注 | SECONDARY-EXACT-CROSSWALK |
 | p. 227 | p. 316 | §23 邻页锚点，用于验证连续性 | Steinbock | SECONDARY-EXACT-CROSSWALK |
 
-这里不主张“英语每一页恰好等于法语每一页”。配对是**段落／论证单位的定位**：一句跨页时会同时涉及两个法文页，翻译排版也不会保持逐页一一对应。
+这里从未主张“英语每一页等于法语每一页”；配对是段落／论证单位的定位，一句跨页时可能涉及两个法文页。
 
-## 2. §21：BG 209–212 的法文范围现在可收窄到 ED 292–297
+### 1.1 §21：BG 209–212 的历史法文目标仍是 ED 292–297
 
-Adam S. Miller, *Badiou, Marion and St Paul: Immanent Grace*（Continuum, 2008）的 Marion 章节给出密集的 BG/ED 双版本引注：
+Adam S. Miller, *Badiou, Marion and St Paul: Immanent Grace*（2008）给出密集 BG/ED 双版本引注：
 
 - 第一种 saturation：BG 209–210 / ED 293；
 - 第二种 saturation：BG 210 / ED 293–294；
 - 第三种 saturation：BG 211 / ED 295；
 - 随后的 modality 分类：BG 212 / ED 296–297。
 
-Shane Mackinlay, *Interpreting Excess* 又独立给出 BG 209 / ED 292、BG 211 / ED 295 等锚点，并重述同一 horizon 结构。
+Shane Mackinlay 又独立给出 BG 209 / ED 292、BG 211 / ED 295 等锚点。因此若取得 1997/早期分页的合法原书，首问 §21 的 direct-primary 搜索范围仍可集中在 **ED 292–297**，核心三种 horizon saturation 主要落在 **ED 293–295**。
 
-因此，若以后取得合法可直接查看的法文原书，首问 §21 的实际 direct-page gate 不再是模糊地搜索整个章节，而可以集中在 **ED pp. 292–297**；其中 horizon 的三种 saturation 结构主要落在 **ED pp. 293–295**。
+### 1.2 §23：BG 225–226 的历史法文目标仍是 ED 314–315
 
-### 2.1 新增：Cairn/PUF 2013 p. 295 的直接索引正文
+Anthony J. Steinbock 的双版本脚注给出 ED 314–329 / BG 225–237 的整体范围，并明确给出 ED 314 / BG 225、ED 315 / BG 226、ED 316 / BG 227。Mackinlay 也使用 BG 225 / ED 314 作为 intuition-surplus 锚点。因此历史分页的 direct-primary 目标仍可写成 **ED 314–315**，ED 316 只作邻页连续性检查。
 
-本轮针对精确页入口 `https://shs.cairn.info/etant-donne--9782130624813-page-295` 做合法访问核查。公开搜索索引直接返回 Jean-Luc Marion 的书本正文片段并定位到 p. 295；可见文本锚点包括 `sature l'horizon`、`aucun horizon`，以及 saturated phenomenon 不依赖 horizon 的表述，搜索上下文同时把 horizon 放在 possibility-condition 语境中。
+## 2. 2013 Quadrige 必须建立独立分页轨道
 
-这把证据层级从“BG/ED 二手页码交叉”推进到**书本正文 direct-indexed primary corroboration**。但直接打开页面及 PDF 入口时当前环境返回 HTTP 403，所以没有 page-image review，也没有完整页上下文。
+2013 PUF Quadrige 版 ISBN `9782130624813` 的元数据现在有两个独立来源：
 
-更重要的是，该 Cairn 条目对应 ISBN `9782130624813` 的 **2013 PUF Quadrige 版**。Miller / Mackinlay 的历史 crosswalk 所用 ED 页码来自 1997 原版及后续引用传统。没有逐版页码／文本锚点核验前，本项目不会用“数字同为 295”代替版本连续性证明。因此：
+- E.Leclerc：`4e édition corrigée et augmentée`，533 页；并列出合法 Electre `Feuilletage`；
+- Decitre：`4e édition revue et augmentée`，533 页。
 
-- `BG 211 ↔ ED 295` 仍由 `SECONDARY-EXACT-CROSSWALK` 建立；
-- 2013 p. 295 另记 `PRIMARY-DIRECT-INDEXED-BOOK-PAGE`；
-- 两者互相加强定位可信度，但不合并成“1997 原页已直接阅读”。
+1997 版公开书目记录约 452 页。因而 2013 是明显重新分页的修订增订版；不能把早期 ED 页码直接复制到 2013。
 
-详细证据与解释影响见 [MARION_2013_CAIRN_PAGE295.md](MARION_2013_CAIRN_PAGE295.md)。
+### 2.1 新发现的 2013 精确锚点：Schulzki 2015
 
-## 3. §23：BG 225–226 的法文范围现在可收窄到 ED 314–315
+Irina Schulzki, “Love at Loss: Jean-Luc Marion’s Concept of Erotic Reduction and Paul Thomas Anderson’s *Magnolia*” (2015) 的公开全文同时使用 Kosky 英译 *Being Given* 与法文 *Étant donné* 2013，并在脚注给出法文原句页码。其书目明确登记：
 
-Anthony J. Steinbock, “The Poor Phenomenon: Marion and the Problem of Givenness” 的公开译载／学术版本保留双版本脚注，其中明确给出：
+`Jean-Luc Marion, Étant donné: Essai d'une phénoménologie de la donation. Paris: Presses universitaires de France, 2013 [1997].`
 
-- ED 314–329 / BG 225–237 作为该段整体范围；
-- ED 314 / BG 225；
-- ED 315 / BG 226；
-- ED 316 / BG 227；
-- 另有 `Étant donné, p. 315; Being Given, p. 226` 的精确脚注。
+当前可直接核查的至少三条锚点：
 
-Mackinlay 也使用 BG 225 / ED 314 作为 intuition-surplus 讨论的双版本锚点。因此首问的 §23 direct-page gate 可以精确写成 **ED pp. 314–315**（并以 ED 316 作为邻页连续性检查），而不必把整个 §23 都纳入首问停止条件。
+| Kosky 英译 | ED 2013 | 内容锚点 | 状态 |
+|---|---:|---|---|
+| p. 198 | p. 327 | `l’intuition ne s’expose plus dans le concept...` / intuition saturation 段落 | SECONDARY-EXACT-CROSSWALK |
+| p. 217 | pp. 355–356 邻域 | `témoin`；法文短引 `ne voit pas en totalité...` 明确标 p. 356 | SECONDARY-EXACT-CROSSWALK |
+| p. 225 | p. 370 | `l’intuition subvertit, donc précède toute intention qu’elle déborde et décentre...` | SECONDARY-EXACT-CROSSWALK |
 
-## 4. 一个重要纠正：ED 304–305 不是 BG 211–212 的对应页
+这组锚点有两个作用：
 
-Djian 2018 对 ED pp. 304–305 的引用非常有价值：它支持 horizon 与 I 作为 possibility-conditions、以及 horizon 对 donation / intentionality 的先行限制这一解释。但是根据上面的双版本页码链，**ED 304–305 并不是 BG 211–212 的法文对应页**。
+1. **直接打破“2013 p. 295 = 历史 ED p. 295”的页码同一假设。** 至少不能再以页码数字相等本身作为任何版本论证；
+2. 给 2013 版提供新的合法导航轨道，而不需要线性猜偏移。
 
-这两类证据必须分开：
+它们不允许建立固定差值：BG 198 → 2013 p. 327、BG 217 → p. 356、BG 225 → p. 370 的间距本身就说明不应做简单线性换算。
 
-- BG 209–212 的目标 horizon-saturation 段落：主要对应 ED 292–297；
-- ED 304–305：是稍后的同题段落，为 `conditions` 轴提供解释 prior art，但不能冒充目标 §21 页的法文镜像。
+### 2.2 对 §21 的 2013 导航：只有顺序窗口，还没有精确页
 
-Fanny Lederlin 2023 的 Université Paris Cité 博士论文直接短引 ED p. 305：其语境强调 intentional aiming 不能在 horizon 之外实行。这个证据进一步固定 ED 305 的主题位置，但仍是 **SECONDARY-EXACT**，不是 primary-page review。
+Kosky p. 198 已被 Schulzki 锚到 2013 p. 327；Kosky p. 217 的相关文本落在 2013 pp. 355–356。BG pp. 209–212 位于这两个英译位置之间。
 
-## 5. 来源与访问状态
+因此，**若** 2013 增订版在该段保持原论证顺序，则 BG 209–212 的对应文本应在 2013 p. 327 之后、p. 356 之前寻找。仓库只把它记作：
 
-### Cairn / PUF 2013 p. 295
+> **ORDER-BOUND SEARCH WINDOW：约 p. 328–355；不是精确 crosswalk。**
 
-Jean-Luc Marion, *Étant donné : essai d'une phénoménologie de la donation*, PUF, Quadrige, 2013，ISBN `9782130624813`。公开书目元数据确认作者、PUF 与 2013 版本。Cairn 精确页入口的搜索索引直接暴露 p. 295 作者正文，但页面／PDF 本轮均因 HTTP 403 未能展开。因此状态为 **PRIMARY-DIRECT-INDEXED-BOOK-PAGE**，不是 `PRIMARY-DIRECT-PAGE`。
+不能用这个窗口替代 direct-primary，也不能据此线性推出具体页码。
 
-### Adam S. Miller
+### 2.3 对 §23 的 2013 导航：核心 p. 225 句已精确锚到 p. 370
 
-*Badiou, Marion and St Paul: Immanent Grace*, Continuum, 2008, ISBN 9780826498700。Bloomsbury 官方产品页确认作者、书名、出版信息与专章 “Givenness and Saturation”。本项目使用可检索文本中的 BG/ED 双版本引注作页码交叉；没有把该可检索副本当成 Marion 原典。
+Schulzki 正文引用 Kosky p. 225 的核心句，脚注给出相应法文原句并标 `Marion, 2013: 370`。因此：
 
-### Shane Mackinlay
+- BG p. 225 的核心 intuition/intention 句 ↔ ED 2013 p. 370：**SECONDARY-EXACT-CROSSWALK**；
+- BG p. 226 的继续段落仍需新的 2013 精确锚点或 direct-primary 阅读；
+- 历史 ED 314–315 仍属于 1997/早期分页，不得写成 2013 页码。
 
-*Interpreting Excess: Jean-Luc Marion, Saturated Phenomena, and Hermeneutics*。其双版本引注用于对 Miller 的 §21 页码链和 §23 个别锚点做独立交叉。
+## 3. Cairn 2013 p. 295：保留 primary 状态，撤销目标页对应
 
-### Anthony J. Steinbock
+Cairn/PUF 精确入口：
 
-“The Poor Phenomenon: Marion and the Problem of Givenness,” 收于 Bruce Ellis Benson / Norman Wirzba 编 *Words of Life: New Theological Turns in French Phenomenology*, Fordham University Press, 2010, pp. 120–132，DOI 10.1515/9780823293605-009。De Gruyter/Fordham 元数据确认该出版信息；Ostium 的公开译载说明译自该英文原文并经作者许可，且保留 ED/BG 双版本脚注。
+`https://shs.cairn.info/etant-donne--9782130624813-page-295`
 
-### Fanny Lederlin
+此前公开索引直接返回过 Marion 的书本正文片段，包含 `sature l'horizon`、`aucun horizon` 等 horizon/saturation 锚点。当前直接打开该页仍返回 HTTP 403，因此没有完整 page image/context。
 
-*Que peut la critique ?*, Université Paris Cité 博士论文，2023。官方大学 PDF 已直接查看；相关页脚注短引 ED p. 305，用于确认 ED 304–305 的主题位置。它不是 Marion primary text。
+正确的状态现在是：
+
+- **PRIMARY-DIRECT-INDEXED-BOOK-PAGE**：它确实是 2013 书本 p. 295 的作者文本索引；
+- **UNMAPPED-TO-BG-TARGET**：没有可靠证据把它对应到 BG 209–212 或历史 ED 292–297；
+- 它仍可作为 2013 *Étant donné* 中 horizon/saturation 讨论存在的独立 primary 旁证，但不再写作 `BG 211 ↔ ED 295` 的 primary corroboration。
+
+详细纠正见 [MARION_2013_CAIRN_PAGE295.md](MARION_2013_CAIRN_PAGE295.md)。
+
+## 4. 一个旧纠正继续有效：ED 304–305 不是 BG 211–212 对应页
+
+Djian 2018 引用 ED 304–305，讨论 horizon 与 I 作为 possibility-conditions、以及对 donation / intentionality 的先行限制。这条 prior art 仍然有效，但它不是 BG 211–212 的法文镜像。
+
+严格区分：
+
+- BG 209–212 ↔ **ED 1997/早期 292–297**（secondary exact crosswalk）；
+- ED 304–305：同题但稍后的 possibility-condition 段落；
+- ED 2013：另起独立分页轨道，当前 §21 只有 p. 328–355 的顺序搜索窗口，§23 p. 225 核心句精确锚到 p. 370。
+
+Fanny Lederlin 2023 的 Université Paris Cité 博士论文短引 ED p. 305，继续用于固定 ED 304–305 的主题位置，而不是版本对应。
+
+## 5. 来源与证据等级
+
+### 2013 版本元数据
+
+Jean-Luc Marion, *Étant donné : essai d'une phénoménologie de la donation*, PUF, Quadrige, 2013，ISBN `9782130624813`。E.Leclerc 与 Decitre 均确认第四版修订／增订、533 页。状态：**PRIMARY/PUBLISHER-COMMERCIAL METADATA**，只用于版本与分页，不用于哲学归属。
+
+### Irina Schulzki 2015
+
+公开全文：Irina Schulzki, “Love at Loss: Jean-Luc Marion’s Concept of Erotic Reduction and Paul Thomas Anderson’s *Magnolia*,” 2015, pp. 145–172。本文的价值在于同一论证中给出 Kosky 英译页与 2013 法文原句页码，并在书目明确登记法文 2013 [1997] 版。状态：**SECONDARY-EXACT-CROSSWALK**。
+
+### Adam S. Miller / Shane Mackinlay / Anthony J. Steinbock
+
+继续作为历史 BG ↔ ED 1997/早期分页的 **SECONDARY-EXACT-CROSSWALK**。本轮没有用 Schulzki 覆盖它们，而是新增独立的 2013 pagination track。
+
+### Cairn p. 295
+
+状态：**PRIMARY-DIRECT-INDEXED-BOOK-PAGE + UNMAPPED-TO-BG-TARGET**。当前页面 403；不称 page-image review。
 
 ## 6. 对形式化的影响
 
-这一轮**不新增 Lean primitive 或 theorem**。原因是新证据解决的是版本／解释证据等级，而不是形式缺口：
+本轮**不新增 Lean primitive 或 theorem**。新证据暴露的是来源／版本映射错误，不是形式缺口：
 
-- `situated / conditions / Exhausts` 三轴足以表达首个窄问题；
-- Cairn 2013 p. 295 的 primary-indexed text 进一步支持把“horizon 的相关性”与“horizon 作为 possibility-condition”分开，但不把 `conditions` 的全部模型语义归给 Marion；
-- p. 295 同时处于 horizon saturation 讨论中，反而继续警告 `Independent` 不能按词义定义成 `NonExhaustible`；
-- ED 293–295 的一个／多个／组合 horizon 结构说明完整 saturation 比当前单视域 `NonExhaustible` 更强，但完整 horizon-combination 属于后续 M3；
-- ED 314–315 的 intention/intuition/constitution 结构对完整 saturation 重要，但没有证据表明它是证明 `UniversalStructure ↛ ClosureBridge` 所需的最小结构。
+- `situated / conditions / Exhausts` 三轴仍足以表达首个窄问题；
+- `Independent → NonExhaustible` 的点态与显现域精确逻辑条件已经闭合；
+- `ExhaustiveCaptureConditions` 的强弱层级已经形式闭合；
+- 2013 pagination correction 不改变任何 Lean 定理真假，只改变哪些书页可以为哪些历史解释背书。
 
-因此不为了 theorem count 新增 unconstrained predicate；现有 58 条已审计形式结果保持不变。
+因此不为“本轮必须有代码”而增加自由谓词或重复 theorem。现有 58 条具名结果必须在本轮最终提交的 CI 中重新构建和公理审计。
 
 ## 7. 更新后的最窄 direct-primary 门
 
-停止条件中的 Marion 版本核对仍未完全通过。当前新状态是：
+当前合法停止路线应写成四种：
 
-- **ED 2013 p. 295** 已有 `PRIMARY-DIRECT-INDEXED-BOOK-PAGE` 证据；
-- 但仍缺 ED 292–294、296–297、314–315 的足够直接正文，以及 2013 ↔ 1997 页码／文本连续性的显式核验；
-- 或者可改走合法直接核对 BG pp. 209–212 与 225–226、或正式重印正文的路线。
+1. 直接查看 BG pp. 209–212、225–226；或
+2. 直接查看 **ED 1997/早期分页 pp. 292–297、314–315**；或
+3. 对 2013 版，先用可靠 crosswalk 定位：§21 目前只有 p. 328–355 的导航窗口，§23 核心 p. 225 句已锚到 p. 370；再直接读取相应 2013 正文；或
+4. 在已确认正式重印中直接取得对应正文，并用文本锚点与 BG/ED crosswalk 互证。
 
-在取得足够 direct primary context 前，`Independent` 可以更明确地说成**有作者书本正文直接动机的弱模型接口**，但不能等同完整 Marion saturation；`NonExhaustible` 与 `Captured` 继续是独立模型轴。
+在足够 direct-primary context 到手前，`Independent` 继续只能说成有 Marion 作者文本动机的弱 MODEL 接口；`NonExhaustible` 与 `Captured` 继续是独立模型轴，不能命名为完整 saturation。
