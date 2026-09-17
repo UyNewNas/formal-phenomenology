@@ -75,7 +75,7 @@ C^+&:\quad \exists p\,(F(p)\land\mathrm{Structured}(p)\land\mathrm{NonExhaustibl
 
 `splitModel_situatedExcess` 构造 $C^+$；而 `structure_excludes_horizonless` 与 `splitModel_structure` 又给出该模型不存在 horizonless appearance。
 
-`Situated_excess_need_not_be_horizonless` 于是给出：
+`situated_excess_need_not_be_horizonless` 于是给出：
 
 $$
 \exists M\,[C^+(M)\land\neg\mathrm{HasHorizonlessAppearance}(M)].
@@ -126,4 +126,4 @@ $$C(\mathrm{expandingModel})\land\neg C(\mathrm{completedModel}).$$
 
 共 **34** 个具名引理／定理，全部列入 `Audit.lean`。执行 `python3 scripts/check.py` 进行根模块覆盖、禁用占位符、`lake build` 与逐项 `#print axioms` 检查。
 
-这里的形式结论是模型论事实。原典研究目前已经直接核查 Merleau-Ponty 的关键开放视域段落；Marion 的关键页仍待独立原书复核，所以不能把 34 个零公理依赖证明误报成“完整哲学命题已经结束”。
+这里的形式结论是模型论事实。原典研究目前已经直接核查 Merleau-Ponty 的关键开放视域段落；Marion 的关键页仍待独立原书复核。是否已经通过 34 项内核依赖审计，以当前分支对应的 CI 结果为准，不能用源码静态检查替代。
