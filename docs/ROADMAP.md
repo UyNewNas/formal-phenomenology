@@ -6,7 +6,7 @@
 
 ## M1 — 原典映射（最高优先级）
 
-围绕 P-MP 与 P-JM 建立段落卡，固定版本、页码、访问状态、候选解释、竞争解释与形式化损失。当前工作卡见 [PASSAGE_CARDS.md](PASSAGE_CARDS.md)。
+围绕 P-MP 与 P-JM 建立段落卡，固定版本、页码、访问状态、候选解释、竞争解释与形式化损失。当前工作卡见 [PASSAGE_CARDS.md](PASSAGE_CARDS.md)，Marion 指定页的证据三角核对见 [MARION_HORIZON_GATE.md](MARION_HORIZON_GATE.md)。
 
 ### 已推进
 
@@ -15,8 +15,12 @@
 - 已固定 Marion, *Being Given*, Jeffrey L. Kosky trans., Stanford UP 2002，并由出版社／Google Books 元数据定位 §21 pp. 199–212、§23 起于 p. 221。
 - 已建立 3 张 Marion 工作卡，但仍为 `proposed-secondary`：二手研究提供 pp. 210–212、225–226 的页码与短引文／转述，尚未独立看到原书正文。
 - 已新增二手交叉核查：Leung、Moran 均将 p. 211 的 horizon 读成条件/条件化语义；Mason 与 Murga 的研究又提示 Marion 并非简单删除一切 horizon，而需要区分视域的不同功能。
+- 2026-09-17 增量核查进一步取得两条彼此独立的带页码学术来源（Cheongho Lee 2017；Myka Lahaie 博士论文），都把 *Being Given* p. 209 定位为“不能完全取消 horizon，否则 manifestation 本身受阻”的上下文；Lahaie 与 Leung 又分别对 p. 226 的 intuition/intention/constitution 句意形成交叉。该结果显著削弱 `Horizonless` 读法，但仍是二手精确引文，**不替代原书直接核查**。详见 `MARION_HORIZON_GATE.md`。
+- 已直接查看 Jean-Luc Marion 2007 *Filozofia* “A Saturated Phenomenon” 的官方期刊页面与摘要；摘要把 horizon 描述为给予的 constitutive condition，并把 saturated phenomenon 与 intuition surplus、unconditioned / irreducible phenomenality 及主体反转联系起来。正文 PDF 尚未成功读取，因此只把摘要视为作者本人旁证。
 - 形式层已新增 `HasSituatedExcess` 与 `horizon_structure_does_not_entail_closure`，直接反驳“有视域必然可穷尽”的纯逻辑蕴含。
 - 形式层进一步新增 `HorizonConditioning`，把 `situated`（相关视域）、`conditions`（条件化视域）与 `Exhausts`（穷尽）分开。Lean 反模型证明 `Independent` 与 `NonExhaustible` 互不蕴含，且 `Independent` 不等于 horizonless。
+- 已隔离压力测试 bridge `ExhaustiveCaptureConditions`：它足以使 `Independent → NonExhaustible` 成立，旧反模型则证明该 bridge 真是额外前提。当前文本证据**不支持把这条 extensional exhaustion→conditioning bridge 归给 Marion**；它继续保持 MODEL/QUESTION。
+- 本轮根据 prior-art gate **刻意不新增** `priorDelimits` 一类自由谓词：现有文本提示“先行限定”可能是关键，但在指定原页未直接核查前再加一个未约束关系只会制造形式自由度，而不会推进历史解释。
 
 ### 当前 M1 验收状态
 
@@ -25,14 +29,16 @@
 - C：**对 Marion 只能作为弱候选影子，不等于饱和现象的完整定义**。
 - “不依赖视域”“不能被视域穷尽”“没有任何相关视域”已经在解释层和代码层正式分开。
 - 关于“是否需要新增条件化关系”的工程判断：**已完成，答案为需要分层，而非改写旧 `situated`。** 该形式层决定由多个二手来源交叉支持，但 Marion 归属仍等待原书正文。
+- p. 209 的二手精确引文已经形成独立三角核对，当前最稳妥判断是：**Marion 的 saturation 不能默认编码为“没有任何 horizon”**；真正争议集中在 horizon 是否作为先行可能性条件／限定机制，以及它在过剩中如何被重定向、增殖或溢出。
 
 ### 尚未通过的停止门
 
 首个研究问题**尚未完成**。仍至少需要：
 
-1. 独立查看 Marion *Being Given* pp. 210–212、225–226 的原书正文，核对二手文献给出的页码和上下文。
-2. 依据原文最终决定：`Independent` 可否作为“不受视域条件化”的弱归属，以及 `NonExhaustible` 是否只能作为另一条独立弱后果；不得把任何一个偷换成完整 saturated phenomenon。
-3. 在最终解释冻结后，对最终提交重新执行 `lake build`、`python3 scripts/check.py`、根导入覆盖及 `#print axioms` 审计，并检查对应 master CI。
+1. 独立查看 Marion *Being Given* pp. 210–212、225–226 的原书正文，并连同 p. 209 的紧邻上下文一起核对二手文献给出的页码、句意与论证次序。
+2. 依据原文最终决定：`Independent` 可否作为“不受视域条件化／先行限定”的弱归属，以及 `NonExhaustible` 是否只能作为另一条独立弱后果；不得把任何一个偷换成完整 saturated phenomenon，也不得把 `Horizonless` 当作默认读法。
+3. 判断 §23 的 intuition/intention/constitution 结构是否是回答首问所必需的最小接口；若不是，不为扩大项目而进入完整 M3。
+4. 在最终解释冻结后，对最终提交重新执行 `lake build`、`python3 scripts/check.py`、根导入覆盖及 `#print axioms` 审计，并检查对应 master CI。
 
 只有文本门和证明门同时通过，才允许把首个研究问题标记完成并停止自动推进。
 
