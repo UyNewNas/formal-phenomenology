@@ -1,6 +1,6 @@
 # 解释选择登记
 
-版本：v0.7-work，2026-09-17。
+版本：v0.8-work，2026-09-17。
 
 ## 证据层、形式层与外部工作
 
@@ -45,12 +45,15 @@ Marion 1996 primary text 进一步确认这一谨慎是必要的：作者本人�
 
 ## related / conditioned / exhaustive：作者文本与 prior art 都要求分层
 
-此前 related/conditioned 的分层主要由 Leung、Moran、Murga 等研究文献推动。PDCnet 出版者索引直接提供 Marion 1996 “The Saturated Phenomenon” 的作者正文，因此解释方向已有 primary-text 支撑。本轮新增的 Djian 2018 又直接讨论 *Étant donné* §21–22，并引用 ED pp. 304–305，把 horizon 与 I 分析为限制 donation / phenomenality 的 possibility-conditions。
+此前 related/conditioned 的分层主要由 Leung、Moran、Murga 等研究文献推动。PDCnet 出版者索引直接提供 Marion 1996 “The Saturated Phenomenon” 的作者正文，因此解释方向已有 primary-text 支撑。Djian 2018 又直接讨论 *Étant donné* §21–22，并引用 ED pp. 304–305，把 horizon 与 I 分析为限制 donation / phenomenality 的 possibility-conditions。
 
-因此需要把两个判断分开：
+本轮新增的 Falabretti 2015/2016 是更直接的比较 prior art：它把 *Phenomenology of Perception* 与 *Étant donné* 放在同一论文中，p. 90 明确描述 Merleau-Ponty 的开放 horizon 与知觉的不穷尽；p. 98 又以“no horizon / overflowing presence”概括 Marion saturation。后一句与 Marion 1996 p. 117–118、Murga 2024、Djian 2018 形成解释张力，因此它被登记为**竞争 secondary reading**，而不是覆盖 primary evidence。详见 [FALABRETTI_COMPARISON.md](FALABRETTI_COMPARISON.md)。
+
+因此需要把三个判断分开：
 
 1. **分层方向有充分解释依据。** `situated` 不能自动承担 “condition of possibility / prior delimitation” 的语义，另设 `conditions` 是合理的最小形式接口。
 2. **这种历史区分不是本项目新发现。** Murga、Djian 等已有明确同题讨论；本项目的增量只是把解释差异显式编码，并检验它和 `Exhausts` 的逻辑关系。
+3. **Merleau-Ponty / Marion 的比较配对本身也不是本项目首创。** Falabretti 已直接进行两者比较；项目不能把“开放视域 vs donation/saturation”的历史对照当作原创性主张。
 
 ### PRIMARY 约束 1：不是一般取消 horizon
 
@@ -61,6 +64,8 @@ Marion 1996 p. 117 明确说，问题不是一般地取消 horizon，因为那�
 - `conditions` 比把 `situated` 直接取反更适合作为最小接口。
 
 这里仍然只说“接口有 primary 动机”：Lean 的 `conditions` 没有编码时间上的 anteriority、预期、意向性或对象构成。
+
+Falabretti p. 98 的 horizonless 二手概括不改变这一 boundary；它的存在反而证明 secondary literature 内部需要竞争解释登记，不能以单个二手概括覆盖作者本人文本。
 
 ### PRIMARY 约束 2：horizon-independence 不等于逐一 non-exhaustibility
 
@@ -102,7 +107,7 @@ ExhaustiveCaptureConditions M
 → NonExhaustible p
 ```
 
-本轮又完成其点态对偶诊断：
+并且已经完成点态对偶诊断：
 
 ```text
 Captured p
@@ -114,7 +119,7 @@ Captured p
 
 旧 `closedIndependentConditioning` 同时有 `Captured` 与 `Independent`，并已证明违反这条 bridge。因此 bridge 的额外性现在既有具体反模型，也有一般 witness-level 冲突定理。
 
-Marion 1996 primary text、Djian 2018、Murga 2024 都没有提供 `situated ∧ Exhausts → conditions` 这一 extensional 蕴含。恰恰相反，Marion 1996 p. 118 同时讨论“不依赖 horizon”与在一个 horizon 中 saturation，使任何把“覆盖完成”直接翻成“先行条件化”的做法都必须另证。因此 `ExhaustiveCaptureConditions` 继续保持 MODEL/QUESTION。
+Marion 1996 primary text、Djian 2018、Murga 2024、Falabretti 的直接比较论文都没有提供 `situated ∧ Exhausts → conditions` 这一 extensional 蕴含。因此 `ExhaustiveCaptureConditions` 继续保持 MODEL/QUESTION。
 
 ## 首个问题的当前答案
 
@@ -124,7 +129,9 @@ Marion 1996 primary text、Djian 2018、Murga 2024 都没有提供 `situated ∧
 
 Lean 的 `horizon_structure_does_not_entail_closure` 给出否定答案；有限 `splitModel` 是反模型。Merleau-Ponty 直接文本又独立地反对把 horizon 理解成最终封闭。
 
-Marion 一侧现在也有 direct primary support for the distinction：1996 作者文本说明 manifestation 不能简单取消 horizon，同时 saturated phenomenon 要摆脱 horizon 的先行限定，并可能以多种方式与一个或多个 horizons 发生关系。Djian 2018 又证明“horizon 作为 possibility-condition / limit”的读法已有明确 *Étant donné* 解释 prior art。因此对比较问题最稳妥的结论是：
+Marion 一侧现在也有 direct primary support for the distinction：1996 作者文本说明 manifestation 不能简单取消 horizon，同时 saturated phenomenon 要摆脱 horizon 的先行限定，并可能以多种方式与一个或多个 horizons 发生关系。Djian 2018 又证明“horizon 作为 possibility-condition / limit”的读法已有明确 *Étant donné* 解释 prior art。Falabretti 进一步说明**两位哲学家的比较研究本身已经存在**，而且 secondary literature 对 Marion 是否“无 horizon”并不一致。
+
+因此对比较问题最稳妥的结论仍是：
 
 > **“在 horizon 中／有 related horizon”本身不含“可被某个 horizon 穷尽”；若要推出后一命题，必须增加独立 closure 前提。Marion 式的 horizon-independence 也不能不经 bridge 就改写成 `NonExhaustible`。**
 
@@ -138,9 +145,10 @@ Marion 一侧现在也有 direct primary support for the distinction：1996 作�
 4. `ExhaustiveCaptureConditions` 是足够 bridge，不是哲学家已经承诺的公理；`Captured ∧ Independent` 只是在当前 surrogate 下反证这条 bridge。
 5. 抽象谓词可联合一致只证明当前语言的模型论一致性，不证明历史概念独立。
 6. Marion 的 saturated phenomenon 还涉及 intuition/intention/constitution；首问不需要把整个理论提前搬进 Lean。
+7. Falabretti 的 “no horizon” 是竞争二手解释，不能覆盖 Marion 1996 primary evidence；反过来，primary evidence 也不使 Falabretti 作为比较史 prior art 消失。
 
 ## 当前仍未建立的断言
 
-- 尚未直接看到 *Being Given* pp. 209–212、225–226；二手精确引文、Djian 对法文版的研究以及 Marion 1996 primary text 都不能冒充这一本书的逐页核对。
+- 尚未直接看到 *Being Given* pp. 209–212、225–226；二手精确引文、Djian 对法文版的研究、Falabretti 的比较论文以及 Marion 1996 primary text 都不能冒充这一本书的逐页核对。
 - Google Books 已确认 1997 PUF *Étant donné* 的版本和相关索引词，但未开放目标正文，因此不能作为 direct primary passage。
-- 尚未定位 Marion 直接把 Merleau-Ponty 称为“去主体化不彻底前辈”的原文，因此项目不用它作前提。
+- 尚未定位 Marion 直接把 Merleau-Ponty 称为“去主体化不彻底前辈”的原文，因此项目不用它作前提。Falabretti 的直接比较研究反而明确避免假定 Marion 会如何直接解释 Merleau-Ponty，并称后者在 *Étant donné* 中仅边缘、脚注式出现；这提高了强归属的证据门槛，但仍不是 Marion 原典本身的证明。
