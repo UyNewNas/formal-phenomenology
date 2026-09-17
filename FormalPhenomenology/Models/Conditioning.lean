@@ -127,4 +127,54 @@ theorem nonExhaustible_does_not_imply_horizon_independence :
   exact splitDependentConditioning_not_independent
     (h splitDependentConditioning () splitDependentConditioning_nonExhaustible)
 
+/--
+A finite model separating the exact appearing-domain incompatibility from the
+stronger horizon-by-horizon bridge.  Both horizons are related to the appearing
+phenomenon.  The `false` horizon exhausts its only encoded aspect, while the
+`true` horizon is the one marked as conditioning.  Hence captured appearances
+are not independent, although the exhaustive horizon itself need not be a
+conditioning horizon.
+-/
+def displacedCaptureConditioning : HorizonConditioning where
+  base :=
+    { Phenomenon := Unit
+      Horizon := Bool
+      Aspect := Unit
+      appears := fun _ => True
+      situated := fun _ _ => True
+      presents := fun _ _ => True
+      admits := fun h _ => h = false }
+  conditions := fun _ h => h = true
+
+/--
+The exact condition needed on appearing phenomena is strictly weaker than
+`ExhaustiveCaptureConditions`, even under `ConditioningIsSituated`.
+
+The witness satisfies
+`appears p → Captured p → ¬ Independent p`: capture occurs through `false`,
+while conditioning is witnessed by the different horizon `true`.  The stronger
+bridge nevertheless fails because the exhaustive `false` horizon is not itself
+conditioning.  This proves the strictness that was previously only stated in
+prose, without adding a new philosophical primitive.
+-/
+theorem exact_appearing_condition_is_strictly_weaker_than_exhaustiveCaptureConditions :
+    ∃ M : HorizonConditioning,
+      M.ConditioningIsSituated ∧
+      (∀ p, M.base.appears p → M.base.Captured p → ¬ M.Independent p) ∧
+      ¬ M.ExhaustiveCaptureConditions := by
+  refine ⟨displacedCaptureConditioning, ?_, ?_, ?_⟩
+  · intro _ _ _
+    exact True.intro
+  · intro p _ _
+    cases p
+    intro hi
+    exact hi true rfl
+  · intro hb
+    have he : displacedCaptureConditioning.base.Exhausts () false := by
+      intro a _
+      cases a
+      rfl
+    have hc := hb () false True.intro he
+    cases hc
+
 end FormalPhenomenology

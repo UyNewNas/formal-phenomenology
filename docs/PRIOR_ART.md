@@ -80,7 +80,7 @@ Ericson Falabretti, “Merleau-Ponty e Marion: o problema da ambiguidade entre u
 
 **复用判断。** 这些工作已经替我们完成了一部分“英译页 ↔ 法文页”的书目劳动，所以不应再次凭猜测重建 pagination。项目直接复用这些**双版本引注作为 SECONDARY-EXACT-CROSSWALK**，把合法 primary direct-reading 的法文目标范围收窄到 ED 292–297 与 ED 314–315。它们没有提供 Lean theorem，也没有把 `Captured`、`NonExhaustible` 或 `Independent` 定义成 Marion saturation，因此不触发代码复用。
 
-这次交叉还纠正一个重要边界：Djian 的 ED 304–305 是稍后的 horizon/I possibility-condition 段落，**不是** BG 211–212 的法文 counterpart。Fanny Lederlin 2023 的 Université Paris Cité 官方博士论文短引 ED p. 305，进一步确认这一页的 intentional-horizon 主题，但不能改变其版本位置。
+这次交叉还纠正一个重要边界：Djian 的 ED 304–305 是稍后的 horizon/I possibility-condition 段落，**不是** BG 211–212 的法文 counterpart。Fanny Lederlin 2023 的 Université Paris Cité官方博士论文短引 ED p. 305，进一步确认这一页的 intentional-horizon 主题，但不能改变其版本位置。
 
 ### 正式重印 provenance：不重新猜 pagination
 
@@ -118,9 +118,9 @@ Ericson Falabretti, “Merleau-Ponty e Marion: o problema da ambiguidade entre u
 
 入口 `independent_implies_nonExhaustible_iff_capture_refutes_independence`。这只是由 `NonExhaustible p ↔ ¬ Captured p` 得出的命题逻辑闭包，不作为原创数学或原创哲学结果。它的价值是把“需要 bridge”改写成精确的点态条件：排除同一 p 上 `Captured ∧ Independent`。
 
-### 本轮新增：把精确条件限制在“实际显现”量词域
+### 把精确条件限制在“实际显现”量词域
 
-首问写的是“显现”，而不是 `Phenomenon` 类型的任意居民。因此本轮拟把同一正规化提升为：
+首问写的是“显现”，而不是 `Phenomenon` 类型的任意居民。因此进一步把同一正规化提升为：
 
 ```text
 (∀ p, appears p → Independent p → NonExhaustible p)
@@ -134,7 +134,7 @@ Ericson Falabretti, “Merleau-Ponty e Marion: o problema da ambiguidade entre u
 - GitHub 全局搜索 `Independent NonExhaustible Captured appearing` 未找到外部 formal-philosophy 同型声明；有效命中是本仓，其他结果主要是无关词典／word-list 数据；
 - 该命题只使用 Lean Core 命题逻辑与本仓 `nonExhaustible_iff_not_captured`，因此没有理由引入 Mathlib、LogiKEy 或其他依赖。
 
-**复用决定。** 新 theorem `appearing_independence_implies_nonExhaustible_iff_capture_refutes_independence` 只做已有点态正规化的量词提升，并在两边显式保留 `appears p`。它的价值是防止无意把首问加强成“对所有类型居民”的命题；仍不作为原创数学／哲学结论。
+**复用决定。** theorem `appearing_independence_implies_nonExhaustible_iff_capture_refutes_independence` 只做已有点态正规化的量词提升，并在两边显式保留 `appears p`。它的价值是防止无意把首问加强成“对所有类型居民”的命题；仍不作为原创数学／哲学结论。
 
 ## 5. `ExhaustiveCaptureConditions` 的 prior-art 状态
 
@@ -149,6 +149,14 @@ situated p h ∧ Exhausts p h → conditions p h
 点态与显现域的等价 theorem 都说明其逻辑地位应收紧：`ExhaustiveCaptureConditions` 是使 capture 与 independence 冲突的一种**结构化充分机制**，但它比“在相关量词域排除 `Captured ∧ Independent`”更强，不称作逻辑上的确切最弱 bridge。
 
 现有 `closedIndependentConditioning` 已显示没有 bridge 时可以同时 `Independent` 与 `Captured`，并证明该模型违反 bridge。`captured_independent_refutes_exhaustiveCaptureConditions` 则把这一事实提升为任意模型、任意具体 witness 的一般定理：只要 `Captured p` 与 `Independent p` 同时成立，bridge 就失败。
+
+### 本轮新增：形式证明“较强”确实是严格较强
+
+在新增模型前重新做了窄查重：GitHub 全局精确搜索 `ExhaustiveCaptureConditions` 只命中本仓；更宽的 `Captured Independent horizon` 搜索只有大量无关工程文本，没有定位到 external formal-philosophy 同型声明。固定的 `novaspivack/phenomenology-lean` 也没有 Marion/horizon/capture-conditioning 的可复用 API。因此这里只构造最小有限反模型，不引入 Mathlib、LogiKEy 或其他重依赖，也不作原创数学主张。
+
+新模型 `displacedCaptureConditioning` 有一个显现、两个均 related 的 horizon 和一个 aspect：`false` horizon 穷尽该 aspect，`true` horizon 则承担 conditioning。于是所有实际显现都满足 `Captured → ¬ Independent`，且 `ConditioningIsSituated` 成立；但 `ExhaustiveCaptureConditions` 失败，因为 exhaustive 的 `false` horizon 本身没有 conditioning。Lean theorem `exact_appearing_condition_is_strictly_weaker_than_exhaustiveCaptureConditions` 因而给出一个具体模型，证明“较强”不是仅凭语句形状作出的口头判断。
+
+**复用决定。** 这个结果只是当前三个关系在最小有限模型中的分离：精确显现域排斥允许“由另一个相关 horizon 提供 conditioning”，而 `ExhaustiveCaptureConditions` 强制“那个 exhaustive horizon 自己就是 conditioning horizon”。这是解释 `MODEL/QUESTION` 强度差异的形式证据，不是 Marion 文本关于 horizon 的新历史结论。
 
 ## 6. Marion 1996 primary text 是否要求新 API？
 
