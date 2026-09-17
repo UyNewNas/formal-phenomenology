@@ -17,7 +17,7 @@
 ### novaspivack/phenomenology-lean
 
 - 仓库：<https://github.com/novaspivack/phenomenology-lean>
-- 本轮重新核对 `main`：仍为 commit `75230e4eab333ad0fc47573747521ccc1a31a163`（2026-05-20）。
+- 已核对 `main` commit `75230e4eab333ad0fc47573747521ccc1a31a163`（2026-05-20）。
 - 仓库自述 Lean 4.29.1 / Mathlib 4.29.1，并依赖 `sentience-lean`、`nems-lean`、`reflexive-closure-lean`；范围包括 qualia、manifestation、ownership、selector-access、countermodels 和 meta-theory。
 - 已实读 `StructuredManifestation.lean`、`ManifestationNonReducibility.lean`、`Meta/Minimality.lean`、`MANIFEST.md`。
 - 针对当前首问搜索 `horizon`、`intuition`、`Merleau`、`Marion`、`saturated` 均未定位到同型 API。
@@ -58,6 +58,18 @@ Aurélien Djian, “L’horizon et le destin de la phénoménologie,” *Philoso
 
 这些来源的角色已经在 `SOURCES.md` 与 `MARION_HORIZON_GATE.md` 分层登记：它们带页码地定位 *Being Given* 209–226，支持区分 horizon 作为相关结构、作为 condition of possibility、一个／多个 horizon 的 saturation，以及 intuition/intention/constitution。它们仍是 secondary evidence，不代替书本目标页直接阅读。
 
+### 本轮新增：Miller / Mackinlay / Steinbock 的双版本页码链
+
+本轮没有找到需要复用的新 formal API，但找到了对版本核对直接有用的解释 prior art：
+
+- Adam S. Miller, *Badiou, Marion and St Paul: Immanent Grace*（Continuum, 2008）。Bloomsbury 官方页面确认书目与 “Givenness and Saturation” 专章；可检索文本给出 BG/ED 双版本页码：BG 209–210 / ED 293、BG 210 / ED 293–294、BG 211 / ED 295、BG 212 / ED 296–297。
+- Shane Mackinlay 的 *Interpreting Excess* 独立提供 BG 209 / ED 292、BG 211 / ED 295、BG 225 / ED 314、BG 226 / ED 315 等锚点。
+- Anthony J. Steinbock, “The Poor Phenomenon: Marion and the Problem of Givenness,” Fordham UP 2010。De Gruyter/Fordham 元数据确认正式出版；Ostium 的公开译载说明译自英文原文并经作者许可，保留 ED/BG 双版本脚注，包括 ED 314 / BG 225、ED 315 / BG 226、ED 316 / BG 227。
+
+**复用判断。** 这些工作已经替我们完成了一部分“英译页 ↔ 法文页”的书目劳动，所以不应再次凭猜测重建 pagination。项目直接复用这些**双版本引注作为 SECONDARY-EXACT-CROSSWALK**，把合法 primary direct-reading 的法文目标范围收窄到 ED 292–297 与 ED 314–315。它们没有提供 Lean theorem，也没有把 `Captured`、`NonExhaustible` 或 `Independent` 定义成 Marion saturation，因此不触发代码复用。
+
+这次交叉还纠正一个重要边界：Djian 的 ED 304–305 是稍后的 horizon/I possibility-condition 段落，**不是** BG 211–212 的法文 counterpart。Fanny Lederlin 2023 的 Université Paris Cité 官方博士论文短引 ED p. 305，进一步确认这一页的 intentional-horizon 主题，但不能改变其版本位置。
+
 ## 4. 既有形式 profile 的复用判断
 
 当前项目中的以下结果逻辑内容都很初等，不作为原创性主张：
@@ -69,7 +81,9 @@ Aurélien Djian, “L’horizon et le destin de la phénoménologie,” *Philoso
 - `ExhaustiveCaptureConditions` 下 `Independent → NonExhaustible`；
 - `Captured p ∧ Independent p → ¬ ExhaustiveCaptureConditions` 的点态桥接反证。
 
-本轮针对最后一条新 theorem 的外部代码检索没有找到同型 formal-philosophy 声明；全局 `HorizonIndependent` / `NonExhaustible` 检索只命中本仓。该 theorem 只是对本项目已显式 bridge 的逻辑闭包，因此不为它引入 Mathlib、LogiKEy 或另一个 phenomenology 仓库。
+先前针对最后一条 theorem 的外部代码检索没有找到同型 formal-philosophy 声明；全局 `HorizonIndependent` / `NonExhaustible` 检索只命中本仓。该 theorem 只是对本项目已显式 bridge 的逻辑闭包，因此不为它引入 Mathlib、LogiKEy 或另一个 phenomenology 仓库。
+
+**本轮没有新增 theorem。** 新证据填补的是版本交叉与文本定位缺口，而非逻辑 API 缺口；在这种情况下继续增加 unconstrained predicates 或 theorem count 反而违背 prior-art gate。
 
 ## 5. `ExhaustiveCaptureConditions` 的 prior-art 状态
 
@@ -81,7 +95,7 @@ situated p h ∧ Exhausts p h → conditions p h
 
 同题文本支持 related / conditioning 的区分，却没有给出这条 extensional exhaustion→conditioning 蕴含。因此它继续是本项目内 MODEL/QUESTION，不归给 Marion 或 Merleau-Ponty。
 
-现有 `closedIndependentConditioning` 已显示没有 bridge 时可以同时 `Independent` 与 `Captured`，并证明该模型违反 bridge。新增 `captured_independent_refutes_exhaustiveCaptureConditions` 则把这一事实提升为任意模型、任意具体 witness 的一般定理：只要 `Captured p` 与 `Independent p` 同时成立，bridge 就失败。
+现有 `closedIndependentConditioning` 已显示没有 bridge 时可以同时 `Independent` 与 `Captured`，并证明该模型违反 bridge。`captured_independent_refutes_exhaustiveCaptureConditions` 则把这一事实提升为任意模型、任意具体 witness 的一般定理：只要 `Captured p` 与 `Independent p` 同时成立，bridge 就失败。
 
 ## 6. Marion 1996 primary text 是否要求新 API？
 
@@ -94,16 +108,18 @@ situated p h ∧ Exhausts p h → conditions p h
 3. **不提前引入 intention/intuition API。** 它们对完整理论重要，但不是首问否定蕴含所必需。
 4. **保留三轴** `situated / conditions / Exhausts`，以文本约束解释，而非靠新增 theorem count 制造进展。
 
+本轮版本交叉反而加强这一决定：目标法文页已经能够精确到 ED 292–297 和 ED 314–315，应优先直接核查这些页，而不是提前扩张模型。
+
 ## 7. primary source 的当前定位
 
 Jean-Luc Marion, “The Saturated Phenomenon,” *Philosophy Today* 40(1), 1996, pp. 103–124, DOI `10.5840/philtoday199640137`。PDCnet 出版平台的公开搜索索引直接返回作者正文与原刊页码，包括 p. 117–119。直接打开 PDF URL 时当前环境收到 HTTP 403，无法取得 page screenshot，因此证据状态标记为 **PRIMARY-DIRECT-INDEXED**，不写成“PDF 已逐页核查”。
 
 这项发现实质改变下一步：已有作者本人文本确认 horizon 不能简单取消、核心在先行限定、且 horizon-independence 与多种 horizon 关系并存。故不再需要猜测这些区分是否只是二手研究强加给 Marion。
 
-但这**不取消 *Being Given* 版本核对门**：2002 pp. 209–212、225–226 仍须合法直接查看，或者用法文 *Étant donné* 对应原文可靠逐段对照，以确认 1996 论证在书本版本中的重写与次序。
+但这**不取消书本版本核对门**。借助本轮 crosswalk，门槛现在可精确成：直接读 BG 209–212、225–226，或法文 ED 292–297、314–315；双版本二手引注只负责定位，不能替代 primary direct reading。
 
 ## 8. 当前复用结论
 
-首问继续保持轻量 Lean Core 是合理选择。现阶段没有外部形式化提供可直接替换本项目 horizon 首问的同型实现；formal philosophy 的方法与 Marion horizon 的解释 prior art 已明确存在，并新增 Djian 2018 这一条直接研究 *Étant donné* horizon 角色的文献基线。
+首问继续保持轻量 Lean Core 是合理选择。现阶段没有外部形式化提供可直接替换本项目 horizon 首问的同型实现；formal philosophy 的方法与 Marion horizon 的解释 prior art 已明确存在。
 
-本轮最有价值的复用是两层：用 Djian / Murga 等既有解释限制“历史新颖性”表述；用 Marion 1996 primary text 限制模型。新的点态 bridge-refutation theorem 只补全当前形式接口，不声称哲学原创性。
+本轮最有价值的复用不是代码，而是**书目交叉**：直接采用 Miller / Mackinlay / Steinbock 已给出的 BG/ED 双版本引注，避免重新猜测翻译页码；同时以 Djian / Murga 等既有解释限制“历史新颖性”表述。形式层不新增结构，继续等待 direct-primary 版本核对。
