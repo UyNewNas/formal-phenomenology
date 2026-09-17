@@ -140,6 +140,17 @@ $$
 
 入口 `exhaustiveCaptureConditions_independent_implies_nonExhaustible`。
 
+本轮把“E 比显现域精确条件更强”的正向关系也显式内核化。定理
+`exhaustiveCaptureConditions_implies_exact_appearing_condition`
+证明：
+
+$$
+E(M)\to
+\forall p\,[F(p)\to\mathrm{Captured}(p)\to\neg\mathrm{Independent}(p)].
+$$
+
+证明只复用上一条 bridge theorem 与 `NonExhaustible p ↔ ¬ Captured p`；没有新增 philosophical primitive。它与下面的 converse countermodel 合起来，才完整形式化“严格更强”。
+
 同一 bridge 还有 witness-level 诊断：若某个具体 p 同时 `Captured` 且 `Independent`，则 E 不可能成立：
 
 $$
@@ -151,7 +162,7 @@ $$
 
 `closedIndependentConditioning` 同时有 `Independent` 与 `Captured`，并由 `closedIndependentConditioning_not_exhaustiveCaptureConditions` 证明它违反 E。因此 E 是真正的额外 bridge，不是定义展开。
 
-本轮进一步把“E 更强”从说明文字升级成了形式反模型。`displacedCaptureConditioning` 有两个均 related 的 horizon：`false` horizon 穷尽唯一 aspect，而不同的 `true` horizon 承担 conditioning。因此该模型满足 `ConditioningIsSituated`，并在所有实际显现上满足精确条件 `Captured → ¬ Independent`；但 E 失败，因为 exhaustive 的 `false` horizon 本身并不 conditioning。定理
+`displacedCaptureConditioning` 有两个均 related 的 horizon：`false` horizon 穷尽唯一 aspect，而不同的 `true` horizon 承担 conditioning。因此该模型满足 `ConditioningIsSituated`，并在所有实际显现上满足精确条件 `Captured → ¬ Independent`；但 E 失败，因为 exhaustive 的 `false` horizon 本身并不 conditioning。定理
 `exact_appearing_condition_is_strictly_weaker_than_exhaustiveCaptureConditions`
 正式给出：
 
@@ -161,7 +172,7 @@ $$
 \land \neg E(M)].
 $$
 
-所以“精确显现域排斥”和“每个 exhaustive horizon 自己必须 conditioning”确实是不同强度的要求，不只是措辞差异。E 仍是 MODEL/QUESTION，不归给 Marion 或 Merleau-Ponty；这个 strictness 结果也只是 FORMAL 模型分离，不承担历史归属。
+所以现在 strictness 已两侧闭合：`exhaustiveCaptureConditions_implies_exact_appearing_condition` 给出强 bridge 到精确显现域条件的正向蕴含；`displacedCaptureConditioning` 则反证 converse。精确显现域排斥只约束 existential capture 与 independence 的可并存性，而 E 额外要求每个 exhaustive horizon 自己承担 conditioning 角色。E 仍是 MODEL/QUESTION，不归给 Marion 或 Merleau-Ponty；这些结果只是 FORMAL 模型／逻辑层级，不承担历史归属。
 
 ## 7. 三条轴的联合一致性
 
@@ -198,12 +209,12 @@ $$
 | `Horizon/Basic.lean` | 0 | 基础关系语言 |
 | `Horizon/Separation.lean` | 9 | 基本等价、蕴含和 A/B/C 条件冲突 |
 | `Horizon/SituatedExcess.lean` | 4 | 非空真 excess 与 closure 的直接冲突 |
-| `Horizon/Conditioning.lean` | 10 | related/conditioning 分离、点态与显现域确切前提、capture→conditioning 压力测试 bridge 及 witness-level 诊断、profile 投影 |
+| `Horizon/Conditioning.lean` | 11 | related/conditioning 分离、点态与显现域确切前提、强 bridge → 精确条件、capture→conditioning 压力测试及 witness-level 诊断、profile 投影 |
 | `Models/Finite.lean` | 11 | 有限见证、最小冲突与首问反例 |
 | `Models/Conditioning.lean` | 13 | conditioning / exhaustion / horizonless 分离、bridge 反模型及精确条件与强 bridge 的严格分离 |
 | `Models/OpenHorizon.lean` | 6 | 开放扩展、逐一覆盖和单调性 |
 | `Models/HorizonExtension.lean` | 4 | horizon 域扩展与穷尽性的变化 |
 
-共 **57** 个具名引理／定理，全部列入 `Audit.lean`。任何后续 Lean 改动都必须在其自己的提交重新获得 `lake build`、`scripts/check.py` 与 `#print axioms` 验证，不能继承旧 CI。
+共 **58** 个具名引理／定理，全部列入 `Audit.lean`。任何后续 Lean 改动都必须在其自己的提交重新获得 `lake build`、`scripts/check.py` 与 `#print axioms` 验证，不能继承旧 CI。
 
 *Being Given* 2002 pp. 209–212、225–226 仍待合法直接核对，因此历史解释停止门尚未关闭。
