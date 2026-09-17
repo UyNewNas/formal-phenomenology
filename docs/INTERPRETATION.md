@@ -1,6 +1,6 @@
 # 解释选择登记
 
-版本：v0.6-work，2026-09-17。
+版本：v0.7-work，2026-09-17。
 
 ## 证据层、形式层与外部工作
 
@@ -43,9 +43,14 @@
 
 Marion 1996 primary text 进一步确认这一谨慎是必要的：作者本人不是只给一个“所有 horizon 都失败”的单一关系，而是明确区分一个 horizon、多个 horizons、超过 horizon、乃至任何 horizon 组合都不能承受的极端情况；完整理论还涉及 intuition surplus 与 subject/constitution reversal。
 
-## related / conditioned / exhaustive：现在有作者本人文本支持分层方向
+## related / conditioned / exhaustive：作者文本与 prior art 都要求分层
 
-此前 related/conditioned 的分层主要由 Leung、Moran、Murga 等研究文献推动。本轮 PDCnet 出版者索引直接提供 Marion 1996 “The Saturated Phenomenon” 的作者正文，因此解释状态得到实质提升。
+此前 related/conditioned 的分层主要由 Leung、Moran、Murga 等研究文献推动。PDCnet 出版者索引直接提供 Marion 1996 “The Saturated Phenomenon” 的作者正文，因此解释方向已有 primary-text 支撑。本轮新增的 Djian 2018 又直接讨论 *Étant donné* §21–22，并引用 ED pp. 304–305，把 horizon 与 I 分析为限制 donation / phenomenality 的 possibility-conditions。
+
+因此需要把两个判断分开：
+
+1. **分层方向有充分解释依据。** `situated` 不能自动承担 “condition of possibility / prior delimitation” 的语义，另设 `conditions` 是合理的最小形式接口。
+2. **这种历史区分不是本项目新发现。** Murga、Djian 等已有明确同题讨论；本项目的增量只是把解释差异显式编码，并检验它和 `Exhausts` 的逻辑关系。
 
 ### PRIMARY 约束 1：不是一般取消 horizon
 
@@ -81,7 +86,7 @@ Marion 1996 p. 119 直接把 saturated phenomenon 与过剩的 intuitive givenne
 - 但任何把 `Independent`、`NonExhaustible`、`Captured` 或它们的 conjunction 命名为完整 `Saturated` 的做法都仍不成立。
 - M3 的完整 saturation 理论继续留在后续，不为 theorem count 强行提前。
 
-## `ExhaustiveCaptureConditions` 的解释状态进一步收紧
+## `ExhaustiveCaptureConditions`：足够 bridge，但没有历史归属
 
 压力测试 bridge：
 
@@ -97,9 +102,19 @@ ExhaustiveCaptureConditions M
 → NonExhaustible p
 ```
 
-这精确说明“从 independence 推 non-exhaustibility”需要额外连接前提。旧 `closedIndependentConditioning` 同时有 `Captured` 与 `Independent`，并已证明违反这条 bridge，因此 bridge 不是定义展开。
+本轮又完成其点态对偶诊断：
 
-本轮 primary text **没有**把这条 bridge 升级为 READING。恰恰相反，Marion 1996 p. 118 同时讨论“不依赖 horizon”与在一个 horizon 中 saturation，使任何“只要在某 horizon 中达到某种完成就必定受其条件化”的翻译都必须额外论证。由于 `Captured ≠ saturates a horizon` 尚未建立，当前只能说存在解释张力，不能宣布文本反驳 bridge。
+```text
+Captured p
+→ Independent p
+→ ¬ ExhaustiveCaptureConditions M
+```
+
+入口为 `captured_independent_refutes_exhaustiveCaptureConditions`。证明只使用当前模型定义：从 `Captured p` 取一个 situated + exhaustive 的 h，bridge 会把 h 变成 conditioning horizon，于是与 `Independent p` 冲突。这个 theorem **没有**把 `Captured` 解释成 Marion 的 “saturates a horizon”。
+
+旧 `closedIndependentConditioning` 同时有 `Captured` 与 `Independent`，并已证明违反这条 bridge。因此 bridge 的额外性现在既有具体反模型，也有一般 witness-level 冲突定理。
+
+Marion 1996 primary text、Djian 2018、Murga 2024 都没有提供 `situated ∧ Exhausts → conditions` 这一 extensional 蕴含。恰恰相反，Marion 1996 p. 118 同时讨论“不依赖 horizon”与在一个 horizon 中 saturation，使任何把“覆盖完成”直接翻成“先行条件化”的做法都必须另证。因此 `ExhaustiveCaptureConditions` 继续保持 MODEL/QUESTION。
 
 ## 首个问题的当前答案
 
@@ -109,7 +124,7 @@ ExhaustiveCaptureConditions M
 
 Lean 的 `horizon_structure_does_not_entail_closure` 给出否定答案；有限 `splitModel` 是反模型。Merleau-Ponty 直接文本又独立地反对把 horizon 理解成最终封闭。
 
-Marion 一侧现在也有 direct primary support for the distinction：1996 作者文本说明 manifestation 不能简单取消 horizon，同时 saturated phenomenon 要摆脱 horizon 的先行限定，并可能以多种方式与一个或多个 horizons 发生关系。因此对比较问题最稳妥的结论是：
+Marion 一侧现在也有 direct primary support for the distinction：1996 作者文本说明 manifestation 不能简单取消 horizon，同时 saturated phenomenon 要摆脱 horizon 的先行限定，并可能以多种方式与一个或多个 horizons 发生关系。Djian 2018 又证明“horizon 作为 possibility-condition / limit”的读法已有明确 *Étant donné* 解释 prior art。因此对比较问题最稳妥的结论是：
 
 > **“在 horizon 中／有 related horizon”本身不含“可被某个 horizon 穷尽”；若要推出后一命题，必须增加独立 closure 前提。Marion 式的 horizon-independence 也不能不经 bridge 就改写成 `NonExhaustible`。**
 
@@ -120,11 +135,12 @@ Marion 一侧现在也有 direct primary support for the distinction：1996 作�
 1. `Structured → Captured` 需要额外前提；共享“horizon”一词不产生蕴含。
 2. `NonExhaustible` 不等于 `Horizonless`。
 3. `Independent` 不等于 `NonExhaustible`；Marion 1996 primary text 也要求保留多个 horizon 关系情形。
-4. `ExhaustiveCaptureConditions` 是足够 bridge，不是哲学家已经承诺的公理。
+4. `ExhaustiveCaptureConditions` 是足够 bridge，不是哲学家已经承诺的公理；`Captured ∧ Independent` 只是在当前 surrogate 下反证这条 bridge。
 5. 抽象谓词可联合一致只证明当前语言的模型论一致性，不证明历史概念独立。
 6. Marion 的 saturated phenomenon 还涉及 intuition/intention/constitution；首问不需要把整个理论提前搬进 Lean。
 
 ## 当前仍未建立的断言
 
-- 尚未直接看到 *Being Given* pp. 209–212、225–226；二手精确引文和 Marion 1996 primary text不能冒充这一本书的逐页核对。
+- 尚未直接看到 *Being Given* pp. 209–212、225–226；二手精确引文、Djian 对法文版的研究以及 Marion 1996 primary text 都不能冒充这一本书的逐页核对。
+- Google Books 已确认 1997 PUF *Étant donné* 的版本和相关索引词，但未开放目标正文，因此不能作为 direct primary passage。
 - 尚未定位 Marion 直接把 Merleau-Ponty 称为“去主体化不彻底前辈”的原文，因此项目不用它作前提。
