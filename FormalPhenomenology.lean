@@ -1,6 +1,8 @@
 import FormalPhenomenology.Horizon.Basic
 import FormalPhenomenology.Horizon.Separation
 import FormalPhenomenology.Horizon.SituatedExcess
+import FormalPhenomenology.Horizon.Conditioning
 import FormalPhenomenology.Models.Finite
+import FormalPhenomenology.Models.Conditioning
 import FormalPhenomenology.Models.OpenHorizon
 import FormalPhenomenology.Models.HorizonExtension
