@@ -1,6 +1,6 @@
 # 视域结构与穷尽性的分离
 
-本页给出 v0.1 的完整逻辑问题。代码中的命题均以 Lean 定义为准；哲学解释另见 [INTERPRETATION.md](INTERPRETATION.md)。
+本页给出首个研究问题的形式层。代码中的命题均以 Lean 定义为准；哲学解释与原典证据见 [INTERPRETATION.md](INTERPRETATION.md) 和 [PASSAGE_CARDS.md](PASSAGE_CARDS.md)。
 
 ## 1. 关系语言
 
@@ -18,76 +18,112 @@ $$\begin{aligned}
 \mathrm{NonExhaustible}(p)&\iff \forall h\,(S(p,h)\to\neg\mathrm{Exhausts}(p,h)).
 \end{aligned}$$
 
-可构造性地证明 `NonExhaustible p ↔ ¬ Captured p`。这不是从否定全称式中提取缺失侧面的排中律推理；正反两向都直接使用否定存在式。具体模型另外给出缺失侧面。
+可构造性地证明 `NonExhaustible p ↔ ¬ Captured p`。
 
-## 2. 三项原则
+新增非空真谓词：
+
+$$
+\mathrm{HasSituatedExcess}(M)\iff
+\exists p\,[F(p)\land\mathrm{Structured}(p)\land\mathrm{NonExhaustible}(p)].
+$$
+
+它明确要求见证实际有相关视域，因此不能靠“没有任何 situated 关系”使 `NonExhaustible` 空真。
+
+## 2. 首个研究问题的直接形式答案
+
+问题：
+
+> “显现有视域结构”是否纯逻辑地推出“能够被某个相关视域穷尽”？
+
+形式化为：
+
+$$
+\forall M\,[\mathrm{UniversalStructure}(M)\to\mathrm{ClosureBridge}(M)]\; ?
+$$
+
+Lean 定理 `horizon_structure_does_not_entail_closure` 证明其否定：
+
+$$
+\boxed{\neg\forall M\,(A(M)\to B(M))}.
+$$
+
+反模型是有限 `splitModel`：一个显现、两个侧面、两个相关视域；每个视域只容纳其中一个侧面。它同时满足 `UniversalStructure` 与 `HasSituatedExcess`，所以显现确实“在视域中”，但不存在一个相关视域穷尽它。
+
+这比仅仅展示 A 与 C 一致更直接：它把首个问题写成本身需要反驳的蕴含式，并提供有限见证。
+
+## 3. A、B、C 与增强的 C+
 
 $$\begin{aligned}
 A&:\quad \forall p\,(F(p)\to\mathrm{Structured}(p)),\\
 B&:\quad \forall p\,(F(p)\to\mathrm{Structured}(p)\to\mathrm{Captured}(p)),\\
-C&:\quad \exists p\,(F(p)\land\mathrm{NonExhaustible}(p)).
+C&:\quad \exists p\,(F(p)\land\mathrm{NonExhaustible}(p)),\\
+C^+&:\quad \exists p\,(F(p)\land\mathrm{Structured}(p)\land\mathrm{NonExhaustible}(p)).
 \end{aligned}$$
 
-**定理：A、B、C 不可同时满足。**
+旧结果：A、B、C 不可同时满足；相对于这三条公式，任意删除一条都有具体模型。
 
-取 C 的见证 p。由 A 获得 p 的相关视域，再由 B 获得一个穷尽 p 的相关视域；这与 C 的见证条件矛盾。代码为 `structure_bridge_excess_inconsistent`。
+新增结果：
 
-这段推导很短。项目的重要工作是将额外前提 B 独立出来，并检查它是否真的属于待解释的文本，而不是把短推导包装为哲学上的新发现。
+- `hasSituatedExcess_implies_excess`：$C^+\Rightarrow C$。
+- `structure_and_excess_implies_situatedExcess`：$A\land C\Rightarrow C^+$。
+- `situatedExcess_refutes_closureBridge`：$C^+\Rightarrow\neg B$。
+- `situatedExcess_refutes_universalCapture`：$C^+$ 排除所有显现都被捕获。
 
-## 3. 逐条删除的模型
+因此，在原典已经给出“该现象实际有视域”时，不必再通过 A 排除 horizonless vacuity；单个 $C^+$ 见证就足以与 B 冲突。
 
-| 模型 | A | B | C | 说明 |
-|---|---|---|---|---|
-| `closedModel` | 真 | 真 | 假 | 一个现象、一个侧面、一个全覆盖视域 |
-| `splitModel` | 真 | 假 | 真 | 一个现象、两个侧面、两个分别只覆盖一个侧面的视域 |
-| `unsituatedModel` | 假 | 真 | 真 | 有显现但无相关视域；B、C 涉及空真的条件 |
+## 4. “不可穷尽”不等于“无视域”
 
-`minimal_conflict` 同时证明三项联合不可满足、每个二项子集都有具体模型。因此“最小”是指**相对于这三条指定公式的删除最小性**，不涉及其他候选语言或理论。
+`splitModel_situatedExcess` 构造 $C^+$；而 `structure_excludes_horizonless` 与 `splitModel_structure` 又给出该模型不存在 horizonless appearance。
 
-### 非空的兼容见证
+`Situated_excess_need_not_be_horizonless` 于是给出：
 
-`splitModel` 中 P={p}，H={h₀,h₁}，D={a₀,a₁}。F、S、G 全成立，而 R(hᵢ,aⱼ) 当且仅当 i=j。
+$$
+\exists M\,[C^+(M)\land\neg\mathrm{HasHorizonlessAppearance}(M)].
+$$
 
-p 有两个视域；h₀ 漏掉 a₁，h₁ 漏掉 a₀。所以“有视域”与“没有任何一个相关视域穷尽它”同时成立，且没有借助无限性或无显现的空模型。
+这条分离对文本解释很重要：“不能被任何相关视域穷尽”与“完全没有相关视域”是不同命题。
 
-## 4. 量词次序
+## 5. 逐一覆盖不等于整体覆盖
 
 `IndividuallyCoverable p` 表达：
 
 $$\forall a\,[G(p,a)\to\exists h\,(S(p,h)\land R(h,a))].$$
 
-它允许不同侧面对应不同视域。`Captured p` 则要求先选出一个 h，再覆盖全部侧面。穷尽蕴含逐一覆盖，但反向不成立；`splitModel` 已经给出有限反模型。
+`Captured p` 要求先选一个 h，再覆盖全部侧面。因此：
 
 $$\forall a\,\exists h\quad\not\Rightarrow\quad\exists h\,\forall a.$$
 
-形式入口：`captured_implies_individuallyCoverable`、`individual_cover_does_not_imply_capture`。省略关系条件的量词式仅是上面完整公式的提示。
+`individual_cover_does_not_imply_capture` 由有限 `splitModel` 给出反模型。
 
-## 5. 持续扩展仍可不穷尽
+## 6. 持续扩展仍可不穷尽
 
 在 `expandingModel` 中，P 为单元素类型，H=D=ℕ，F、S、G 全成立，R(h,a) 定义为 a<h。
 
-每个侧面 a 都被 h=a+1 容纳；每个 h 又遗漏侧面 a=h。视域按自然数顺序扩展时已容纳的侧面不会失去，但没有任一自然数视域覆盖全部侧面。
+每个侧面 a 被 h=a+1 容纳；每个 h 又遗漏 a=h。视域可单调扩展，却没有最终穷尽视域。
 
-`open_horizon_compatibility` 证明 A、C 和逐一可覆盖同时成立；`expandingModel_monotone` 证明上述单调性。
+`open_horizon_compatibility` 证明 A、C 和逐一可覆盖同时成立；`expandingModel_monotone` 证明单调性。
 
-## 6. 理想视域的加入
+## 7. 理想视域的加入
 
-`completedModel` 将视域类型换成 `Option Nat`。`some n` 保留原来的 n；`none` 是新加入的理想视域，容纳所有侧面。
+`completedModel` 把视域类型换成 `Option Nat`。`some n` 保留原来的有限视域；`none` 是人为加入的理想全覆盖视域。
 
-`finite_horizon_agrees` 证明旧视域的容纳关系完全保留。`completedModel_capture` 证明新增的理想视域穷尽显现。于是：
+`finite_horizon_agrees` 证明旧视域关系不变，`completedModel_capture` 证明新增理想视域穷尽显现，所以：
 
 $$C(\mathrm{expandingModel})\land\neg C(\mathrm{completedModel}).$$
 
-这不是对原模型中结论的反证，而是展示量词域的变化。`none` 是我们额外定义的对象；代码未证明它在真实经验中可达，或者某位哲学家会接受它。
+这显示“哪些视域进入量词域”本身是解释前提；代码并未证明理想视域在真实经验中可达。
 
-## 7. 证明地图
+## 8. 证明地图
 
 | 文件 | 具名定理数 | 作用 |
 |---|---:|---|
-| `Horizon/Basic.lean` | 0 | 模型和原则定义 |
-| `Horizon/Separation.lean` | 9 | 基本等价、蕴含和条件冲突 |
-| `Models/Finite.lean` | 8 | 三个有限见证与最小性 |
+| `Horizon/Basic.lean` | 0 | 基础关系语言 |
+| `Horizon/Separation.lean` | 9 | 基本等价、蕴含和 A/B/C 条件冲突 |
+| `Horizon/SituatedExcess.lean` | 4 | 非空真 excess 与 closure 的直接冲突 |
+| `Models/Finite.lean` | 11 | 有限见证、最小冲突与首问反例 |
 | `Models/OpenHorizon.lean` | 6 | 开放扩展、逐一覆盖和单调性 |
-| `Models/HorizonExtension.lean` | 4 | 域扩展与穷尽性的变化 |
+| `Models/HorizonExtension.lean` | 4 | 域扩展与穷尽性变化 |
 
-共 27 个具名引理／定理，全部列在 `Audit.lean`。执行 `python3 scripts/check.py` 进行构建与逐项公理依赖检查。这里展示的是可直接构造的见证，并未声称解决任意哲学理论的一致性判定问题。
+共 **34** 个具名引理／定理，全部列入 `Audit.lean`。执行 `python3 scripts/check.py` 进行根模块覆盖、禁用占位符、`lake build` 与逐项 `#print axioms` 检查。
+
+这里的形式结论是模型论事实。原典研究目前已经直接核查 Merleau-Ponty 的关键开放视域段落；Marion 的关键页仍待独立原书复核，所以不能把 34 个零公理依赖证明误报成“完整哲学命题已经结束”。
