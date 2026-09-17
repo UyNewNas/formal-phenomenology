@@ -30,6 +30,8 @@ HorizonIndependent  ⟹ Horizonless        ✗
 
 另有一个**联合一致性见证**：同一个显现可以同时有相关视域、没有 horizon 被标记为其条件化关系，并且不被任何相关视域穷尽；该模型还满足“条件化视域必须是相关视域”的一致性约束。入口是 `related_independent_nonExhaustible_are_jointly_consistent`。
 
+本轮再把旧 `closedIndependentConditioning` 明确打包成另一个直接针对“兼容／冲突”的见证：一个**实际显现**可以同时 `Structured`、`Independent` 与 `Captured`。入口是 `related_independent_captured_are_jointly_consistent`。因此“有／预设 related horizon”与“不受 horizon 作为 conditioning relation 约束”在当前语言中并不按定义冲突；真正要推出 `Independent → NonExhaustible`，仍必须额外排除 `Captured ∧ Independent`。这里的 `Captured` 只是当前 aspect 语言中的 existential exhaustive capture，不等同 Marion 的 “saturates a horizon”。
+
 “`Independent → NonExhaustible` 到底需要什么”现在有两层精确答案。点态上：
 
 ```text
@@ -88,21 +90,24 @@ Marion, *Being Given*, Jeffrey L. Kosky trans., Stanford UP 2002 的版本、§2
 
 同题 prior art 方面，Aurélien Djian 2018 直接研究 *Étant donné* 中 horizon 的角色并引用 ED pp. 304–305；Ericson Falabretti 2015/2016 已直接把 *Phenomenology of Perception* 与 *Étant donné* 放在同一比较问题中。因此本项目不把 related/conditioned 的历史区分、或 Merleau-Ponty/Marion 的比较配对本身包装成新发现。
 
-本项目强制进行 [外部工作与复用审计](docs/PRIOR_ART.md)。已经确认：Lean 中存在独立的 `novaspivack/phenomenology-lean` formal-phenomenology 工程，Isabelle/HOL / AFP 与 LogiKEy 也已有成熟 formal philosophy / computational metaphysics / computational hermeneutics 方法。因此本项目**不声称首创“形式化哲学”或“形式化现象学”工作流**。本轮针对冲突见证正规形做增量查重：GitHub 全局搜索 `Captured Independent NonExhaustible` 没有定位到 external formal-philosophy 同型 API；`novaspivack/phenomenology-lean` 仍固定在 `75230e4e...`，LogiKEy 最新固定在 `b29954b0...`。因此只复用本仓已验证的 Lean Core 逻辑 API，不引入重依赖，也不作原创数学／哲学宣称。详见 [strict bridge 层级审计](docs/STRICT_BRIDGE_HIERARCHY.md)。
+本轮新增核查 Éric Pommier 2020 “La différence phénoménologique selon Barbaras et Marion”。该文把两件事明确并置：Marion 倾向拒绝把 horizon/world 作为 saturated phenomena 的先行 `condition of possibility`，但 saturated phenomenon 仍以某种方式预设 horizon，因为它“saturates” horizon；Pommier 指向 *Étant donné* 2013 pp. 304–308、344–348。该材料是 secondary evidence，不把 `Captured` 等同于 saturation，也不替代 Marion 原书 direct-primary gate；详见 [Pommier 2020 增量审计](docs/POMMIER_2020_HORIZON_AUDIT.md)。
+
+本项目强制进行 [外部工作与复用审计](docs/PRIOR_ART.md)。已经确认：Lean 中存在独立的 `novaspivack/phenomenology-lean` formal-phenomenology 工程，Isabelle/HOL / AFP 与 LogiKEy 也已有成熟 formal philosophy / computational metaphysics / computational hermeneutics 方法。因此本项目**不声称首创“形式化哲学”或“形式化现象学”工作流**。本轮针对 `Structured + Independent + Captured` 兼容性见证做增量查重：`novaspivack/phenomenology-lean` 仍固定在 `75230e4e...`，LogiKEy 仍固定在 `b29954b0...`，GitHub 全局相关组合检索没有定位到 external formal-philosophy 同型 API。因此只复用本仓已有 `closedIndependentConditioning` 反模型作最小具名打包，不引入重依赖，也不作原创数学／哲学宣称。
 
 但 **pp. 209–212、225–226 的 *Being Given* 原书正文仍未由本项目独立逐页核对**。Internet Archive 可确认 1997 法文 *Étant donné* 的受限借阅条目存在，Google Books 也能确认 1997 PUF 版本及索引词，但当前环境都未提供目标页可直接读取正文；项目不会绕过访问控制。因此尚未达到首个研究问题的停止条件。
 
-详见 [段落卡](docs/PASSAGE_CARDS.md)、[来源登记](docs/SOURCES.md)、[重印 provenance](docs/MARION_REPRINT_PROVENANCE.md)、[strict bridge 层级审计](docs/STRICT_BRIDGE_HIERARCHY.md) 与 [外部工作审计](docs/PRIOR_ART.md)。
+详见 [段落卡](docs/PASSAGE_CARDS.md)、[来源登记](docs/SOURCES.md)、[重印 provenance](docs/MARION_REPRINT_PROVENANCE.md)、[Pommier 2020 增量审计](docs/POMMIER_2020_HORIZON_AUDIT.md)、[strict bridge 层级审计](docs/STRICT_BRIDGE_HIERARCHY.md) 与 [外部工作审计](docs/PRIOR_ART.md)。
 
 ## 工程状态
 
-Lean 4.24.0；不依赖 Mathlib 或其他外部 Lean 包。本分支共有 **8 个库模块、59 个具名引理／定理**，全部列入内核公理依赖审计；最终通过状态以对应提交 CI 为准。
+Lean 4.24.0；不依赖 Mathlib 或其他外部 Lean 包。当前共有 **8 个库模块、60 个具名引理／定理**，全部列入内核公理依赖审计；最终通过状态以对应提交 CI 为准。
 
 | 检验 | 形式结论 | 入口 |
 |---|---|---|
 | 有视域是否推出可穷尽 | 否；有限反模型 | `horizon_structure_does_not_entail_closure` |
 | 有视域且不可穷尽是否非空真 | 是；有限见证 | `splitModel_situatedExcess` |
 | 不依赖视域是否等于无视域 | 否；有相关视域且独立的模型 | `horizon_independence_need_not_be_horizonless` |
+| related + independent + captured 能否同时成立 | 能；同一实际显现有有限见证 | `related_independent_captured_are_jointly_consistent` |
 | 不依赖视域是否推出不可穷尽 | 无额外条件时否 | `horizon_independence_does_not_imply_nonExhaustible` |
 | 上条蕴含的确切点态条件是什么 | 等价于 `Captured p → ¬ Independent p` | `independent_implies_nonExhaustible_iff_capture_refutes_independence` |
 | 在实际显现域的确切条件是什么 | 等价于对 `appears p` 排除 `Captured p ∧ Independent p` | `appearing_independence_implies_nonExhaustible_iff_capture_refutes_independence` |
@@ -141,7 +146,7 @@ FormalPhenomenology/
   Horizon/SituatedExcess.lean
   Horizon/Conditioning.lean      # 三轴分离 + 点态/显现域/冲突见证确切条件 + 强 bridge → 精确条件
   Models/Finite.lean
-  Models/Conditioning.lean       # 分离、联合见证、bridge 反模型及 strictness witness
+  Models/Conditioning.lean       # 分离、联合见证、captured/independent 兼容见证、bridge 反模型及 strictness witness
   Models/OpenHorizon.lean
   Models/HorizonExtension.lean
 Audit.lean
@@ -155,6 +160,7 @@ scripts/check.py
 | [解释选择登记](docs/INTERPRETATION.md) | 形式词与哲学词之间的距离 |
 | [来源与阅读状态](docs/SOURCES.md) | 一手／二手证据与未核查项 |
 | [Marion 重印 provenance](docs/MARION_REPRINT_PROVENANCE.md) | 正式重印范围、合法获取路线与证据等级 |
+| [Pommier 2020 增量审计](docs/POMMIER_2020_HORIZON_AUDIT.md) | horizon 预设／条件化区分、2013 页码导航与本轮复用决定 |
 | [strict bridge 层级审计](docs/STRICT_BRIDGE_HIERARCHY.md) | 强 bridge、精确条件、冲突见证正规形、查重和访问复查 |
 | [外部工作与复用审计](docs/PRIOR_ART.md) | 形式哲学先例、同题文献、复用/去重决定 |
 | [研究路线与验收条件](docs/ROADMAP.md) | 下一阶段与停止条件 |
@@ -162,4 +168,4 @@ scripts/check.py
 
 ## 下一步
 
-首要硬门槛仍是**独立核对 Marion *Being Given* pp. 209–212、225–226 的原书正文**，或取得可可靠逐段对应的法文 *Étant donné* / 正式重印正文。形式层现在不仅拆开相关视域、条件化、穷尽三者，还把 `Independent → NonExhaustible` 的确切条件写成点态形式、实际显现域形式和“无 `Captured ∧ Independent` 显现见证”形式，并用正向 theorem + converse countermodel 完整证明其严格弱于 `ExhaustiveCaptureConditions` 这种 horizon-by-horizon 结构 bridge。下一轮继续突破合法原典访问门，决定真实文本是否支持任何额外 bridge，而不是继续无边界扩张模型。
+首要硬门槛仍是**独立核对 Marion *Being Given* pp. 209–212、225–226 的原书正文**，或取得可可靠逐段对应的法文 *Étant donné* / 正式重印正文。Pommier 2020 新增了 2013 Quadrige pp. 304–308、344–348 的 secondary navigation，但不能替代 direct-primary 阅读。形式层现在不仅拆开相关视域、条件化、穷尽三者，还显式证明 `Structured + Independent + Captured` 可以联合一致，并把 `Independent → NonExhaustible` 的确切条件写成点态形式、实际显现域形式和“无 `Captured ∧ Independent` 显现见证”形式，再用正向 theorem + converse countermodel 完整证明其严格弱于 `ExhaustiveCaptureConditions` 这种 horizon-by-horizon 结构 bridge。下一轮继续突破合法原典访问门，决定真实文本是否支持任何额外 bridge，而不是继续无边界扩张模型。
