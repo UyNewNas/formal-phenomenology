@@ -2,7 +2,7 @@
 
 核查日期：2026-09-17。
 
-本页处理首个研究问题中 Marion 一侧的文本门，重点是 *Being Given* pp. 209–212、225–226。新增的 Marion 1996 作者本人论文已经直接约束解释空间，但它不冒充 2002 目标书页的逐页核查。
+本页处理首个研究问题中 Marion 一侧的文本门，重点是 *Being Given* pp. 209–212、225–226。Marion 1996 作者本人论文已经直接约束解释空间，但它不冒充 2002 目标书页的逐页核查。
 
 ## 1. 状态标签
 
@@ -14,15 +14,15 @@
 
 `Being Given` 停止门仍要求目标段落进入 `PRIMARY-DIRECT-PAGE`，或取得可可靠逐段对应的法文 *Étant donné* 原文。`PRIMARY-DIRECT-INDEXED` 可以改变模型选择，却不能谎称目标书页已读。
 
-## 2. 新增关键证据：Marion 1996 直接作者文本
+## 2. Marion 1996 直接作者文本
 
 Jean-Luc Marion, “The Saturated Phenomenon,” Thomas A. Carlson trans., *Philosophy Today* 40(1), 1996, pp. 103–124, DOI `10.5840/philtoday199640137`。
 
-来源为 Philosophy Documentation Center / PDCnet。公开搜索索引在本轮直接返回作者正文及原刊页码；直接 PDF URL 在当前环境返回 HTTP 403，无法执行 PDF screenshot，因此状态为 **PRIMARY-DIRECT-INDEXED**。详细记录见 [MARION_1996_PRIMARY.md](MARION_1996_PRIMARY.md)。
+来源为 Philosophy Documentation Center / PDCnet。公开搜索索引直接返回作者正文及原刊页码；直接 PDF URL 在当前环境返回 HTTP 403，无法执行 PDF screenshot，因此状态为 **PRIMARY-DIRECT-INDEXED**。详细记录见 [MARION_1996_PRIMARY.md](MARION_1996_PRIMARY.md)。
 
 ### p. 117 — horizon 不能简单取消
 
-Marion 的论证不是“做一个没有 horizon 的现象学”。他先说明一般显现被 horizon 先行接收／限定，然后明确说：一般地 dispense with horizon 会阻止 manifestation；要摆脱的是 horizon 的 **delimiting anteriority**。
+Marion 的论证不是“做一个没有 horizon 的现象学”。他先说明一般显现被 horizon 先行接收／限定，然后明确说：一般地 dispense with horizon 会阻止 manifestation；要解除的是 horizon 的 **delimiting anteriority**。
 
 形式后果：
 
@@ -76,11 +76,25 @@ Leung 与 Lahaie 都把目标页定位到 intuition 超过／去中心化 intent
 
 Marion 1996 p. 119 已提供 direct primary parallel：intuitive givenness 的过剩、对象 constitution 失败和主体位置反转确实属于作者本人的 saturated-phenomenon 论证。因此完整 saturation 明显超出当前 aspect/exhaustion 模型；但这仍不等于 *Being Given* 目标页已逐页核对。
 
-## 6. 2007 作者侧旁证
+## 6. 同题 prior art：Djian 2018 对 *Étant donné* 的 horizon 分析
+
+Aurélien Djian, “L’horizon et le destin de la phénoménologie,” *Philosophiques* 45(2), 343–364, DOI `10.7202/1055267ar`。Érudit 的开放索引／全文检索直接返回论文正文片段和期刊页码，因此这里记作 **SECONDARY-INTERPRETIVE + EXACT-REFERENCE**，不是 primary Marion text。
+
+Djian 在 p. 357 附近讨论 *Étant donné* §21–22，并引用 ED pp. 304–305，把 horizon 与 I 一起分析为限制 donation / phenomenality 的 possibility-conditions。这个 prior art 与本项目 `conditions` 的解释动机高度重合：历史上的“horizon 作为先行可能性条件”并非本项目新发现。
+
+同时，Djian 没有给出：
+
+```text
+situated p h ∧ Exhausts p h → conditions p h
+```
+
+这种 extensional bridge。因此它支持我们保留 related/conditioned 的区分，却不能把 `ExhaustiveCaptureConditions` 升级成 Marion 的理论。新 Lean 定理 `captured_independent_refutes_exhaustiveCaptureConditions` 也只是在这个内部 bridge 下做逻辑闭包，不是 Djian 或 Marion 的形式翻译。
+
+## 7. 2007 作者侧旁证
 
 Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378–402。官方期刊页面与英文摘要已直接查看；摘要称 horizon 为 givenness 的 constitutive condition，并将 saturation 连到 intuition surplus、unconditioned / irreducible phenomenality 与主体反转。全文 PDF 在先前运行中未成功取得。
 
-## 7. 对当前 Lean 的决定
+## 8. 对当前 Lean 的决定
 
 保留三轴：
 
@@ -96,19 +110,20 @@ Exhausts   -- extensional aspect coverage
 - `horizon_independence_does_not_imply_nonExhaustible`；
 - `nonExhaustible_does_not_imply_horizon_independence`；
 - `related_independent_nonExhaustible_are_jointly_consistent`；
-- `ExhaustiveCaptureConditions` 仅作 MODEL/QUESTION pressure test。
+- `ExhaustiveCaptureConditions` 仅作 MODEL/QUESTION pressure test；
+- `captured_independent_refutes_exhaustiveCaptureConditions` 作为该压力测试的点态冲突判据。
 
-本轮 prior-art / primary-text 审计后仍**不新增** `priorDelimits`、horizon-combination 或 intention/intuition primitive。原因不是这些概念不重要，而是现有三轴已经足够回答首个窄问题；新增 primitive 会扩大模型自由度，而不会改变 `UniversalStructure ↛ ClosureBridge`。
+prior-art / primary-text 审计后仍**不新增** `priorDelimits`、horizon-combination 或 intention/intuition primitive。原因不是这些概念不重要，而是现有三轴已经足够回答首个窄问题；新增 primitive 会扩大模型自由度，而不会改变 `UniversalStructure ↛ ClosureBridge`。
 
-## 8. 当前最窄剩余门槛
+## 9. 当前最窄剩余门槛
 
-首问纯形式答案已经稳定。Marion 1996 primary text 又直接支持：horizon 不能简单取消，核心是其先行限定角色，而且 saturated phenomenon 可以与 horizon 建立多种关系。
+首问纯形式答案已经稳定。Marion 1996 primary text 直接支持：horizon 不能简单取消，核心是其先行限定角色，而且 saturated phenomenon 可以与 horizon 建立多种关系；Djian 2018 又证明这套 horizon-as-condition 阅读已有明确同题 prior art。
 
-剩余停止门只剩版本核对：
+Google Books 已确认 1997 PUF *Étant donné* 的版本和相关书内索引词，但仍不开放目标正文。因此剩余停止门仍是版本核对：
 
 1. 合法直接查看 *Being Given* pp. 209–212、225–226，或可靠逐段对照法文 *Étant donné*；
 2. 确认 1996 论证在 1997/2002 书本版本中的重写、顺序和术语；
 3. 最终冻结 `Independent` 只作为“非先行 horizon-conditioned”的弱接口，而 `NonExhaustible` / `Captured` 继续是独立的模型轴；
 4. 若书本目标页确实要求 intention/intuition 才能忠实陈述**首问本身**，再加入最小接口；否则不把完整 saturation 工程塞进首问停止条件。
 
-在这一步完成前，M1 继续 open；但当前解释不确定性已经从“是否保留 horizon”显著收缩为“版本间的精确文本核对”。
+在这一步完成前，M1 继续 open；当前解释不确定性已经从“是否保留 horizon”收缩为“版本间的精确文本核对”。

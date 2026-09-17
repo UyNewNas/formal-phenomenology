@@ -13,8 +13,10 @@
 - Merleau-Ponty, *Phenomenology of Perception*, Colin Smith trans., Routledge Classics 2002 已固定，并直接查看 pp. 78–82、384–386。文本支持 horizon 结构，但强调开放、未完成、透视不穷尽，因此 B / `ClosureBridge` 不应归给 Merleau-Ponty。
 - Marion, *Being Given*, Kosky trans., Stanford UP 2002 已固定；出版社元数据确认 §21 pp. 199–212、§23 起于 p. 221。pp. 209–212、225–226 仍没有在当前环境直接逐页读取。
 - Leung、Mason、Mackinlay、Moran、Lee、Lahaie 等研究已对这些页形成带页码交叉；Murga (2024) 已被直接查看，明确提出 non-metaphysical horizontality 的竞争解释。
-- **新增 primary 进展**：Marion, “The Saturated Phenomenon,” *Philosophy Today* 40(1), 1996, pp. 103–124 的 PDCnet 出版者索引在本项目中直接返回作者正文和原刊页码。p. 117 明确说不是一般取消 horizon，而是摆脱其 `delimiting anteriority`；p. 118 列出一个／多个／超过 horizon 等关系并称 saturated phenomenon 不依赖 horizon 这一 condition of possibility；p. 119 把完整 saturation 连到 intuitive excess 与 constitution reversal。直接 PDF 在当前环境返回 403，因此该证据标为 `PRIMARY-DIRECT-INDEXED`，不是 PDF page-image review。
+- Marion, “The Saturated Phenomenon,” *Philosophy Today* 40(1), 1996, pp. 103–124 的 PDCnet 出版者索引在本项目中直接返回作者正文和原刊页码。p. 117 明确说不是一般取消 horizon，而是摆脱其 `delimiting anteriority`；p. 118 列出一个／多个／超过 horizon 等关系并称 saturated phenomenon 不依赖 horizon 这一 condition of possibility；p. 119 把完整 saturation 连到 intuitive excess 与 constitution reversal。直接 PDF 在当前环境返回 403，因此该证据标为 `PRIMARY-DIRECT-INDEXED`，不是 PDF page-image review。
 - Marion 2007 *Filozofia* 官方页面／摘要也已直接查看，继续支持 horizon-as-condition、intuition surplus 与 subject reversal，但全文 PDF 尚未成功读取。
+- **新增同题 prior art**：Aurélien Djian (2018), “L’horizon et le destin de la phénoménologie” 的 Érudit 开放索引／全文检索直接返回期刊正文片段。其对 *Étant donné* §21–22 的讨论引用 ED pp. 304–305，把 horizon 与 I 分析为限制 donation 的 possibility-conditions。它进一步固定 `conditions` 轴属于已有解释问题，而非本项目的新历史发现；但它没有给出 `situated ∧ Exhausts → conditions` 这种 extensional bridge。
+- Google Books 1997 PUF *Étant donné* 书目页确认 ISBN 2130486770 / 9782130486770、452 页，并显示 `horizon`、`intuition`、`intentionnalité`、`manifestation`、`phénomène saturé` 等书内索引词；当前仍不开放目标页正文，因此只作 PRIMARY-METADATA/INDEX，不计 direct-page evidence。
 
 ### 已完成的形式层推进
 
@@ -23,8 +25,9 @@
 - `HorizonConditioning` 把 `situated`、`conditions`、`Exhausts` 分开；`Independent` / `NonExhaustible` / `Horizonless` 已由反模型证明不能词面互换。
 - `HasSituatedIndependentExcess` 只作为中性兼容性 profile，不命名为 `Saturated`。
 - `ExhaustiveCaptureConditions` 隔离了 `Independent → NonExhaustible` 所需的一种额外 bridge；已有反模型证明它不是定义展开。Marion 1996 primary text 并未把这条 extensional bridge 升级为历史归属。
+- `captured_independent_refutes_exhaustiveCaptureConditions` 补上该 bridge 的点态冲突判据：若同一个 p 同时 `Captured` 且 `Independent`，则 bridge 必然失败。它只闭合当前模型中的逻辑，不把 `Captured` 解释成 Marion 的 “saturates a horizon”。
 
-### 本轮范围决定
+### 当前范围决定
 
 Marion 1996 primary text 已经直接证明：完整 saturation 的 horizon 关系比“无视域”或“逐一不可穷尽”更复杂。根据 prior-art gate，当前**不新增** `priorDelimits`、horizon-combination、intention/intuition primitive：
 
@@ -37,9 +40,9 @@ Marion 1996 primary text 已经直接证明：完整 saturation 的 horizon 关�
 - A / `UniversalStructure`：Merleau-Ponty 有直接证据支持，但形式化是弱压缩。
 - B / `ClosureBridge`：不对应已核查 Merleau-Ponty 文本；其方向反而被开放／未完成文本抵制。
 - C / `NonExhaustible`：只能是 excess 的弱模型影子，不能定义 Marion saturation。
-- `Independent`：作为“不受 horizon 的先行限定／条件化”的弱接口，现在有 Marion 1996 primary-text 动机；仍不等于完整 saturation。
+- `Independent`：作为“不受 horizon 的先行限定／条件化”的弱接口，现在有 Marion 1996 primary-text 动机，并有 Djian 2018 等 *Étant donné* 解释 prior art；仍不等于完整 saturation。
 - `Horizonless`：Marion 1996 p. 117 直接使其不适合作为默认 saturation 编码。
-- `ExhaustiveCaptureConditions`：继续为 MODEL/QUESTION；没有原典把 `situated ∧ Exhausts → conditions` 规定成定理。
+- `ExhaustiveCaptureConditions`：继续为 MODEL/QUESTION；没有原典或同题研究把 `situated ∧ Exhausts → conditions` 规定成定理。
 
 ### 尚未通过的停止门
 
