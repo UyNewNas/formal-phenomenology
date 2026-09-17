@@ -125,6 +125,36 @@ theorem structure_and_conditioning_coherence_do_not_imply_exact_appearing_condit
     closedIndependentConditioning_independent
 
 /--
+Even granting both of the base-layer principles used in the A/B analysis does
+not repair the missing link to horizon conditioning.  The closed-independent
+model has universal horizon structure and satisfies the closure bridge (indeed,
+it has universal capture), while `ConditioningIsSituated` also holds.  Its sole
+appearing phenomenon is nevertheless both `Captured` and `Independent`.
+
+Thus `UniversalStructure + ClosureBridge + ConditioningIsSituated` still does
+not entail the exact appearing-domain exclusion.  A premise that actually links
+capture to conditioning remains necessary.  This theorem is only a separation
+result in the current relation language; it does not attribute the closure
+bridge or any capture/conditioning bridge to Merleau-Ponty or Marion.
+-/
+theorem structure_closure_and_conditioning_coherence_do_not_imply_exact_appearing_condition :
+    ¬ (∀ M : HorizonConditioning,
+      M.base.UniversalStructure →
+      M.base.ClosureBridge →
+      M.ConditioningIsSituated →
+      ∀ p, M.base.appears p → M.base.Captured p → ¬ M.Independent p) := by
+  intro h
+  have hstructureBridge :=
+    (universalCapture_iff_structure_and_bridge closedModel).mp closedModel_capture
+  have hcoherent : closedIndependentConditioning.ConditioningIsSituated := by
+    intro _ _ hf
+    exact False.elim hf
+  have hexcl := h closedIndependentConditioning
+    hstructureBridge.1 hstructureBridge.2 hcoherent
+  exact (hexcl () True.intro closedIndependentConditioning_capture)
+    closedIndependentConditioning_independent
+
+/--
 The closed-independent countermodel to `Independent → NonExhaustible` fails the
 new bridge: its related horizon exhausts the appearance but is not marked as a
 conditioning horizon.  This confirms that the bridge is a genuine extra premise.
