@@ -150,13 +150,31 @@ situated p h ∧ Exhausts p h → conditions p h
 
 现有 `closedIndependentConditioning` 已显示没有 bridge 时可以同时 `Independent` 与 `Captured`，并证明该模型违反 bridge。`captured_independent_refutes_exhaustiveCaptureConditions` 则把这一事实提升为任意模型、任意具体 witness 的一般定理：只要 `Captured p` 与 `Independent p` 同时成立，bridge 就失败。
 
-### 本轮新增：形式证明“较强”确实是严格较强
+### 已完成：形式证明“较强”确实是严格较强
 
 在新增模型前重新做了窄查重：GitHub 全局精确搜索 `ExhaustiveCaptureConditions` 只命中本仓；更宽的 `Captured Independent horizon` 搜索只有大量无关工程文本，没有定位到 external formal-philosophy 同型声明。固定的 `novaspivack/phenomenology-lean` 也没有 Marion/horizon/capture-conditioning 的可复用 API。因此这里只构造最小有限反模型，不引入 Mathlib、LogiKEy 或其他重依赖，也不作原创数学主张。
 
-新模型 `displacedCaptureConditioning` 有一个显现、两个均 related 的 horizon 和一个 aspect：`false` horizon 穷尽该 aspect，`true` horizon 则承担 conditioning。于是所有实际显现都满足 `Captured → ¬ Independent`，且 `ConditioningIsSituated` 成立；但 `ExhaustiveCaptureConditions` 失败，因为 exhaustive 的 `false` horizon 本身没有 conditioning。Lean theorem `exact_appearing_condition_is_strictly_weaker_than_exhaustiveCaptureConditions` 因而给出一个具体模型，证明“较强”不是仅凭语句形状作出的口头判断。
+模型 `displacedCaptureConditioning` 有一个显现、两个均 related 的 horizon 和一个 aspect：`false` horizon 穷尽该 aspect，`true` horizon 则承担 conditioning。于是所有实际显现都满足 `Captured → ¬ Independent`，且 `ConditioningIsSituated` 成立；但 `ExhaustiveCaptureConditions` 失败，因为 exhaustive 的 `false` horizon 本身没有 conditioning。Lean theorem `exact_appearing_condition_is_strictly_weaker_than_exhaustiveCaptureConditions` 因而给出一个具体模型，证明精确显现域条件并不推出强 bridge。
 
-**复用决定。** 这个结果只是当前三个关系在最小有限模型中的分离：精确显现域排斥允许“由另一个相关 horizon 提供 conditioning”，而 `ExhaustiveCaptureConditions` 强制“那个 exhaustive horizon 自己就是 conditioning horizon”。这是解释 `MODEL/QUESTION` 强度差异的形式证据，不是 Marion 文本关于 horizon 的新历史结论。
+### 本轮新增：补全严格层级的正向 theorem
+
+在新增 `exhaustiveCaptureConditions_implies_exact_appearing_condition` 前再次执行本轮对象的增量查重：
+
+- GitHub 全局精确搜索 `ExhaustiveCaptureConditions` 仍只命中本仓；
+- 更宽的 `Captured Independent NonExhaustible horizon conditioning` 没有定位到外部 formal-philosophy 同型声明；
+- `novaspivack/phenomenology-lean` 本轮重新核对仍在 commit `75230e4eab333ad0fc47573747521ccc1a31a163`；仓库内搜索 `horizon Marion saturated exhaustive conditioning` 无结果；
+- 该目标可直接复用本仓 `exhaustiveCaptureConditions_independent_implies_nonExhaustible` 与 `nonExhaustible_iff_not_captured`，因此不需要 Mathlib、LogiKEy 或新语义层。
+
+新增 theorem 明确给出：
+
+```text
+ExhaustiveCaptureConditions M
+→ ∀ p, appears p → Captured p → ¬ Independent p
+```
+
+与 `displacedCaptureConditioning` 的 converse countermodel 合并后，强 bridge 与显现域精确条件的严格层级才两侧闭合。
+
+**复用决定。** 这是对既有本仓 API 的薄 Lean-Core 逻辑闭包，不是新的数学原理，也没有新的历史解释内容。现有解释文献仍只约束 horizon 的 related / conditioning / saturation 语义边界，并不提供 `situated ∧ Exhausts → conditions`。详见 [STRICT_BRIDGE_HIERARCHY.md](STRICT_BRIDGE_HIERARCHY.md)。
 
 ## 6. Marion 1996 primary text 是否要求新 API？
 
@@ -179,8 +197,10 @@ Jean-Luc Marion, “The Saturated Phenomenon,” *Philosophy Today* 40(1), 1996,
 
 但这**不取消书本版本核对门**。借助现有 crosswalk 与本轮重印 provenance，门槛可精确成：直接读 BG 209–212、225–226，或法文 ED 292–297、314–315，或在已确认正式重印中找到对应正文并用文本锚点互证；二手引注与书目关系只负责定位，不能替代 primary direct reading。
 
+本轮再次检查 Stanford / De Gruyter Brill、Google Books 的 *Being Given* 以及 Routledge 2004 正式重印入口；仍只有元数据或选择性预览，没有合法暴露目标正文。这一访问负结果已同步 [MARION_REPRINT_PROVENANCE.md](MARION_REPRINT_PROVENANCE.md)，不能被当作不存在文本或支持某种解释的证据。
+
 ## 8. 当前复用结论
 
 首问继续保持轻量 Lean Core 是合理选择。现阶段没有外部形式化提供可直接替换本项目 horizon 首问的同型实现；formal philosophy 的方法、Marion horizon 的解释 prior art、以及 Merleau-Ponty / Marion 的直接比较研究都已明确存在。
 
-当前最有价值的复用分成四类：一是采用 Miller / Mackinlay / Steinbock 的 BG/ED 双版本引注，避免重新猜测翻译页码；二是采用 Falabretti / Djian / Murga 等既有比较与解释工作限制历史新颖性表述并保存竞争读法；三是采用 Moran / Routledge 的明确重印 provenance 扩展合法 direct-primary 获取路径；四是直接复用本仓 `NonExhaustible ↔ ¬Captured`，用无新 primitive 的正规化 theorem 给出 `Independent → NonExhaustible` 的点态和实际显现域确切条件。除此之外继续等待 direct-primary 版本核对，不扩张完整 saturation API。
+当前最有价值的复用分成四类：一是采用 Miller / Mackinlay / Steinbock 的 BG/ED 双版本引注，避免重新猜测翻译页码；二是采用 Falabretti / Djian / Murga 等既有比较与解释工作限制历史新颖性表述并保存竞争读法；三是采用 Moran / Routledge 的明确重印 provenance 扩展合法 direct-primary 获取路径；四是直接复用本仓 `NonExhaustible ↔ ¬Captured` 及已有 bridge consequences，用无新 primitive 的正规化／层级 theorem 给出 `Independent → NonExhaustible` 的点态、实际显现域确切条件，以及 `ExhaustiveCaptureConditions` 对该精确条件的严格加强。除此之外继续等待 direct-primary 版本核对，不扩张完整 saturation API。

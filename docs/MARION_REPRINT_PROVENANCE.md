@@ -71,3 +71,16 @@ Google Books 的 Taylor & Francis 书目页也独立确认 Volume 4 的编辑、
 它也不提供新的历史 bridge：没有任何重印 provenance 本身可以推出 `situated ∧ Exhausts → conditions`。
 
 所以当前正确动作是继续利用正式重印路径寻找可合法直接读取的目标正文，而不是新增 horizon-combination、intuition/intention 或其他自由 primitive。
+
+## 6. 2026-09-17 本轮访问复查
+
+本轮重新打开三条正式路线：Stanford / De Gruyter Brill 的 *Being Given* 章节页、Google Books 的 *Being Given* 书目／有限预览页，以及 Google Books 的 Routledge 2004 vol. 4 页面。
+
+结果仍然是：
+
+- *Being Given* 官方页面可确认版本、章节与目录位置，但当前环境没有直接暴露 BG pp. 209–212、225–226 正文；
+- Google Books *Being Given* 仍是有限预览，没有返回目标页正文；
+- Routledge 2004 vol. 4 的 Google Books 页面可以再次确认 Marion `Sketch of the Saturated Phenomenon` 位于该正式重印卷并从卷内 p. 5 开始，但可见页面是选择性预览，不能直接核对与 BG 209–212 对应的目标段落；
+- Fordham / De Gruyter Brill 2013 `Sketch` 章节页仍显示正文不可访问。
+
+所以本轮没有把 `PRIMARY-PUBLISHER-METADATA`、`SECONDARY-EXACT-REPRINT-PROVENANCE` 或 selected preview 升格成 `PRIMARY-DIRECT-PAGE`。这一负结果是访问审计，不是哲学结论；首问停止门保持不变。
