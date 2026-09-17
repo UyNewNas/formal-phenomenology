@@ -77,6 +77,25 @@ theorem closedIndependentConditioning_capture :
   exact closedModel_capture () True.intro
 
 /--
+Related horizon structure, horizon-independence in the conditioning sense, and
+existential exhaustive capture are jointly satisfiable at one actually
+appearing phenomenon in the current relation language.
+
+This packages the already existing closed-independent witness in the exact
+compatibility form needed for the first research question.  It does not identify
+`Captured` with Marion's phrase "saturates a horizon"; it only shows that
+relatedness/capture and absence of conditioning do not conflict by definition.
+-/
+theorem related_independent_captured_are_jointly_consistent :
+    ∃ M : HorizonConditioning, ∃ p : M.base.Phenomenon,
+      M.base.appears p ∧ M.base.Structured p ∧
+        M.Independent p ∧ M.base.Captured p := by
+  refine ⟨closedIndependentConditioning, (), True.intro, ?_,
+    closedIndependentConditioning_independent,
+    closedIndependentConditioning_capture⟩
+  exact ⟨(), True.intro⟩
+
+/--
 The closed-independent countermodel to `Independent → NonExhaustible` fails the
 new bridge: its related horizon exhausts the appearance but is not marked as a
 conditioning horizon.  This confirms that the bridge is a genuine extra premise.
