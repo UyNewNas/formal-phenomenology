@@ -32,7 +32,9 @@ HorizonIndependent  ⟹ Horizonless        ✗
 
 旧 `closedIndependentConditioning` 已被明确打包成另一个直接针对“兼容／冲突”的见证：一个**实际显现**可以同时 `Structured`、`Independent` 与 `Captured`。入口是 `related_independent_captured_are_jointly_consistent`。因此“有／预设 related horizon”与“不受 horizon 作为 conditioning relation 约束”在当前语言中并不按定义冲突；真正要推出 `Independent → NonExhaustible`，仍必须额外排除 `Captured ∧ Independent`。这里的 `Captured` 只是当前 aspect 语言中的 existential exhaustive capture，不等同 Marion 的 “saturates a horizon”。
 
-本轮进一步排除一个自然但仍不足的修补：即使**每个实际显现都有 related horizon**（`UniversalStructure`），并且**任何 conditioning horizon 都必须是 related horizon**（`ConditioningIsSituated`），仍然不能推出实际显现域的 `Captured → ¬ Independent`。入口是 `structure_and_conditioning_coherence_do_not_imply_exact_appearing_condition`；同一个 closed-independent 有限模型同时满足前两项，却仍有一个实际显现同时 `Captured` 与 `Independent`。因此“结构存在 + conditioning/related 一致性”都不是缺失 bridge 的替代品。
+此前进一步排除一个自然但仍不足的修补：即使**每个实际显现都有 related horizon**（`UniversalStructure`），并且**任何 conditioning horizon 都必须是 related horizon**（`ConditioningIsSituated`），仍然不能推出实际显现域的 `Captured → ¬ Independent`。入口是 `structure_and_conditioning_coherence_do_not_imply_exact_appearing_condition`；同一个 closed-independent 有限模型同时满足前两项，却仍有一个实际显现同时 `Captured` 与 `Independent`。
+
+本轮再把候选前提加强一层：即使另外直接授予 **`ClosureBridge`**，也仍然不能补出 capture/conditioning 之间的缺失联系。入口是 `structure_closure_and_conditioning_coherence_do_not_imply_exact_appearing_condition`。`closedIndependentConditioning.base` 甚至满足 `UniversalCapture`，所以同时满足 `UniversalStructure` 与 `ClosureBridge`；`ConditioningIsSituated` 也成立，但唯一实际显现仍同时 `Captured` 与 `Independent`。因此“有 horizon + 可被某 horizon 穷尽 + conditioning 只能来自 related horizon”都不是 `Independent → NonExhaustible` 的替代 bridge。
 
 “`Independent → NonExhaustible` 到底需要什么”现在有两层精确答案。点态上：
 
@@ -86,7 +88,7 @@ Marion, *Being Given*, Jeffrey L. Kosky trans., Stanford UP 2002 的版本、§2
 
 作者本人文本方面，Marion 1996 年 “The Saturated Phenomenon” 的 PDCnet 出版者索引已直接返回作者正文和原刊页码：p. 117 明确说不是一般取消 horizon，而是摆脱其先行限定；p. 118 列出一个／多个／超过 horizon 等关系并称 saturated phenomenon 不依赖 horizon 这一 possibility-condition；p. 119 把完整 saturation 连到 intuitive excess 与 constitution reversal。直接 PDF 当前仍返回 403，因此状态记为 `PRIMARY-DIRECT-INDEXED`，不冒充 PDF page-image review。
 
-合法访问路线现已单列 [Marion 重印 provenance](docs/MARION_REPRINT_PROVENANCE.md)。Fordham / De Gruyter 2013 *The Essential Writings* 有 Marion `Sketch` pp. 108–134 的正式章节页；另有更明确的书目链：Dermot Moran 的作者公开稿说明 *Being Given* `Sketch` pp. 199–221 重印于 Moran / Embree 编 *Phenomenology: Critical Concepts*（Routledge, 2004）, vol. 4, pp. 5–28，Routledge / Taylor & Francis 元数据可独立确认该正式出版物。本轮再次检查正式 Fordham / De Gruyter 章节页，页面仍明确显示当前无法访问章节正文，因此不关闭停止门。
+合法访问路线现已单列 [Marion 重印 provenance](docs/MARION_REPRINT_PROVENANCE.md)。Fordham / De Gruyter 2013 *The Essential Writings* 有 Marion `Sketch` pp. 108–134 的正式章节页；另有更明确的书目链：Dermot Moran 的作者公开稿说明 *Being Given* `Sketch` pp. 199–221 重印于 Moran / Embree 编 *Phenomenology: Critical Concepts*（Routledge, 2004）, vol. 4, pp. 5–28，Routledge / Taylor & Francis 元数据可独立确认该正式出版物。本轮再次检查正式出版路线，仍没有合法暴露与 BG 209–212 对应的重印正文，因此不关闭停止门。
 
 2013 Quadrige 版另有精确的 secondary crosswalk：Schulzki 2015 将 *Being Given* p. 225 的 intuition/intention 核心句定位到 *Étant donné* 2013 p. 370。该页仍未由本项目在 Cairn/PUF 直接展开完整作者正文，因此只记为 `SECONDARY-EXACT-CROSSWALK`，不能替代 direct-primary gate。
 
@@ -94,17 +96,17 @@ Marion, *Being Given*, Jeffrey L. Kosky trans., Stanford UP 2002 的版本、§2
 
 Éric Pommier 2020 “La différence phénoménologique selon Barbaras et Marion” 把两件事明确并置：Marion 倾向拒绝把 horizon/world 作为 saturated phenomena 的先行 `condition of possibility`，但 saturated phenomenon 仍以某种方式预设 horizon，因为它“saturates” horizon；Pommier 指向 *Étant donné* 2013 pp. 304–308、344–348。该材料是 secondary evidence，不把 `Captured` 等同于 saturation，也不替代 Marion 原书 direct-primary gate；详见 [Pommier 2020 增量审计](docs/POMMIER_2020_HORIZON_AUDIT.md)。
 
-本轮新增核查 Nikolaas Deketelaere 2018 的 Nature / *Humanities and Social Sciences Communications* 开放全文。其带页码讨论把 Marion 2008a p. 12 的 horizon-as-a-priori-limit 与 p. 16 的 revelation “assume a horizon” 但挑战 a priori condition 的结构并列，并另引 Marion 2017b p. 99 说明挑战 horizon 的现象仍可“在世界的 horizon 中”通过 saturation 显现。它进一步确认“在 horizon 中呈现”与“受 horizon 作为先行 possibility-condition 支配”的区分已有同题 prior art；证据仍是 secondary exact quotation，不冒充直接读过 Marion 原页。详见 [structure/coherence gap 增量审计](docs/STRUCTURE_COHERENCE_GAP.md)。
+Nikolaas Deketelaere 2018 的 Nature / *Humanities and Social Sciences Communications* 开放全文把 Marion 2008a p. 12 的 horizon-as-a-priori-limit 与 p. 16 的 revelation “assume a horizon” 但挑战 a priori condition 的结构并列，并另引 Marion 2017b p. 99 说明挑战 horizon 的现象仍可“在世界的 horizon 中”通过 saturation 显现。它进一步确认“在 horizon 中呈现”与“受 horizon 作为先行 possibility-condition 支配”的区分已有同题 prior art；证据仍是 secondary exact quotation，不冒充直接读过 Marion 原页。详见 [structure/coherence gap 增量审计](docs/STRUCTURE_COHERENCE_GAP.md)。
 
-本项目强制进行 [外部工作与复用审计](docs/PRIOR_ART.md)。已经确认：Lean 中存在独立的 `novaspivack/phenomenology-lean` formal-phenomenology 工程，Isabelle/HOL / AFP 与 LogiKEy 也已有成熟 formal philosophy / computational metaphysics / computational hermeneutics 方法。因此本项目**不声称首创“形式化哲学”或“形式化现象学”工作流**。本轮针对 `UniversalStructure + ConditioningIsSituated` 是否足以推出 exact appearing exclusion 做增量查重：`novaspivack/phenomenology-lean` 仍固定在 `75230e4e...`，LogiKEy 仍固定在 `b29954b0...`，GitHub 全局相关组合检索没有定位到 external formal-philosophy 同型 API。因此只复用本仓已有 `closedIndependentConditioning` 反模型作最小 theorem，不引入重依赖，也不作原创数学／哲学宣称。
+本项目强制进行 [外部工作与复用审计](docs/PRIOR_ART.md)。已经确认：Lean 中存在独立的 `novaspivack/phenomenology-lean` formal-phenomenology 工程，Isabelle/HOL / AFP 与 LogiKEy 也已有成熟 formal philosophy / computational metaphysics / computational hermeneutics 方法。因此本项目**不声称首创“形式化哲学”或“形式化现象学”工作流**。本轮针对 `UniversalStructure + ClosureBridge + ConditioningIsSituated` 是否足以推出 exact appearing exclusion 做增量查重：`novaspivack/phenomenology-lean` 仍固定在 `75230e4e...`，LogiKEy 仍固定在 `b29954b0...`，GitHub 全局相关组合检索没有定位到 external formal-philosophy 同型 API。因此只复用本仓已有 `closedIndependentConditioning`、`closedModel_capture` 与 `universalCapture_iff_structure_and_bridge`，不引入重依赖，也不作原创数学／哲学宣称。
 
-但 **pp. 209–212、225–226 的 *Being Given* 原书正文仍未由本项目独立逐页核对**。Internet Archive 可确认 1997 法文 *Étant donné* 的受限借阅条目存在，Google Books 也能确认 1997 PUF 版本及索引词，但当前环境都未提供目标页可直接读取正文；项目不会绕过访问控制。因此尚未达到首个研究问题的停止条件。
+但 **pp. 209–212、225–226 的 *Being Given* 原书正文仍未由本项目独立逐页核对**。Google Books / Stanford-De Gruyter 与正式 Routledge 重印路线仍只提供元数据、选择性预览或 secondary provenance；当前环境未提供目标页可直接读取正文。项目不会利用未经确认授权的整书镜像绕过访问限制。因此尚未达到首个研究问题的停止条件。
 
 详见 [段落卡](docs/PASSAGE_CARDS.md)、[来源登记](docs/SOURCES.md)、[重印 provenance](docs/MARION_REPRINT_PROVENANCE.md)、[Pommier 2020 增量审计](docs/POMMIER_2020_HORIZON_AUDIT.md)、[structure/coherence gap 增量审计](docs/STRUCTURE_COHERENCE_GAP.md)、[strict bridge 层级审计](docs/STRICT_BRIDGE_HIERARCHY.md) 与 [外部工作审计](docs/PRIOR_ART.md)。
 
 ## 工程状态
 
-Lean 4.24.0；不依赖 Mathlib 或其他外部 Lean 包。当前共有 **8 个库模块、61 个具名引理／定理**，全部列入内核公理依赖审计；最终通过状态以对应提交 CI 为准。
+Lean 4.24.0；不依赖 Mathlib 或其他外部 Lean 包。当前共有 **8 个库模块、62 个具名引理／定理**，全部列入内核公理依赖审计；最终通过状态以对应提交 CI 为准。
 
 | 检验 | 形式结论 | 入口 |
 |---|---|---|
@@ -113,6 +115,7 @@ Lean 4.24.0；不依赖 Mathlib 或其他外部 Lean 包。当前共有 **8 个�
 | 不依赖视域是否等于无视域 | 否；有相关视域且独立的模型 | `horizon_independence_need_not_be_horizonless` |
 | related + independent + captured 能否同时成立 | 能；同一实际显现有有限见证 | `related_independent_captured_are_jointly_consistent` |
 | UniversalStructure + conditioning coherence 是否足以排除 captured + independent | 否；closed-independent 模型同时满足两前提 | `structure_and_conditioning_coherence_do_not_imply_exact_appearing_condition` |
+| UniversalStructure + ClosureBridge + conditioning coherence 是否足够 | 仍否；即使 universal capture 也不连接 capture 与 conditioning | `structure_closure_and_conditioning_coherence_do_not_imply_exact_appearing_condition` |
 | 不依赖视域是否推出不可穷尽 | 无额外条件时否 | `horizon_independence_does_not_imply_nonExhaustible` |
 | 上条蕴含的确切点态条件是什么 | 等价于 `Captured p → ¬ Independent p` | `independent_implies_nonExhaustible_iff_capture_refutes_independence` |
 | 在实际显现域的确切条件是什么 | 等价于对 `appears p` 排除 `Captured p ∧ Independent p` | `appearing_independence_implies_nonExhaustible_iff_capture_refutes_independence` |
@@ -151,7 +154,7 @@ FormalPhenomenology/
   Horizon/SituatedExcess.lean
   Horizon/Conditioning.lean      # 三轴分离 + 点态/显现域/冲突见证确切条件 + 强 bridge → 精确条件
   Models/Finite.lean
-  Models/Conditioning.lean       # 分离、联合见证、结构+coherence 不足、bridge 反模型及 strictness witness
+  Models/Conditioning.lean       # 分离、联合见证、structure/closure/coherence 不足、bridge 反模型及 strictness witness
   Models/OpenHorizon.lean
   Models/HorizonExtension.lean
 Audit.lean
@@ -166,7 +169,7 @@ scripts/check.py
 | [来源与阅读状态](docs/SOURCES.md) | 一手／二手证据与未核查项 |
 | [Marion 重印 provenance](docs/MARION_REPRINT_PROVENANCE.md) | 正式重印范围、合法获取路线与证据等级 |
 | [Pommier 2020 增量审计](docs/POMMIER_2020_HORIZON_AUDIT.md) | horizon 预设／条件化区分、2013 页码导航与复用决定 |
-| [structure/coherence gap 增量审计](docs/STRUCTURE_COHERENCE_GAP.md) | `UniversalStructure + ConditioningIsSituated` 不足、Deketelaere prior art 与 direct-primary 复查 |
+| [structure/coherence gap 增量审计](docs/STRUCTURE_COHERENCE_GAP.md) | `UniversalStructure + ClosureBridge + ConditioningIsSituated` 仍不足、外部查重与 direct-primary 复查 |
 | [strict bridge 层级审计](docs/STRICT_BRIDGE_HIERARCHY.md) | 强 bridge、精确条件、冲突见证正规形、查重和访问复查 |
 | [外部工作与复用审计](docs/PRIOR_ART.md) | 形式哲学先例、同题文献、复用/去重决定 |
 | [研究路线与验收条件](docs/ROADMAP.md) | 下一阶段与停止条件 |
@@ -174,4 +177,4 @@ scripts/check.py
 
 ## 下一步
 
-首要硬门槛仍是**独立核对 Marion *Being Given* pp. 209–212、225–226 的原书正文**，或取得可可靠逐段对应的法文 *Étant donné* / 正式重印正文。Deketelaere 2018 又提供一条同题 secondary exact 引文链，进一步支持“在 horizon 中呈现”与“受 horizon 作为 a priori condition 支配”必须分开，但不能替代 direct-primary 阅读。形式层现在还明确排除了 `UniversalStructure + ConditioningIsSituated` 作为缺失 bridge 的候选：即使每个显现都有 horizon、任何 conditioning horizon 也都是 related horizon，仍可能出现 `Captured ∧ Independent`。因此下一轮继续突破合法原典访问门，决定真实文本是否支持任何额外 bridge，而不是继续无边界扩张模型。
+首要硬门槛仍是**独立核对 Marion *Being Given* pp. 209–212、225–226 的原书正文**，或取得可可靠逐段对应的法文 *Étant donné* / 正式重印正文。形式层现在又排除了一个更强但仍不够的候选：即使同时授予 `UniversalStructure`、`ClosureBridge` 与 `ConditioningIsSituated`，仍可能出现 `Captured ∧ Independent`。因此下一轮继续突破合法原典访问门，决定真实文本是否支持任何 capture/conditioning bridge，而不是继续把结构、closure 或同题 secondary reading 偷换成该 bridge。
