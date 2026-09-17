@@ -105,6 +105,26 @@ theorem exhaustiveCaptureConditions_independent_implies_nonExhaustible
   exact hi h (hb p h hs he)
 
 /--
+At one fixed phenomenon, the exact logical condition needed to turn horizon
+independence into non-exhaustibility is simply that capture excludes
+independence there.  This theorem does not add a philosophical bridge: it
+normalizes the target implication using `NonExhaustible p ↔ ¬ Captured p`.
+
+`ExhaustiveCaptureConditions` is one sufficient structural mechanism for this
+pointwise incompatibility, but it is stronger than the right-hand side below
+and remains a separate interpretive question.
+-/
+theorem independent_implies_nonExhaustible_iff_capture_refutes_independence
+    (M : HorizonConditioning) (p : M.base.Phenomenon) :
+    (M.Independent p → M.base.NonExhaustible p) ↔
+      (M.base.Captured p → ¬ M.Independent p) := by
+  constructor
+  · intro h hc hi
+    exact (nonExhaustible_iff_not_captured M.base p).mp (h hi) hc
+  · intro h hi
+    exact (nonExhaustible_iff_not_captured M.base p).mpr (fun hc => h hc hi)
+
+/--
 A captured phenomenon that is nevertheless horizon-independent refutes the
 exhaustive-capture bridge.  This is the pointwise dual of the previous theorem:
 it records the bridge failure at the exact witness where capture and
