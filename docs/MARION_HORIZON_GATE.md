@@ -8,12 +8,13 @@
 
 - **PRIMARY-DIRECT-PAGE**：本项目直接看到目标版本正文及页码／上下文。
 - **PRIMARY-DIRECT-INDEXED**：出版社／期刊的公开索引直接返回作者正文及原刊页码，但当前环境无法打开 PDF page image。
+- **PRIMARY-PUBLISHER-METADATA**：出版社页面确认作者／章节／页码或合法重印路径，但未看到目标正文。
 - **PRIMARY-METADATA**：出版社、期刊或书目页面核实版本／章节／页码，未看到目标正文。
 - **SECONDARY-EXACT**：可访问学术文献给出精确页码并短引作者原句。
 - **SECONDARY-EXACT-CROSSWALK**：研究文献在同一引注中同时给出 BG 与 ED 页码，可用于版本段落定位，但仍不是 primary text。
 - **SECONDARY-INTERPRETIVE**：研究文献给出解释、转述或页码定位。
 
-`Being Given` 停止门仍要求目标段落进入 `PRIMARY-DIRECT-PAGE`，或取得可可靠逐段对应的法文 *Étant donné* 原文。`PRIMARY-DIRECT-INDEXED` 与 `SECONDARY-EXACT-CROSSWALK` 可以显著缩小核查范围，却不能谎称目标书页已读。
+`Being Given` 停止门仍要求目标段落进入 `PRIMARY-DIRECT-PAGE`，或取得可可靠逐段对应的法文 *Étant donné* 原文。`PRIMARY-DIRECT-INDEXED`、`PRIMARY-PUBLISHER-METADATA` 与 `SECONDARY-EXACT-CROSSWALK` 可以显著缩小核查范围，却不能谎称目标书页已读。
 
 ## 2. Marion 1996 直接作者文本
 
@@ -59,7 +60,7 @@ Durham University 公开论文，相关脚注明确指向 *Being Given* p. 209�
 
 1996 primary text 现在提供独立作者侧支撑，所以“Marion = `¬ Structured`”的读法已经可以明确排除为默认编码；但 p. 209 的 2002 版本仍待直接页核。
 
-## 4. 新增英法页码交叉：§21 目标段落可定位到 ED 292–297
+## 4. 英法页码交叉：§21 目标段落可定位到 ED 292–297
 
 Adam S. Miller 2008 与 Shane Mackinlay 的双版本精确引注共同给出：
 
@@ -73,7 +74,7 @@ Adam S. Miller 2008 与 Shane Mackinlay 的双版本精确引注共同给出：
 
 King-Ho Leung 对 BG pp. 211–212 的短引仍把 horizon 明确称为 `condition of possibility`，并把 saturated phenomenon 描述为不依赖这种 horizon 条件；这一方向与 Marion 1996 p. 118 的 direct indexed text 一致。
 
-## 5. 新增英法页码交叉：§23 目标段落可定位到 ED 314–315
+## 5. 英法页码交叉：§23 目标段落可定位到 ED 314–315
 
 Anthony J. Steinbock 的 “The Poor Phenomenon” 保留 ED/BG 双版本脚注，给出 ED 314–329 / BG 225–237 的整体范围，并有 ED 314 / BG 225、ED 315 / BG 226、ED 316 / BG 227 的邻页锚点；其中脚注还明确写出 `Étant donné, p. 315; Being Given, p. 226`。Mackinlay 也用 BG 225 / ED 314 定位 intuition-surplus 讨论。
 
@@ -83,7 +84,7 @@ Leung 与 Lahaie 对 BG pp. 225–226 的解释仍把该段定位到 intuition �
 
 ## 6. 重要纠正：Djian 的 ED 304–305 不是 BG 211–212 的法文对应页
 
-Aurélien Djian 2018 对 *Étant donné* §21–22 的讨论引用 ED pp. 304–305，把 horizon 与 I 分析为限制 donation / phenomenality 的 possibility-conditions。这条 prior art 继续有效，但根据本轮双版本页码链，**ED 304–305 不能当成 BG 211–212 的法文镜像**。
+Aurélien Djian 2018 对 *Étant donné* §21–22 的讨论引用 ED pp. 304–305，把 horizon 与 I 分析为限制 donation / phenomenality 的 possibility-conditions。这条 prior art 继续有效，但根据双版本页码链，**ED 304–305 不能当成 BG 211–212 的法文镜像**。
 
 应严格区分：
 
@@ -94,11 +95,13 @@ Fanny Lederlin 2023 的 Université Paris Cité 博士论文在可直接查看�
 
 这个纠正避免把“主题相近”误当成“版本逐页对应”。
 
-## 7. 2007 作者侧旁证
+## 7. 合法作者文集备选路径与 2007 作者侧旁证
+
+Fordham University Press / De Gruyter Brill 2013 *The Essential Writings* 收录 Jean-Luc Marion “Sketch of the Saturated Phenomenon,” pp. 108–134。出版社页面确认作者、编辑 Kevin Hart、篇名与页码，但当前没有开放正文。没有逐段比对前，本项目不假定它和 *Being Given* §21 完全同文；状态为 **PRIMARY-PUBLISHER-METADATA**，只作为另一条合法获取候选。
 
 Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378–402。官方期刊页面与英文摘要已直接查看；摘要称 horizon 为 givenness 的 constitutive condition，并将 saturation 连到 intuition surplus、unconditioned / irreducible phenomenality 与主体反转。全文 PDF 在先前运行中未成功取得。
 
-## 8. 对当前 Lean 的决定
+## 8. 对当前 Lean 的决定：精确点态条件已闭合，不再增加 primitive
 
 保留三轴：
 
@@ -113,20 +116,32 @@ Exhausts   -- extensional aspect coverage
 - `horizon_independence_need_not_be_horizonless`；
 - `horizon_independence_does_not_imply_nonExhaustible`；
 - `nonExhaustible_does_not_imply_horizon_independence`；
-- `related_independent_nonExhaustible_are_jointly_consistent`；
-- `ExhaustiveCaptureConditions` 仅作 MODEL/QUESTION pressure test；
-- `captured_independent_refutes_exhaustiveCaptureConditions` 作为该压力测试的点态冲突判据。
+- `related_independent_nonExhaustible_are_jointly_consistent`。
 
-本轮 prior-art / crosswalk 审计后仍**不新增** `priorDelimits`、horizon-combination 或 intention/intuition primitive。新证据解决的是版本定位，不是形式缺口；新增 primitive 会扩大模型自由度，却不会改变 `UniversalStructure ↛ ClosureBridge`。
+本轮只增加一条不引入新 primitive 的正规化 theorem：
+
+```text
+(Independent p → NonExhaustible p)
+↔
+(Captured p → ¬ Independent p)
+```
+
+入口 `independent_implies_nonExhaustible_iff_capture_refutes_independence`。它利用已有 `NonExhaustible p ↔ ¬ Captured p`，给出对**同一个 p**的确切逻辑条件：恢复 `Independent → NonExhaustible` 所需且仅需排除 `Captured ∧ Independent`。这只是 FORMAL 结论，不把任何一侧归给 Marion。
+
+`ExhaustiveCaptureConditions` 继续仅作 MODEL/QUESTION pressure test，并且现在明确解释为实现上述点态排斥的一种**较强结构化充分机制**，不是逻辑上的最弱／唯一 bridge。`captured_independent_refutes_exhaustiveCaptureConditions` 则是该较强 bridge 的 witness-level 冲突诊断。
+
+prior-art 审计后仍**不新增** `priorDelimits`、horizon-combination 或 intention/intuition primitive。新证据与新 theorem 都没有暴露首问必须扩张语言的缺口。
 
 ## 9. 当前最窄剩余门槛
 
-首问纯形式答案已经稳定。Marion 1996 primary text 直接支持：horizon 不能简单取消，核心是其先行限定角色，而且 saturated phenomenon 可以与 horizon 建立多种关系；Djian 2018 又证明这套 horizon-as-condition 阅读已有明确同题 prior art。本轮双版本引注进一步把书本核对范围精确化。
+首问纯形式答案已经稳定，而且 `Independent → NonExhaustible` 的点态确切条件已经独立写清。Marion 1996 primary text 直接支持：horizon 不能简单取消，核心是其先行限定角色，而且 saturated phenomenon 可以与 horizon 建立多种关系；Djian 2018 又证明这套 horizon-as-condition 阅读已有明确同题 prior art。双版本引注进一步把书本核对范围精确化。
 
 剩余停止门现在是二选一：
 
 1. 合法直接查看 BG pp. 209–212、225–226；或
 2. 合法直接查看法文 ED **pp. 292–297、314–315**，并据 [版本交叉表](MARION_VERSION_CROSSWALK.md) 逐段比对 1996 论文在书本中的重写、顺序和术语。
+
+2013 作者文集目前只提供出版社元数据，不能替代上述 direct-primary review。
 
 完成 direct-primary 版本核对后，再冻结 `Independent` 只作为“非先行 horizon-conditioned”的弱接口，而 `NonExhaustible` / `Captured` 继续是独立模型轴。若目标页确实要求 intention/intuition 才能忠实陈述**首问本身**，再加入最小接口；否则不把完整 saturation 工程塞进首问停止条件。
 
