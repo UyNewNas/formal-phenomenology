@@ -103,7 +103,18 @@ $$
 E(M)\land\mathrm{Independent}(p)\to\mathrm{NonExhaustible}(p).
 $$
 
-入口 `exhaustiveCaptureConditions_independent_implies_nonExhaustible`。`closedIndependentConditioning` 则同时有 `Independent` 与 `Captured`，并由 `closedIndependentConditioning_not_exhaustiveCaptureConditions` 证明它恰好违反 E。因此 E 是真正的额外 bridge，不是定义展开。
+入口 `exhaustiveCaptureConditions_independent_implies_nonExhaustible`。
+
+本轮补上同一 bridge 的**点态反向诊断**：若某个具体 p 同时 `Captured` 且 `Independent`，则 E 不可能成立：
+
+$$
+\mathrm{Captured}(p)\land\mathrm{Independent}(p)
+\to \neg E(M).
+$$
+
+入口 `captured_independent_refutes_exhaustiveCaptureConditions`。证明直接取 `Captured p` 的 exhaustive related horizon，再由 E 得到它 `conditions p`，与 `Independent p` 冲突。这条定理没有把 `Captured` 翻译成 Marion 的 “saturates a horizon”；它只把当前 extensional surrogate 与压力测试 bridge 的逻辑关系写全。
+
+`closedIndependentConditioning` 同时有 `Independent` 与 `Captured`，并由 `closedIndependentConditioning_not_exhaustiveCaptureConditions` 证明它违反 E。因此 E 是真正的额外 bridge，不是定义展开。
 
 E 仍是 MODEL/QUESTION，不归给 Marion 或 Merleau-Ponty。
 
@@ -123,7 +134,7 @@ E 仍是 MODEL/QUESTION，不归给 Marion 或 Merleau-Ponty。
 2. p. 118 在同一讨论中允许一个 horizon 的 saturation、多个 horizons、超过 horizon，并称 saturated phenomenon 不依赖 horizon 这一 condition of possibility。故 `Independent` 不能按词义直接定义成 `NonExhaustible`；已有 Lean 反模型与作者文本方向一致。
 3. p. 119 又引入 intuitive excess 与 constitution reversal，所以完整 `Saturated` 远强于本项目任何单一 coverage/conditioning 谓词。
 
-特别地，Marion 文本中的 “saturates a horizon” **没有**被本项目定义为 `Captured`；`Captured` 是对 aspect coverage 的 extensional surrogate。正因此，当前只保留一个形式问题：若有人额外接受 `ExhaustiveCaptureConditions`，可以恢复 `Independent → NonExhaustible`；但文本是否支持这个 bridge 必须另证。
+特别地，Marion 文本中的 “saturates a horizon” **没有**被本项目定义为 `Captured`；`Captured` 是对 aspect coverage 的 extensional surrogate。正因此，当前只保留一个形式问题：若有人额外接受 `ExhaustiveCaptureConditions`，可以恢复 `Independent → NonExhaustible`；而若又主张某个 p 同时 `Captured` 与 `Independent`，新定理会准确指出这三者不能共存。文本是否支持任何一条桥接仍必须另证。
 
 ## 9. 量词次序与开放视域
 
@@ -142,12 +153,12 @@ $$
 | `Horizon/Basic.lean` | 0 | 基础关系语言 |
 | `Horizon/Separation.lean` | 9 | 基本等价、蕴含和 A/B/C 条件冲突 |
 | `Horizon/SituatedExcess.lean` | 4 | 非空真 excess 与 closure 的直接冲突 |
-| `Horizon/Conditioning.lean` | 7 | related/conditioning 分离、capture→conditioning 压力测试 bridge、profile 投影 |
+| `Horizon/Conditioning.lean` | 8 | related/conditioning 分离、capture→conditioning 压力测试 bridge 及点态反证、profile 投影 |
 | `Models/Finite.lean` | 11 | 有限见证、最小冲突与首问反例 |
 | `Models/Conditioning.lean` | 12 | conditioning / exhaustion / horizonless 分离及 bridge 反模型 |
 | `Models/OpenHorizon.lean` | 6 | 开放扩展、逐一覆盖和单调性 |
 | `Models/HorizonExtension.lean` | 4 | horizon 域扩展与穷尽性的变化 |
 
-共 **53** 个具名引理／定理，全部列入 `Audit.lean`。当前 master 已验证的基线为 `lake build` + `scripts/check.py` + 全部 `#print axioms` 无公理依赖；任何后续 Lean 改动都必须在其自己的提交重新获得验证，不能继承旧 CI。
+共 **54** 个具名引理／定理，全部列入 `Audit.lean`。任何后续 Lean 改动都必须在其自己的提交重新获得 `lake build`、`scripts/check.py` 与 `#print axioms` 验证，不能继承旧 CI。
 
-本轮只新增 primary-text 证据与解释约束，没有把未验证的派生 theorem 计入本证明地图。*Being Given* 2002 pp. 209–212、225–226 仍待合法直接核对，因此历史解释停止门尚未关闭。
+*Being Given* 2002 pp. 209–212、225–226 仍待合法直接核对，因此历史解释停止门尚未关闭。
