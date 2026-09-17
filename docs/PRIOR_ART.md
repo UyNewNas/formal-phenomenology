@@ -114,3 +114,30 @@ situated p h ∧ Exhausts p h  →  conditions p h
 `ExhaustiveCaptureConditions` 暂定为**项目内压力测试 bridge**，而不是 Marion 或 Merleau-Ponty 的文本归属。它的作用是回答一个纯逻辑问题：现有 `Independent → NonExhaustible` 之所以失败，究竟缺少哪类额外关系假设？在该 bridge 下，这个蕴含可以直接证明；原有 `closedIndependentConditioning` 则明确违反这个 bridge，从而显示它确实是额外前提而非定义展开。
 
 没有发现值得为这个初等 bridge 引入 Mathlib、LogiKEy 或外部 phenomenology 依赖的同型 API。若未来原典或同题研究给出更强、不同方向的 bridge，应保留本声明为压力测试并新增竞争编码，而不是反向把它归给哲学家。
+
+## 8. 增量审计：p. 209–226 的二手精确引文三角核对
+
+本轮准备决定的不是新 theorem，而是：**是否有足够文本理由新增 `priorDelimits` 一类独立关系，或者把 `Independent` / `Horizonless` 升级成 Marion 的历史归属。** 在作任何新增 API 之前，执行了针对该对象的查重。
+
+### 新增实际检查来源
+
+- Cheongho Lee (2017), “From Phenomenology to Ethics: Intentionality and the Other in Marion’s Saturated Phenomenon”，可访问版本：<https://philarchive.org/archive/LEEFPT-3>。脚注 7 明确指向 `Being Given`, p. 209，并短引 Marion 说明不能简单取消 horizon，否则 manifestation 本身受阻。
+- Myka Lahaie, Durham University doctoral thesis，公开 PDF：<https://etheses.dur.ac.uk/13927/1/Myka_Lahaie%2C_Doctoral_Thesis.pdf>。相关段落脚注 79 独立指向 `Being Given`, p. 209；脚注 78 又指向 p. 226，对 intuition/intention/constitution 的句意形成第二条精确页码交叉。
+- King-Ho Leung (2022) 继续提供 pp. 211–212、225–226 的带页码短引：horizon 作为 condition of possibility；intuition 超过 intention，I 不能把它综合成由 horizon 定义的对象。
+- Brock Mason 对 pp. 210–211 的整理继续显示一个 horizon、多个 horizons、以及任何 horizon 组合都无法承受绝对现象这几个层级不能压成同一个 `NonExhaustible`。
+- Jean-Luc Marion 2007 *Filozofia* 官方页面与摘要继续作为作者本人旁证；本轮仍没有把摘要当作 `Being Given` 目标页替代品。
+
+完整分层证据表见 `docs/MARION_HORIZON_GATE.md`。
+
+### 外部形式化查重
+
+本轮以 `Marion / horizon / saturation / conditioning / prior delimitation` 为中心重新查 Lean formal phenomenology、Isabelle/formal philosophy 与通用网页索引，没有定位到以 Merleau-Ponty / Marion horizon 为对象、可直接复用的同型 Lean / Isabelle 声明。`novaspivack/phenomenology-lean` 与 LogiKEy/AFP 仍分别属于领域与方法 prior art，而非当前首问的现成证明依赖。
+
+### 复用／不实现决定
+
+1. **不新增 `priorDelimits` API。** 现有证据确实把“先行限定／可能性条件”显示为历史解释核心，但目标页仍未由本项目直接阅读；再引入一个未受约束谓词会重复上一轮已警告的模型自由度问题。
+2. `HasHorizonlessAppearance` 继续不是 Marion saturated phenomenon 的默认编码。p. 209 的两条独立二手精确引文都反对“完全取消 horizon”的简化。
+3. `ExhaustiveCaptureConditions` 继续保持 MODEL/QUESTION。当前没有来源给出 `situated ∧ Exhausts → conditions` 这条 extensional bridge；它只是一条逻辑上足够的压力测试。
+4. 当前 53 项 Lean 证明不需要因本轮文本证据而修改；真正需要推进的是 primary-text gate，而不是增加 theorem count。
+
+这一决定本身属于 prior-art gate 的产物：**外部检索改变了我们对下一步形式化的选择——本轮选择不实现一个容易但没有充分文本约束的新关系。**
