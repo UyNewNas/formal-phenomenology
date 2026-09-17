@@ -1,134 +1,114 @@
-# Marion 视域原典门：本轮证据三角核对
+# Marion 视域原典门：版本与证据分层
 
 核查日期：2026-09-17。
 
-本页只处理首个研究问题中 Marion 一侧的文本门：饱和现象与 horizon 的关系，尤其 `Being Given` pp. 209–212、225–226。目标不是用二手资料替代原书，而是把目前能合法直接检查到的证据分层，并据此约束下一步形式化。
+本页处理首个研究问题中 Marion 一侧的文本门，重点是 *Being Given* pp. 209–212、225–226。新增的 Marion 1996 作者本人论文已经直接约束解释空间，但它不冒充 2002 目标书页的逐页核查。
 
 ## 1. 状态标签
 
-- **PRIMARY-DIRECT**：本项目直接看到作者原文正文及上下文。
-- **PRIMARY-METADATA**：出版社、期刊或书目页面直接核实版本／章节／页码，但未看到目标正文。
-- **SECONDARY-EXACT**：可访问学术文献给出精确页码并短引 Marion 原句；仍不是本项目直接看到原书。
-- **SECONDARY-INTERPRETIVE**：学术文献给出解释、转述或页码定位。
+- **PRIMARY-DIRECT-PAGE**：本项目直接看到目标版本正文及页码／上下文。
+- **PRIMARY-DIRECT-INDEXED**：出版社／期刊的公开索引直接返回作者正文及原刊页码，但当前环境无法打开 PDF page image。
+- **PRIMARY-METADATA**：出版社、期刊或书目页面核实版本／章节／页码，未看到目标正文。
+- **SECONDARY-EXACT**：可访问学术文献给出精确页码并短引作者原句。
+- **SECONDARY-INTERPRETIVE**：研究文献给出解释、转述或页码定位。
 
-首个研究问题的停止门仍要求目标段落进入 **PRIMARY-DIRECT**，或取得可可靠逐段对照的原法文正文。下面的二手三角核对只能缩小解释空间，不能独立关闭停止门。
+`Being Given` 停止门仍要求目标段落进入 `PRIMARY-DIRECT-PAGE`，或取得可可靠逐段对应的法文 *Étant donné* 原文。`PRIMARY-DIRECT-INDEXED` 可以改变模型选择，却不能谎称目标书页已读。
 
-## 2. §21 p. 209：不能把 Marion 读成“完全取消一切视域”
+## 2. 新增关键证据：Marion 1996 直接作者文本
+
+Jean-Luc Marion, “The Saturated Phenomenon,” Thomas A. Carlson trans., *Philosophy Today* 40(1), 1996, pp. 103–124, DOI `10.5840/philtoday199640137`。
+
+来源为 Philosophy Documentation Center / PDCnet。公开搜索索引在本轮直接返回作者正文及原刊页码；直接 PDF URL 在当前环境返回 HTTP 403，无法执行 PDF screenshot，因此状态为 **PRIMARY-DIRECT-INDEXED**。详细记录见 [MARION_1996_PRIMARY.md](MARION_1996_PRIMARY.md)。
+
+### p. 117 — horizon 不能简单取消
+
+Marion 的论证不是“做一个没有 horizon 的现象学”。他先说明一般显现被 horizon 先行接收／限定，然后明确说：一般地 dispense with horizon 会阻止 manifestation；要摆脱的是 horizon 的 **delimiting anteriority**。
+
+形式后果：
+
+- `HasHorizonlessAppearance` 不应作为 saturated phenomenon 默认编码；
+- `Structured` 与“摆脱 horizon 先行条件化”的 `Independent` 候选可以并存；
+- related 与 conditioned 的区分现在有作者本人 primary-text 动机，而不只来自二手解释。
+
+### p. 118 — 一个、多个、超出 horizon 与极端组合失败
+
+作者本人列出 saturated phenomenon 与 horizon 的多种关系：一个 horizon 的 saturation、多个 concurrent horizons、超过 horizon，以及极端地没有 horizon 或 horizon 组合能够承受绝对现象；即使 disfiguration 仍是 manifestation。随后称 saturated phenomenon 不依赖 horizon 这一 `condition of possibility par excellence`，即 unconditioned。
+
+形式后果：
+
+- `Independent` 不能按词义直接等同 `NonExhaustible`；
+- 当前 `NonExhaustible` 只逐一量化单个 related horizon，没有表达“任意 horizon 组合失败”；
+- `Captured` 也不能未经解释就等同 Marion 的 “saturates a horizon”，因为前者只是 aspect coverage 的 extensional surrogate。
+
+### p. 119 — 完整 saturation 还涉及 constitution reversal
+
+正文把 intuitive givenness 的过剩与过窄的接收框架、对象 constitution 失败以及 constituting / constituted 的反转连在一起。
+
+形式后果：`NonExhaustible`、`Independent` 或它们的 conjunction 都不足以成为完整 `Saturated` 定义；若未来做完整 M3，需要 intention / intuition / constitution 结构。
+
+## 3. *Being Given* p. 209 的二手精确三角核对
 
 ### E-JM-209-A — Cheongho Lee (2017)
 
-- 来源：Cheongho Lee, “From Phenomenology to Ethics: Intentionality and the Other in Marion’s Saturated Phenomenon,” *Journal of Ethics* 116 (2017).
-- 可访问版本：PhilArchive，<https://philarchive.org/archive/LEEFPT-3>。
-- 状态：**SECONDARY-EXACT**。
-- 页码定位：脚注 7 明确指向 `Being Given`, p. 209。
-- 关键证据：Lee 引 Marion 说明，这里不是要完全取消 horizon，因为那会阻断 manifestation。
-- 形式影响：`HasHorizonlessAppearance` 不应作为 Marion 饱和现象的默认编码。至少在这一证据链下，`Structured p` 与某种“摆脱 horizon 的先行限定”可以并存。
+PhilArchive 可访问版本，脚注 7 指向 *Being Given* p. 209；短引与 Marion 1996 p. 117 的 primary text 同方向：不是完全取消 horizon，否则 manifestation 受阻。状态：**SECONDARY-EXACT**。
 
 ### E-JM-209-B — Myka Lahaie 博士论文
 
-- 来源：Myka Lahaie, Durham University doctoral thesis，公开 PDF：<https://etheses.dur.ac.uk/13927/1/Myka_Lahaie%2C_Doctoral_Thesis.pdf>。
-- 状态：**SECONDARY-EXACT**。
-- 页码定位：相关段落脚注 79 明确指向 `Being Given`, p. 209。
-- 关键证据：该论文独立重复同一 Marion 句意，并紧接着把问题解释为让过剩的给予重新定向期待视域，而不是把视域从显现结构中删除。
-- 形式影响：与 Lee 独立交叉后，“Marion = `¬ Structured`”的读法进一步失去支持。
+Durham University 公开论文，相关脚注明确指向 *Being Given* p. 209，并把问题解释为 horizon 的先行限定而非删除 horizon。状态：**SECONDARY-EXACT**。
 
-### 本页判断
+1996 primary text 现在提供独立作者侧支撑，所以“Marion = `¬ Structured`”的读法已经可以明确排除为默认编码；但 p. 209 的 2002 版本仍待直接页核。
 
-两条独立、可访问、带精确页码的学术来源都把 p. 209 放在“不能完全取消 horizon，否则 manifestation 本身受损”的语境中。由于目标原书页尚未直接查看，这一判断仍保持二手层级；但它已经足以约束工程：**不得为了完成命题而把 Marion 的 horizon-independence 偷换成 horizonlessness。**
+## 4. *Being Given* pp. 210–212 的二手精确定位
 
-## 3. §21 pp. 210–212：一个视域、多个视域与“不依赖视域”不是同一句话
+### Brock Mason
 
-### E-JM-210/211 — Brock Mason
+对 pp. 210–211 的整理区分一个 horizon、多个 horizons、以及 horizon 组合失败。状态：**SECONDARY-EXACT / SECONDARY-INTERPRETIVE**。这一结构现在与 Marion 1996 p. 118 primary text 高度一致。
 
-- 来源：Brock Mason, “Saturated Phenomena, the Icon, and Revelation,” *Aporia*。
-- 可访问页面：<https://paperzz.com/doc/7014692/saturated-phenomena--the-icon--and-revelation---aporia>。
-- 状态：**SECONDARY-EXACT / SECONDARY-INTERPRETIVE**。
-- 页码定位：明确指向 `Being Given`, pp. 210–211。
-- 内容结构：Mason 把 Marion 的论述整理为层级化关系：先在一个 horizon 中达到饱和，再溢出而牵涉多个 horizons，最后到任何 horizon 组合都不能承受绝对现象的情况。
-- 形式影响：当前逐一量化的 `NonExhaustible p` 只表达“每个相关 horizon 单独都不穷尽”；它**没有**表达“任意 horizon 组合也失败”。因此不能把 `NonExhaustible` 冒充 §21 的完整语义。
+### King-Ho Leung (2022)
 
-### E-JM-211/212 — King-Ho Leung (2022)
+对 pp. 211–212 的短引把 horizon 明确称为 `condition of possibility`，并把 saturated phenomenon 描述为不依赖这种 horizon 条件。状态：**SECONDARY-EXACT**。这一方向同样被 Marion 1996 p. 118 的 direct indexed text 独立支持。
 
-- 来源：King-Ho Leung, “Sartre and Marion on Intentionality and Phenomenality,” *Theory, Culture & Society*，<https://journals.sagepub.com/doi/10.1177/02632764211024349>。
-- 状态：**SECONDARY-EXACT**。
-- 页码定位：明确指向 `Being Given`, pp. 211–212。
-- 内容结构：Leung 引 Marion 把 horizon 称为“可能性条件”这一类限制，并把 saturated phenomenon 的自由描述为不依赖这种 horizon 条件。
-- 形式影响：这直接支持保留 `HorizonConditioning.conditions` 这一独立轴；但仍不推出 `Independent = Saturated`，因为同一讨论还依赖 intuition/intention、givenness、subject reversal 等结构。
+因此剩余问题不再是“二手研究是否可能误读出一个完全不存在的主题”，而是：**2002 书本版本如何重写、排序和限定 1996 已直接确认的论证。**
 
-## 4. §23 pp. 225–226：关键不是“还有多少侧面没覆盖”，而是 intuition / intention / constitution
+## 5. *Being Given* pp. 225–226 的二手精确定位
 
-### E-JM-225/226-A — King-Ho Leung (2022)
+Leung 与 Lahaie 都把目标页定位到 intuition 超过／去中心化 intention、I 无法再把 intuition 综合为由 horizon 定义的对象。状态：**SECONDARY-EXACT**。
 
-- 状态：**SECONDARY-EXACT**。
-- 页码定位：`Being Given`, pp. 225–226。
-- 内容结构：Leung 引 Marion 描述 intuition 超过并去中心化 intention；意向性的 I 不能再把 intuition 综合为一个由 horizon 规定的对象。
-- 形式影响：当前 `Aspect` / `Exhausts` 模型没有 intention、intuition、constitution 或强度关系，所以 `NonExhaustible` 至多是弱影子，不能命名成完整 `Saturated`。
+Marion 1996 p. 119 已提供 direct primary parallel：intuitive givenness 的过剩、对象 constitution 失败和主体位置反转确实属于作者本人的 saturated-phenomenon 论证。因此完整 saturation 明显超出当前 aspect/exhaustion 模型；但这仍不等于 *Being Given* 目标页已逐页核对。
 
-### E-JM-225/226-B — Myka Lahaie 博士论文
+## 6. 2007 作者侧旁证
 
-- 状态：**SECONDARY-EXACT**。
-- 页码定位：脚注 78 明确指向 `Being Given`, p. 226。
-- 内容结构：独立重复“意向性的 I 无法把 intuition 综合成由 horizon 定义的对象”这一句意。
-- 形式影响：与 Leung 独立交叉后，§23 的解释重心稳定落在**构成失败与直观过剩**，不是单纯集合论式的未覆盖侧面。
+Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378–402。官方期刊页面与英文摘要已直接查看；摘要称 horizon 为 givenness 的 constitutive condition，并将 saturation 连到 intuition surplus、unconditioned / irreducible phenomenality 与主体反转。全文 PDF 在先前运行中未成功取得。
 
-## 5. 作者本人可直接核实的旁证，但不是目标页替代品
+## 7. 对当前 Lean 的决定
 
-Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378–402；斯洛伐克科学院哲学研究所官方页面：<https://filozofia.sav.sk/en/view/details/regular/2007/5/1739>。
-
-- 状态：官方期刊页面与摘要为 **PRIMARY-DIRECT（摘要）**；正文 PDF 本项目尚未成功取得，不能标为全文已读。
-- 官方摘要把 horizon 称作给予的 constitutive condition，并把 saturated phenomenon 关联到 intuition surplus、unconditioned / irreducible phenomenality、超出 intentional meaning，以及主体从 constituting 转为 constituted。
-- 这为 `conditions` 轴提供作者本人文本层面的动机，却同时说明一个仅含 `NonExhaustible` 的模型不够。
-
-该论文与 `Being Given` 指定页不是同一文本，不能替代 M1 的目标页门槛。
-
-## 6. 本轮外部查重
-
-针对准备可能新增的“先行限定 / horizon dependence”关系，本轮重新检索：
-
-- Lean / formal phenomenology 中 Marion / horizon / saturation 同型声明；
-- Isabelle / formal philosophy 方向的同题 formalization；
-- Marion `horizon`, `saturated phenomenon`, `condition of possibility`, `dispensing with a horizon`, `object defined by a horizon` 等文本组合。
-
-没有定位到可以直接复用、并且以 Merleau-Ponty / Marion horizon 为对象的同型 Lean 或 Isabelle 定理。方法层 prior art 仍由 `novaspivack/phenomenology-lean`、LogiKEy、AFP computational metaphysics / computational hermeneutics 覆盖；本轮没有理由引入它们作为代码依赖。
-
-同题解释层则有明确 prior art：Murga (2024) 以及上述 Lee / Leung / Lahaie / Mason 都支持“horizon 仍可参与 manifestation，但其先行限定／条件化作用受到挑战”这一解释空间。因此该区分不是本项目的新历史发现。
-
-## 7. 对当前 Lean 模型的决定
-
-### 保留
-
-1. `situated p h`：相关视域；
-2. `conditions p h`：条件化视域；
-3. `Exhausts p h`：相对当前侧面词汇的穷尽；
-4. `horizon_independence_need_not_be_horizonless`：与 p. 209 的二手三角证据方向一致；
-5. `related_independent_nonExhaustible_are_jointly_consistent`：只保留为中性一致性见证。
-
-### 不升级为历史归属
-
-`ExhaustiveCaptureConditions` 继续保持 **MODEL/QUESTION**。本轮没有找到原典或同题研究证明：
+保留三轴：
 
 ```text
-situated p h ∧ Exhausts p h → conditions p h
+situated   -- related horizon
+conditions -- conditioning / constraint
+Exhausts   -- extensional aspect coverage
 ```
 
-是 Marion 的承诺。现有证据反而把重点放在 horizon 的**先行限定 / possibility-condition** 角色。因此该 bridge 的价值仍是定位一条逻辑上足够的附加前提，而不是解释性定理。
+继续保留：
 
-### 本轮刻意不新增自由谓词
+- `horizon_independence_need_not_be_horizonless`；
+- `horizon_independence_does_not_imply_nonExhaustible`；
+- `nonExhaustible_does_not_imply_horizon_independence`；
+- `related_independent_nonExhaustible_are_jointly_consistent`；
+- `ExhaustiveCaptureConditions` 仅作 MODEL/QUESTION pressure test。
 
-可以很容易再加一个 `priorDelimits p h`，然后证明更多分离定理；但在目标原页未直接核查之前，这会重复制造未受文本约束的模型自由度。根据 prior-art gate，本轮选择**不新增这一 API**。这是形式化审计的结论，不是工作缺失。
+本轮 prior-art / primary-text 审计后仍**不新增** `priorDelimits`、horizon-combination 或 intention/intuition primitive。原因不是这些概念不重要，而是现有三轴已经足够回答首个窄问题；新增 primitive 会扩大模型自由度，而不会改变 `UniversalStructure ↛ ClosureBridge`。
 
 ## 8. 当前最窄剩余门槛
 
-首个研究问题的纯逻辑答案已经稳定：
+首问纯形式答案已经稳定。Marion 1996 primary text 又直接支持：horizon 不能简单取消，核心是其先行限定角色，而且 saturated phenomenon 可以与 horizon 建立多种关系。
 
-```text
-UniversalStructure ⟹ ClosureBridge   ✗
-```
+剩余停止门只剩版本核对：
 
-并且 related / conditioning / exhaustion 三轴的关系已通过反模型和显式 bridge 审计。当前剩余门槛不是再堆形式定理，而是通过合法来源把 `Being Given` pp. 209–212、225–226 的目标段落提升到 **PRIMARY-DIRECT**，核查：
+1. 合法直接查看 *Being Given* pp. 209–212、225–226，或可靠逐段对照法文 *Étant donné*；
+2. 确认 1996 论证在 1997/2002 书本版本中的重写、顺序和术语；
+3. 最终冻结 `Independent` 只作为“非先行 horizon-conditioned”的弱接口，而 `NonExhaustible` / `Captured` 继续是独立的模型轴；
+4. 若书本目标页确实要求 intention/intuition 才能忠实陈述**首问本身**，再加入最小接口；否则不把完整 saturation 工程塞进首问停止条件。
 
-1. p. 209 的“不能取消 horizon”上下文是否如二手来源所示；
-2. pp. 210–212 的一个／多个 horizons 与“不依赖 horizon”究竟怎样衔接；
-3. pp. 225–226 的 intuition/intention/constitution 结构是否要求对首问增加最小必要接口。
-
-在这三点直接核查完成前，项目不关闭 M1、不把任何中性谓词命名为 `Saturated`，也不通过新增无约束关系制造形式进展。
+在这一步完成前，M1 继续 open；但当前解释不确定性已经从“是否保留 horizon”显著收缩为“版本间的精确文本核对”。
