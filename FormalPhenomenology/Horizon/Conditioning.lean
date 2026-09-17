@@ -126,10 +126,10 @@ theorem independent_implies_nonExhaustible_iff_capture_refutes_independence
 
 /--
 A captured phenomenon that is nevertheless horizon-independent refutes the
-exhaustive-capture bridge.  This is the pointwise dual of the previous theorem:
-it records the bridge failure at the exact witness where capture and
-independence coexist, without identifying `Captured` with Marion's phrase
-"saturates a horizon".
+explicit exhaustive-capture bridge.  This is a witness-level diagnostic for
+that stronger structural hypothesis: it records the bridge failure at the
+exact phenomenon where capture and independence coexist, without identifying
+`Captured` with Marion's phrase "saturates a horizon".
 -/
 theorem captured_independent_refutes_exhaustiveCaptureConditions
     (M : HorizonConditioning) (p : M.base.Phenomenon)
