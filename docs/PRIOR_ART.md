@@ -17,10 +17,10 @@
 ### novaspivack/phenomenology-lean
 
 - 仓库：<https://github.com/novaspivack/phenomenology-lean>
-- 已核对 `main` commit `75230e4eab333ad0fc47573747521ccc1a31a163`（2026-05-20）。
+- 本轮重新核对 `main`，仍停在 commit `75230e4eab333ad0fc47573747521ccc1a31a163`（2026-05-20），与此前固定版本一致。
 - 仓库自述 Lean 4.29.1 / Mathlib 4.29.1，并依赖 `sentience-lean`、`nems-lean`、`reflexive-closure-lean`；范围包括 qualia、manifestation、ownership、selector-access、countermodels 和 meta-theory。
 - 已实读 `StructuredManifestation.lean`、`ManifestationNonReducibility.lean`、`Meta/Minimality.lean`、`MANIFEST.md`。
-- 针对当前首问搜索 `horizon`、`intuition`、`Merleau`、`Marion`、`saturated` 均未定位到同型 API。
+- 针对当前首问继续搜索 `horizon`、`intuition`、`Merleau`、`Marion`、`saturated`，以及本轮新 theorem 所用的 `independent / nonexhaustible / captured / appearing` 组合，仍未定位到同型 API。
 
 **判断。** 这是直接的 Lean formal phenomenology 先例，所以本项目不声称“首次用 Lean 形式化现象学”。但没有定位到与 Merleau-Ponty / Marion horizon、conditioning、exhaustibility 同型的现成 API。其工具链和依赖显著重于本项目目前只需的 Lean Core 关系逻辑，因此不引入依赖；如未来进入 manifestation/ownership/access 才逐声明复用审计。
 
@@ -82,7 +82,16 @@ Ericson Falabretti, “Merleau-Ponty e Marion: o problema da ambiguidade entre u
 
 这次交叉还纠正一个重要边界：Djian 的 ED 304–305 是稍后的 horizon/I possibility-condition 段落，**不是** BG 211–212 的法文 counterpart。Fanny Lederlin 2023 的 Université Paris Cité 官方博士论文短引 ED p. 305，进一步确认这一页的 intentional-horizon 主题，但不能改变其版本位置。
 
-## 4. 既有形式 profile 与本轮确切前提 theorem 的复用判断
+### 正式重印 provenance：不重新猜 pagination
+
+本轮把“合法 direct-primary 获取路径”也纳入 prior-art / provenance 审计，详见 [MARION_REPRINT_PROVENANCE.md](MARION_REPRINT_PROVENANCE.md)：
+
+- Fordham / De Gruyter 2013 *The Essential Writings* 正式收录 Marion `Sketch of the Saturated Phenomenon` pp. 108–134，但当前正文受限；
+- Dermot Moran 的作者公开稿明确登记 *Being Given* `Sketch` pp. 199–221 **重印于** Moran / Embree 编 *Phenomenology: Critical Concepts* (Routledge, 2004), vol. 4, pp. 5–28；Routledge 官方产品页与 Google Books/Taylor & Francis 元数据独立确认承载重印的出版物。
+
+**复用判断。** 这不是理论 prior art，而是版本／来源劳动的可复用成果。项目直接复用“整体重印范围”来扩展合法访问路线，不自己按页数猜页面偏移，也不把 secondary reprint provenance 冒充为已直接阅读 Marion 目标页。
+
+## 4. 既有形式 profile 与精确前提 theorem 的复用判断
 
 当前项目中的以下结果逻辑内容都很初等，不作为原创性主张：
 
@@ -93,13 +102,13 @@ Ericson Falabretti, “Merleau-Ponty e Marion: o problema da ambiguidade entre u
 - `ExhaustiveCaptureConditions` 下 `Independent → NonExhaustible`；
 - `Captured p ∧ Independent p → ¬ ExhaustiveCaptureConditions` 的点态桥接反证。
 
-本轮拟进一步精确回答“`Independent p → NonExhaustible p` 的确切前提是什么”，因此在写代码前做了增量查重：
+此前为精确回答“`Independent p → NonExhaustible p` 的确切前提是什么”，在写代码前做了增量查重：
 
 - 复用本仓已证明的 `nonExhaustible_iff_not_captured`，不再造新的 exhaustion 语义；
 - 针对 `Independent` / `NonExhaustible` / `Captured` 的 GitHub 全局代码搜索没有定位到外部 formal-philosophy 同型声明；命中主要是本仓和无关词典数据；
-- `novaspivack/phenomenology-lean` 的已固定版本仍没有 horizon / Marion / saturation 同型 API；LogiKEy / AFP 属于方法和逻辑基础 prior art，不值得为这一命题引入重依赖。
+- `novaspivack/phenomenology-lean` 的固定版本没有 horizon / Marion / saturation 同型 API；LogiKEy / AFP 属于方法和逻辑基础 prior art，不值得为这一命题引入重依赖。
 
-因此只新增一条**Lean Core 级正规化 theorem**：
+因此只新增过一条 **Lean Core 级正规化 theorem**：
 
 ```text
 (Independent p → NonExhaustible p)
@@ -108,6 +117,24 @@ Ericson Falabretti, “Merleau-Ponty e Marion: o problema da ambiguidade entre u
 ```
 
 入口 `independent_implies_nonExhaustible_iff_capture_refutes_independence`。这只是由 `NonExhaustible p ↔ ¬ Captured p` 得出的命题逻辑闭包，不作为原创数学或原创哲学结果。它的价值是把“需要 bridge”改写成精确的点态条件：排除同一 p 上 `Captured ∧ Independent`。
+
+### 本轮新增：把精确条件限制在“实际显现”量词域
+
+首问写的是“显现”，而不是 `Phenomenon` 类型的任意居民。因此本轮拟把同一正规化提升为：
+
+```text
+(∀ p, appears p → Independent p → NonExhaustible p)
+↔
+(∀ p, appears p → Captured p → ¬ Independent p)
+```
+
+在动代码前完成了增量外部检查：
+
+- `novaspivack/phenomenology-lean` `main` 仍是 `75230e4eab333ad0fc47573747521ccc1a31a163`，没有出现 horizon / Marion / exhaustion 同型 API；
+- GitHub 全局搜索 `Independent NonExhaustible Captured appearing` 未找到外部 formal-philosophy 同型声明；有效命中是本仓，其他结果主要是无关词典／word-list 数据；
+- 该命题只使用 Lean Core 命题逻辑与本仓 `nonExhaustible_iff_not_captured`，因此没有理由引入 Mathlib、LogiKEy 或其他依赖。
+
+**复用决定。** 新 theorem `appearing_independence_implies_nonExhaustible_iff_capture_refutes_independence` 只做已有点态正规化的量词提升，并在两边显式保留 `appears p`。它的价值是防止无意把首问加强成“对所有类型居民”的命题；仍不作为原创数学／哲学结论。
 
 ## 5. `ExhaustiveCaptureConditions` 的 prior-art 状态
 
@@ -119,7 +146,7 @@ situated p h ∧ Exhausts p h → conditions p h
 
 同题文本支持 related / conditioning 的区分，却没有给出这条 extensional exhaustion→conditioning 蕴含。因此它继续是本项目内 MODEL/QUESTION，不归给 Marion 或 Merleau-Ponty。
 
-本轮的点态等价说明了它的逻辑地位应再收紧：`ExhaustiveCaptureConditions` 是使 capture 与 independence 冲突的一种**结构化充分机制**，但它比“对固定 p 排除 `Captured p ∧ Independent p`”更强，不再称作逻辑上的确切最弱 bridge。
+点态与显现域的等价 theorem 都说明其逻辑地位应收紧：`ExhaustiveCaptureConditions` 是使 capture 与 independence 冲突的一种**结构化充分机制**，但它比“在相关量词域排除 `Captured ∧ Independent`”更强，不称作逻辑上的确切最弱 bridge。
 
 现有 `closedIndependentConditioning` 已显示没有 bridge 时可以同时 `Independent` 与 `Captured`，并证明该模型违反 bridge。`captured_independent_refutes_exhaustiveCaptureConditions` 则把这一事实提升为任意模型、任意具体 witness 的一般定理：只要 `Captured p` 与 `Independent p` 同时成立，bridge 就失败。
 
@@ -142,10 +169,10 @@ Jean-Luc Marion, “The Saturated Phenomenon,” *Philosophy Today* 40(1), 1996,
 
 这项发现实质改变下一步：已有作者本人文本确认 horizon 不能简单取消、核心在先行限定、且 horizon-independence 与多种 horizon 关系并存。故不再需要猜测这些区分是否只是二手研究强加给 Marion。
 
-但这**不取消书本版本核对门**。借助现有 crosswalk，门槛可精确成：直接读 BG 209–212、225–226，或法文 ED 292–297、314–315；双版本二手引注只负责定位，不能替代 primary direct reading。
+但这**不取消书本版本核对门**。借助现有 crosswalk 与本轮重印 provenance，门槛可精确成：直接读 BG 209–212、225–226，或法文 ED 292–297、314–315，或在已确认正式重印中找到对应正文并用文本锚点互证；二手引注与书目关系只负责定位，不能替代 primary direct reading。
 
 ## 8. 当前复用结论
 
 首问继续保持轻量 Lean Core 是合理选择。现阶段没有外部形式化提供可直接替换本项目 horizon 首问的同型实现；formal philosophy 的方法、Marion horizon 的解释 prior art、以及 Merleau-Ponty / Marion 的直接比较研究都已明确存在。
 
-当前最有价值的复用分成三类：一是采用 Miller / Mackinlay / Steinbock 的 BG/ED 双版本引注，避免重新猜测翻译页码；二是采用 Falabretti / Djian / Murga 等既有比较与解释工作限制历史新颖性表述并保存竞争读法；三是直接复用本仓 `NonExhaustible ↔ ¬Captured`，只用一条无新 primitive 的正规化 theorem 给出 `Independent → NonExhaustible` 的确切点态条件。除此之外继续等待 direct-primary 版本核对，不扩张完整 saturation API。
+当前最有价值的复用分成四类：一是采用 Miller / Mackinlay / Steinbock 的 BG/ED 双版本引注，避免重新猜测翻译页码；二是采用 Falabretti / Djian / Murga 等既有比较与解释工作限制历史新颖性表述并保存竞争读法；三是采用 Moran / Routledge 的明确重印 provenance 扩展合法 direct-primary 获取路径；四是直接复用本仓 `NonExhaustible ↔ ¬Captured`，用无新 primitive 的正规化 theorem 给出 `Independent → NonExhaustible` 的点态和实际显现域确切条件。除此之外继续等待 direct-primary 版本核对，不扩张完整 saturation API。
