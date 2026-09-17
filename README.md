@@ -40,7 +40,7 @@ HorizonIndependent  ⟹ Horizonless        ✗
 
 入口是 `independent_implies_nonExhaustible_iff_capture_refutes_independence`。因此对同一个 p，确切要求只是排除 `Captured p ∧ Independent p`。
 
-本轮再把该结论提升到首问实际谈论的**显现域**，而不无理由要求 `Phenomenon` 类型的所有居民都满足它：
+该结论也已经提升到首问实际谈论的**显现域**，而不无理由要求 `Phenomenon` 类型的所有居民都满足它：
 
 ```text
 (∀ p, appears p → Independent p → NonExhaustible p)
@@ -58,7 +58,9 @@ ExhaustiveCaptureConditions
 ⟹ NonExhaustible
 ```
 
-入口是 `exhaustiveCaptureConditions_independent_implies_nonExhaustible`。若同一个 p 同时 `Captured` 与 `Independent`，则这个较强 bridge 必然失败，入口是 `captured_independent_refutes_exhaustiveCaptureConditions`。所以 `ExhaustiveCaptureConditions` 是实现排斥的一种充分机制，但不是逻辑上唯一或最弱的前提；它仍只是压力测试，不归给 Marion 或 Merleau-Ponty。
+入口是 `exhaustiveCaptureConditions_independent_implies_nonExhaustible`。若同一个 p 同时 `Captured` 与 `Independent`，则这个较强 bridge 必然失败，入口是 `captured_independent_refutes_exhaustiveCaptureConditions`。
+
+本轮再形式证明“较强”确实是**严格较强**。`displacedCaptureConditioning` 让一个 related horizon 负责 exhaustive capture、另一个 related horizon 负责 conditioning；于是所有实际显现仍满足精确排斥 `Captured → ¬ Independent`，且 `ConditioningIsSituated` 成立，但 `ExhaustiveCaptureConditions` 失败。入口是 `exact_appearing_condition_is_strictly_weaker_than_exhaustiveCaptureConditions`。因此这个结构化 bridge 不是精确条件的改写，而是额外要求“exhaustive 的那个 horizon 自己就要 conditioning”。
 
 这些都是中性的 model-theoretic 结论，不是 Marion 的 saturated phenomenon 定义。
 
@@ -74,7 +76,7 @@ Marion, *Being Given*, Jeffrey L. Kosky trans., Stanford UP 2002 的版本、§2
 
 同题 prior art 方面，Aurélien Djian 2018 直接研究 *Étant donné* 中 horizon 的角色并引用 ED pp. 304–305；Ericson Falabretti 2015/2016 已直接把 *Phenomenology of Perception* 与 *Étant donné* 放在同一比较问题中。因此本项目不把 related/conditioned 的历史区分、或 Merleau-Ponty/Marion 的比较配对本身包装成新发现。
 
-本项目强制进行 [外部工作与复用审计](docs/PRIOR_ART.md)。已经确认：Lean 中存在独立的 `novaspivack/phenomenology-lean` formal-phenomenology 工程，Isabelle/HOL / AFP 与 LogiKEy 也已有成熟 formal philosophy / computational metaphysics / computational hermeneutics 方法。因此本项目**不声称首创“形式化哲学”或“形式化现象学”工作流**。本轮重新核对 `novaspivack/phenomenology-lean` 仍停在此前固定的 `75230e4e...`；针对 `Independent / NonExhaustible / Captured / appearing` 的 GitHub 增量检索没有定位到外部同型 formal-philosophy 声明。由于新结论只是已有 `NonExhaustible ↔ ¬Captured` 的 Lean Core 量词闭包，也没有为它引入重依赖。
+本项目强制进行 [外部工作与复用审计](docs/PRIOR_ART.md)。已经确认：Lean 中存在独立的 `novaspivack/phenomenology-lean` formal-phenomenology 工程，Isabelle/HOL / AFP 与 LogiKEy 也已有成熟 formal philosophy / computational metaphysics / computational hermeneutics 方法。因此本项目**不声称首创“形式化哲学”或“形式化现象学”工作流**。本轮针对新 strictness theorem 再做窄检索：GitHub 全局精确搜索 `ExhaustiveCaptureConditions` 只命中本仓，更宽的 capture/independence/horizon 组合没有定位到 external formal-philosophy 同型声明。因此只增加最小有限模型，不引入重依赖，也不把这条初等分离作为原创数学／哲学发现。
 
 但 **pp. 209–212、225–226 的 *Being Given* 原书正文仍未由本项目独立逐页核对**。Internet Archive 可确认 1997 法文 *Étant donné* 的受限借阅条目存在，Google Books 也能确认 1997 PUF 版本及索引词，但当前环境都未提供目标页可直接读取正文；项目不会绕过访问控制。因此尚未达到首个研究问题的停止条件。
 
@@ -82,7 +84,7 @@ Marion, *Being Given*, Jeffrey L. Kosky trans., Stanford UP 2002 的版本、§2
 
 ## 工程状态
 
-Lean 4.24.0；不依赖 Mathlib 或其他外部 Lean 包。本分支共有 **8 个库模块、56 个具名引理／定理**，全部列入内核公理依赖审计；最终通过状态以对应提交 CI 为准。
+Lean 4.24.0；不依赖 Mathlib 或其他外部 Lean 包。本分支共有 **8 个库模块、57 个具名引理／定理**，全部列入内核公理依赖审计；最终通过状态以对应提交 CI 为准。
 
 | 检验 | 形式结论 | 入口 |
 |---|---|---|
@@ -93,6 +95,7 @@ Lean 4.24.0；不依赖 Mathlib 或其他外部 Lean 包。本分支共有 **8 �
 | 上条蕴含的确切点态条件是什么 | 等价于 `Captured p → ¬ Independent p` | `independent_implies_nonExhaustible_iff_capture_refutes_independence` |
 | 在实际显现域的确切条件是什么 | 等价于对 `appears p` 排除 `Captured p ∧ Independent p` | `appearing_independence_implies_nonExhaustible_iff_capture_refutes_independence` |
 | 哪个结构化 bridge 足以恢复上条蕴含 | situated + exhaustive → conditioning 足够，但更强 | `exhaustiveCaptureConditions_independent_implies_nonExhaustible` |
+| 这个结构化 bridge 是否严格更强 | 是；精确显现域条件可成立而 bridge 失败 | `exact_appearing_condition_is_strictly_weaker_than_exhaustiveCaptureConditions` |
 | captured + independent 对该 bridge 意味着什么 | 同一 witness 足以反证 bridge | `captured_independent_refutes_exhaustiveCaptureConditions` |
 | 该 bridge 是否真是额外前提 | 是；旧 closed-independent 反模型违反它 | `closedIndependentConditioning_not_exhaustiveCaptureConditions` |
 | 不可穷尽是否推出不依赖视域 | 否；可受条件化但仍不可穷尽 | `nonExhaustible_does_not_imply_horizon_independence` |
@@ -125,7 +128,7 @@ FormalPhenomenology/
   Horizon/SituatedExcess.lean
   Horizon/Conditioning.lean      # 三轴分离 + 点态/显现域确切条件 + 较强 capture→conditioning bridge
   Models/Finite.lean
-  Models/Conditioning.lean       # 分离、联合见证及 bridge 反模型审计
+  Models/Conditioning.lean       # 分离、联合见证、bridge 反模型及 strictness witness
   Models/OpenHorizon.lean
   Models/HorizonExtension.lean
 Audit.lean
@@ -145,4 +148,4 @@ scripts/check.py
 
 ## 下一步
 
-首要硬门槛仍是**独立核对 Marion *Being Given* pp. 209–212、225–226 的原书正文**，或取得可可靠逐段对应的法文 *Étant donné* / 正式重印正文。形式层现在不仅拆开相关视域、条件化、穷尽三者，还把 `Independent → NonExhaustible` 的确切点态条件与实际显现域条件分开，并区分它们和更强的结构化 bridge。下一轮继续突破合法原典访问门，决定真实文本是否支持任何额外 bridge，而不是继续无边界扩张模型。
+首要硬门槛仍是**独立核对 Marion *Being Given* pp. 209–212、225–226 的原书正文**，或取得可可靠逐段对应的法文 *Étant donné* / 正式重印正文。形式层现在不仅拆开相关视域、条件化、穷尽三者，还把 `Independent → NonExhaustible` 的确切点态条件与实际显现域条件分开，并且已经形式证明它们严格弱于 `ExhaustiveCaptureConditions` 这种 horizon-by-horizon 结构 bridge。下一轮继续突破合法原典访问门，决定真实文本是否支持任何额外 bridge，而不是继续无边界扩张模型。
