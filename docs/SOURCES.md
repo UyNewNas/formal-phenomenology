@@ -1,6 +1,6 @@
 # 来源与阅读状态
 
-检索／核查日期：2026-09-17。这里区分“找到书目”“读过研究文献”“已经核对原典段落”。前两者不冒充第三者。逐段记录见 [PASSAGE_CARDS.md](PASSAGE_CARDS.md)。
+检索／核查日期：2026-09-17。这里区分“找到书目”“读过研究文献”“已经核对原典段落”。前两者不冒充第三者。逐段记录见 [PASSAGE_CARDS.md](PASSAGE_CARDS.md)，外部形式化与方法先例见 [PRIOR_ART.md](PRIOR_ART.md)。
 
 ## 1. 已固定的原典版本
 
@@ -21,7 +21,9 @@ Jean-Luc Marion, *Being Given: Toward a Phenomenology of Givenness*, translated 
 - [De Gruyter / Stanford 书页](https://www.degruyterbrill.com/document/doi/10.1515/9780804785723/html)：确认出版信息。
 - [§21 出版社章节记录](https://www.degruyterbrill.com/document/doi/10.1515/9780804785723-024/html)：确认章节题名 `Sketch of the Saturated Phenomenon: The Horizon` 及 pp. 199–212。
 
-**访问限制仍在**：本轮再次尝试 Google Books 定页与出版社章节页；出版社只公开元数据，Google Books 的可检索页面没有向当前研究环境提供可逐页核验的 pp. 210–212、225–226。故 Marion 段落卡仍保持 `proposed-secondary`，不能标成原书已查看。
+**访问限制仍在**：Google Books / 出版社页面仍未向当前研究环境提供可逐页核验的 pp. 210–212、225–226 正文。
+
+本轮另确认 Internet Archive 有 Jean-Luc Marion 1997 年法文 *Étant donné : essai d'une phénoménologie de la donation*（PUF, ISBN 2130486770）的馆藏记录，identifier `etantdonneessaid0000mari_w5n7`。该页面明确标记 `Access-restricted-item: true`、`printdisabled`，当前未登录环境的下载区显示没有可直接读取文件。因此这只是一个**合法借阅线索**，不是原文已读取；项目不会绕过借阅或访问控制。
 
 ## 2. 已查看的研究资料
 
@@ -59,9 +61,11 @@ Dermot Moran, “Immanence, Self-Experience, and Transcendence in Edmund Husserl
 
 ### S-JM5：Ezequiel Daniel Murga (2024)
 
-Ezequiel Daniel Murga, “La posibilidad de una horizonticidad no metafísica en Jean-Luc Marion,” *Logos. Anales del Seminario de Metafísica* 57(2), 309–325, DOI 10.5209/asem.94542。期刊公开摘要明确把问题表述为 Marion 对**形而上学式 horizonality** 的批判，并提出 Marion 并非简单抛弃 horizon，而可能保留一种非形而上学的 horizontality。
+Ezequiel Daniel Murga, “La posibilidad de una horizonticidad no metafísica en Jean-Luc Marion,” *Logos. Anales del Seminario de Metafísica* 57(2), 309–325, DOI 10.5209/asem.94542。已直接查看期刊公开全文，而不仅是摘要。
 
-用途：这是与“Marion = 完全无任何视域”读法直接竞争的当代二手解释。它加强本项目新增 `situated` / `conditions` 两关系分层的必要性，但不决定最终解释。
+论文的核心解释是：Marion 批判 horizon 的形而上学式、先行限定的使用，并不简单等于放弃 horizon 本身。Murga 引 Marion 的相关文本强调：一般地取消 horizon 会危及 manifestation，问题是改变 horizon 的使用方式，使显现不再受其“先行限定”支配。论文还讨论 revelation 在 horizon 中以 saturation 的方式显现，并把 Merleau-Ponty 的 flesh 列入可充当 horizon 的现象学结构示例之一。
+
+用途：这是与“Marion = 完全无任何视域”读法直接竞争的二手解释，并与本项目 `situated` / `conditions` 分层高度重合。因此这种分层应标为**对已有解释争论的形式化接口**，而不是本项目的新历史发现。Murga 引用的 Marion 原文仍必须回到相应原书自行核对，不能借二手全文跳过 primary-text gate。
 
 ## 3. 段落卡状态
 
@@ -72,12 +76,13 @@ Ezequiel Daniel Murga, “La posibilidad de una horizonticidad no metafísica en
 | Merleau-Ponty | 5 | `reviewed`，固定 Colin Smith / Routledge Classics 2002，已看正文 |
 | Marion | 3 | `proposed-secondary`，版本与页码已定位，原书正文待独立复核 |
 
-## 4. A、B、C 与新增条件化轴的当前证据判定
+## 4. A、B、C 与条件化轴的当前证据判定
 
 - **A / `UniversalStructure`**：`有证据支持，但需削弱理解`。Merleau-Ponty 的对象—视域结构直接支持“显现伴随视域”的方向；当前存在量词仍省略身体、时间、探索和内外视域。
 - **B / `ClosureBridge`**：`不对应本轮核查的 Merleau-Ponty 文本`。相关段落恰恰强调开放、未完成和不穷尽。B 保留为压力测试前提。
 - **C / `HasExcess`**：`对 Marion 仅是弱候选影子`。二手带页码材料支持“饱和溢出/不受视域限制”的方向，但完整饱和概念还需要直观—意向、构成和主体反转等结构。
-- **`HorizonConditioning.Independent`**：`新的候选接口`。S-JM1 与 S-JM4 都把 p. 211 的“horizon”明确读成条件/条件化语义；S-JM2、S-JM5 又警告 Marion 仍可能谈论一个或多个 horizon。故“没有 horizon 作为条件”与“完全没有相关 horizon”必须分开。
+- **`HorizonConditioning.Independent`**：`新的形式接口，但解释区分有明确 prior art`。S-JM1/S-JM4 把 p. 211 的 horizon 读成条件语义；S-JM5 更直接提出“保留 horizon / 去掉其形而上学先行限定”的竞争解释。因此 `Independent` 与 `Structured` 可并置是有文献动机的候选，而非靠模型自由度发现的历史事实。
+- **`HasSituatedIndependentExcess`**：仅为本项目的中性联合 profile。它证明 related + independent + non-exhaustible 在当前关系语言中可共同满足；尚无证据把这个 conjunction 当作 Marion 的定义。
 - **`HasHorizonlessAppearance`**：仍没有足够证据把它当作 Marion 饱和的正确编码。
 
 ## 5. 尚未确立的历史断言
@@ -86,9 +91,9 @@ Ezequiel Daniel Murga, “La posibilidad de una horizonticidad no metafísica en
 
 ## 6. 本轮检索结论与硬门槛
 
-新增二手交叉核查已经足以回答一个**建模问题**：`does not depend on a horizon` 不能安全地和 `¬ Structured` 或 `NonExhaustible` 视为同义，因此代码已新增独立 `conditions` 关系，并用反模型证明这些谓词互不推出。
+本轮外部查重确认 formal philosophy / formal phenomenology 已有实质工程和方法先例，详见 `PRIOR_ART.md`；相关现象学解释也已明确讨论“horizon 仍在但不再作为先行可能性条件”这一方向。因此项目后续不再把 related/conditioned 的区分表述为原创解释。
 
-但这仍不能完成**历史解释问题**。停止门保持不变：必须独立看到 *Being Given* pp. 210–212、225–226 的原书正文，核对句子的实际上下文，再决定最终将哪些弱公式归到 Marion 名下。
+同时，Internet Archive 只提供受限借阅线索，没有使 Marion 原典门自动通过。停止门保持不变：必须通过合法可用来源独立看到 *Being Given* pp. 210–212、225–226（或能够可靠对照的原法文对应段落）正文及上下文，再冻结最终归属。
 
 ## 7. 工具来源
 

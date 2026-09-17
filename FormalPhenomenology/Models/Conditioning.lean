@@ -28,6 +28,30 @@ theorem splitIndependentConditioning_hasStructuredIndependentAppearance :
     exact hf
 
 /--
+The same finite witness jointly realizes relatedness, absence of horizon
+conditioning, and failure of exhaustive capture.  This establishes consistency
+of the three formal axes; it does not identify the profile with saturation.
+-/
+theorem splitIndependentConditioning_hasSituatedIndependentExcess :
+    splitIndependentConditioning.HasSituatedIndependentExcess := by
+  obtain ⟨p, hp, hstruct, hn⟩ := splitModel_situatedExcess
+  cases p
+  refine ⟨(), hp, hstruct, ?_, hn⟩
+  intro _ hf
+  exact hf
+
+/--
+The three-way profile is jointly satisfiable even while conditioning is required
+to be a subrelation of horizon relatedness.
+-/
+theorem related_independent_nonExhaustible_are_jointly_consistent :
+    ∃ M : HorizonConditioning,
+      M.ConditioningIsSituated ∧ M.HasSituatedIndependentExcess := by
+  exact ⟨splitIndependentConditioning,
+    splitIndependentConditioning_coherent,
+    splitIndependentConditioning_hasSituatedIndependentExcess⟩
+
+/--
 Horizon independence, in the conditioning sense, need not mean that no horizon
 is related to the appearance.
 -/
