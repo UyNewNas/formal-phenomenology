@@ -105,6 +105,21 @@ theorem exhaustiveCaptureConditions_independent_implies_nonExhaustible
   exact hi h (hb p h hs he)
 
 /--
+A captured phenomenon that is nevertheless horizon-independent refutes the
+exhaustive-capture bridge.  This is the pointwise dual of the previous theorem:
+it records the bridge failure at the exact witness where capture and
+independence coexist, without identifying `Captured` with Marion's phrase
+"saturates a horizon".
+-/
+theorem captured_independent_refutes_exhaustiveCaptureConditions
+    (M : HorizonConditioning) (p : M.base.Phenomenon)
+    (hc : M.base.Captured p) (hi : M.Independent p) :
+    ¬ M.ExhaustiveCaptureConditions := by
+  intro hb
+  obtain ⟨h, hs, he⟩ := hc
+  exact hi h (hb p h hs he)
+
+/--
 An appearing structured-independent witness becomes a non-vacuous situated
 excess witness under the same explicit bridge.
 -/
