@@ -1,4 +1,4 @@
-import FormalPhenomenology.Models.Conditioning
+import FormalPhenomenology.ConstructiveBridge
 
 set_option autoImplicit false
 
@@ -31,5 +31,21 @@ theorem first_question_formal_answer :
   · exact horizon_structure_does_not_entail_closure
   · intro M
     exact appearing_independence_implies_nonExhaustible_iff_no_captured_independent_witness M
+
+/--
+The constructive boundary behind the conditioning half of the first question.
+
+Producing an actual conditioning-horizon witness for every appearing captured
+phenomenon is exactly the conjunction of the already identified conflict
+exclusion and double-negation stability of `Conditioned` on that same
+appearing/captured domain.  This is a FORMAL proof-theoretic packaging theorem;
+it makes no claim that historical phenomenology supplies such stability.
+-/
+theorem first_question_witness_boundary (M : HorizonConditioning) :
+    (∀ p, M.base.appears p → M.base.Captured p → M.Conditioned p) ↔
+      ((∀ p, M.base.appears p → M.base.Captured p → ¬ M.Independent p) ∧
+       (∀ p, M.base.appears p → M.base.Captured p →
+         (¬ ¬ M.Conditioned p → M.Conditioned p))) := by
+  exact appearing_witness_bridge_iff_exact_and_captured_stability M
 
 end FormalPhenomenology
