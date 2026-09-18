@@ -37,7 +37,7 @@ Google Books 另有 1997 PUF 版书目页（ISBN 2130486770 / 9782130486770，�
 
 重要版本纠正：2013 PUF Quadrige（ISBN `9782130624813`）是明确标为第四版、修订／校订增订的 533 页版本，不能把上述 1997 页码直接移植到 2013。此前 Cairn 2013 p. 295 的 direct-indexed 页面现在保持 **PRIMARY-DIRECT-INDEXED-BOOK-PAGE**，但同时标记 **UNMAPPED-TO-BG-TARGET**；不再称作 BG p. 211 / 历史 ED p. 295 的“同页号 corroboration”。
 
-本轮再次针对 BG pp. 209–212、225–226 与早期 ED pp. 292–297、314–315 以及正式重印路线做合法公开入口检索；结果仍是出版社／书目元数据、二手 exact quotation 和既有 crosswalk，没有取得目标作者正文，因此 direct-primary gate 状态**没有升级**。受限 preview、feuilletage 或借阅内容没有绕过。
+本轮再次针对 BG pp. 209–212、225–226 与早期 ED pp. 292–297、314–315 以及正式重印路线做合法公开入口检索；结果仍是出版社／书目元数据、二手 exact quotation 和既有 crosswalk，没有取得目标作者正文，因此 direct-primary gate 状态**没有升级**。受限 preview、feuilletage 或借阅内容没有绕过，也不以非正式转载关闭停止门。
 
 ## 3. PRIMARY：Marion 1996 “The Saturated Phenomenon”
 
@@ -147,6 +147,14 @@ Deery 对 “horizon of sense” 的解释是：事物由此向进一步探索�
 
 限制：Lind 没有给出本仓的 `Captured → Conditioned`、`¬¬ Conditioned → Conditioned`、`Decidable (Conditioned p)` 或 same-horizon `ExhaustiveCaptureConditions` 形式。因此它只约束解释新颖性，不能替代任何 Lean bridge，更不能替代 *Being Given* 目标页 direct-primary review。
 
+### S-JM12 — Jaime Llorente Cardo (2025)
+
+“Encrucijadas de la fenomenología acontecial. Entre el horizonte y la neutralidad,” *Invisto* 2(1), 56–72，published 2025-06-30，DOI `10.21703/invisto.2025.10`。本轮直接读取 *Invisto* 期刊官方 HTML 的书目信息、摘要与参考文献；页面提供 PDF 入口，但本项目本轮没有把 PDF 当作已逐页核读。
+
+摘要把问题明确设为：包括 Jean-Luc Marion 在内的当代事件现象学如何尝试超越给予物的“horizonte de constitución”，以及这种超越与“中性／非人格化”之间的张力。参考文献登记 Marion 的 *Siendo dado*、*De surcroît*、*Le visible et le révélé* 与 Murga 2024。
+
+用途：**SECONDARY-OFFICIAL-ABSTRACT/METADATA-READ / same-topic prior art**。它进一步确认“超越 constitution-horizon”与事件／给予现象的关系已有持续研究；但没有提供本仓 `Captured`、`Conditioned`、stability、decidability 或 same-horizon bridge，也不能替代目标书页 direct-primary review。
+
 ### S-MPJ1 — Ericson Falabretti (2015/2016)
 
 “Merleau-Ponty e Marion: o problema da ambiguidade entre uma fenomenologia da percepção e uma fenomenologia da doação,” *Revista de Filosofia Moderna e Contemporânea* 3(2), 87–102, DOI `10.26512/rfmc.v3i2.12514`。Universidade de Brasília 期刊官方页面与官方 PDF 正文已直接读取；PDF page-image 截图请求在当前环境超时，所以状态记为 **SECONDARY-DIRECT-PDF-TEXT / PAGE-IMAGE-NOT-REVIEWED**。详细审计见 [FALABRETTI_COMPARISON.md](FALABRETTI_COMPARISON.md)。
@@ -168,10 +176,10 @@ Deery 对 “horizon of sense” 的解释是：事物由此向进一步探索�
 - **A / `UniversalStructure`**：Merleau-Ponty 有直接证据支持，但当前 Lean 是非常弱的存在量词压缩。
 - **B / `ClosureBridge`**：不对应已核查 Merleau-Ponty 段落；文本方向反而是开放、未完成和不穷尽。B 只保留为压力测试前提。Deery 2025 的 secondary interpretation 进一步把 horizon 描述为 indeterminate、向进一步探索开放，而不是 exhaustive closure。
 - **C / `HasExcess` / `NonExhaustible`**：可作为 excess 的弱模型影子，但 Marion 1996 primary text 明确展示多个 horizon 关系层次，完整 saturation 不能等同于 C。
-- **`HorizonConditioning.Independent`**：作为“不以 horizon 的先行限定／可能性条件来规定显现”的弱接口，现在不仅有二手研究动机，还有 Marion 1996 作者本人 primary text 支持其方向；Djian 2018、Murga 2024、Lind 2026 等提供解释层 prior art。2013 p. 295 只能作为未映射的独立书本 primary-indexed 旁证，不再承担 BG p. 211 版本确认。它仍不是完整 `Saturated` 定义。
-- **captured-domain `¬¬ Conditioned p → Conditioned p`**：纯 FORMAL 的 double-negation stability 前提；本轮已把它精确限制到 `appears p ∧ Captured p` 的实际使用域。它是把 exact exclusion 提升为实际 conditioning witness 所需的局部证明论性质，没有历史归属。
-- **全域 `∀ p, ¬¬ Conditioned p → Conditioned p`**：仍是正确但更强的 FORMAL sufficient premise；不再称为首问的最小量词范围。
-- **`Decidable (Conditioned p)`**：纯 FORMAL 的局部可判定性前提；Lean Core `Decidable.not_not` 使其足以产生 stability，因此它是更强的充分来源，不是最小历史或逻辑 bridge。
+- **`HorizonConditioning.Independent`**：作为“不以 horizon 的先行限定／可能性条件来规定显现”的弱接口，现在不仅有二手研究动机，还有 Marion 1996 作者本人 primary text 支持其方向；Djian 2018、Murga 2024、Lind 2026、Llorente Cardo 2025 等提供解释层 prior art。2013 p. 295 只能作为未映射的独立书本 primary-indexed 旁证，不再承担 BG p. 211 版本确认。它仍不是完整 `Saturated` 定义。
+- **captured-domain `¬¬ Conditioned p → Conditioned p`**：纯 FORMAL 的 double-negation stability 前提；它被精确限制到 `appears p ∧ Captured p` 的实际使用域，是把 exact exclusion 提升为实际 conditioning witness 所需的局部证明论性质，没有历史归属。
+- **captured-domain `Decidable (Conditioned p)`**：纯 FORMAL、比 stability 更强的充分来源；本轮已证明只需在 `appears p ∧ Captured p` 域给出 decision procedure，就足以把 exact exclusion 提升为 witness-producing bridge。它不是必要前提，也没有历史归属。
+- **全域 `∀ p, ¬¬ Conditioned p → Conditioned p` / `∀ p, Decidable (Conditioned p)`**：仍是正确但更强的 FORMAL sufficient premises；不再称为首问所需的最小量词范围。
 - **`HasHorizonlessAppearance`**：Marion 1996 p. 117 直接反对把一般取消 horizon 当作目标；Falabretti p. 98 的 “no horizon” 是竞争 secondary reading，而不是足以推翻 primary-text boundary 的证据。因此它仍不应作为默认 saturation 编码。
 - **`ExhaustiveCaptureConditions`**：仍是 MODEL/QUESTION。没有 primary text 或同题研究给出 `situated ∧ Exhausts → conditions` 这条 extensional bridge；点态与显现域逻辑等价说明，它只是比“在相应量词域排除 `Captured ∧ Independent`”更强的一种结构化充分机制。
 
@@ -181,7 +189,7 @@ Deery 对 “horizon of sense” 的解释是：事物由此向进一步探索�
 
 ## 9. 当前硬门槛
 
-Marion 1996 作者原文已经使首问的解释空间明显收缩；Djian 2018 又把 *Étant donné* 中 horizon-as-condition 的解释角色进一步固定；Miller / Mackinlay / Steinbock 的双版本引注把**早期分页**核对范围缩小；Falabretti 固定了比较研究本身已有 prior art；正式重印 provenance 提供合法替代路线。Lind 2026、Ngoma Tassoulou 2023 与 Deery 2025 都是 secondary 旁证，不降低 primary-text 门槛。
+Marion 1996 作者原文已经使首问的解释空间明显收缩；Djian 2018 又把 *Étant donné* 中 horizon-as-condition 的解释角色进一步固定；Miller / Mackinlay / Steinbock 的双版本引注把**早期分页**核对范围缩小；Falabretti 固定了比较研究本身已有 prior art；正式重印 provenance 提供合法替代路线。Lind 2026、Llorente Cardo 2025、Ngoma Tassoulou 2023 与 Deery 2025 都是 secondary 旁证，不降低 primary-text 门槛。
 
 版本纠正要求停止门分轨：
 
