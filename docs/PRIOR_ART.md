@@ -196,11 +196,9 @@ ExhaustiveCaptureConditions
 
 这两条 theorem 正确，但“decidability 是精确／最小额外前提”的自然语言表述仍然过强。
 
-## 11. 本轮增量：stability 才是精确 proof-theoretic premise
+## 11. 上一轮增量：stability 才是精确点态 proof-theoretic premise
 
-### 拟新增声明与原始量词
-
-本轮在写代码前把目标收紧为：
+上一轮证明：
 
 ```text
 ((¬ Independent p) ↔ Conditioned p)
@@ -208,33 +206,71 @@ ExhaustiveCaptureConditions
 (¬¬ Conditioned p → Conditioned p)
 ```
 
-以及在逐点 stability
+以及在全域逐点 stability
 
 ```text
 ∀ p, ¬¬ Conditioned p → Conditioned p
 ```
 
-下证明 actual-appearance exact exclusion 与 witness-producing bridge 等价。
+下 actual-appearance exact exclusion 与 witness-producing bridge 等价。
 
-这里没有新增 relation；右侧只是 `Conditioned p` 这一既有 existential proposition 的 double-negation stability。
+该工作已经确认：stable/regular proposition 的通用理论不是本项目发明；Mathlib 已有 `isRegular_of_decidable`，本项目只把所需 stability 性质显式作为 theorem 参数，不引入 Mathlib。
 
-### 工程／证明复用检查
+## 12. 本轮增量：把 stability 精确限制到 appearing + captured 域
 
-1. **Lean Core。** 项目固定 `leanprover/lean4:v4.24.0`；已有 `Decidable.not_not` 继续只作为“decidability 产生 stability”的实现来源，不把其当成 stability 概念本身。
-2. **Mathlib4。** 当前索引 commit `a218e50f981942cba4fd060faff7cae680805062` 的 `Mathlib/Order/Heyting/Regular.lean` 已有 `isRegular_of_decidable (p : Prop) [Decidable p] : IsRegular p := propext <| Decidable.not_not`。因此 regular/stable proposition 不是本项目新逻辑概念。`Mathlib/Data/Fintype/Defs.lean` 还有 `Fintype.decidableExistsFintype`，所以也不为有限 countermodel 重造通用存在量词 decision procedure。
-3. **Lean formal phenomenology。** `novaspivack/phenomenology-lean` 最新 `main` 仍为 `75230e4eab333ad0fc47573747521ccc1a31a163`；没有定位到 Marion/horizon/conditioning stability 同型 API。
-4. **LogiKEy / AFP。** LogiKEy 最新 `master` 仍为 `b29954b0876d7991baf12f17378f31700f9de759`。其 semantic embedding / computational metaphysics 方法仍是 prior art，但本轮 theorem 不需要移植其逻辑层。
+### 强制前置查重
 
-**复用决定。** 不定义新的 `Stable` API，不引入 Mathlib；直接把所需性质作为 theorem 前提 `¬¬ Conditioned p → Conditioned p` 参数化，并复用本仓 `not_independent_iff_not_not_conditioned`。这只是应用级薄适配，不声称原创逻辑。
+正式写本轮 theorem 前重新核对：
 
-### 同题解释检查
+1. `novaspivack/phenomenology-lean` 最新 `main` 仍为 `75230e4eab333ad0fc47573747521ccc1a31a163`；没有定位到 horizon / Marion / conditioning / local-stability 同型 API。
+2. `cbenzmueller/LogiKEy` 最新 `master` 仍为 `b29954b0876d7991baf12f17378f31700f9de759`；继续仅作 semantic-embedding / computational-metaphysics 方法 prior art。
+3. GitHub 全局增量检索 `not_not stability conditioned captured`、`local stability witness bridge appearing captured`，没有定位到需直接复用的 external formal-philosophy 实现；命中主要是本仓和无关代码。这个负结果不被解释为“前人工作不存在”。
+4. Lean Core `v4.24.0` 的 `Decidable.not_not` 与 Mathlib regular/stable prior art 沿用已固定审计；没有重造通用逻辑 API。
 
-本轮英／法／西语组合检索再次定位 Murga 2024、Lind 2026 等已登记工作，并新增 Ngoma Tassoulou 2023 作为 Merleau-Ponty horizon / inexhaustibility 的 secondary corroboration。没有检索到把 proof-theoretic stability / decidability 归给 Marion、Merleau-Ponty horizon 概念的同题文献。
+**复用决定。** 本轮只收紧本仓既有 theorem 的量词域，不新增 philosophical predicate，不引入 Mathlib / LogiKEy / Isabelle 依赖，也不作原创逻辑宣称。
 
-**差异判断。** 历史文献约束的是 horizon 是否相关、是否先行限定、是否可穷尽／saturate 等解释轴；本轮 stability theorem 只回答“何时双重否定存在可以变成 existential witness”的形式问题。因此不产生新的历史归属。
+### 同题解释 prior art：Deery 2025
+
+新增核查 James Deery, “The Imaginary Texture of the Real: The Role of the Imagination in Merleau-Ponty’s Phenomenology of Perception,” *European Journal of Philosophy* 33(4), 1500–1517，first published 2025-06-30，DOI `10.1111/ejop.70001`。Wiley Open Access Version of Record HTML 已直接阅读。
+
+Deery 把 Merleau-Ponty 的 “horizon of sense” 描述为使事物向进一步探索、不同观看方式和更确定化开放；该 horizon 本身是 indeterminate，并不预先指定事物将怎样感性显现。它与本仓直接核查的 *Phenomenology of Perception* 开放／未完成方向一致。
+
+**复用判断。** “Merleau-Ponty horizon 是开放可能性场而非既成 exhaustive closure”已有明确 secondary prior art；本项目不把这一解释方向作为历史新发现。Deery 没有给出 `Captured` / `Conditioned` bridge，也不替代 Merleau-Ponty primary text。
+
+### 新形式结果及原始量词
+
+本轮把上一轮全域 stability 前提收紧为：
+
+```text
+∀ p, appears p → Captured p →
+  (¬¬ Conditioned p → Conditioned p)
+```
+
+并证明：
+
+```text
+exact_appearing_condition_iff_witness_bridge_of_captured_stable
+```
+
+以及更强的精确分解：
+
+```text
+appearing_witness_bridge_iff_exact_and_captured_stability
+```
+
+后者给出：
+
+```text
+(appearing Captured → Conditioned)
+↔
+  ((appearing Captured → ¬ Independent) ∧
+   (appearing Captured → (¬¬ Conditioned → Conditioned))).
+```
+
+因此 witness-producing bridge 所需的 stability 不必覆盖所有 `Phenomenon` 类型居民，只需覆盖实际显现且已被 capture 的对象。这是量词纪律上的薄逻辑闭包；全域 stability 与 decidability theorem 继续是更强的 sufficient corollary。
 
 ### direct-primary 门
 
-同一轮再次检索 BG pp.209–212、225–226、early ED pp.292–297、314–315 及 2013/reprint 合法入口；仍未取得目标作者书页正文。受限 preview 没有绕过。
+本轮再次检索 BG pp.209–212、225–226、early ED pp.292–297、314–315 与正式重印路线；仍未取得目标作者书页的合法 direct-primary 正文。没有绕过受限 preview / feuilletage / 借阅内容。
 
-**最终复用判断。** 本轮 formal increment 应登记为：Mathlib/constructive logic 已有 regular/stable prior art之上的本仓薄适配；历史增量只有 secondary corroboration，不足以关闭 book-page direct-primary gate。完整逐声明审计见 [DECIDABLE_CONDITIONING_BRIDGE.md](DECIDABLE_CONDITIONING_BRIDGE.md)。
+**最终复用判断。** 本轮 formal increment 是已有 constructive-logic prior art 上的本仓量词收紧；historical increment 是 Deery 2025 的 secondary corroboration。二者都不能关闭 Marion 书本版本的 direct-primary stop gate。完整逐声明审计见 [DECIDABLE_CONDITIONING_BRIDGE.md](DECIDABLE_CONDITIONING_BRIDGE.md)。
