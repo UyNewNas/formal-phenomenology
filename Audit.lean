@@ -76,3 +76,4 @@ import FormalPhenomenology
 #print axioms FormalPhenomenology.exact_appearing_condition_iff_witness_bridge_of_decidable
 #print axioms FormalPhenomenology.first_question_formal_answer
 #print axioms FormalPhenomenology.first_question_witness_boundary
+#print axioms FormalPhenomenology.first_question_compatibility_witness

@@ -48,4 +48,20 @@ theorem first_question_witness_boundary (M : HorizonConditioning) :
          (¬ ¬ M.Conditioned p → M.Conditioned p))) := by
   exact appearing_witness_bridge_iff_exact_and_captured_stability M
 
+/--
+A project-level compatibility witness for the interpretive boundary used by the
+first question.
+
+There is a model in which conditioning horizons, when present, are required to
+be related horizons, while an actually appearing phenomenon still has a related
+horizon, is horizon-independent in the weak `conditions` sense, and is not
+exhausted by any related horizon.  This is only a thin re-export of the already
+verified finite-model theorem.  It does not identify this profile with Marion's
+full saturated phenomenon and makes no historical attribution.
+-/
+theorem first_question_compatibility_witness :
+    ∃ M : HorizonConditioning,
+      M.ConditioningIsSituated ∧ M.HasSituatedIndependentExcess := by
+  exact related_independent_nonExhaustible_are_jointly_consistent
+
 end FormalPhenomenology
