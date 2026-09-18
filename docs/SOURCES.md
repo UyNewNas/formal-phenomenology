@@ -1,6 +1,6 @@
 # 来源与阅读状态
 
-检索／核查日期：2026-09-17。这里严格区分书目元数据、作者本人正文、研究文献和仍待直接核查的目标书页。逐段工作卡见 [PASSAGE_CARDS.md](PASSAGE_CARDS.md)，Marion 1996 作者文本见 [MARION_1996_PRIMARY.md](MARION_1996_PRIMARY.md)，英法目标页交叉见 [MARION_VERSION_CROSSWALK.md](MARION_VERSION_CROSSWALK.md)，2013 分页纠正见 [MARION_2013_PAGINATION_CORRECTION.md](MARION_2013_PAGINATION_CORRECTION.md)，重印与合法访问路径见 [MARION_REPRINT_PROVENANCE.md](MARION_REPRINT_PROVENANCE.md)，外部形式化与方法先例见 [PRIOR_ART.md](PRIOR_ART.md) 及本轮增量 [PRIOR_ART_2013_PAGINATION.md](PRIOR_ART_2013_PAGINATION.md)。
+检索／核查日期：2026-09-17。这里严格区分书目元数据、作者本人正文、研究文献和仍待直接核查的目标书页。逐段工作卡见 [PASSAGE_CARDS.md](PASSAGE_CARDS.md)，Marion 1996 作者文本见 [MARION_1996_PRIMARY.md](MARION_1996_PRIMARY.md)，英法目标页交叉见 [MARION_VERSION_CROSSWALK.md](MARION_VERSION_CROSSWALK.md)，2013 分页纠正见 [MARION_2013_PAGINATION_CORRECTION.md](MARION_2013_PAGINATION_CORRECTION.md)，重印与合法访问路径见 [MARION_REPRINT_PROVENANCE.md](MARION_REPRINT_PROVENANCE.md)，外部形式化与方法先例见 [PRIOR_ART.md](PRIOR_ART.md)，本轮局部可判定性与外部增量见 [DECIDABLE_CONDITIONING_BRIDGE.md](DECIDABLE_CONDITIONING_BRIDGE.md)。
 
 ## 1. 已固定的 Merleau-Ponty 原典
 
@@ -36,6 +36,8 @@ Google Books 另有 1997 PUF 版书目页（ISBN 2130486770 / 9782130486770，�
 多条学术双版本引注已把**1997 / 早期分页轨道**的 direct-primary 搜索范围显著收窄：BG pp. 209–212 对应 ED pp. 292–297；BG pp. 225–226 对应 ED pp. 314–315。详细证据见 [MARION_VERSION_CROSSWALK.md](MARION_VERSION_CROSSWALK.md)。这些仍是 **SECONDARY-EXACT-CROSSWALK**，不等于直接读过 Marion 原页。
 
 重要版本纠正：2013 PUF Quadrige（ISBN `9782130624813`）是明确标为第四版、修订／校订增订的 533 页版本，不能把上述 1997 页码直接移植到 2013。此前 Cairn 2013 p. 295 的 direct-indexed 页面现在保持 **PRIMARY-DIRECT-INDEXED-BOOK-PAGE**，但同时标记 **UNMAPPED-TO-BG-TARGET**；不再称作 BG p. 211 / 历史 ED p. 295 的“同页号 corroboration”。
+
+本轮再次针对 BG pp. 209–212、225–226 与早期 ED pp. 292–297、314–315 做合法公开入口检索；结果仍是出版社元数据、二手 exact quotation 和既有 crosswalk，没有取得目标作者正文，因此 direct-primary gate 状态**没有升级**。
 
 ## 3. PRIMARY：Marion 1996 “The Saturated Phenomenon”
 
@@ -85,7 +87,7 @@ Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378�
 
 “Immanence, Self-Experience, and Transcendence in Edmund Husserl, Edith Stein, and Karl Jaspers,” *American Catholic Philosophical Quarterly* 82(2), 265–291。作者公开稿将 saturated phenomenon 概括为 unconditioned / 不受 horizon 条件化，并把它和 horizonality、constituting I 一起讨论；注释指向 *Being Given* p. 211。
 
-本轮还复用了这份作者公开稿的书目脚注：它明确写明 Marion `Sketch of the Saturated Phenomenon` 在 *Being Given* pp. 199–221，并重印于 Moran / Embree 编 *Phenomenology: Critical Concepts* (Routledge 2004), vol. 4, pp. 5–28。该信息只用于合法访问与 provenance，不把二手脚注升级为 Marion primary passage。
+本项目还复用了这份作者公开稿的书目脚注：它明确写明 Marion `Sketch of the Saturated Phenomenon` 在 *Being Given* pp. 199–221，并重印于 Moran / Embree 编 *Phenomenology: Critical Concepts* (Routledge 2004), vol. 4, pp. 5–28。该信息只用于合法访问与 provenance，不把二手脚注升级为 Marion primary passage。
 
 ### S-JM5 — Ezequiel Daniel Murga (2024)
 
@@ -113,7 +115,7 @@ Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378�
 
 ### S-JM10 — Irina Schulzki (2015)：2013 分页精确锚点
 
-“Love at Loss: Jean-Luc Marion’s Concept of Erotic Reduction and Paul Thomas Anderson’s *Magnolia*,” 2015, pp. 145–172。ResearchGate 暴露的 HTML 可检索全文本轮已直接读取；页面虽以 `(PDF)` 标题展示，本轮没有取得／分析 PDF page image，因此不冒充 PDF screenshot review。
+“Love at Loss: Jean-Luc Marion’s Concept of Erotic Reduction and Paul Thomas Anderson’s *Magnolia*,” 2015, pp. 145–172。ResearchGate 暴露的 HTML 可检索全文已直接读取；页面虽以 `(PDF)` 标题展示，本项目没有取得／分析 PDF page image，因此不冒充 PDF screenshot review。
 
 本文在正文中引用 Kosky 英译，并在脚注给出 *Étant donné* 2013 法文原句和页码；书目明确登记 `Étant donné ... PUF, 2013 [1997]`。可核查锚点至少包括：
 
@@ -122,6 +124,14 @@ Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378�
 - Kosky p. 225 ↔ ED 2013 p. 370，法文为 intuition 先于、超过并去中心化 intention 的核心句。
 
 用途：建立独立的 **2013 pagination track**，并撤回“2013 p. 295 因页码同为 295 就 corroborate 历史 BG p. 211 ↔ ED p. 295”的错误倾向。它不允许拟合固定页码偏移。状态：**SECONDARY-EXACT-CROSSWALK (2013 pagination)**。详见 [MARION_2013_PAGINATION_CORRECTION.md](MARION_2013_PAGINATION_CORRECTION.md)。
+
+### S-JM11 — Andreas Gonçalves Lind (2026)
+
+“Givenness as the Opening of All Phenomenological Possibility: Marion’s Overcoming of Henry Through Heidegger,” *Philosophies* 11(4), 145，published 2026-08-14，DOI `10.3390/philosophies11040145`。MDPI 官方 Version of Record HTML 已直接查看。
+
+文章把 Marion 的 givenness / event / saturated phenomenality 解释为超出主体预先给定的 anticipation、constitution 与 subjectivity horizons，并反复强调 phenomenon 的自我给予不能由这些先行条件穷尽。用途：这是 2026 年的**最新同题 secondary prior art**，进一步说明 horizon-as-condition / anticipation 与一般显现相关性之间的区分并非本项目历史新发现。
+
+限制：Lind 没有给出本仓的 `Captured → Conditioned`、`Decidable (Conditioned p)` 或 same-horizon `ExhaustiveCaptureConditions` 形式。因此它只约束解释新颖性，不能替代任何 Lean bridge，更不能替代 *Being Given* 目标页 direct-primary review。
 
 ### S-MPJ1 — Ericson Falabretti (2015/2016)
 
@@ -137,14 +147,15 @@ Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378�
 
 ## 6. 段落卡与证据状态
 
-当前 `PASSAGE_CARDS.md` 的 8 张原有工作卡保持：Merleau-Ponty 5 张 `reviewed`；*Being Given* 3 张仍为 `proposed-secondary`。Marion 1996 primary evidence 单列在 `MARION_1996_PRIMARY.md`；BG/ED 历史与 2013 分页轨道单列在 `MARION_VERSION_CROSSWALK.md`；2013 纠错与解释影响单列在 `MARION_2013_PAGINATION_CORRECTION.md`；重印来源单列在 `MARION_REPRINT_PROVENANCE.md`；Falabretti 的比较 prior art 单列在 `FALABRETTI_COMPARISON.md`，避免把 secondary comparison、reprint provenance 和 primary passage card 混用。
+当前 `PASSAGE_CARDS.md` 的 8 张原有工作卡保持：Merleau-Ponty 5 张 `reviewed`；*Being Given* 3 张仍为 `proposed-secondary`。Marion 1996 primary evidence 单列在 `MARION_1996_PRIMARY.md`；BG/ED 历史与 2013 分页轨道单列在 `MARION_VERSION_CROSSWALK.md`；2013 纠错与解释影响单列在 `MARION_2013_PAGINATION_CORRECTION.md`；重印来源单列在 `MARION_REPRINT_PROVENANCE.md`；本轮 proof-infrastructure 与 2026 secondary 增量单列在 `DECIDABLE_CONDITIONING_BRIDGE.md`；Falabretti 的比较 prior art 单列在 `FALABRETTI_COMPARISON.md`，避免把 secondary comparison、reprint provenance 和 primary passage card 混用。
 
 ## 7. A、B、C 与 conditioning 轴的当前判定
 
 - **A / `UniversalStructure`**：Merleau-Ponty 有直接证据支持，但当前 Lean 是非常弱的存在量词压缩。
 - **B / `ClosureBridge`**：不对应已核查 Merleau-Ponty 段落；文本方向反而是开放、未完成和不穷尽。B 只保留为压力测试前提。
 - **C / `HasExcess` / `NonExhaustible`**：可作为 excess 的弱模型影子，但 Marion 1996 primary text 明确展示多个 horizon 关系层次，完整 saturation 不能等同于 C。
-- **`HorizonConditioning.Independent`**：作为“不以 horizon 的先行限定／可能性条件来规定显现”的弱接口，现在不仅有二手研究动机，还有 Marion 1996 作者本人 primary text 支持其方向；Djian 2018 又提供 *Étant donné* 解释层的独立同题 prior art。2013 p. 295 只能作为未映射的独立书本 primary-indexed 旁证，不再承担 BG p. 211 版本确认。它仍不是完整 `Saturated` 定义。
+- **`HorizonConditioning.Independent`**：作为“不以 horizon 的先行限定／可能性条件来规定显现”的弱接口，现在不仅有二手研究动机，还有 Marion 1996 作者本人 primary text 支持其方向；Djian 2018、Murga 2024、Lind 2026 等提供解释层 prior art。2013 p. 295 只能作为未映射的独立书本 primary-indexed 旁证，不再承担 BG p. 211 版本确认。它仍不是完整 `Saturated` 定义。
+- **`Decidable (Conditioned p)`**：纯 FORMAL 的局部可判定性前提；来源是 Lean Core 的证明论接口，不是历史解释谓词。它只用于说明何时 `¬¬ Conditioned` 可以下降为存在 witness。
 - **`HasHorizonlessAppearance`**：Marion 1996 p. 117 直接反对把一般取消 horizon 当作目标；Falabretti p. 98 的 “no horizon” 是竞争 secondary reading，而不是足以推翻 primary-text boundary 的证据。因此它仍不应作为默认 saturation 编码。
 - **`ExhaustiveCaptureConditions`**：仍是 MODEL/QUESTION。没有 primary text 或同题研究给出 `situated ∧ Exhausts → conditions` 这条 extensional bridge；点态与显现域逻辑等价说明，它只是比“在相应量词域排除 `Captured ∧ Independent`”更强的一种结构化充分机制。
 
@@ -154,9 +165,9 @@ Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378�
 
 ## 9. 当前硬门槛
 
-Marion 1996 作者原文已经使首问的解释空间明显收缩；Djian 2018 又把 *Étant donné* 中 horizon-as-condition 的解释角色进一步固定；Miller / Mackinlay / Steinbock 的双版本引注把**早期分页**核对范围缩小；Falabretti 固定了比较研究本身已有 prior art；正式重印 provenance 提供合法替代路线。
+Marion 1996 作者原文已经使首问的解释空间明显收缩；Djian 2018 又把 *Étant donné* 中 horizon-as-condition 的解释角色进一步固定；Miller / Mackinlay / Steinbock 的双版本引注把**早期分页**核对范围缩小；Falabretti 固定了比较研究本身已有 prior art；正式重印 provenance 提供合法替代路线。Lind 2026 是最新 secondary 旁证，但不降低 primary-text 门槛。
 
-本轮的版本纠正进一步要求停止门分轨：
+版本纠正要求停止门分轨：
 
 - **BG**：直接查看 pp. 209–212、225–226；
 - **ED 1997 / early pagination**：直接查看 pp. 292–297、314–315；
@@ -165,8 +176,8 @@ Marion 1996 作者原文已经使首问的解释空间明显收缩；Djian 2018 
 
 Cairn 2013 p. 295 单独保持 `PRIMARY-DIRECT-INDEXED-BOOK-PAGE + UNMAPPED-TO-BG-TARGET`，**不计入指定目标页完成度**。
 
-在 direct-primary context 足够之前，可以把 `Independent` 视为有 primary-text 动机的**弱候选接口**，但不能把 `Independent`、`NonExhaustible`、`Captured` 或它们的 conjunction 命名为 Marion 的完整 saturated phenomenon。
+在 direct-primary context 足够之前，可以把 `Independent` 视为有 primary-text 动机的**弱候选接口**，但不能把 `Independent`、`NonExhaustible`、`Captured` 或它们的 conjunction 命名为 Marion 的完整 saturated phenomenon，也不能把 FORMAL `Decidable (Conditioned p)` 或任何 capture/conditioning bridge 偷换成历史断言。
 
 ## 10. 工具来源
 
-Lean 工具链固定为 `leanprover/lean4:v4.24.0`。GitHub 工作流使用仓库 `.github/workflows/lean.yml` 固定的 action 版本；实际通过状态以对应提交的 CI 为准。
+Lean 工具链固定为 `leanprover/lean4:v4.24.0`。本轮直接实读该 pinned tag 的 `src/Init/Classical.lean`，并复用 `Decidable.not_not`；Mathlib 当前索引的 `Mathlib/Order/Heyting/Regular.isRegular_of_decidable` 只作为更一般的 prior-art 记录，没有引入项目依赖。GitHub 工作流使用仓库 `.github/workflows/lean.yml` 固定的 action 版本；实际通过状态以对应提交的 CI 为准。
