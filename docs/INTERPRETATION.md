@@ -1,12 +1,12 @@
 # 解释选择登记
 
-版本：v0.14-work，2026-09-17。
+版本：v0.15-work，2026-09-17。
 
 ## 证据层、形式层与外部工作
 
 本项目区分：`MODEL`（人为规定的形式结构）、`FORMAL`（定义和显式前提的 Lean 后果）、`READING`（需要原典支持的解释）、`QUESTION`（尚未解决的解释桥）。证明通过不会自动把 MODEL 升格为某位哲学家的 READING；外部已有解释也必须注明来源，不能因换成 Lean 就变成“新发现”。
 
-来源状态见 [SOURCES.md](SOURCES.md)，Merleau-Ponty / *Being Given* 段落卡见 [PASSAGE_CARDS.md](PASSAGE_CARDS.md)，Marion 1996 作者文本见 [MARION_1996_PRIMARY.md](MARION_1996_PRIMARY.md)，重印与合法访问路径见 [MARION_REPRINT_PROVENANCE.md](MARION_REPRINT_PROVENANCE.md)，structure/closure/conditioning gap 审计见 [STRUCTURE_COHERENCE_GAP.md](STRUCTURE_COHERENCE_GAP.md)，强 bridge 层级审计见 [STRICT_BRIDGE_HIERARCHY.md](STRICT_BRIDGE_HIERARCHY.md)，本轮构造性层级见 [CONSTRUCTIVE_BRIDGE_HIERARCHY.md](CONSTRUCTIVE_BRIDGE_HIERARCHY.md)，外部查重见 [PRIOR_ART.md](PRIOR_ART.md)。
+来源状态见 [SOURCES.md](SOURCES.md)，Merleau-Ponty / *Being Given* 段落卡见 [PASSAGE_CARDS.md](PASSAGE_CARDS.md)，Marion 1996 作者文本见 [MARION_1996_PRIMARY.md](MARION_1996_PRIMARY.md)，重印与合法访问路径见 [MARION_REPRINT_PROVENANCE.md](MARION_REPRINT_PROVENANCE.md)，structure/closure/conditioning gap 审计见 [STRUCTURE_COHERENCE_GAP.md](STRUCTURE_COHERENCE_GAP.md)，强 bridge 层级审计见 [STRICT_BRIDGE_HIERARCHY.md](STRICT_BRIDGE_HIERARCHY.md)，构造性层级见 [CONSTRUCTIVE_BRIDGE_HIERARCHY.md](CONSTRUCTIVE_BRIDGE_HIERARCHY.md)，本轮局部可判定性审计见 [DECIDABLE_CONDITIONING_BRIDGE.md](DECIDABLE_CONDITIONING_BRIDGE.md)，外部查重见 [PRIOR_ART.md](PRIOR_ART.md)。
 
 ## 词汇映射
 
@@ -25,6 +25,7 @@
 | `conditions p h` | h 被单独标记为 p 的条件化／约束视域 | MODEL；用于区分 related 与 condition-of-possibility 角色 |
 | `Conditioned p` | 存在 h 使 `conditions p h` | MODEL；是 witness-producing 存在命题，不等同于 `¬ Independent p` 的构造性强度 |
 | `Independent p` | 没有 h 条件化 p | MODEL + 有 PRIMARY 动机的弱接口；仍不等于完整 saturation |
+| `Decidable (Conditioned p)` | 对“是否存在 conditioning horizon”给出局部判定过程 | FORMAL 前提；不是历史谓词，也不归给 Marion / Merleau-Ponty |
 | `ExhaustiveCaptureConditions` | related 且 exhaustive 的 h 必定 conditions p | MODEL/QUESTION；同-horizon 强 bridge，严格强于 witness-producing capture→conditioning |
 | `HasSituatedIndependentExcess` | 同一显现 related + independent + non-exhaustible | MODEL；中性兼容性 profile，不命名为 `Saturated` |
 
@@ -57,6 +58,8 @@ Falabretti 2015/2016 是更直接的比较 prior art：它把 *Phenomenology of 
 1. **分层方向有充分解释依据。** `situated` 不能自动承担 “condition of possibility / prior delimitation” 的语义，另设 `conditions` 是合理的最小形式接口。
 2. **这种历史区分不是本项目新发现。** Murga、Djian 等已有明确同题讨论；本项目的增量只是把解释差异显式编码，并检验它和 `Exhausts` 的逻辑关系。
 3. **Merleau-Ponty / Marion 的比较配对本身也不是本项目首创。** Falabretti 已直接进行两者比较；项目不能把“开放视域 vs donation/saturation”的历史对照当作原创性主张。
+
+2026 年 Lind 的新近同题论文继续把 Marion 的方向解释成超出 subjectivity 的 anticipation / constitution horizons。它进一步确认“horizon-as-condition / anticipation”这一解释空间已有持续研究，但仍没有提供本项目的 extensional `Captured → Conditioned`、局部 decidability 或 same-horizon bridge。因此它限制历史新颖性，不改变形式前提层级。
 
 ### PRIMARY 约束 1：不是一般取消 horizon
 
@@ -128,7 +131,7 @@ NonExhaustible p ↔ ¬ Captured p
 
 ## 构造性解释纪律：`¬ Independent` 不自动产生 conditioning witness
 
-本轮把一个此前容易被自然语言掩盖的证明论差别显式登记。由于
+由于
 
 ```text
 Independent p ↔ ¬ Conditioned p
@@ -163,7 +166,37 @@ same-horizon bridge
     ↔ double-negated conditioning obligation.
 ```
 
-第一步是已验证的严格加强；第二步是构造性蕴含。任何一层若要被归给 Marion，都需要独立文本依据；本轮只是在 FORMAL 层防止把 negation 结果误说成存在 witness。详见 [CONSTRUCTIVE_BRIDGE_HIERARCHY.md](CONSTRUCTIVE_BRIDGE_HIERARCHY.md)。
+第一步是已验证的严格加强；第二步是构造性蕴含。任何一层若要被归给 Marion，都需要独立文本依据；这里只是在 FORMAL 层防止把 negation 结果误说成存在 witness。详见 [CONSTRUCTIVE_BRIDGE_HIERARCHY.md](CONSTRUCTIVE_BRIDGE_HIERARCHY.md)。
+
+### 局部可判定性：什么时候 exact exclusion 真能产生 witness
+
+本轮进一步把“需要 DNE”缩成更精确的局部条件。若目标 proposition 本身可判定：
+
+```text
+[Decidable (Conditioned p)]
+```
+
+则 Lean Core 的 `Decidable.not_not` 已足够证明：
+
+```text
+¬ Independent p ↔ Conditioned p.
+```
+
+所以若显式给出逐点前提
+
+```text
+∀ p, Decidable (Conditioned p),
+```
+
+实际显现域的 exact exclusion 与 witness-producing bridge 等价：
+
+```text
+(∀ p, appears p → Captured p → ¬ Independent p)
+↔
+(∀ p, appears p → Captured p → Conditioned p).
+```
+
+这条新增边界非常重要但**没有历史含义**：`Decidable (Conditioned p)` 不是现象学概念，也没有文本依据可归给 Marion。它只说明在何种形式环境下双重否定可以安全降为 existential witness。项目因此不把“如果愿意使用经典逻辑”这种宽泛措辞混进哲学解释，而把需要的 proof-theoretic premise 单独参数化。详见 [DECIDABLE_CONDITIONING_BRIDGE.md](DECIDABLE_CONDITIONING_BRIDGE.md)。
 
 ## `ExhaustiveCaptureConditions`：较强的足够 bridge，但没有历史归属
 
@@ -212,7 +245,7 @@ Marion 1996 primary text、Djian 2018、Murga 2024、Falabretti 的直接比较�
 
 正式 Routledge 重印路径已确认：Moran 的作者公开稿把 *Being Given* `Sketch of the Saturated Phenomenon` pp. 199–221 明确登记为重印于 *Phenomenology: Critical Concepts* (Routledge, 2004), vol. 4, pp. 5–28；Routledge / Taylor & Francis 元数据可独立确认该出版物。另有 Fordham / De Gruyter 2013 *The Essential Writings* pp. 108–134 的正式作者文集入口。详见 [MARION_REPRINT_PROVENANCE.md](MARION_REPRINT_PROVENANCE.md)。
 
-本轮再次检查 Stanford/DeGruyter、Google Books 与正式重印入口，仍没有合法取得目标正文。搜索中出现的未经确认授权第三方整书镜像不纳入证据链。这只强化 provenance / access ledger，不改变当前解释层级：在目标正文真正可读前，重印目录、书目关系和二手 exact quotation 都不能把 `Independent` 从“有 primary 动机的弱接口”升级为书本版本已冻结的 reading。
+本轮再次检查 Stanford/DeGruyter、Google Books、早期 ED crosswalk 与正式重印入口，仍没有合法取得目标正文。搜索中出现的未经确认授权第三方整书镜像不纳入证据链。这只强化 provenance / access ledger，不改变当前解释层级：在目标正文真正可读前，重印目录、书目关系和二手 exact quotation 都不能把 `Independent` 从“有 primary 动机的弱接口”升级为书本版本已冻结的 reading。
 
 ## 首个问题的当前答案
 
@@ -222,11 +255,11 @@ Marion 1996 primary text、Djian 2018、Murga 2024、Falabretti 的直接比较�
 
 Lean 的 `horizon_structure_does_not_entail_closure` 给出否定答案；有限 `splitModel` 是反模型。Merleau-Ponty 直接文本又独立地反对把 horizon 理解成最终封闭。
 
-Marion 一侧现在也有 direct primary support for the distinction：1996 作者文本说明 manifestation 不能简单取消 horizon，同时 saturated phenomenon 要摆脱 horizon 的先行限定，并可能以多种方式与一个或多个 horizons 发生关系。Djian 2018 又证明“horizon 作为 possibility-condition / limit”的读法已有明确 *Étant donné* 解释 prior art。Falabretti 进一步说明**两位哲学家的比较研究本身已经存在**，而且 secondary literature 对 Marion 是否“无 horizon”并不一致。
+Marion 一侧现在也有 direct primary support for the distinction：1996 作者文本说明 manifestation 不能简单取消 horizon，同时 saturated phenomenon 要摆脱 horizon 的先行限定，并可能以多种方式与一个或多个 horizons 发生关系。Djian 2018 又证明“horizon 作为 possibility-condition / limit”的读法已有明确 *Étant donné* 解释 prior art。Falabretti 进一步说明**两位哲学家的比较研究本身已经存在**，而且 secondary literature 对 Marion 是否“无 horizon”并不一致。Lind 2026 继续在最新研究中把 Marion 置于超出 anticipation / constitution horizons 的方向，但并不提供本项目的 extensional bridge。
 
 因此对比较问题最稳妥的结论是：
 
-> **“在 horizon 中／有 related horizon”本身不含“可被某个 horizon 穷尽”；若要推出后一命题，必须增加独立 closure 前提。但即使直接加入 `ClosureBridge`，它也不把 capture 与 conditioning 自动连接起来。若进一步讨论 Marion 式 horizon-independence，则对实际显现域的精确 FORMAL 条件是排除 `Captured ∧ Independent`，构造性地等价于 `Captured → ¬¬ Conditioned`；真正产生 conditioning witness 的 `Captured → Conditioned` 更强，而 `ExhaustiveCaptureConditions` 又进一步要求同一个 exhaustive horizon 本身承担 conditioning。后两层都不是文本已经承诺的公理。**
+> **“在 horizon 中／有 related horizon”本身不含“可被某个 horizon 穷尽”；若要推出后一命题，必须增加独立 closure 前提。但即使直接加入 `ClosureBridge`，它也不把 capture 与 conditioning 自动连接起来。若进一步讨论 Marion 式 horizon-independence，则对实际显现域的精确 FORMAL 条件是排除 `Captured ∧ Independent`，构造性地等价于 `Captured → ¬¬ Conditioned`；真正产生 conditioning witness 的 `Captured → Conditioned` 更强，除非另给诸如逐点 `Decidable (Conditioned p)` 这样的显式证明论前提；`ExhaustiveCaptureConditions` 又进一步要求同一个 exhaustive horizon 本身承担 conditioning。后两层都不是文本已经承诺的公理。**
 
 这个比较结论已经相当稳定；尚未完成的是 *Being Given* 版本本身的目标页直接核对。
 
@@ -238,13 +271,15 @@ Marion 一侧现在也有 direct primary support for the distinction：1996 作�
 4. `Independent` 不等于 `NonExhaustible`；Marion 1996 primary text 也要求保留多个 horizon 关系情形。
 5. 点态上 `Independent → NonExhaustible` 等价于排除 `Captured ∧ Independent`；在“实际显现”的量词域上，同样只需在 `appears` 范围内排除该组合。不要把量词域无理由扩到所有类型居民。
 6. 构造性地，`Captured → ¬ Independent` 等价于 `Captured → ¬¬ Conditioned`，**不是**自动得到 `Captured → Conditioned`。不要把双重否定存在偷换成 witness-producing bridge。
-7. `ExhaustiveCaptureConditions` 还比 witness-producing bridge 更强：它要求 exhaustive horizon 自身就是 conditioning horizon；`displacedCaptureConditioning` 已分离这两个层级。
-8. 抽象谓词可联合一致只证明当前语言的模型论一致性，不证明历史概念独立。
-9. Marion 的 saturated phenomenon 还涉及 intuition/intention/constitution；首问不需要把整个理论提前搬进 Lean。
-10. Falabretti 的 “no horizon” 是竞争二手解释，不能覆盖 Marion 1996 primary evidence；反过来，primary evidence 也不使 Falabretti 作为比较史 prior art 消失。
+7. 若显式假定 `Decidable (Conditioned p)`，双重否定可局部消去；但这是 FORMAL 可判定性前提，不是哲学家的历史承诺，也不能从文本沉默中推得。
+8. `ExhaustiveCaptureConditions` 还比 witness-producing bridge 更强：它要求 exhaustive horizon 自身就是 conditioning horizon；`displacedCaptureConditioning` 已分离这两个层级。
+9. 抽象谓词可联合一致只证明当前语言的模型论一致性，不证明历史概念独立。
+10. Marion 的 saturated phenomenon 还涉及 intuition/intention/constitution；首问不需要把整个理论提前搬进 Lean。
+11. Falabretti 的 “no horizon” 是竞争二手解释，不能覆盖 Marion 1996 primary evidence；反过来，primary evidence 也不使 Falabretti 作为比较史 prior art 消失。
 
 ## 当前仍未建立的断言
 
-- 尚未直接看到 *Being Given* pp. 209–212、225–226；二手精确引文、Djian 对法文版的研究、Falabretti 的比较论文、重印 provenance 以及 Marion 1996 primary text 都不能冒充这一本书的逐页核对。
+- 尚未直接看到 *Being Given* pp. 209–212、225–226；二手精确引文、Djian 对法文版的研究、Falabretti 的比较论文、Lind 2026、重印 provenance 以及 Marion 1996 primary text 都不能冒充这一本书的逐页核对。
 - Google Books 已确认 1997 PUF *Étant donné* 的版本和相关索引词，但未开放目标正文，因此不能作为 direct primary passage。
+- `Decidable (Conditioned p)` 没有历史归属；它只在形式层说明何时 `¬¬ Conditioned` 可以提升为 witness。
 - 尚未定位 Marion 直接把 Merleau-Ponty 称为“去主体化不彻底前辈”的原文，因此项目不用它作前提。Falabretti 的直接比较研究反而明确避免假定 Marion 会如何直接解释 Merleau-Ponty，并称后者在 *Étant donné* 中仅边缘、脚注式出现；这提高了强归属的证据门槛，但仍不是 Marion 原典本身的证明。
