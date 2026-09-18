@@ -37,7 +37,7 @@ Google Books 另有 1997 PUF 版书目页（ISBN 2130486770 / 9782130486770，�
 
 重要版本纠正：2013 PUF Quadrige（ISBN `9782130624813`）是明确标为第四版、修订／校订增订的 533 页版本，不能把上述 1997 页码直接移植到 2013。此前 Cairn 2013 p. 295 的 direct-indexed 页面现在保持 **PRIMARY-DIRECT-INDEXED-BOOK-PAGE**，但同时标记 **UNMAPPED-TO-BG-TARGET**；不再称作 BG p. 211 / 历史 ED p. 295 的“同页号 corroboration”。
 
-本轮再次针对 BG pp. 209–212、225–226 与早期 ED pp. 292–297、314–315 做合法公开入口检索；结果仍是出版社元数据、二手 exact quotation 和既有 crosswalk，没有取得目标作者正文，因此 direct-primary gate 状态**没有升级**。2013 Quadrige 的公开书目页仍提供受限 feuilletage 路径，但当前工具环境不能直接展开目标正文；没有绕过访问控制。
+本轮再次针对 BG pp. 209–212、225–226 与早期 ED pp. 292–297、314–315 以及正式重印路线做合法公开入口检索；结果仍是出版社／书目元数据、二手 exact quotation 和既有 crosswalk，没有取得目标作者正文，因此 direct-primary gate 状态**没有升级**。受限 preview、feuilletage 或借阅内容没有绕过。
 
 ## 3. PRIMARY：Marion 1996 “The Saturated Phenomenon”
 
@@ -76,6 +76,14 @@ Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378�
 “Le problème de l’horizon chez Husserl et Merleau-Ponty,” *Revue Internationale de la Recherche Scientifique* 1(6), 1066–1080，published 2023-11-09，DOI `10.5281/zenodo.10083785`。期刊页面与摘要已直接查看。摘要把 Merleau-Ponty 一侧描述为一个不可穷尽的 world-horizon：意识彼此感知却不能穷尽 horizon。
 
 用途：只作 **SECONDARY corroboration / same-topic prior art**。它与本仓已经直接核查的 Merleau-Ponty pp. 79–82、384–386 方向一致，但不能替代 primary text，也不提供 `Captured` / `Conditioned` 的形式 bridge。
+
+### S-M3 — James Deery (2025)
+
+“The Imaginary Texture of the Real: The Role of the Imagination in Merleau-Ponty’s Phenomenology of Perception,” *European Journal of Philosophy* 33(4), 1500–1517，first published 2025-06-30，DOI `10.1111/ejop.70001`。Wiley Open Access Version of Record HTML 已直接查看。
+
+Deery 对 “horizon of sense” 的解释是：事物由此向进一步探索、不同观看方式和更确定化开放；该 horizon 是 indeterminate，不预先规定事物究竟将怎样感性显现，而只按其 style 提示可能出现方式。
+
+用途：**SECONDARY-DIRECT-HTML / same-topic prior art**。它进一步确认“开放视域不等于已经封闭、穷尽的显现内容”并非本项目的新历史发现；与本仓已经直接核查的 Merleau-Ponty primary text 方向一致。它不替代 primary text，也不提供 `Captured` / `Conditioned` bridge。
 
 ### S-JM1 — King-Ho Leung (2022)
 
@@ -153,16 +161,17 @@ Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378�
 
 ## 6. 段落卡与证据状态
 
-当前 `PASSAGE_CARDS.md` 的 8 张原有工作卡保持：Merleau-Ponty 5 张 `reviewed`；*Being Given* 3 张仍为 `proposed-secondary`。Marion 1996 primary evidence 单列在 `MARION_1996_PRIMARY.md`；BG/ED 历史与 2013 分页轨道单列在 `MARION_VERSION_CROSSWALK.md`；2013 纠错与解释影响单列在 `MARION_2013_PAGINATION_CORRECTION.md`；重印来源单列在 `MARION_REPRINT_PROVENANCE.md`；本轮 proof-infrastructure、stability/decidability 与 secondary 增量单列在 `DECIDABLE_CONDITIONING_BRIDGE.md`；Falabretti 的比较 prior art 单列在 `FALABRETTI_COMPARISON.md`，避免把 secondary comparison、reprint provenance 和 primary passage card 混用。
+当前 `PASSAGE_CARDS.md` 的 8 张原有工作卡保持：Merleau-Ponty 5 张 `reviewed`；*Being Given* 3 张仍为 `proposed-secondary`。Marion 1996 primary evidence 单列在 `MARION_1996_PRIMARY.md`；BG/ED 历史与 2013 分页轨道单列在 `MARION_VERSION_CROSSWALK.md`；2013 纠错与解释影响单列在 `MARION_2013_PAGINATION_CORRECTION.md`；重印来源单列在 `MARION_REPRINT_PROVENANCE.md`；proof-infrastructure、captured-domain stability/decidability 与 secondary 增量单列在 `DECIDABLE_CONDITIONING_BRIDGE.md`；Falabretti 的比较 prior art 单列在 `FALABRETTI_COMPARISON.md`，避免把 secondary comparison、reprint provenance 和 primary passage card 混用。
 
 ## 7. A、B、C 与 conditioning 轴的当前判定
 
 - **A / `UniversalStructure`**：Merleau-Ponty 有直接证据支持，但当前 Lean 是非常弱的存在量词压缩。
-- **B / `ClosureBridge`**：不对应已核查 Merleau-Ponty 段落；文本方向反而是开放、未完成和不穷尽。B 只保留为压力测试前提。
+- **B / `ClosureBridge`**：不对应已核查 Merleau-Ponty 段落；文本方向反而是开放、未完成和不穷尽。B 只保留为压力测试前提。Deery 2025 的 secondary interpretation 进一步把 horizon 描述为 indeterminate、向进一步探索开放，而不是 exhaustive closure。
 - **C / `HasExcess` / `NonExhaustible`**：可作为 excess 的弱模型影子，但 Marion 1996 primary text 明确展示多个 horizon 关系层次，完整 saturation 不能等同于 C。
 - **`HorizonConditioning.Independent`**：作为“不以 horizon 的先行限定／可能性条件来规定显现”的弱接口，现在不仅有二手研究动机，还有 Marion 1996 作者本人 primary text 支持其方向；Djian 2018、Murga 2024、Lind 2026 等提供解释层 prior art。2013 p. 295 只能作为未映射的独立书本 primary-indexed 旁证，不再承担 BG p. 211 版本确认。它仍不是完整 `Saturated` 定义。
-- **`¬¬ Conditioned p → Conditioned p`**：纯 FORMAL 的 double-negation stability 前提；它是把 `¬ Independent` 与实际 conditioning witness 等同起来的精确局部证明论条件，没有历史归属。
-- **`Decidable (Conditioned p)`**：纯 FORMAL 的局部可判定性前提；Lean Core `Decidable.not_not` 使其足以产生上述 stability，因此它是更强的充分来源，不是最小历史或逻辑 bridge。
+- **captured-domain `¬¬ Conditioned p → Conditioned p`**：纯 FORMAL 的 double-negation stability 前提；本轮已把它精确限制到 `appears p ∧ Captured p` 的实际使用域。它是把 exact exclusion 提升为实际 conditioning witness 所需的局部证明论性质，没有历史归属。
+- **全域 `∀ p, ¬¬ Conditioned p → Conditioned p`**：仍是正确但更强的 FORMAL sufficient premise；不再称为首问的最小量词范围。
+- **`Decidable (Conditioned p)`**：纯 FORMAL 的局部可判定性前提；Lean Core `Decidable.not_not` 使其足以产生 stability，因此它是更强的充分来源，不是最小历史或逻辑 bridge。
 - **`HasHorizonlessAppearance`**：Marion 1996 p. 117 直接反对把一般取消 horizon 当作目标；Falabretti p. 98 的 “no horizon” 是竞争 secondary reading，而不是足以推翻 primary-text boundary 的证据。因此它仍不应作为默认 saturation 编码。
 - **`ExhaustiveCaptureConditions`**：仍是 MODEL/QUESTION。没有 primary text 或同题研究给出 `situated ∧ Exhausts → conditions` 这条 extensional bridge；点态与显现域逻辑等价说明，它只是比“在相应量词域排除 `Captured ∧ Independent`”更强的一种结构化充分机制。
 
@@ -172,7 +181,7 @@ Jean-Luc Marion, “A Saturated Phenomenon,” *Filozofia* 62(5), 2007, pp. 378�
 
 ## 9. 当前硬门槛
 
-Marion 1996 作者原文已经使首问的解释空间明显收缩；Djian 2018 又把 *Étant donné* 中 horizon-as-condition 的解释角色进一步固定；Miller / Mackinlay / Steinbock 的双版本引注把**早期分页**核对范围缩小；Falabretti 固定了比较研究本身已有 prior art；正式重印 provenance 提供合法替代路线。Lind 2026 与 Ngoma Tassoulou 2023 是 secondary 旁证，但不降低 primary-text 门槛。
+Marion 1996 作者原文已经使首问的解释空间明显收缩；Djian 2018 又把 *Étant donné* 中 horizon-as-condition 的解释角色进一步固定；Miller / Mackinlay / Steinbock 的双版本引注把**早期分页**核对范围缩小；Falabretti 固定了比较研究本身已有 prior art；正式重印 provenance 提供合法替代路线。Lind 2026、Ngoma Tassoulou 2023 与 Deery 2025 都是 secondary 旁证，不降低 primary-text 门槛。
 
 版本纠正要求停止门分轨：
 
@@ -187,4 +196,4 @@ Cairn 2013 p. 295 单独保持 `PRIMARY-DIRECT-INDEXED-BOOK-PAGE + UNMAPPED-TO-B
 
 ## 10. 工具来源
 
-Lean 工具链固定为 `leanprover/lean4:v4.24.0`。项目直接复用 Lean Core `Decidable.not_not`；本轮重新核查 Mathlib 当前索引的 `Mathlib/Order/Heyting/Regular.isRegular_of_decidable`，确认 regular/stable proposition 与 decidability 的关系已有通用库表达，但没有引入 Mathlib 项目依赖。Mathlib 的 `Fintype.decidableExistsFintype` 也说明有限存在量词的通用 decision infrastructure 已有现成实现，因此本仓不另造。GitHub 工作流使用仓库 `.github/workflows/lean.yml` 固定的 action 版本；实际通过状态以对应提交的 CI 为准。
+Lean 工具链固定为 `leanprover/lean4:v4.24.0`。项目直接复用 Lean Core `Decidable.not_not`；既有审计核查 Mathlib `Mathlib/Order/Heyting/Regular.isRegular_of_decidable`，确认 regular/stable proposition 与 decidability 的关系已有通用库表达，但没有引入 Mathlib 项目依赖。Mathlib 的 `Fintype.decidableExistsFintype` 也说明有限存在量词的通用 decision infrastructure 已有现成实现，因此本仓不另造。GitHub 工作流使用仓库 `.github/workflows/lean.yml` 固定的 action 版本；实际通过状态以对应提交的 CI 为准。

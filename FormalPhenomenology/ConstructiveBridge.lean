@@ -106,6 +106,45 @@ theorem appearing_captured_conditioned_implies_exact_appearing_condition
   exact (horizonIndependent_iff_not_conditioned M p).mp hi (hb p hp hc)
 
 /--
+For the first research question, stability is only needed where the bridge is
+actually queried: on phenomena that both appear and are captured.  Global
+pointwise stability is therefore stronger than necessary for this scoped
+collapse from exact exclusion to an existential conditioning witness.
+-/
+theorem exact_appearing_condition_iff_witness_bridge_of_captured_stable
+    (M : HorizonConditioning)
+    (hs : ∀ p, M.base.appears p → M.base.Captured p →
+      (¬ ¬ M.Conditioned p → M.Conditioned p)) :
+    (∀ p, M.base.appears p → M.base.Captured p → ¬ M.Independent p) ↔
+      (∀ p, M.base.appears p → M.base.Captured p → M.Conditioned p) := by
+  constructor
+  · intro h p hp hc
+    exact hs p hp hc
+      ((not_independent_iff_not_not_conditioned M p).mp (h p hp hc))
+  · exact appearing_captured_conditioned_implies_exact_appearing_condition M
+
+/--
+The witness-producing bridge has an exact constructive decomposition on the
+same appearing/captured domain: it is equivalent to the already identified
+conflict exclusion together with local double-negation stability exactly where
+capture occurs.  No stability assumption is imposed on non-appearing or
+non-captured inhabitants of the phenomenon type.
+-/
+theorem appearing_witness_bridge_iff_exact_and_captured_stability
+    (M : HorizonConditioning) :
+    (∀ p, M.base.appears p → M.base.Captured p → M.Conditioned p) ↔
+      ((∀ p, M.base.appears p → M.base.Captured p → ¬ M.Independent p) ∧
+       (∀ p, M.base.appears p → M.base.Captured p →
+         (¬ ¬ M.Conditioned p → M.Conditioned p))) := by
+  constructor
+  · intro hb
+    refine ⟨appearing_captured_conditioned_implies_exact_appearing_condition M hb, ?_⟩
+    intro p hp hc _
+    exact hb p hp hc
+  · rintro ⟨hexact, hstable⟩
+    exact (exact_appearing_condition_iff_witness_bridge_of_captured_stable M hstable).mp hexact
+
+/--
 Producing some conditioning witness for every appearing captured phenomenon is
 still strictly weaker than requiring the *same exhaustive horizon* to be a
 conditioning horizon.  `displacedCaptureConditioning` witnesses the gap: capture

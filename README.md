@@ -80,7 +80,7 @@ ExhaustiveCaptureConditions
 
 构造性层还要再区分一步。Lean Core 已证明 `¬ Independent p ↔ ¬¬ Conditioned p`，因此精确排斥在不采用经典逻辑时只得到 `Captured → ¬¬ Conditioned`，并不自动制造一个 `Conditioned := ∃ h, conditions p h` witness。
 
-本轮把上一轮“局部 decidability 是精确额外前提”的表述继续收紧：真正精确的点态 proof-theoretic condition 是 `Conditioned p` 本身的**双重否定稳定性**。Lean 定理 `not_independent_iff_conditioned_iff_conditioned_stable` 给出
+固定 p 上，真正精确的 proof-theoretic condition 是 `Conditioned p` 本身的**双重否定稳定性**：
 
 ```text
 ((¬ Independent p) ↔ Conditioned p)
@@ -88,13 +88,33 @@ ExhaustiveCaptureConditions
 (¬¬ Conditioned p → Conditioned p).
 ```
 
-因此若 `∀ p, ¬¬ Conditioned p → Conditioned p`，`exact_appearing_condition_iff_witness_bridge_of_stable` 直接得到实际显现域的 exact exclusion 与 witness-producing bridge 等价。`Decidable (Conditioned p)` 只是产生 stability 的一个更强、方便的充分条件：Lean Core `Decidable.not_not` 给出 `not_independent_iff_conditioned_of_decidable`，而逐点 decidability 下的 `exact_appearing_condition_iff_witness_bridge_of_decidable` 现在作为 stability 版本的 corollary。这里没有开启全局 `Classical`，也没有把 stability 或 decidability 归给任何哲学家。
+入口是 `not_independent_iff_conditioned_iff_conditioned_stable`。
+
+本轮把量词范围进一步收紧。首问真正需要 stability 的地方，仅是**实际显现且已被 capture 的 p**。`exact_appearing_condition_iff_witness_bridge_of_captured_stable` 证明：若
+
+```text
+∀ p, appears p → Captured p →
+  (¬¬ Conditioned p → Conditioned p),
+```
+
+则 actual-appearance exact exclusion 与 witness-producing bridge 等价。更强的 `appearing_witness_bridge_iff_exact_and_captured_stability` 直接给出精确分解：
+
+```text
+(appearing Captured → Conditioned)
+↔
+  ((appearing Captured → ¬ Independent) ∧
+   captured-domain stability).
+```
+
+因此全域 `∀ p, ¬¬ Conditioned p → Conditioned p` 仍是正确但更强的 sufficient premise；`Decidable (Conditioned p)` 又只是产生 stability 的更强充分来源。这里没有开启全局 `Classical`，也没有把 local/global stability 或 decidability 归给任何哲学家。
 
 更强的 `ExhaustiveCaptureConditions` 仍额外要求**同一个 exhaustive horizon**自己就是 conditioning horizon。这些都是中性的 model-theoretic / propositional / proof-theoretic 结论，不是 Marion 的 saturated phenomenon 定义。
 
 ## 原典与外部工作核查
 
 已固定并直接核查 Merleau-Ponty, *Phenomenology of Perception*, Colin Smith trans., Routledge Classics 2002 的关键段落。pp. 79–82 与 384–386 明确强调透视不穷尽、视域开放、综合未完成，因此当前 **B / ClosureBridge 不应归给梅洛-庞蒂**。
+
+本轮新增核查 James Deery 2025, “The Imaginary Texture of the Real,” *European Journal of Philosophy* 33(4), 1500–1517，DOI `10.1111/ejop.70001`。Wiley Open Access Version of Record 直接把 Merleau-Ponty 的 “horizon of sense” 描述为使事物向进一步探索、不同观看方式和更确定化开放的 indeterminate horizon；它不预先规定事物究竟会怎样感性显现。该工作是同题 secondary prior art，与已核查 primary pages 同向，但不替代 primary text，也不提供 `Captured` / `Conditioned` bridge。
 
 Marion, *Being Given*, Jeffrey L. Kosky trans., Stanford UP 2002 的版本、§21（pp. 199–212）和 §23 已定位。Leung、Moran 等二手研究把 p. 211 的“不依赖视域”放在 horizon 作为 `condition of possibility` 的语义下；Mason 与 Murga 的研究又提示 Marion 并非简单删除一切 horizon。正因如此，本项目新增了独立 conditioning 关系，而没有把 `does not depend on a horizon` 错写成 `¬ Structured`。
 
@@ -110,9 +130,9 @@ Marion, *Being Given*, Jeffrey L. Kosky trans., Stanford UP 2002 的版本、§2
 
 Nikolaas Deketelaere 2018 的 Nature / *Humanities and Social Sciences Communications* 开放全文把 Marion 2008a p. 12 的 horizon-as-a-priori-limit 与 p. 16 的 revelation “assume a horizon” 但挑战 a priori condition 的结构并列，并另引 Marion 2017b p. 99 说明挑战 horizon 的现象仍可“在世界的 horizon 中”通过 saturation 显现。它进一步确认“在 horizon 中呈现”与“受 horizon 作为先行 possibility-condition 支配”的区分已有同题 prior art；证据仍是 secondary exact quotation，不冒充直接读过 Marion 原页。详见 [structure/coherence gap 增量审计](docs/STRUCTURE_COHERENCE_GAP.md)。
 
-本轮继续核查 Andreas Gonçalves Lind 2026 “Givenness as the Opening of All Phenomenological Possibility”，并增量看到 Hilaire Ngoma Tassoulou 2023 对 Husserl / Merleau-Ponty horizon 的比较研究；二者都进一步限制同题历史新颖性，却没有给出本项目的 extensional `Captured → Conditioned`、stability 或 decidability bridge。证明基础设施方面，本轮重新核对 Mathlib `Order/Heyting/Regular.isRegular_of_decidable`：stable/regular proposition 与 decidability 的关系已有通用表达，因此项目只做应用级薄适配，不引入 Mathlib，也不作原创逻辑宣称。详见 [stability / decidable conditioning bridge 审计](docs/DECIDABLE_CONDITIONING_BRIDGE.md)。
+Lind 2026、Ngoma Tassoulou 2023 与本轮 Deery 2025 都进一步限制同题历史新颖性，却没有给出本项目的 extensional `Captured → Conditioned`、captured-domain stability 或 decidability bridge。证明基础设施方面，Mathlib `Order/Heyting/Regular.isRegular_of_decidable` 已有 stable/regular proposition 与 decidability 的通用表达，因此项目只做应用级薄适配，不引入 Mathlib，也不作原创逻辑宣称。详见 [stability / decidable conditioning bridge 审计](docs/DECIDABLE_CONDITIONING_BRIDGE.md)。
 
-本项目强制进行 [外部工作与复用审计](docs/PRIOR_ART.md)。已经确认：Lean 中存在独立的 `novaspivack/phenomenology-lean` formal-phenomenology 工程，Isabelle/HOL / AFP 与 LogiKEy 也已有成熟 formal philosophy / computational metaphysics / computational hermeneutics 方法。因此本项目**不声称首创“形式化哲学”或“形式化现象学”工作流**。本轮再次核对前者仍为 `75230e4e...`、LogiKEy 仍为 `b29954b0...`；新增 stability characterization 复用 Lean Core / Mathlib 已有的双重否定稳定性基础，不平行重写通用 API，也不作原创逻辑／哲学宣称。
+本项目强制进行 [外部工作与复用审计](docs/PRIOR_ART.md)。已经确认：Lean 中存在独立的 `novaspivack/phenomenology-lean` formal-phenomenology 工程，Isabelle/HOL / AFP 与 LogiKEy 也已有成熟 formal philosophy / computational metaphysics / computational hermeneutics 方法。因此本项目**不声称首创“形式化哲学”或“形式化现象学”工作流**。本轮再次核对前者仍为 `75230e4e...`、LogiKEy 仍为 `b29954b0...`；新增 local-stability characterization 复用既有 constructive-logic infrastructure，不平行重写通用 API，也不作原创逻辑／哲学宣称。
 
 但 **pp. 209–212、225–226 的 *Being Given* 原书正文仍未由本项目独立逐页核对**。Google Books / Stanford-De Gruyter 与正式 Routledge 重印路线仍只提供元数据、选择性预览或 secondary provenance；当前环境未提供目标页可直接读取正文。项目不会利用未经确认授权的整书镜像绕过访问限制。因此尚未达到首个研究问题的停止条件。
 
@@ -120,7 +140,7 @@ Nikolaas Deketelaere 2018 的 Nature / *Humanities and Social Sciences Communica
 
 ## 工程状态
 
-Lean 4.24.0；不依赖 Mathlib 或其他外部 Lean 包。当前共有 **9 个库模块、71 个具名引理／定理**，全部列入内核公理依赖审计；最终通过状态以对应提交 CI 为准。
+Lean 4.24.0；不依赖 Mathlib 或其他外部 Lean 包。当前共有 **9 个库模块、73 个具名引理／定理**，全部列入内核公理依赖审计；最终通过状态以对应提交 CI 为准。
 
 | 检验 | 形式结论 | 入口 |
 |---|---|---|
@@ -135,8 +155,10 @@ Lean 4.24.0；不依赖 Mathlib 或其他外部 Lean 包。当前共有 **9 个�
 | 在实际显现域的确切条件是什么 | 等价于对 `appears p` 排除 `Captured p ∧ Independent p` | `appearing_independence_implies_nonExhaustible_iff_capture_refutes_independence` |
 | 精确显现域条件的冲突见证正规形是什么 | 不存在实际显现的 `Captured ∧ Independent` witness | `appearing_independence_implies_nonExhaustible_iff_no_captured_independent_witness` |
 | 构造性 exact exclusion 给出什么 conditioning 强度 | 等价于 `Captured → ¬¬ Conditioned`，不自动给 witness | `exact_appearing_condition_iff_double_negated_conditioning` |
-| `¬ Independent ↔ Conditioned` 的确切局部证明论前提是什么 | 等价于 `Conditioned` 的双重否定稳定性 | `not_independent_iff_conditioned_iff_conditioned_stable` |
-| pointwise stability 下 exact exclusion 与 witness bridge 是否等价 | 是 | `exact_appearing_condition_iff_witness_bridge_of_stable` |
+| `¬ Independent ↔ Conditioned` 的 fixed-p 精确证明论前提是什么 | 等价于 `Conditioned` 的双重否定稳定性 | `not_independent_iff_conditioned_iff_conditioned_stable` |
+| 首问实际显现域需要多大的 stability 范围 | 只需对 `appears ∧ Captured` 的 p 稳定 | `exact_appearing_condition_iff_witness_bridge_of_captured_stable` |
+| witness-producing bridge 的精确构造性分解是什么 | exact exclusion + 同一 appearing/captured 域的 stability | `appearing_witness_bridge_iff_exact_and_captured_stability` |
+| global pointwise stability 下 exact exclusion 与 witness bridge 是否等价 | 是；为更强 sufficient version | `exact_appearing_condition_iff_witness_bridge_of_stable` |
 | decidability 在这里扮演什么角色 | `[Decidable (Conditioned p)]` 是 stability 的充分来源 | `not_independent_iff_conditioned_of_decidable` |
 | 在逐点 decidability 下 exact exclusion 与 witness bridge 是否等价 | 是；为 stability theorem 的 corollary | `exact_appearing_condition_iff_witness_bridge_of_decidable` |
 | 强结构 bridge 是否蕴含精确显现域条件 | 是 | `exhaustiveCaptureConditions_implies_exact_appearing_condition` |
@@ -176,7 +198,7 @@ FormalPhenomenology/
   Models/Conditioning.lean       # 分离、联合见证、structure/closure/coherence 不足、bridge 反模型及 strictness witness
   Models/OpenHorizon.lean
   Models/HorizonExtension.lean
-  ConstructiveBridge.lean        # 双重否定、exact stability、witness bridge、decidability corollary
+  ConstructiveBridge.lean        # 双重否定、fixed-p/captured-domain stability、witness bridge、decidability corollary
 Audit.lean
 scripts/check.py
 ```
@@ -188,7 +210,7 @@ scripts/check.py
 | [解释选择登记](docs/INTERPRETATION.md) | 形式词与哲学词之间的距离 |
 | [来源与阅读状态](docs/SOURCES.md) | 一手／二手证据与未核查项 |
 | [Marion 重印 provenance](docs/MARION_REPRINT_PROVENANCE.md) | 正式重印范围、合法获取路线与证据等级 |
-| [stability / decidable conditioning bridge 审计](docs/DECIDABLE_CONDITIONING_BRIDGE.md) | Lean Core/Mathlib 查重、exact stability、局部 decidability corollary 与同题 prior art |
+| [stability / decidable conditioning bridge 审计](docs/DECIDABLE_CONDITIONING_BRIDGE.md) | Lean Core/Mathlib 查重、captured-domain exact stability、global/decidable corollary 与同题 prior art |
 | [Pommier 2020 增量审计](docs/POMMIER_2020_HORIZON_AUDIT.md) | horizon 预设／条件化区分、2013 页码导航与复用决定 |
 | [structure/coherence gap 增量审计](docs/STRUCTURE_COHERENCE_GAP.md) | `UniversalStructure + ClosureBridge + ConditioningIsSituated` 仍不足、外部查重与 direct-primary 复查 |
 | [strict bridge 层级审计](docs/STRICT_BRIDGE_HIERARCHY.md) | 强 bridge、精确条件、冲突见证正规形、查重和访问复查 |
@@ -198,4 +220,4 @@ scripts/check.py
 
 ## 下一步
 
-首要硬门槛仍是**独立核对 Marion *Being Given* pp. 209–212、225–226 的原书正文**，或取得可可靠逐段对应的法文 *Étant donné* / 正式重印正文。形式层现在把最后一个容易含混的证明论跳步压到最弱的局部性质：`Captured → ¬ Independent` 在构造性内核中只给 `Captured → ¬¬ Conditioned`；要提升为真正的 conditioning witness，只需要 `Conditioned` 的 double-negation stability。逐点 decidability 是产生该 stability 的一个充分条件，不是最小前提。下一轮优先继续突破合法原典访问门，而不是把 stability、decidability 或任何 extensional bridge 偷换成历史归属。
+首要硬门槛仍是**独立核对 Marion *Being Given* pp. 209–212、225–226 的原书正文**，或取得可可靠逐段对应的法文 *Étant donné* / 正式重印正文。形式层现在把证明论跳步进一步限制到问题真正使用的域：`Captured → ¬ Independent` 在构造性内核中只给 `Captured → ¬¬ Conditioned`；要提升为真正的 conditioning witness，只需在 `appears ∧ Captured` 的 p 上给出 `Conditioned` 的 double-negation stability。全域 stability 和逐点 decidability 都只是更强的充分条件。下一轮优先继续突破合法原典访问门，而不是把 stability、decidability 或任何 extensional bridge 偷换成历史归属。
