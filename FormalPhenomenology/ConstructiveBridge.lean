@@ -91,4 +91,40 @@ theorem appearing_captured_to_conditioned_is_strictly_weaker_than_exhaustiveCapt
     have hc := hb () false True.intro he
     cases hc
 
+/--
+If existential conditioning is decidable at one phenomenon, the constructive
+double-negation gap closes *locally*: refuting horizon-independence is then
+exactly having an actual conditioning witness.
+
+The proof reuses Lean Core's `Decidable.not_not`; no global classical instance
+or new philosophical axiom is introduced.
+-/
+theorem not_independent_iff_conditioned_of_decidable
+    (M : HorizonConditioning) (p : M.base.Phenomenon)
+    [Decidable (M.Conditioned p)] :
+    (¬ M.Independent p) ↔ M.Conditioned p := by
+  exact (not_independent_iff_not_not_conditioned M p).trans Decidable.not_not
+
+/--
+With pointwise decidability of existential conditioning made explicit, the
+exact appearing-domain exclusion and the witness-producing capture bridge have
+the same proof-theoretic strength.
+
+This isolates the precise extra premise needed to turn the constructive
+`Captured → ¬¬ Conditioned` obligation into `Captured → Conditioned`, without
+assuming classical logic globally or attributing decidability to any historical
+phenomenologist.
+-/
+theorem exact_appearing_condition_iff_witness_bridge_of_decidable
+    (M : HorizonConditioning)
+    (hd : ∀ p, Decidable (M.Conditioned p)) :
+    (∀ p, M.base.appears p → M.base.Captured p → ¬ M.Independent p) ↔
+      (∀ p, M.base.appears p → M.base.Captured p → M.Conditioned p) := by
+  constructor
+  · intro h p hp hc
+    letI := hd p
+    exact (not_independent_iff_conditioned_of_decidable M p).mp (h p hp hc)
+  · intro h
+    exact appearing_captured_conditioned_implies_exact_appearing_condition M h
+
 end FormalPhenomenology
