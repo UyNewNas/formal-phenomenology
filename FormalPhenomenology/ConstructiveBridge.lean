@@ -186,23 +186,39 @@ theorem not_independent_iff_conditioned_of_decidable
   exact (not_independent_iff_not_not_conditioned M p).trans Decidable.not_not
 
 /--
+For the first research question, even decidability need only be supplied where
+it can actually be used: on phenomena that both appear and are captured.  This
+is still stronger than the exact local stability premise, but avoids imposing a
+decision procedure on irrelevant inhabitants of the phenomenon type.
+-/
+theorem exact_appearing_condition_iff_witness_bridge_of_captured_decidable
+    (M : HorizonConditioning)
+    (hd : ∀ p, M.base.appears p → M.base.Captured p →
+      Decidable (M.Conditioned p)) :
+    (∀ p, M.base.appears p → M.base.Captured p → ¬ M.Independent p) ↔
+      (∀ p, M.base.appears p → M.base.Captured p → M.Conditioned p) := by
+  apply exact_appearing_condition_iff_witness_bridge_of_captured_stable M
+  intro p hp hc hnn
+  letI := hd p hp hc
+  exact Decidable.not_not.mp hnn
+
+/--
 With pointwise decidability of existential conditioning made explicit, the
 exact appearing-domain exclusion and the witness-producing capture bridge have
 the same proof-theoretic strength.
 
-This is now recorded as a corollary of pointwise stability: decidability is a
-convenient sufficient source of double-negation elimination, not the minimal
-premise itself.  No classical logic is assumed globally and no decidability
-claim is attributed to any historical phenomenologist.
+This is a stronger corollary of captured-domain decidability: global pointwise
+decidability is convenient but unnecessary for the first research question.
+No classical logic is assumed globally and no decidability claim is attributed
+to any historical phenomenologist.
 -/
 theorem exact_appearing_condition_iff_witness_bridge_of_decidable
     (M : HorizonConditioning)
     (hd : ∀ p, Decidable (M.Conditioned p)) :
     (∀ p, M.base.appears p → M.base.Captured p → ¬ M.Independent p) ↔
       (∀ p, M.base.appears p → M.base.Captured p → M.Conditioned p) := by
-  apply exact_appearing_condition_iff_witness_bridge_of_stable M
-  intro p hnn
-  letI := hd p
-  exact Decidable.not_not.mp hnn
+  apply exact_appearing_condition_iff_witness_bridge_of_captured_decidable M
+  intro p _ _
+  exact hd p
 
 end FormalPhenomenology

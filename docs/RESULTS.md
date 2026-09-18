@@ -238,7 +238,7 @@ ExhaustiveCaptureConditions
 
 它正确地推出实际显现域的 exact exclusion 与 witness-producing bridge 等价，但对首问的量词范围仍偏强。
 
-本轮新增 `exact_appearing_condition_iff_witness_bridge_of_captured_stable`，只要求：
+`exact_appearing_condition_iff_witness_bridge_of_captured_stable` 只要求：
 
 ```text
 ∀ p, appears p → Captured p →
@@ -263,7 +263,15 @@ ExhaustiveCaptureConditions
       (¬¬ Conditioned p → Conditioned p))).
 ```
 
-因此首问里从冲突排除走到 actual conditioning witness 的附加证明论要求，不必扩展到不显现或未 capture 的对象。全域 pointwise stability 与逐点 `Decidable (Conditioned p)` 都继续成立，但现在应理解为更强的 sufficient corollaries。
+因此首问里从冲突排除走到 actual conditioning witness 的附加证明论要求，不必扩展到不显现或未 capture 的对象。全域 pointwise stability 继续成立，但应理解为更强的 sufficient corollary。
+
+本轮进一步把 **decidability 自己**也限制到同一实际使用域。`exact_appearing_condition_iff_witness_bridge_of_captured_decidable` 只要求：
+
+```text
+∀ p, appears p → Captured p → Decidable (Conditioned p)
+```
+
+就能复用 Lean Core `Decidable.not_not` 与 captured-domain stability theorem 得到 exact exclusion ↔ witness-producing bridge。原来的全域逐点 `exact_appearing_condition_iff_witness_bridge_of_decidable` 现作为它的更强 corollary。
 
 所以当前 proof-theoretic hierarchy 应写成：
 
@@ -277,11 +285,12 @@ Captured → ¬ Independent
 witness bridge
 ↔ exact exclusion + captured-domain stability
 
-+ global pointwise stability
-⇒ the local premise
-
 + Decidable (Conditioned)
-⇒ stability via Lean Core Decidable.not_not.
+  only on appearing ∧ captured p
+⇒ the local stability premise
+
++ global pointwise stability / decidability
+⇒ the corresponding local premises.
 ```
 
 这些 stability / decidability 条件都没有 Marion / Merleau-Ponty 历史归属，只是 FORMAL 前提；查重与复用见 `DECIDABLE_CONDITIONING_BRIDGE.md`。它们也都没有把 `Captured` 偷换成 Marion 的 “saturates a horizon”。
@@ -335,6 +344,6 @@ $$
 | `Models/Conditioning.lean` | 16 | conditioning / exhaustion / horizonless 分离、联合一致性、structure/closure/coherence 不足、bridge 反模型与 strictness witness |
 | `Models/OpenHorizon.lean` | 6 | 开放扩展、逐一覆盖和单调性 |
 | `Models/HorizonExtension.lean` | 4 | horizon 域扩展与穷尽性的变化 |
-| `ConstructiveBridge.lean` | 11 | 双重否定正规形、fixed-p stability、captured-domain stability 精确分解、witness bridge、同-horizon strictness、decidability corollary |
+| `ConstructiveBridge.lean` | 12 | 双重否定正规形、fixed-p stability、captured-domain stability 精确分解、witness bridge、同-horizon strictness、localized/global decidability corollaries |
 
-共 **9 个库模块、73 个具名引理／定理**，全部列入 `Audit.lean`。任何后续 Lean 改动都必须在其自己的提交重新获得 `lake build`、`scripts/check.py` 与 `#print axioms` 验证，不能继承旧 CI。
+共 **9 个库模块、74 个具名引理／定理**，全部列入 `Audit.lean`。任何后续 Lean 改动都必须在其自己的提交重新获得 `lake build`、`scripts/check.py` 与 `#print axioms` 验证，不能继承旧 CI。
