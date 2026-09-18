@@ -1,6 +1,6 @@
 # 视域结构与穷尽性的分离
 
-本页给出首个研究问题的**形式层**。哲学解释与原典证据见 [INTERPRETATION.md](INTERPRETATION.md)、[SOURCES.md](SOURCES.md) 与 [MARION_1996_PRIMARY.md](MARION_1996_PRIMARY.md)；外部工作与复用判断见 [PRIOR_ART.md](PRIOR_ART.md)。构造性 bridge 细化见 [CONSTRUCTIVE_BRIDGE_HIERARCHY.md](CONSTRUCTIVE_BRIDGE_HIERARCHY.md)，本轮局部可判定性审计见 [DECIDABLE_CONDITIONING_BRIDGE.md](DECIDABLE_CONDITIONING_BRIDGE.md)。
+本页给出首个研究问题的**形式层**。哲学解释与原典证据见 [INTERPRETATION.md](INTERPRETATION.md)、[SOURCES.md](SOURCES.md) 与 [MARION_1996_PRIMARY.md](MARION_1996_PRIMARY.md)；外部工作与复用判断见 [PRIOR_ART.md](PRIOR_ART.md)。构造性 bridge 细化见 [CONSTRUCTIVE_BRIDGE_HIERARCHY.md](CONSTRUCTIVE_BRIDGE_HIERARCHY.md)，stability / decidability 审计见 [DECIDABLE_CONDITIONING_BRIDGE.md](DECIDABLE_CONDITIONING_BRIDGE.md)。
 
 ## 1. 基础关系语言
 
@@ -218,27 +218,25 @@ ExhaustiveCaptureConditions
 
 而 `appearing_captured_to_conditioned_is_strictly_weaker_than_exhaustiveCaptureConditions` 再次复用 `displacedCaptureConditioning` 证明第一步是**严格加强**：capture 由 `false` horizon 完成，conditioning witness 由不同的 `true` horizon 给出，因此 witness-producing bridge 和 `ConditioningIsSituated` 都成立，但 E 仍失败。
 
-### 局部可判定性：双重否定到 witness 的确切显式升级条件
+### Stability：双重否定到 witness 的精确局部前提；decidability 只是充分来源
 
-本轮不再含混地说“如果采用经典逻辑就能消去双重否定”，而是把所需前提收缩到目标 proposition 自身的局部可判定性。若
-
-```text
-[Decidable (Conditioned p)]
-```
-
-则 `not_independent_iff_conditioned_of_decidable` 直接复用 Lean Core `Decidable.not_not` 证明：
+上一轮把 `Decidable (Conditioned p)` 识别为一个局部、无需全局 Classical 的充分前提。本轮进一步纠正“decidability 是精确前提”的过强表述。定理 `not_independent_iff_conditioned_iff_conditioned_stable` 证明：
 
 ```text
-¬ Independent p ↔ Conditioned p.
+((¬ Independent p) ↔ Conditioned p)
+↔
+(¬¬ Conditioned p → Conditioned p).
 ```
 
-因此若显式给出
+因此，对固定 `p` 而言，**真正需要且足够的证明论性质是 `Conditioned p` 的 double-negation stability**，并不要求完整的 `Decidable (Conditioned p)`。
+
+若逐点显式给出
 
 ```text
-∀ p, Decidable (Conditioned p),
+∀ p, ¬¬ Conditioned p → Conditioned p,
 ```
 
-则 `exact_appearing_condition_iff_witness_bridge_of_decidable` 证明：
+则 `exact_appearing_condition_iff_witness_bridge_of_stable` 证明：
 
 ```text
 (∀ p, appears p → Captured p → ¬ Independent p)
@@ -246,9 +244,22 @@ ExhaustiveCaptureConditions
 (∀ p, appears p → Captured p → Conditioned p).
 ```
 
-这不是新的哲学关系，也没有开启全局 `Classical`：它只是精确记录何时 `¬¬ Conditioned` 可以降为存在 witness。相反，如果不授予这种可判定性，项目继续保留 constructive exact exclusion 与 witness-producing bridge 的强度差异。`Decidable (Conditioned p)` 没有 Marion / Merleau-Ponty 历史归属，只是 FORMAL 前提；查重与复用见 `DECIDABLE_CONDITIONING_BRIDGE.md`。
+原有 decidability 结果继续成立，但现在只是 corollary：`Decidable.not_not` 从 `[Decidable (Conditioned p)]` 产生 stability，`not_independent_iff_conditioned_of_decidable` 得到点态等价；逐点 decidability 下 `exact_appearing_condition_iff_witness_bridge_of_decidable` 则直接复用 stability theorem。没有开启全局 `Classical`。
 
-这些层级都只是 FORMAL 结果；并没有把 `Captured` 偷换成 Marion 的 “saturates a horizon”，也没有把 decidability、witness-producing bridge 或 E 归给 Marion / Merleau-Ponty。
+所以 proof-theoretic hierarchy 应写成：
+
+```text
+Captured → ¬ Independent
+↔ Captured → ¬¬ Conditioned
+
++ stability (¬¬ Conditioned → Conditioned)
+⇒ Captured → Conditioned
+
++ Decidable (Conditioned)
+⇒ stability via Lean Core Decidable.not_not.
+```
+
+stability 与 decidability 都没有 Marion / Merleau-Ponty 历史归属，只是 FORMAL 前提；查重与复用见 `DECIDABLE_CONDITIONING_BRIDGE.md`。这些层级也都没有把 `Captured` 偷换成 Marion 的 “saturates a horizon”。
 
 ## 7. 结构、closure 与 conditioning coherence 仍不足
 
@@ -299,6 +310,6 @@ $$
 | `Models/Conditioning.lean` | 16 | conditioning / exhaustion / horizonless 分离、联合一致性、structure/closure/coherence 不足、bridge 反模型与 strictness witness |
 | `Models/OpenHorizon.lean` | 6 | 开放扩展、逐一覆盖和单调性 |
 | `Models/HorizonExtension.lean` | 4 | horizon 域扩展与穷尽性的变化 |
-| `ConstructiveBridge.lean` | 7 | 双重否定正规形、witness bridge、同-horizon strictness、局部 decidability collapse |
+| `ConstructiveBridge.lean` | 9 | 双重否定正规形、exact stability、witness bridge、同-horizon strictness、decidability corollary |
 
-共 **9 个库模块、69 个具名引理／定理**，全部列入 `Audit.lean`。任何后续 Lean 改动都必须在其自己的提交重新获得 `lake build`、`scripts/check.py` 与 `#print axioms` 验证，不能继承旧 CI。
+共 **9 个库模块、71 个具名引理／定理**，全部列入 `Audit.lean`。任何后续 Lean 改动都必须在其自己的提交重新获得 `lake build`、`scripts/check.py` 与 `#print axioms` 验证，不能继承旧 CI。

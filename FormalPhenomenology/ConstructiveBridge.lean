@@ -42,6 +42,46 @@ theorem exact_appearing_condition_iff_double_negated_conditioning
     exact (not_independent_iff_not_not_conditioned M p).mpr (h p hp hc)
 
 /--
+At a fixed phenomenon, the exact proof-theoretic condition for replacing
+`¬ Independent p` by an actual existential conditioning witness is stability of
+that existential proposition itself: double-negated conditioning must imply
+conditioning.
+
+This is weaker than assuming decidability.  It introduces no new relation and
+uses only the already verified equivalence `¬ Independent p ↔ ¬¬ Conditioned p`.
+-/
+theorem not_independent_iff_conditioned_iff_conditioned_stable
+    (M : HorizonConditioning) (p : M.base.Phenomenon) :
+    ((¬ M.Independent p) ↔ M.Conditioned p) ↔
+      (¬ ¬ M.Conditioned p → M.Conditioned p) := by
+  constructor
+  · intro h hnn
+    exact h.mp ((not_independent_iff_not_not_conditioned M p).mpr hnn)
+  · intro hs
+    constructor
+    · intro hni
+      exact hs ((not_independent_iff_not_not_conditioned M p).mp hni)
+    · intro hc
+      exact (not_independent_iff_not_not_conditioned M p).mpr (fun hnc => hnc hc)
+
+/--
+Pointwise stability of existential conditioning is sufficient to collapse the
+appearing-domain exact exclusion into the witness-producing capture bridge.
+Unlike the decidability corollary below, this theorem asks only for the exact
+double-negation-elimination property used by the proof.
+-/
+theorem exact_appearing_condition_iff_witness_bridge_of_stable
+    (M : HorizonConditioning)
+    (hs : ∀ p, ¬ ¬ M.Conditioned p → M.Conditioned p) :
+    (∀ p, M.base.appears p → M.base.Captured p → ¬ M.Independent p) ↔
+      (∀ p, M.base.appears p → M.base.Captured p → M.Conditioned p) := by
+  constructor
+  · intro h p hp hc
+    exact hs p ((not_independent_iff_not_not_conditioned M p).mp (h p hp hc))
+  · intro h p hp hc hi
+    exact (horizonIndependent_iff_not_conditioned M p).mp hi (h p hp hc)
+
+/--
 The stronger horizon-by-horizon bridge constructs an actual conditioning
 witness from any existential exhaustive capture: the very horizon witnessing
 capture also witnesses conditioning.
@@ -97,7 +137,8 @@ double-negation gap closes *locally*: refuting horizon-independence is then
 exactly having an actual conditioning witness.
 
 The proof reuses Lean Core's `Decidable.not_not`; no global classical instance
-or new philosophical axiom is introduced.
+or new philosophical axiom is introduced.  Decidability is a sufficient source
+of the weaker, exact stability premise characterized above.
 -/
 theorem not_independent_iff_conditioned_of_decidable
     (M : HorizonConditioning) (p : M.base.Phenomenon)
@@ -110,21 +151,19 @@ With pointwise decidability of existential conditioning made explicit, the
 exact appearing-domain exclusion and the witness-producing capture bridge have
 the same proof-theoretic strength.
 
-This isolates the precise extra premise needed to turn the constructive
-`Captured → ¬¬ Conditioned` obligation into `Captured → Conditioned`, without
-assuming classical logic globally or attributing decidability to any historical
-phenomenologist.
+This is now recorded as a corollary of pointwise stability: decidability is a
+convenient sufficient source of double-negation elimination, not the minimal
+premise itself.  No classical logic is assumed globally and no decidability
+claim is attributed to any historical phenomenologist.
 -/
 theorem exact_appearing_condition_iff_witness_bridge_of_decidable
     (M : HorizonConditioning)
     (hd : ∀ p, Decidable (M.Conditioned p)) :
     (∀ p, M.base.appears p → M.base.Captured p → ¬ M.Independent p) ↔
       (∀ p, M.base.appears p → M.base.Captured p → M.Conditioned p) := by
-  constructor
-  · intro h p hp hc
-    letI := hd p
-    exact (not_independent_iff_conditioned_of_decidable M p).mp (h p hp hc)
-  · intro h
-    exact appearing_captured_conditioned_implies_exact_appearing_condition M h
+  apply exact_appearing_condition_iff_witness_bridge_of_stable M
+  intro p hnn
+  letI := hd p
+  exact Decidable.not_not.mp hnn
 
 end FormalPhenomenology
