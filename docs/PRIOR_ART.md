@@ -84,7 +84,7 @@ Ericson Falabretti, “Merleau-Ponty e Marion: o problema da ambiguidade entre u
 
 ### 正式重印 provenance：不重新猜 pagination
 
-本轮把“合法 direct-primary 获取路径”也纳入 prior-art / provenance 审计，详见 [MARION_REPRINT_PROVENANCE.md](MARION_REPRINT_PROVENANCE.md)：
+“合法 direct-primary 获取路径”也纳入 prior-art / provenance 审计，详见 [MARION_REPRINT_PROVENANCE.md](MARION_REPRINT_PROVENANCE.md)：
 
 - Fordham / De Gruyter 2013 *The Essential Writings* 正式收录 Marion `Sketch of the Saturated Phenomenon` pp. 108–134，但当前正文受限；
 - Dermot Moran 的作者公开稿明确登记 *Being Given* `Sketch` pp. 199–221 **重印于** Moran / Embree 编 *Phenomenology: Critical Concepts* (Routledge, 2004), vol. 4, pp. 5–28；Routledge 官方产品页与 Google Books/Taylor & Francis 元数据独立确认承载重印的出版物。
@@ -156,7 +156,7 @@ situated p h ∧ Exhausts p h → conditions p h
 
 模型 `displacedCaptureConditioning` 有一个显现、两个均 related 的 horizon 和一个 aspect：`false` horizon 穷尽该 aspect，`true` horizon 则承担 conditioning。于是所有实际显现都满足 `Captured → ¬ Independent`，且 `ConditioningIsSituated` 成立；但 `ExhaustiveCaptureConditions` 失败，因为 exhaustive 的 `false` horizon 本身没有 conditioning。Lean theorem `exact_appearing_condition_is_strictly_weaker_than_exhaustiveCaptureConditions` 因而给出一个具体模型，证明精确显现域条件并不推出强 bridge。
 
-### 本轮新增：补全严格层级的正向 theorem
+### 补全严格层级的正向 theorem
 
 在新增 `exhaustiveCaptureConditions_implies_exact_appearing_condition` 前再次执行本轮对象的增量查重：
 
@@ -195,24 +195,24 @@ Jean-Luc Marion, “The Saturated Phenomenon,” *Philosophy Today* 40(1), 1996,
 
 这项发现实质改变下一步：已有作者本人文本确认 horizon 不能简单取消、核心在先行限定、且 horizon-independence 与多种 horizon 关系并存。故不再需要猜测这些区分是否只是二手研究强加给 Marion。
 
-但这**不取消书本版本核对门**。借助现有 crosswalk 与本轮重印 provenance，门槛可精确成：直接读 BG 209–212、225–226，或法文 ED 292–297、314–315，或在已确认正式重印中找到对应正文并用文本锚点互证；二手引注与书目关系只负责定位，不能替代 primary direct reading。
+但这**不取消书本版本核对门**。借助现有 crosswalk 与重印 provenance，门槛可精确成：直接读 BG 209–212、225–226，或法文 ED 292–297、314–315，或在已确认正式重印中找到对应正文并用文本锚点互证；二手引注与书目关系只负责定位，不能替代 primary direct reading。
 
-本轮再次检查 Stanford / De Gruyter Brill、Google Books 的 *Being Given* 以及 Routledge 2004 正式重印入口；仍只有元数据或选择性预览，没有合法暴露目标正文。这一访问负结果已同步 [MARION_REPRINT_PROVENANCE.md](MARION_REPRINT_PROVENANCE.md)，不能被当作不存在文本或支持某种解释的证据。
+本轮再次检查 Stanford / De Gruyter Brill、Google Books、早期 ED 目标页搜索以及 Routledge 2004 正式重印入口；仍只有元数据、secondary exact quotation 或选择性预览，没有合法暴露目标正文。这一访问负结果不能被当作不存在文本或支持某种解释的证据。
 
 ## 8. 当前复用结论
 
 首问继续保持轻量 Lean Core 是合理选择。现阶段没有外部形式化提供可直接替换本项目 horizon 首问的同型实现；formal philosophy 的方法、Marion horizon 的解释 prior art、以及 Merleau-Ponty / Marion 的直接比较研究都已明确存在。
 
-当前最有价值的复用分成四类：一是采用 Miller / Mackinlay / Steinbock 的 BG/ED 双版本引注，避免重新猜测翻译页码；二是采用 Falabretti / Djian / Murga 等既有比较与解释工作限制历史新颖性表述并保存竞争读法；三是采用 Moran / Routledge 的明确重印 provenance 扩展合法 direct-primary 获取路径；四是直接复用本仓 `NonExhaustible ↔ ¬Captured` 及已有 bridge consequences，用无新 primitive 的正规化／层级 theorem 给出 `Independent → NonExhaustible` 的点态、实际显现域确切条件，以及 `ExhaustiveCaptureConditions` 对该精确条件的严格加强。除此之外继续等待 direct-primary 版本核对，不扩张完整 saturation API。
+当前最有价值的复用分成五类：一是采用 Miller / Mackinlay / Steinbock 的 BG/ED 双版本引注，避免重新猜测翻译页码；二是采用 Falabretti / Djian / Murga / Lind 等既有比较与解释工作限制历史新颖性表述并保存竞争读法；三是采用 Moran / Routledge 的明确重印 provenance 扩展合法 direct-primary 获取路径；四是直接复用本仓 `NonExhaustible ↔ ¬Captured` 及已有 bridge consequences；五是对 proof-theoretic 边界直接复用 Lean Core `Decidable.not_not`，而不是自造 DNE 或引入 Mathlib 重依赖。
 
-## 9. 本轮增量：构造性 conditioning bridge 层级
+## 9. 构造性 conditioning bridge 层级
 
-本轮拟新增对象是“精确显现域排斥”与“产生 conditioning witness”之间的证明论差别。正式写 Lean 前已完成以下增量查重：
+拟新增对象是“精确显现域排斥”与“产生 conditioning witness”之间的证明论差别。正式写 Lean 前已完成以下增量查重：
 
 - GitHub 全局代码检索 `Conditioned Independent Captured horizon`；返回结果均为这些普通英文词在无关工程中的命中，没有定位到 external formal-philosophy 同型实现。
 - `novaspivack/phenomenology-lean` 再次固定 `main = 75230e4eab333ad0fc47573747521ccc1a31a163`（2026-05-20），并针对 `horizon` 做仓库检索，无结果；未发现 Marion / horizon / capture-conditioning API 可复用。
 - LogiKEy 再次固定 `master = b29954b0876d7991baf12f17378f31700f9de759`（2026-09-13）。其 semantic embedding / computational metaphysics 方法继续属于先例，但为本轮初等 Lean-Core 正规化引入整套 Isabelle 基础设施不合理。
-- 同题文本层继续复用 Leung 对 *Being Given* pp. 211–212、225–226 的精确二手导航；它支持 conditioning 语汇的重要性，但没有讨论 `¬¬∃ h, conditions p h` 与 `∃ h, conditions p h` 的构造性差别。出版社／正式重印入口本轮仍未合法开放目标原书页，因此没有把 secondary exact quotation 升格为 direct-primary。
+- 同题文本层继续复用 Leung 对 *Being Given* pp. 211–212、225–226 的精确二手导航；它支持 conditioning 语汇的重要性，但没有讨论 `¬¬∃ h, conditions p h` 与 `∃ h, conditions p h` 的构造性差别。出版社／正式重印入口仍未合法开放目标原书页，因此没有把 secondary exact quotation 升格为 direct-primary。
 
 本轮没有重新本地构建上述外部仓库；外部项目的构建状态不冒充本轮实测。
 
@@ -227,6 +227,45 @@ ExhaustiveCaptureConditions
 ↔ appearing Captured → ¬¬ Conditioned
 ```
 
-其中 `ExhaustiveCaptureConditions` 到 witness-producing `Captured → Conditioned` 的加强是严格的：现有 `displacedCaptureConditioning` 让 exhaustive horizon 与 conditioning horizon 分担角色，所以 witness-producing bridge 与 `ConditioningIsSituated` 成立，而同-horizon 强 bridge 失败。项目**不**为了把 `¬¬ Conditioned` 直接消成 `Conditioned` 而引入 classical double-negation elimination；当前审计仍要求所有列入 `Audit.lean` 的 theorem 无公理依赖。
+其中 `ExhaustiveCaptureConditions` 到 witness-producing `Captured → Conditioned` 的加强是严格的：现有 `displacedCaptureConditioning` 让 exhaustive horizon 与 conditioning horizon 分担角色，所以 witness-producing bridge 与 `ConditioningIsSituated` 成立，而同-horizon 强 bridge 失败。项目**不**为了把 `¬¬ Conditioned` 直接消成 `Conditioned` 而引入 global classical double-negation elimination；当前审计仍要求所有列入 `Audit.lean` 的 theorem 无公理依赖。
 
 这一区分只收紧 FORMAL 解释：首问目前的逻辑“确切条件”是排除 `Captured ∧ Independent`，也就是构造性地得到 `Captured → ¬¬ Conditioned`；若解释者要求 capture 实际给出某个 conditioning horizon，则那是更强的 witness-producing bridge，需要独立文本依据。Marion 或 Merleau-Ponty 均未因这条证明论正规化被赋予新前提。完整说明见 [CONSTRUCTIVE_BRIDGE_HIERARCHY.md](CONSTRUCTIVE_BRIDGE_HIERARCHY.md)。
+
+## 10. 本轮增量：局部 `Decidable (Conditioned p)` 的复用审计
+
+本轮真正新增的 formal 对象只有两个：
+
+```text
+[Decidable (Conditioned p)]
+⊢ (¬ Independent p ↔ Conditioned p)
+```
+
+以及
+
+```text
+(∀ p, Decidable (Conditioned p))
+⊢
+  [(∀ p, appears p → Captured p → ¬ Independent p)
+   ↔
+   (∀ p, appears p → Captured p → Conditioned p)].
+```
+
+### 工程／证明基础设施
+
+- 项目 pinned 工具链是 `leanprover/lean4:v4.24.0`。本轮直接实读该 tag 的 `src/Init/Classical.lean`；其中 `Classical.not_not : ¬¬a ↔ a := Decidable.not_not`，文件注释明确区分 classical DNE 与 constructively unavailable 的一般左到右方向。新增 theorem 因此直接复用更底层的 `Decidable.not_not`，而不是再造通用 DNE。
+- Mathlib4 代码搜索 `Decidable.not_not`，定位到当前索引 commit `a218e50f981942cba4fd060faff7cae680805062` 的 `Mathlib/Order/Heyting/Regular.lean`：`isRegular_of_decidable (p : Prop) [Decidable p] : IsRegular p := propext <| Decidable.not_not`。所以“decidable proposition 在 intuitionistic/Heyting 意义下 regular/stable”已有通用库表达。该模块没有在本项目中 import，本轮也没有重新构建 Mathlib。
+- `novaspivack/phenomenology-lean` 最新 `main` 再次确认仍为 `75230e4eab333ad0fc47573747521ccc1a31a163`；LogiKEy 最新 `master` 仍为 `b29954b0876d7991baf12f17378f31700f9de759`。没有出现要求改用外部 formal-philosophy API 的新结果。
+
+**复用决定。** 直接薄复用 Lean Core `Decidable.not_not`，不引入 Mathlib、LogiKEy、AFP 依赖，不声称这两条 theorem 是新的逻辑发现。它们的项目价值只是把“何时 exact exclusion 能产生 witness”所需的额外 proof-theoretic premise 参数化。
+
+### 同题解释文献
+
+本轮新增核查 Andreas Gonçalves Lind, “Givenness as the Opening of All Phenomenological Possibility: Marion’s Overcoming of Henry Through Heidegger,” *Philosophies* 11(4), 145，2026-08-14，DOI `10.3390/philosophies11040145`。官方全文继续把 Marion 的 givenness / saturated phenomenality 解释为超出 subjectivity 的 anticipation / constitution horizons。
+
+**差异判断。** Lind 进一步证明 horizon-as-condition / anticipation 的解释空间不是本项目新发现，但没有给出本仓的 `Captured → Conditioned`、`Decidable (Conditioned p)` 或 same-horizon `ExhaustiveCaptureConditions`。所以只作为同题 secondary prior art，不移植为形式定理。
+
+### direct-primary 门
+
+同一轮再次检索 BG pp. 209–212、225–226 与 early ED pp. 292–297、314–315 的合法公开入口，仍没有直接作者正文。故局部 decidability theorem 不能被解释为历史 completion；`Decidable (Conditioned p)` 严格保持 FORMAL 前提，目标书本版本的 direct-primary gate 继续开放。
+
+完整逐声明审计见 [DECIDABLE_CONDITIONING_BRIDGE.md](DECIDABLE_CONDITIONING_BRIDGE.md)。
