@@ -34,7 +34,7 @@ HorizonIndependent  ⟹ Horizonless        ✗
 
 此前进一步排除一个自然但仍不足的修补：即使**每个实际显现都有 related horizon**（`UniversalStructure`），并且**任何 conditioning horizon 都必须是 related horizon**（`ConditioningIsSituated`），仍然不能推出实际显现域的 `Captured → ¬ Independent`。入口是 `structure_and_conditioning_coherence_do_not_imply_exact_appearing_condition`；同一个 closed-independent 有限模型同时满足前两项，却仍有一个实际显现同时 `Captured` 与 `Independent`。
 
-本轮再把候选前提加强一层：即使另外直接授予 **`ClosureBridge`**，也仍然不能补出 capture/conditioning 之间的缺失联系。入口是 `structure_closure_and_conditioning_coherence_do_not_imply_exact_appearing_condition`。`closedIndependentConditioning.base` 甚至满足 `UniversalCapture`，所以同时满足 `UniversalStructure` 与 `ClosureBridge`；`ConditioningIsSituated` 也成立，但唯一实际显现仍同时 `Captured` 与 `Independent`。因此“有 horizon + 可被某 horizon 穷尽 + conditioning 只能来自 related horizon”都不是 `Independent → NonExhaustible` 的替代 bridge。
+再把候选前提加强一层：即使另外直接授予 **`ClosureBridge`**，也仍然不能补出 capture/conditioning 之间的缺失联系。入口是 `structure_closure_and_conditioning_coherence_do_not_imply_exact_appearing_condition`。`closedIndependentConditioning.base` 甚至满足 `UniversalCapture`，所以同时满足 `UniversalStructure` 与 `ClosureBridge`；`ConditioningIsSituated` 也成立，但唯一实际显现仍同时 `Captured` 与 `Independent`。因此“有 horizon + 可被某 horizon 穷尽 + conditioning 只能来自 related horizon”都不是 `Independent → NonExhaustible` 的替代 bridge。
 
 “`Independent → NonExhaustible` 到底需要什么”现在有两层精确答案。点态上：
 
@@ -76,9 +76,25 @@ ExhaustiveCaptureConditions
 
 入口是 `exhaustiveCaptureConditions_independent_implies_nonExhaustible`。若同一个 p 同时 `Captured` 与 `Independent`，则这个较强 bridge 必然失败，入口是 `captured_independent_refutes_exhaustiveCaptureConditions`。
 
-“较强”现在已经两侧形式闭合。`exhaustiveCaptureConditions_implies_exact_appearing_condition` 直接证明强 bridge 蕴含实际显现域的精确排斥 `Captured → ¬ Independent`；反方向则由 `displacedCaptureConditioning` 反驳：一个 related horizon 负责 exhaustive capture、另一个 related horizon 负责 conditioning，于是所有实际显现仍满足精确排斥且 `ConditioningIsSituated` 成立，但 `ExhaustiveCaptureConditions` 失败。入口是 `exact_appearing_condition_is_strictly_weaker_than_exhaustiveCaptureConditions`。因此这个结构化 bridge 真正严格强于精确条件，而不是其改写。
+“较强”已经两侧形式闭合。`exhaustiveCaptureConditions_implies_exact_appearing_condition` 直接证明强 bridge 蕴含实际显现域的精确排斥 `Captured → ¬ Independent`；反方向则由 `displacedCaptureConditioning` 反驳：一个 related horizon 负责 exhaustive capture、另一个 related horizon 负责 conditioning，于是所有实际显现仍满足精确排斥且 `ConditioningIsSituated` 成立，但 `ExhaustiveCaptureConditions` 失败。入口是 `exact_appearing_condition_is_strictly_weaker_than_exhaustiveCaptureConditions`。因此这个结构化 bridge 真正严格强于精确条件，而不是其改写。
 
-这些都是中性的 model-theoretic / propositional 结论，不是 Marion 的 saturated phenomenon 定义。
+构造性层还要再区分一步。Lean Core 已证明 `¬ Independent p ↔ ¬¬ Conditioned p`，因此精确排斥在不采用经典逻辑时只得到 `Captured → ¬¬ Conditioned`，并不自动制造一个 `Conditioned := ∃ h, conditions p h` witness。本轮把缺口继续压到一个显式、局部的证明论前提：若 `[Decidable (Conditioned p)]`，则 `not_independent_iff_conditioned_of_decidable` 直接复用 Lean Core `Decidable.not_not` 得到
+
+```text
+¬ Independent p ↔ Conditioned p.
+```
+
+相应地，若 `∀ p, Decidable (Conditioned p)`，`exact_appearing_condition_iff_witness_bridge_of_decidable` 证明实际显现域的精确排斥与 witness-producing bridge 完全等价：
+
+```text
+(∀ p, appears p → Captured p → ¬ Independent p)
+↔
+(∀ p, appears p → Captured p → Conditioned p).
+```
+
+这里没有开启全局 `Classical`，也没有把 `Decidable (Conditioned p)` 归给任何哲学家；它只是把“从双重否定到存在见证到底还缺什么”写成了可检查的局部前提。更强的 `ExhaustiveCaptureConditions` 仍额外要求**同一个 exhaustive horizon**自己就是 conditioning horizon。
+
+这些都是中性的 model-theoretic / propositional / proof-theoretic 结论，不是 Marion 的 saturated phenomenon 定义。
 
 ## 原典与外部工作核查
 
@@ -98,15 +114,17 @@ Marion, *Being Given*, Jeffrey L. Kosky trans., Stanford UP 2002 的版本、§2
 
 Nikolaas Deketelaere 2018 的 Nature / *Humanities and Social Sciences Communications* 开放全文把 Marion 2008a p. 12 的 horizon-as-a-priori-limit 与 p. 16 的 revelation “assume a horizon” 但挑战 a priori condition 的结构并列，并另引 Marion 2017b p. 99 说明挑战 horizon 的现象仍可“在世界的 horizon 中”通过 saturation 显现。它进一步确认“在 horizon 中呈现”与“受 horizon 作为先行 possibility-condition 支配”的区分已有同题 prior art；证据仍是 secondary exact quotation，不冒充直接读过 Marion 原页。详见 [structure/coherence gap 增量审计](docs/STRUCTURE_COHERENCE_GAP.md)。
 
-本项目强制进行 [外部工作与复用审计](docs/PRIOR_ART.md)。已经确认：Lean 中存在独立的 `novaspivack/phenomenology-lean` formal-phenomenology 工程，Isabelle/HOL / AFP 与 LogiKEy 也已有成熟 formal philosophy / computational metaphysics / computational hermeneutics 方法。因此本项目**不声称首创“形式化哲学”或“形式化现象学”工作流**。本轮针对 `UniversalStructure + ClosureBridge + ConditioningIsSituated` 是否足以推出 exact appearing exclusion 做增量查重：`novaspivack/phenomenology-lean` 仍固定在 `75230e4e...`，LogiKEy 仍固定在 `b29954b0...`，GitHub 全局相关组合检索没有定位到 external formal-philosophy 同型 API。因此只复用本仓已有 `closedIndependentConditioning`、`closedModel_capture` 与 `universalCapture_iff_structure_and_bridge`，不引入重依赖，也不作原创数学／哲学宣称。
+本轮还核查 Andreas Gonçalves Lind 2026 “Givenness as the Opening of All Phenomenological Possibility”。官方全文继续把 Marion 的方向描述为超出 subjectivity 的 anticipation / constitution horizons；这加强了同题 prior-art 边界，却仍没有给出本项目的 extensional `Captured → Conditioned` 或 decidability bridge。证明基础设施方面，项目直接实读 pinned Lean v4.24.0 的 `Init/Classical.lean` 并复用 `Decidable.not_not`；Mathlib 的 `Order/Heyting/Regular.isRegular_of_decidable` 作为更一般的既有结果登记，但不为两条初等 theorem 引入 Mathlib。详见 [decidable conditioning bridge 审计](docs/DECIDABLE_CONDITIONING_BRIDGE.md)。
+
+本项目强制进行 [外部工作与复用审计](docs/PRIOR_ART.md)。已经确认：Lean 中存在独立的 `novaspivack/phenomenology-lean` formal-phenomenology 工程，Isabelle/HOL / AFP 与 LogiKEy 也已有成熟 formal philosophy / computational metaphysics / computational hermeneutics 方法。因此本项目**不声称首创“形式化哲学”或“形式化现象学”工作流**。本轮再次核对前者仍为 `75230e4e...`、LogiKEy 仍为 `b29954b0...`；新增 decidability collapse 直接复用 Lean Core 的标准命题逻辑，不平行重写通用 API，也不作原创逻辑／哲学宣称。
 
 但 **pp. 209–212、225–226 的 *Being Given* 原书正文仍未由本项目独立逐页核对**。Google Books / Stanford-De Gruyter 与正式 Routledge 重印路线仍只提供元数据、选择性预览或 secondary provenance；当前环境未提供目标页可直接读取正文。项目不会利用未经确认授权的整书镜像绕过访问限制。因此尚未达到首个研究问题的停止条件。
 
-详见 [段落卡](docs/PASSAGE_CARDS.md)、[来源登记](docs/SOURCES.md)、[重印 provenance](docs/MARION_REPRINT_PROVENANCE.md)、[Pommier 2020 增量审计](docs/POMMIER_2020_HORIZON_AUDIT.md)、[structure/coherence gap 增量审计](docs/STRUCTURE_COHERENCE_GAP.md)、[strict bridge 层级审计](docs/STRICT_BRIDGE_HIERARCHY.md) 与 [外部工作审计](docs/PRIOR_ART.md)。
+详见 [段落卡](docs/PASSAGE_CARDS.md)、[来源登记](docs/SOURCES.md)、[重印 provenance](docs/MARION_REPRINT_PROVENANCE.md)、[decidable conditioning bridge 审计](docs/DECIDABLE_CONDITIONING_BRIDGE.md)、[Pommier 2020 增量审计](docs/POMMIER_2020_HORIZON_AUDIT.md)、[structure/coherence gap 增量审计](docs/STRUCTURE_COHERENCE_GAP.md)、[strict bridge 层级审计](docs/STRICT_BRIDGE_HIERARCHY.md) 与 [外部工作审计](docs/PRIOR_ART.md)。
 
 ## 工程状态
 
-Lean 4.24.0；不依赖 Mathlib 或其他外部 Lean 包。当前共有 **8 个库模块、62 个具名引理／定理**，全部列入内核公理依赖审计；最终通过状态以对应提交 CI 为准。
+Lean 4.24.0；不依赖 Mathlib 或其他外部 Lean 包。当前共有 **9 个库模块、69 个具名引理／定理**，全部列入内核公理依赖审计；最终通过状态以对应提交 CI 为准。
 
 | 检验 | 形式结论 | 入口 |
 |---|---|---|
@@ -120,6 +138,9 @@ Lean 4.24.0；不依赖 Mathlib 或其他外部 Lean 包。当前共有 **8 个�
 | 上条蕴含的确切点态条件是什么 | 等价于 `Captured p → ¬ Independent p` | `independent_implies_nonExhaustible_iff_capture_refutes_independence` |
 | 在实际显现域的确切条件是什么 | 等价于对 `appears p` 排除 `Captured p ∧ Independent p` | `appearing_independence_implies_nonExhaustible_iff_capture_refutes_independence` |
 | 精确显现域条件的冲突见证正规形是什么 | 不存在实际显现的 `Captured ∧ Independent` witness | `appearing_independence_implies_nonExhaustible_iff_no_captured_independent_witness` |
+| 构造性 exact exclusion 给出什么 conditioning 强度 | 等价于 `Captured → ¬¬ Conditioned`，不自动给 witness | `exact_appearing_condition_iff_double_negated_conditioning` |
+| 什么局部前提把 `¬ Independent` 提升成 conditioning witness | `[Decidable (Conditioned p)]` 足够且直接得到等价 | `not_independent_iff_conditioned_of_decidable` |
+| 在逐点 decidability 下 exact exclusion 与 witness bridge 是否等价 | 是 | `exact_appearing_condition_iff_witness_bridge_of_decidable` |
 | 强结构 bridge 是否蕴含精确显现域条件 | 是 | `exhaustiveCaptureConditions_implies_exact_appearing_condition` |
 | 这个结构化 bridge 是否严格更强 | 是；精确显现域条件可成立而 bridge 失败 | `exact_appearing_condition_is_strictly_weaker_than_exhaustiveCaptureConditions` |
 | captured + independent 对该 bridge 意味着什么 | 同一 witness 足以反证 bridge | `captured_independent_refutes_exhaustiveCaptureConditions` |
@@ -157,6 +178,7 @@ FormalPhenomenology/
   Models/Conditioning.lean       # 分离、联合见证、structure/closure/coherence 不足、bridge 反模型及 strictness witness
   Models/OpenHorizon.lean
   Models/HorizonExtension.lean
+  ConstructiveBridge.lean        # 双重否定、witness bridge、局部 decidability collapse
 Audit.lean
 scripts/check.py
 ```
@@ -168,6 +190,7 @@ scripts/check.py
 | [解释选择登记](docs/INTERPRETATION.md) | 形式词与哲学词之间的距离 |
 | [来源与阅读状态](docs/SOURCES.md) | 一手／二手证据与未核查项 |
 | [Marion 重印 provenance](docs/MARION_REPRINT_PROVENANCE.md) | 正式重印范围、合法获取路线与证据等级 |
+| [decidable conditioning bridge 审计](docs/DECIDABLE_CONDITIONING_BRIDGE.md) | Lean Core/Mathlib 查重、局部 decidability 前提与 2026 同题 prior art |
 | [Pommier 2020 增量审计](docs/POMMIER_2020_HORIZON_AUDIT.md) | horizon 预设／条件化区分、2013 页码导航与复用决定 |
 | [structure/coherence gap 增量审计](docs/STRUCTURE_COHERENCE_GAP.md) | `UniversalStructure + ClosureBridge + ConditioningIsSituated` 仍不足、外部查重与 direct-primary 复查 |
 | [strict bridge 层级审计](docs/STRICT_BRIDGE_HIERARCHY.md) | 强 bridge、精确条件、冲突见证正规形、查重和访问复查 |
@@ -177,4 +200,4 @@ scripts/check.py
 
 ## 下一步
 
-首要硬门槛仍是**独立核对 Marion *Being Given* pp. 209–212、225–226 的原书正文**，或取得可可靠逐段对应的法文 *Étant donné* / 正式重印正文。形式层现在又排除了一个更强但仍不够的候选：即使同时授予 `UniversalStructure`、`ClosureBridge` 与 `ConditioningIsSituated`，仍可能出现 `Captured ∧ Independent`。因此下一轮继续突破合法原典访问门，决定真实文本是否支持任何 capture/conditioning bridge，而不是继续把结构、closure 或同题 secondary reading 偷换成该 bridge。
+首要硬门槛仍是**独立核对 Marion *Being Given* pp. 209–212、225–226 的原书正文**，或取得可可靠逐段对应的法文 *Étant donné* / 正式重印正文。形式层现在把最后一个容易含混的证明论跳步也显式化了：`Captured → ¬ Independent` 在构造性内核中只给 `Captured → ¬¬ Conditioned`；只有再给出诸如逐点 `Decidable (Conditioned p)` 这样的额外前提，才能把它提升为真正的 conditioning witness。下一轮优先继续突破合法原典访问门，而不是把这一形式 decidability 前提或任何 extensional bridge 偷换成历史归属。
