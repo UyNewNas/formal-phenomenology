@@ -78,8 +78,8 @@ theorem exact_appearing_condition_iff_witness_bridge_of_stable
   constructor
   · intro h p hp hc
     exact hs p ((not_independent_iff_not_not_conditioned M p).mp (h p hp hc))
-  · intro h
-    exact appearing_captured_conditioned_implies_exact_appearing_condition M h
+  · intro h p hp hc hi
+    exact (horizonIndependent_iff_not_conditioned M p).mp hi (h p hp hc)
 
 /--
 The stronger horizon-by-horizon bridge constructs an actual conditioning
