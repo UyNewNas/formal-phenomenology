@@ -274,3 +274,28 @@ appearing_witness_bridge_iff_exact_and_captured_stability
 本轮再次检索 BG pp.209–212、225–226、early ED pp.292–297、314–315 与正式重印路线；仍未取得目标作者书页的合法 direct-primary 正文。没有绕过受限 preview / feuilletage / 借阅内容。
 
 **最终复用判断。** 本轮 formal increment 是已有 constructive-logic prior art 上的本仓量词收紧；historical increment 是 Deery 2025 的 secondary corroboration。二者都不能关闭 Marion 书本版本的 direct-primary stop gate。完整逐声明审计见 [DECIDABLE_CONDITIONING_BRIDGE.md](DECIDABLE_CONDITIONING_BRIDGE.md)。
+
+## 13. 本轮增量：decidability 也只需出现在 appearing + captured 域
+
+### 强制前置查重
+
+在新增 localized-decidability corollary 前重新核对：
+
+1. `novaspivack/phenomenology-lean` 的 `main` 仍为 `75230e4eab333ad0fc47573747521ccc1a31a163`；未定位到 Marion / horizon / conditioning / captured-domain decidability 的同型接口。
+2. `cbenzmueller/LogiKEy` 的 `master` 仍为 `b29954b0876d7991baf12f17378f31700f9de759`；当前 theorem 不需要移植其模态或语义嵌入层。
+3. GitHub 增量代码搜索 `exact_appearing_condition captured decidable conditioned` 命中主要来自本仓，没有定位到需直接复用的 external formal-philosophy API。该负结果只说明本次检索范围内未找到，不宣称前人工作不存在。
+4. pinned Lean `v4.24.0` 的 `Decidable.not_not` 与 Mathlib regular/stable proposition 基础已经覆盖通用逻辑部分；因此不新增自定义 `Stable` / decision framework。
+
+**复用决定。** 新 theorem `exact_appearing_condition_iff_witness_bridge_of_captured_decidable` 只是将 Lean Core 的局部 DNE 适配到上一轮已经证明精确的 `appears ∧ Captured` stability 域。全域 `exact_appearing_condition_iff_witness_bridge_of_decidable` 改为它的 corollary。没有新增哲学 predicate，也不把这项量词收紧宣称为原创逻辑。
+
+### 同题解释增量：Llorente Cardo 2025
+
+Jaime Llorente Cardo, “Encrucijadas de la fenomenología acontecial. Entre el horizonte y la neutralidad,” *Invisto* 2(1), 56–72，2025-06-30，DOI `10.21703/invisto.2025.10`。本轮直接读取期刊官方页面的书目元数据、摘要和参考文献；未把 PDF 链接冒充成逐页全文核读。
+
+摘要把问题明确设为：包括 Jean-Luc Marion 在内的当代事件现象学如何尝试超越给予物的“horizonte de constitución”，并讨论这种超越与中性／非人格化之间的张力。它是同题 secondary prior art，进一步限制“超越 constitution-horizon”路线的新颖性表述；但不提供 `Captured`、`Conditioned`、stability、decidability 或 same-horizon bridge。
+
+### direct-primary 门与决定
+
+本轮再次检查 *Being Given* §21（pp.199–212，chapter DOI `10.1515/9780804785723-024`）、§23（pp.221–233）以及 BG pp.209–212、225–226 / early ED pp.292–297、314–315 的合法公开路径。仍只取得书目／章节元数据、secondary exact quotation 与既有 crosswalk，没有取得目标作者书页的 direct-primary 正文；不使用非正式转载关闭停止门。
+
+**最终复用判断。** 本轮只降低 decidability 的无关量词强度；精确 proof-theoretic premise 仍然是 appearing+captured 域的 double-negation stability。历史解释没有升级，Marion 书本版本的 direct-primary stop gate 继续保持。详细审计见 [DECIDABLE_CONDITIONING_BRIDGE.md](DECIDABLE_CONDITIONING_BRIDGE.md)。
