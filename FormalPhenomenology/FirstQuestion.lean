@@ -105,6 +105,30 @@ theorem first_question_nonExhaustible_allows_aspectwise_horizon_cover :
   exact splitModel_individual
 
 /--
+The exact quantifier-order guardrail needed when the first question speaks of
+"one horizon" versus horizons that may vary with the aspect.
+
+A single exhaustive related horizon always gives aspectwise cover.  The converse
+fails already for an actually appearing phenomenon: the existing split-model
+witness is aspectwise coverable but no one related horizon captures it.
+
+This is a FORMAL consequence of the current aspect language only.  It does not
+identify either side with Marion's one/several/combined-horizon taxonomy and
+introduces no new historical primitive.
+-/
+theorem first_question_aspectwise_cover_is_strictly_weaker_than_capture :
+    (∀ (M : Presentation) (p : M.Phenomenon),
+      M.Captured p → M.IndividuallyCoverable p) ∧
+      (∃ M : Presentation, ∃ p : M.Phenomenon,
+        M.appears p ∧ M.IndividuallyCoverable p ∧ ¬ M.Captured p) := by
+  constructor
+  · intro M p hc
+    exact captured_implies_individuallyCoverable M p hc
+  · obtain ⟨M, p, hp, _, hn, hi⟩ :=
+      first_question_nonExhaustible_allows_aspectwise_horizon_cover
+    exact ⟨M, p, hp, hi, (nonExhaustible_iff_not_captured M p).mp hn⟩
+
+/--
 One kernel target collecting the complete *narrow formal* answer currently
 needed for the first research question.
 
