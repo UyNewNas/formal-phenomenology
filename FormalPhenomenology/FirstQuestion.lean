@@ -65,6 +65,20 @@ theorem first_question_compatibility_witness :
   exact related_independent_nonExhaustible_are_jointly_consistent
 
 /--
+A concrete witness for the bare first-question separation.
+
+The finite `splitModel` contains an actually appearing phenomenon that has a
+related horizon and is nevertheless not exhausted by any related horizon.  This
+is a thin project-level re-export of `splitModel_situatedExcess`: it introduces
+no new model, primitive, logical principle, or historical attribution.  Its
+purpose is only to make the existential countermodel corresponding to the
+negative implication available as an explicit first-question entry point.
+-/
+theorem first_question_situated_nonExhaustible_witness :
+    ∃ M : Presentation, M.HasSituatedExcess := by
+  exact ⟨splitModel, splitModel_situatedExcess⟩
+
+/--
 One kernel target collecting the complete *narrow formal* answer currently
 needed for the first research question.
 
@@ -74,7 +88,8 @@ appearing-domain condition for `Independent → NonExhaustible` is absence of a
 captured-independent witness; producing an actual conditioning witness requires
 exactly that exclusion plus captured-domain double-negation stability; and the
 weak related / independent / non-exhaustible profile is jointly consistent with
-conditioning coherence.
+conditioning coherence.  The concrete situated/non-exhaustible countermodel is
+also exposed separately by `first_question_situated_nonExhaustible_witness`.
 
 This is deliberately an aggregation theorem.  It adds no philosophical
 primitive, no classical axiom, and no attribution to Merleau-Ponty or Marion.
