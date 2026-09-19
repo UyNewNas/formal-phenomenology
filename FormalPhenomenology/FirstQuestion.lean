@@ -82,21 +82,24 @@ theorem first_question_situated_nonExhaustible_witness :
 One kernel target collecting the complete *narrow formal* answer currently
 needed for the first research question.
 
-It combines four independently verified facts without strengthening any of
-them: bare horizon structure does not entail exhaustive closure; the exact
+It combines five independently verified facts without strengthening their
+interpretation: bare horizon structure does not entail exhaustive closure; an
+explicit situated/non-exhaustible finite witness exists; the exact
 appearing-domain condition for `Independent → NonExhaustible` is absence of a
 captured-independent witness; producing an actual conditioning witness requires
 exactly that exclusion plus captured-domain double-negation stability; and the
 weak related / independent / non-exhaustible profile is jointly consistent with
-conditioning coherence.  The concrete situated/non-exhaustible countermodel is
-also exposed separately by `first_question_situated_nonExhaustible_witness`.
+conditioning coherence.
 
-This is deliberately an aggregation theorem.  It adds no philosophical
-primitive, no classical axiom, and no attribution to Merleau-Ponty or Marion.
-The historical/source gate therefore remains separate from this formal target.
+This is deliberately an aggregation theorem.  The added existential conjunct is
+only the already verified `splitModel` witness, so the negative implication is
+not left as a bare meta-level negation.  It adds no philosophical primitive, no
+classical axiom, and no attribution to Merleau-Ponty or Marion.  The
+historical/source gate therefore remains separate from this formal target.
 -/
 theorem first_question_complete_formal_answer :
     (¬ (∀ M : Presentation, M.UniversalStructure → M.ClosureBridge)) ∧
+      (∃ M : Presentation, M.HasSituatedExcess) ∧
       (∀ M : HorizonConditioning,
         (∀ p, M.base.appears p → M.Independent p → M.base.NonExhaustible p) ↔
           ¬ ∃ p, M.base.appears p ∧ M.base.Captured p ∧ M.Independent p) ∧
@@ -109,6 +112,8 @@ theorem first_question_complete_formal_answer :
         M.ConditioningIsSituated ∧ M.HasSituatedIndependentExcess) := by
   constructor
   · exact first_question_formal_answer.1
+  constructor
+  · exact first_question_situated_nonExhaustible_witness
   constructor
   · exact first_question_formal_answer.2
   constructor
