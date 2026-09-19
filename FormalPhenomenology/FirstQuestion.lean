@@ -106,24 +106,34 @@ theorem first_question_nonExhaustible_allows_aspectwise_horizon_cover :
 One kernel target collecting the complete *narrow formal* answer currently
 needed for the first research question.
 
-It combines five independently verified facts without strengthening their
+It combines six independently verified facts without strengthening their
 interpretation: bare horizon structure does not entail exhaustive closure; an
-explicit situated/non-exhaustible finite witness exists; the exact
-appearing-domain condition for the weak `Independent → NonExhaustible` reading
-is absence of a captured-independent witness; producing an actual conditioning
-witness requires exactly that exclusion plus captured-domain double-negation
-stability; and the weak related / independent / non-exhaustible profile is
-jointly consistent.
+explicit situated/non-exhaustible finite witness exists; weak conditioning-
+independence by itself does not entail non-exhaustibility; the exact
+appearing-domain condition for that implication is absence of a captured-
+independent witness; producing an actual conditioning witness requires exactly
+that exclusion plus captured-domain double-negation stability; and the weak
+related / independent / non-exhaustible profile is jointly consistent.
+
+The explicit negative `Independent → NonExhaustible` conjunct is important for
+scope: the repository's `Independent` predicate means only that no horizon is
+marked by the separate `conditions` relation.  It is therefore weaker than
+historical phrases such as "does not depend on a horizon" when those phrases
+already carry a substantive claim of freedom from horizon-imposed limitation.
 
 This is deliberately an aggregation theorem.  The added existential conjunct is
-only the already verified `splitModel` witness, so the negative implication is
-not left as a bare meta-level negation.  It adds no philosophical primitive, no
-classical axiom, and no attribution to Merleau-Ponty or Marion.  The
-historical/source gate therefore remains separate from this formal target.
+only the already verified `splitModel` witness, and the new negative conjunct is
+only the already verified `closedIndependentConditioning` countermodel packaged
+by `horizon_independence_does_not_imply_nonExhaustible`.  It adds no
+philosophical primitive, no classical axiom, and no attribution to Merleau-Ponty
+or Marion.  The historical/source gate therefore remains separate from this
+formal target.
 -/
 theorem first_question_complete_formal_answer :
     (¬ (∀ M : Presentation, M.UniversalStructure → M.ClosureBridge)) ∧
       (∃ M : Presentation, M.HasSituatedExcess) ∧
+      (¬ (∀ (M : HorizonConditioning) (p : M.base.Phenomenon),
+        M.Independent p → M.base.NonExhaustible p)) ∧
       (∀ M : HorizonConditioning,
         (∀ p, M.base.appears p → M.Independent p → M.base.NonExhaustible p) ↔
           ¬ ∃ p, M.base.appears p ∧ M.base.Captured p ∧ M.Independent p) ∧
@@ -138,6 +148,8 @@ theorem first_question_complete_formal_answer :
   · exact first_question_formal_answer.1
   constructor
   · exact first_question_situated_nonExhaustible_witness
+  constructor
+  · exact horizon_independence_does_not_imply_nonExhaustible
   constructor
   · exact first_question_formal_answer.2
   constructor
