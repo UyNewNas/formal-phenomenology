@@ -82,6 +82,27 @@ theorem first_question_situated_nonExhaustible_witness :
   exact ⟨splitModel, splitModel_situatedExcess⟩
 
 /--
+A semantic guardrail for reading `NonExhaustible` in the first-question model.
+
+`NonExhaustible p` only says that no *single situated horizon* exhausts all
+encoded aspects of `p`.  It does not say that the aspects cannot be covered
+one-by-one by horizons that depend on the aspect.  The finite `splitModel`
+realizes both properties at one actually appearing phenomenon.
+
+This is a thin re-use of the already verified split-model facts, not a new
+historical claim and not a formalization of Marion's stronger language about
+one, several, or combinations of horizons.  It exists to prevent the weak
+single-horizon predicate from being over-read as that stronger thesis.
+-/
+theorem first_question_nonExhaustible_allows_aspectwise_horizon_cover :
+    ∃ M : Presentation, ∃ p : M.Phenomenon,
+      M.appears p ∧ M.NonExhaustible p ∧ M.IndividuallyCoverable p := by
+  obtain ⟨p, hp, _, hn⟩ := splitModel_situatedExcess
+  refine ⟨splitModel, p, hp, hn, ?_⟩
+  cases p
+  exact splitModel_individual
+
+/--
 One kernel target collecting the complete *narrow formal* answer currently
 needed for the first research question.
 
