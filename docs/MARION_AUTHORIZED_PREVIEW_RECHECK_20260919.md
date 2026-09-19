@@ -75,3 +75,22 @@ The first research question remains open unless one of the authorized surfaces a
 4. only after direct body review, freeze the historical mapping and rerun the full build/source/root/axiom audit on the same final SHA.
 
 No direct-primary completion claim is made in this round.
+
+## 2026-09-19 late-run exact-edition recheck
+
+This continuation started from branch head `54924f42360c3581bffe46ec7c683f2b66afff48`, whose PR workflow `35435312085` had already completed successfully. Before changing any formal interface, the same three external-work layers were rechecked against the current object: engineering reuse, computational-hermeneutic method prior art, and same-topic Marion §21 interpretation. No same-shaped formal implementation was located that would replace the existing narrow `situated / conditions / Exhausts` layer; the negative repository search remains only a reuse decision, not an originality claim.
+
+The exact authorized editions were then rechecked through ordinary public surfaces:
+
+- Google Books for Stanford *Being Given* continues to expose official limited-preview metadata and the chapter boundaries (§21 at p. 199, §22 at p. 212), but the accessible search/preview surface did not expose target body from pp. 209–211.
+- De Gruyter Brill continues to expose the official book/chapter metadata and DOI route, but no reviewable §21 target body was returned by the ordinary public endpoint in this run.
+- Exact-ISBN searches for the formal Spanish translation *Siendo dado* (`9788497565561`) continued to return publisher/retail metadata and secondary exact-page anchors around pp. 341–342, not the translation body itself.
+- The public Lavoisier PUF excerpt endpoint remains a legitimate ordinary route. A normal container download and a direct ordinary HTTPS request both failed at DNS resolution for `e.lavoisier.fr` in the execution environment. No login, borrowing, DRM removal, geographic-control bypass, preview-boundary bypass, or alternate privileged transport was attempted.
+
+The strongest newly rechecked evidence therefore remains secondary/navigation evidence rather than direct revised §21 body. It does not overturn the current source discipline: `Independent` stays a deliberately weak interface for freedom from horizon as prior conditioning; `NonExhaustible` stays an independent extensional axis; `Captured` stays distinct from Marion's technical saturation vocabulary.
+
+### Formal/regression decision
+
+No source in this continuation supplies the missing historical bridge `Captured → Conditioned`, the same-horizon bridge `situated ∧ Exhausts → conditions`, or a reason to replace `Independent` by `Horizonless`. Adding another primitive or theorem solely because the source gate is still open would increase unconstrained modelling freedom rather than answer the first question. Accordingly, the Lean contribution of this continuation is **regression verification of the existing complete narrow target**, not theorem-count expansion: `first_question_complete_formal_answer` remains the kernel target to rebuild and audit on the new documentation head.
+
+This appended checkpoint itself creates a new exact branch SHA. It must receive its own GitHub Actions verdict; the successful run on `54924f42360c3581bffe46ec7c683f2b66afff48` is recorded only as the pre-write baseline and is not inherited by the new commit. The stop gate remains direct lawful review of revised §21 body (BG 209–212 / early ED 292–297 / SD 341–342, or a reliably mapped authorized revised reprint/translation).
