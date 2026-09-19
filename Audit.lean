@@ -77,4 +77,5 @@ import FormalPhenomenology
 #print axioms FormalPhenomenology.first_question_formal_answer
 #print axioms FormalPhenomenology.first_question_witness_boundary
 #print axioms FormalPhenomenology.first_question_compatibility_witness
+#print axioms FormalPhenomenology.first_question_situated_nonExhaustible_witness
 #print axioms FormalPhenomenology.first_question_complete_formal_answer
