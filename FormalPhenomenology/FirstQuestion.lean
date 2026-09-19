@@ -112,28 +112,30 @@ It combines seven independently verified facts without strengthening their
 interpretation: bare horizon structure does not entail exhaustive closure; an
 explicit situated/non-exhaustible finite witness exists; the same appearing
 witness may have a situated horizon and fail single-horizon exhaustion even
-while every encoded aspect is covered by some horizon; weak
-conditioning-independence by itself does not entail non-exhaustibility; the
-exact appearing-domain condition for that implication is absence of a
-captured-independent witness; producing an actual conditioning witness requires
-exactly that exclusion plus captured-domain double-negation stability; and the
-weak related / independent / non-exhaustible profile is jointly consistent.
+while every encoded aspect is covered by some horizon; there is also an
+actually appearing structured witness that is weakly conditioning-independent
+and nevertheless captured; the exact appearing-domain condition for
+`Independent → NonExhaustible` is absence of such a captured-independent
+witness; producing an actual conditioning witness requires exactly that
+exclusion plus captured-domain double-negation stability; and the weak related /
+independent / non-exhaustible profile is jointly consistent.
 
 The aspectwise-cover conjunct is an interpretation guardrail, not a model of
 Marion's stronger one/multiple/combined-horizon taxonomy: it records only the
 quantifier distinction between one horizon covering every encoded aspect and a
 possibly different horizon covering each aspect.
 
-The explicit negative `Independent → NonExhaustible` conjunct is important for
-scope: the repository's `Independent` predicate means only that no horizon is
-marked by the separate `conditions` relation.  It is therefore weaker than
-historical phrases such as "does not depend on a horizon" when those phrases
-already carry a substantive claim of freedom from horizon-imposed limitation.
+The explicit `Captured ∧ Independent` witness is important for scope: the
+repository's `Independent` predicate means only that no horizon is marked by the
+separate `conditions` relation.  It is therefore weaker than historical phrases
+such as "does not depend on a horizon" when those phrases already carry a
+substantive claim of freedom from horizon-imposed limitation.  Keeping the
+witness inside the `appears` and `Structured` domain prevents a weaker global
+counterexample from obscuring the quantifiers of the research question.
 
 This is deliberately an aggregation theorem.  The existential conjuncts are
-only already verified finite-model witnesses, and the negative conjunct is only
-the already verified `closedIndependentConditioning` countermodel packaged by
-`horizon_independence_does_not_imply_nonExhaustible`.  It adds no philosophical
+only already verified finite-model witnesses, including
+`related_independent_captured_are_jointly_consistent`; it adds no philosophical
 primitive, no classical axiom, and no attribution to Merleau-Ponty or Marion.
 The historical/source gate therefore remains separate from this formal target.
 -/
@@ -142,8 +144,9 @@ theorem first_question_complete_formal_answer :
       (∃ M : Presentation, M.HasSituatedExcess) ∧
       (∃ M : Presentation, ∃ p : M.Phenomenon,
         M.appears p ∧ M.Structured p ∧ M.NonExhaustible p ∧ M.IndividuallyCoverable p) ∧
-      (¬ (∀ (M : HorizonConditioning) (p : M.base.Phenomenon),
-        M.Independent p → M.base.NonExhaustible p)) ∧
+      (∃ M : HorizonConditioning, ∃ p : M.base.Phenomenon,
+        M.base.appears p ∧ M.base.Structured p ∧
+          M.Independent p ∧ M.base.Captured p) ∧
       (∀ M : HorizonConditioning,
         (∀ p, M.base.appears p → M.Independent p → M.base.NonExhaustible p) ↔
           ¬ ∃ p, M.base.appears p ∧ M.base.Captured p ∧ M.Independent p) ∧
@@ -161,7 +164,7 @@ theorem first_question_complete_formal_answer :
   constructor
   · exact first_question_nonExhaustible_allows_aspectwise_horizon_cover
   constructor
-  · exact horizon_independence_does_not_imply_nonExhaustible
+  · exact related_independent_captured_are_jointly_consistent
   constructor
   · exact first_question_formal_answer.2
   constructor
