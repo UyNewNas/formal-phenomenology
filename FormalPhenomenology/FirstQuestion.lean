@@ -13,9 +13,11 @@ having a horizon structure for every appearing phenomenon does not, by itself,
 entail an exhaustive-capture bridge.
 
 The second conjunct records the exact condition for the conditioning variant on
-the domain actually mentioned by the question: horizon-independence entails
-non-exhaustibility for every appearing phenomenon exactly when there is no
-appearing phenomenon that is both captured and horizon-independent.
+the domain actually mentioned by the question: weak `Independent` in this model
+means absence of a `conditions` witness (not horizonlessness and not full
+saturation), and it entails non-exhaustibility for every appearing phenomenon
+exactly when there is no appearing phenomenon that is both captured and
+`Independent` in that weak sense.
 
 This theorem introduces no new philosophical primitive and makes no historical
 attribution.  It only packages two already verified FORMAL results so the first
@@ -54,10 +56,11 @@ first question.
 
 There is a model in which conditioning horizons, when present, are required to
 be related horizons, while an actually appearing phenomenon still has a related
-horizon, is horizon-independent in the weak `conditions` sense, and is not
+horizon, is weakly `Independent` in the `conditions`-relation sense, and is not
 exhausted by any related horizon.  This is only a thin re-export of the already
-verified finite-model theorem.  It does not identify this profile with Marion's
-full saturated phenomenon and makes no historical attribution.
+verified finite-model theorem.  It does not identify this profile with
+horizonlessness or Marion's full saturated phenomenon and makes no historical
+attribution.
 -/
 theorem first_question_compatibility_witness :
     ∃ M : HorizonConditioning,
@@ -85,11 +88,11 @@ needed for the first research question.
 It combines five independently verified facts without strengthening their
 interpretation: bare horizon structure does not entail exhaustive closure; an
 explicit situated/non-exhaustible finite witness exists; the exact
-appearing-domain condition for `Independent → NonExhaustible` is absence of a
-captured-independent witness; producing an actual conditioning witness requires
-exactly that exclusion plus captured-domain double-negation stability; and the
-weak related / independent / non-exhaustible profile is jointly consistent with
-conditioning coherence.
+appearing-domain condition for the weak `Independent → NonExhaustible` reading
+is absence of a captured-independent witness; producing an actual conditioning
+witness requires exactly that exclusion plus captured-domain double-negation
+stability; and the weak related / independent / non-exhaustible profile is
+jointly consistent.
 
 This is deliberately an aggregation theorem.  The added existential conjunct is
 only the already verified `splitModel` witness, so the negative implication is
