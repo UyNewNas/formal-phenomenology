@@ -84,3 +84,26 @@ Google Books 的 Taylor & Francis 书目页也独立确认 Volume 4 的编辑、
 - Fordham / De Gruyter Brill 2013 `Sketch` 章节页仍显示正文不可访问。
 
 所以本轮没有把 `PRIMARY-PUBLISHER-METADATA`、`SECONDARY-EXACT-REPRINT-PROVENANCE` 或 selected preview 升格成 `PRIMARY-DIRECT-PAGE`。这一负结果是访问审计，不是哲学结论；首问停止门保持不变。
+
+## 7. 2026-09-20：把 *Being Given* §21 收窄到章节级出版社入口
+
+本轮继续从官方／授权路线核对尚未关闭的 direct-primary 门，并补齐一项此前在 `SOURCES.md` 已登记、但本页尚未集中记录的章节级 provenance。
+
+De Gruyter Brill 当前的 *Being Given* 电子书目录把相关章节明确列为：
+
+- Jean-Luc Marion, `§21 Sketch of the Saturated Phenomenon: The Horizon`；
+- **pp. 199–212**；
+- chapter DOI **`10.1515/9780804785723-024`**；
+- 官方章节入口：<https://www.degruyterbrill.com/document/doi/10.1515/9780804785723-024/html>。
+
+PhilPapers 的章节书目记录独立给出同一题名、页段与 DOI；De Gruyter 的免费目录材料同时确认下一节 §22 从 p. 212 开始。因此 BG pp. 209–212 的目标范围现在不再只是“整本书中的一组页码”，而是被精确锁定在一个可引用的出版社章节对象内部。
+
+本轮实际尝试直接打开该官方 chapter-level HTML／正文入口时，当前研究运行时仍不能取得章节正文；公开检索只能返回章节元数据／目录层。另行重试已登记的 PUF/Lavoisier 公共 excerpt endpoint `https://e.lavoisier.fr/extract/523630` 时，网页工具确认其内容类型为 `application/epub+zip`，但当前运行时不能摄取该二进制 excerpt，容器下载也未成功。未逆向 reader API、未绕过 DRM／登录／访问控制。
+
+因此本轮新增证据状态是：
+
+`PRIMARY-PUBLISHER-CHAPTER-METADATA / EXACT-CHAPTER-DOI / BODY-NOT-REVIEWED`
+
+而不是 `PRIMARY-DIRECT-PAGE`。
+
+这个收敛只改变合法获取路线的精度，不改变解释结论：`Independent` 仍保持为当前模型中“无 `conditions` witness”的弱接口，`NonExhaustible` 仍只表示无单一 related horizon 穷尽全部已编码 aspect；在直接读到 BG 209–212（或已映射 ED/SD／可靠重印正文）之前，不把二者升级成 Marion 完整 saturated-phenomenon 的历史定义，也不新增 horizon-combination primitive。
