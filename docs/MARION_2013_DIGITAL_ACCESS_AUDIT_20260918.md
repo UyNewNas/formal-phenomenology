@@ -83,3 +83,20 @@ The highest-value next source step is now concrete:
 4. in parallel, keep the official Cairn PUF electronic edition as a legitimate access route, but do not infer access to paid/conditional chapter content from the public metadata page.
 
 Until one of those routes yields the target primary body text, the first research question remains formally packaged but historically **not yet complete**.
+
+## 8. 2026-09-20 licensed-retailer provenance recheck
+
+A fresh external-first pass rechecked the same digital object through independent lawful retailer / reader surfaces before any further modelling change. The proof-infrastructure baselines were also re-read: `novaspivack/phenomenology-lean` is still at `75230e4eab333ad0fc47573747521ccc1a31a163`, and `cbenzmueller/LogiKEy` is still at `b29954b0876d7991baf12f17378f31700f9de759`; no new same-shaped Marion/horizon formal API was found that would justify replacing the existing narrow relation layer.
+
+The source-provenance result is stricter than the previous checkpoint:
+
+- Bol exposes EAN `9782130807490`, original release date 18 September 2013, PUF, an **Inkijkexemplaar** preview entry, and labels the digital item **Editie 2**: https://www.bol.com/nl/nl/p/etant-donne-essai-d-une-phenomenologie-de-la-donation-ebook/9200000089276469/ .
+- Decitre exposes the same EAN `9782130807490`, the same 18 September 2013 release date and 540-page ePub, but labels it **4e édition revue et augmentée**: https://www.decitre.fr/ebooks/etant-donne-9782130807490_9782130807490_2.html .
+- Casa del Libro exposes the same EAN / ISBN, the same 18 September 2013 date and a **Leer primeras páginas** entry: https://www.casadellibro.com/ebook-etant-donne--essai-dune-phenomenologie-de-la-donation-ebook/9782130807490/15198112 .
+- Vivlio exposes the same EAN and a **Lire un extrait** entry but dates the current digital publication 27 February 2025; it also advertises table-of-contents / go-to-page navigation: https://shop.vivlio.com/product/9782130807490_9782130807490_2/etant-donne-essai-dune-phenomenologie-de-la-donation .
+
+These independent surfaces strengthen the lawful-access route but also prove that **EAN identity and retailer edition labels are insufficient provenance for page mapping**: the same digital identifier is simultaneously described as edition 2 and edition 4, with 2013 and 2025 publication dates on different storefronts. This is a metadata conflict, not evidence that the philosophical text itself differs at the target passage.
+
+Accordingly, the stop-gate rule is tightened operationally: no BG/early-ED/SD page equivalence may be inferred from EAN `9782130807490`, the 540-page count, an edition number, or a reader's “go to page” capability. A future preview can close the source gate only if it exposes the target body together with enough **internal anchors**—at minimum the §21 heading / surrounding sentence sequence and edition or print-equivalent page provenance—to compare it against the existing BG/early-ED crosswalk.
+
+The current web runtime exposes the preview controls and metadata above but not their protected preview bodies. No DRM, authentication, reader API, or preview limit was bypassed. Therefore evidence status remains **LAWFUL-PREVIEW-ROUTE / BODY-NOT-READ**, the formal interpretation is unchanged, and adding a new Lean primitive would be unsupported model growth rather than progress on the remaining gate.
