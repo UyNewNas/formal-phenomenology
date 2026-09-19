@@ -24,7 +24,19 @@ Fresh searches were run around the revised Spanish route `Siendo dado` pp. 341�
 
 ### Jaime Llorente 2015 — direct secondary HTML/PDF with exact SD page anchors
 
-Source: Jaime Llorente, “El existir neutro como ‘fenómeno saturado’: describiendo la contra-experiencia del exceso con Emmanuel Levinas y Jean-Luc Marion,” *Tópicos (México)* 49 (jul./dic. 2015).  The SciELO article HTML and Redalyc PDF were directly read in this run.
+Source: Jaime Llorente Cardo, “El existir neutro como ‘fenómeno saturado’: describiendo la contra-experiencia del exceso con Emmanuel Levinas y Jean-Luc Marion,” *Tópicos. Revista de Filosofía* 49 (2015), 123–162, DOI `10.21555/top.v0i49.686`.
+
+Authoritative journal record directly checked in the continuation run:
+
+- <https://revistas.up.edu.mx/topicos/es/article/view/686>
+
+Direct open PDF text was checked through Redalyc:
+
+- <https://www.redalyc.org/pdf/3230/323040692005.pdf>
+
+The official journal record gives pp. 123–162, while the Redalyc cover metadata says pp. 123–161. For bibliographic metadata this project follows the journal's own record; the inspected target passage itself is unambiguous at printed pp. 147–149. This is a provenance correction only, not a substantive interpretive change.
+
+Evidence status: **SECONDARY-DIRECT-PDF-TEXT / EXACT-TRANSLATION-PAGE-QUOTATION**. The article is a secondary study. Its quotations from Marion's Spanish translation are useful as exact-page navigation and interpretation evidence, but they do **not** count as direct inspection of the primary book body.
 
 Useful exact-page evidence:
 
@@ -32,6 +44,8 @@ Useful exact-page evidence:
 - it cites the §21 question whether some phenomena can exceed their horizon, again at SD p. 341;
 - it reconstructs the ordered alternatives on SD pp. 341–342: remaining within one horizon, articulating several horizons for one saturated phenomenon, and a stronger case not captured by those alternatives;
 - it later cites SD p. 344 for the strongest absolute case.
+
+Only short textual anchors are retained in the repository (`condición del aparecer`; `acoge y restringe`); the rest is paraphrase of the directly inspected secondary article.
 
 This is stronger navigation evidence than a bare page crosswalk because the secondary source exposes the local argumentative order and page anchors.  It is still **SECONDARY-DIRECT-HTML/PDF + EXACT-PAGE-QUOTATION**, not Marion's book body.
 
@@ -58,16 +72,31 @@ The proof reuses `first_question_situated_nonExhaustible_witness`, which itself 
 
 The reason for adding the conjunct is proof-object hygiene: the final kernel target now contains both the bare non-entailment and an explicit non-vacuous model witnessing situated appearance together with non-exhaustibility, so a downstream reader does not have to recover the witness from a separate theorem.
 
+A later source-regression pass did not change any theorem statement. It only tightened the Lean docstrings so that `Independent` is explicitly described as the weak absence-of-`conditions`-witness interface, not as horizonlessness or full saturation. This wording change is source-fidelity maintenance; it does not alter the proof term or add a philosophical axiom.
+
+## Lawful direct-body route recheck
+
+The direct-primary gate was re-tested through ordinary public surfaces without bypassing access controls.
+
+- Google Books still exposes the exact Spanish edition metadata: Jean-Luc Marion, *Siendo dado*, Javier Bassas Vila trans., Síntesis 2008, ISBN `9788497565561`, 514/516 pages depending catalogue metadata. The accessible result did not expose pp. 341–342 body.
+- Buscalibre exposes an `Empezar a Leer` label for the exact ISBN, but the ordinary HTML available to the current browser contains only cover/product metadata and the publisher description; it did not expose the target preview body.
+- PUF/Lavoisier's exact EAN `9782130807490` product still exposes a public “Télécharger un extrait” route. The ordinary browser identifies the endpoint as `application/epub+zip`, but the current browser cannot parse that binary and the container route cannot resolve the host. No alternate privileged transport was used.
+- Cultura exposes a `feuilleter` surface for the same French title/EAN; the commercial EPUB is marked Readium LCP. The target preview body was not ingested. No DRM, login, borrowing, geographic restriction, or preview-boundary bypass was attempted.
+
+These are legitimate future access routes, not reviewed primary passages.
+
 ## Verification status
 
 Formal commit:
 
 - `4d36c24969f45fc1b96c8de5c40cd9ccce2deecc` — strengthen `first_question_complete_formal_answer` with the explicit situated witness.
 
-This documentation commit follows it on the same branch.  The final branch SHA must pass the repository workflow (`python3 scripts/check.py`, root-module coverage, `lake build`, forbidden-placeholder scan and complete `#print axioms` audit) before the strengthened target is called kernel-verified.  The local container could not resolve `github.com`, so no local clone/build is claimed for this run.
+The later Lean-source wording refinement is documentation-only at the theorem source level; its exact branch SHA must independently pass the same repository workflow before the current head is treated as regression-verified.
+
+The repository workflow is the authoritative validation route here (`python3 scripts/check.py`, root-module coverage, `lake build`, forbidden-placeholder scan and complete `#print axioms` audit).  The local container cannot resolve `github.com`, so no local clone/build is claimed.
 
 ## Source gate
 
 The first research question remains open after this checkpoint.  The material stop gate is still lawful direct body-text review of revised §21: BG pp. 209–212, early ED pp. 292–297, SD pp. 341–342, or a reliably mapped formal reprint/translation carrying the revised passage itself.
 
-The new Llorente evidence is intentionally not used to bypass that requirement.  It sharpens the expected ordering and interpretation checks to apply once the direct body is available.
+The Llorente evidence is intentionally not used to bypass that requirement.  It sharpens the expected ordering and interpretation checks to apply once the direct body is available.
