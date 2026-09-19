@@ -1,16 +1,16 @@
 # First-question source-gate audit — 2026-09-20
 
-This checkpoint advances only the remaining source gate for the first horizon/exhaustibility question.  It does not add a new philosophical primitive, alter the formal answer, or upgrade secondary evidence into a primary-text reading.
+This checkpoint advances only the remaining source gate for the first horizon/exhaustibility question. It does not add a new philosophical primitive, alter the formal answer, or upgrade secondary evidence into a primary-text reading.
 
 ## 1. External-work / reuse gate refreshed
 
 Before touching the first-question package, the run rechecked the current external baselines actually relevant to the existing model.
 
-- `novaspivack/phenomenology-lean` remains at commit `75230e4eab333ad0fc47573747521ccc1a31a163` (2026-05-20).  No newer upstream commit is available to re-audit, so the previous result stands: it is direct Lean formal-phenomenology prior art, but it does not provide a Marion horizon/exhaustibility API replacing this repository's narrow `situated / conditions / Exhausts` layer.
-- `cbenzmueller/LogiKEy` remains at commit `b29954b0876d7991baf12f17378f31700f9de759` (2026-09-13).  Its current work continues to supply a computational-philosophy / semantic-embedding methodology baseline, not a same-topic theorem or importable horizon model for the present elementary relation language.
-- Targeted web searches were repeated around `Being Given`, `Étant donné`, `Sketch of the Saturated Phenomenon`, one/several/combined horizons, `condition of possibility`, and the formal Routledge 2004 reprint.  The strongest retrievable body quotations in this pass were still secondary exact-page reconstructions (notably the already known Leung/Mason/Moran lines).  They constrain interpretation but do not satisfy the direct-primary stop gate.
+- `novaspivack/phenomenology-lean` remains at commit `75230e4eab333ad0fc47573747521ccc1a31a163` (2026-05-20). No newer upstream commit is available to re-audit, so the previous result stands: it is direct Lean formal-phenomenology prior art, but it does not provide a Marion horizon/exhaustibility API replacing this repository's narrow `situated / conditions / Exhausts` layer.
+- `cbenzmueller/LogiKEy` remains at commit `b29954b0876d7991baf12f17378f31700f9de759` (2026-09-13). Its current work continues to supply a computational-philosophy / semantic-embedding methodology baseline, not a same-topic theorem or importable horizon model for the present elementary relation language.
+- Targeted web searches were repeated around `Being Given`, `Étant donné`, `Sketch of the Saturated Phenomenon`, one/several/combined horizons, `condition of possibility`, and the formal Routledge 2004 reprint. The strongest retrievable body quotations in this pass were still secondary exact-page reconstructions (notably the already known Leung/Mason/Moran lines). They constrain interpretation but do not satisfy the direct-primary stop gate.
 
-Reuse decision: **no new dependency and no new generic logic API**.  The existing first-question Lean layer remains the minimal implementation.
+Reuse decision: **no new dependency and no new generic logic API**. The existing first-question Lean layer remains the minimal implementation.
 
 ## 2. Authorized Routledge / Google Books reprint route rechecked
 
@@ -26,7 +26,7 @@ The current Google Books surface directly confirms:
 3. the next listed contribution begins at p. 29, so the reprinted `Sketch` occupies the expected p. 5–28 range already established by Moran's bibliography;
 4. Google Books labels the volume as previewable and exposes only selected pages / common-term indexing in this runtime.
 
-A click-through to the preview returned only the front-cover surface; the word-cloud / within-volume `horizon` route was redirected to Google's automated-traffic interstitial and did not expose the chapter body.  Exact-phrase searches for the BG 210–212 horizon sequence likewise surfaced secondary quotations rather than the reprint's primary body.
+A click-through to the preview returned only the front-cover surface; the word-cloud / within-volume `horizon` route was redirected to Google's automated-traffic interstitial and did not expose the chapter body. Exact-phrase searches for the BG 210–212 horizon sequence likewise surfaced secondary quotations rather than the reprint's primary body.
 
 Evidence status therefore remains:
 
@@ -34,11 +34,11 @@ Evidence status therefore remains:
 
 and **not** `PRIMARY-DIRECT-PAGE`.
 
-This is still useful source engineering: the authorized reprint route is live and independently confirms the exact chapter slot, but the current runtime cannot lawfully inspect the target internal pages.  No access control was bypassed, and no unauthorized full-book mirror was used.
+This is still useful source engineering: the authorized reprint route is live and independently confirms the exact chapter slot, but the current runtime cannot lawfully inspect the target internal pages. No access control was bypassed, and no unauthorized full-book mirror was used.
 
 ## 3. Same-topic interpretation cross-check
 
-The fresh search again recovered the already registered secondary reconstruction of BG 210–211: one-horizon saturation, spillover into multiple horizons, and the strongest case where no combination of horizons can tolerate the phenomenon's absoluteness.  It also recovered the already registered BG 211–212 wording that the saturated phenomenon is freed because it does not depend on horizon as a condition of possibility.
+The fresh search again recovered the already registered secondary reconstruction of BG 210–211: one-horizon saturation, spillover into multiple horizons, and the strongest case where no combination of horizons can tolerate the phenomenon's absoluteness. It also recovered the already registered BG 211–212 wording that the saturated phenomenon is freed because it does not depend on horizon as a condition of possibility.
 
 These points continue to support the repository's current semantic guardrails:
 
@@ -51,9 +51,9 @@ Because this pass produced no new direct-primary body evidence and no changed in
 
 ## 4. Formalization consequence
 
-No Lean theorem is added in this checkpoint.  The project-level target already packages the required narrow formal answer in `first_question_complete_formal_answer`, and the current remaining gap is evidential rather than logical.
+No Lean theorem is added in this checkpoint. The project-level target already packages the required narrow formal answer in `first_question_complete_formal_answer`, and the current remaining gap is evidential rather than logical.
 
-The correct Lean action for this round is therefore **regression verification on the new source-audit SHA**, not theorem-count growth.  A green build must still confirm:
+The correct Lean action for this round is therefore **regression verification on the new source-audit SHA**, not theorem-count growth. A green build must still confirm:
 
 - root import coverage through `FormalPhenomenology.lean`;
 - zero forbidden placeholders;
@@ -62,11 +62,51 @@ The correct Lean action for this round is therefore **regression verification on
 
 ## 5. Stop-gate status
 
-The first research question remains open.  The only material gate is still lawful direct body-text review of one of:
+The first research question remains open. The only material gate is still lawful direct body-text review of one of:
 
 - BG pp. 209–212 (plus the already tracked pp. 225–226 check),
 - early ED pp. 292–297 (plus pp. 314–315),
 - SD pp. 341–342 where reliably mapped,
 - or an authorized revised reprint / translation carrying the same §21 body and permitting direct textual comparison.
 
-Once such body text is directly reviewable, the next action is not to broaden the model by default: first compare the one/multiple/combined-horizon sequence and the horizon-as-condition language against the current weak `Independent` mapping.  Only a mismatch forced by the primary text warrants a minimal interface change.
+Once such body text is directly reviewable, the next action is not to broaden the model by default: first compare the one/multiple/combined-horizon sequence and the horizon-as-condition language against the current weak `Independent` mapping. Only a mismatch forced by the primary text warrants a minimal interface change.
+
+## 6. Incremental route audit: licensed EPUB preview and Fordham provenance discrimination
+
+This pass re-ran the external gate rather than treating the previous checkpoint as evergreen. The repository heads remain exactly the same as above: `novaspivack/phenomenology-lean@75230e4eab333ad0fc47573747521ccc1a31a163` and `cbenzmueller/LogiKEy@b29954b0876d7991baf12f17378f31700f9de759`. No new same-shaped horizon/exhaustibility formal API was found, so there is still no justification for replacing the existing first-question relation layer or adding a modal-logic dependency.
+
+Two lawful source routes were then separated more sharply.
+
+### 6.1 PUF / Kobo licensed EPUB route
+
+Rakuten Kobo's current product page for *Étant donné : Essai d'une phénoménologie de la donation* identifies the publisher as PUF, book id / EAN `9782130807490`, release date 2013-09-18, language French, and a 540-page EPUB. The page exposes an explicit `Extrait` / preview control and reports navigation with print-equivalent page numbering. This is a materially better **lawful access route** than an unauthorised mirror because, if the preview exposes the target section, its text could be checked while preserving edition and page provenance.
+
+Current runtime limitation: the ordinary HTTP surface exposes the preview control and metadata, but not the preview body itself. The run did not reverse-engineer Kobo's reader API, bypass DRM, or attempt to extract purchased content. Therefore the evidence state is only:
+
+`PUF-LICENSED-STOREFRONT + AUTHORIZED-PREVIEW-ENTRY + PRINT-PAGE-NAVIGATION-METADATA`
+
+and not `PRIMARY-DIRECT-PAGE`.
+
+Lavoisier independently exposes the same PUF ebook EAN and a `Télécharger un extrait` route. Its current storefront describes a 2025 listing and labels it `2e édition`, whereas Kobo exposes the same EAN with a 2013 release date. That storefront discrepancy is now treated as a **version/provenance warning**: the project must not infer a target page mapping from the shared EAN or from the 540-page count without inspecting the preview's own edition metadata and body text.
+
+### 6.2 Fordham / De Gruyter 2013 anthology route
+
+Fordham University Press's official product page and De Gruyter Brill's publisher metadata again confirm *The Essential Writings* (Kevin Hart ed., 2013) and Marion's `Sketch of the Saturated Phenomenon`, pp. 108–134; De Gruyter assigns the chapter DOI `10.1515/9780823292905-006`.
+
+This pass also checked whether the **officially retrievable metadata itself** establishes that this chapter is the revised *Being Given* §21–22 text rather than merely another appearance of the earlier 1996 essay. It does not. Search results outside the publisher surface contain a Hart-introduction sentence describing the `Sketch` as a refined version of the earlier essay, but the retrievable copy carrying that sentence is not an authorised source and is therefore excluded from the evidence ledger.
+
+Accordingly, the Fordham route remains:
+
+`PRIMARY-PUBLISHER-METADATA / ALTERNATE-REPRINT-PATH / REVISED-TEXT-IDENTITY-NOT-YET-PUBLISHER-VERIFIED`
+
+It may become a valid stop-gate route only after either (a) an authorised source note establishes the textual provenance, or (b) the chapter body itself is lawfully readable and can be anchored against the known BG/ED sequence. Title similarity and page count are not enough.
+
+### 6.3 Official Marion 2007 route
+
+The Institute of Philosophy of the Slovak Academy of Sciences' official *Filozofia* page for Marion, `A Saturated Phenomenon`, 62(5), 2007, pp. 378–402, was directly rechecked. Its publisher page again states in the abstract that horizon is a constitutive condition of givenness and exposes an official PDF download URL. The PDF fetch timed out in this runtime, so the article body still was not page-reviewed here. Even a successful later fetch would be author-primary corroboration rather than an automatic substitute for the revised *Being Given* §21 body unless textual/version identity is separately established.
+
+### 6.4 Formal consequence and next exact action
+
+No primary-text constraint changed. Therefore no new Lean primitive or theorem is warranted in this increment. The formal target remains `first_question_complete_formal_answer`; adding a horizon-combination or intention/intuition API now would create modelling freedom unsupported by the current stop-gate evidence.
+
+The next source-first action is narrower than before: retry the **licensed Kobo/PUF preview path** or obtain an authorised source note/body for the Fordham chapter, while preserving the existing BG/ED/SD exact-page routes. After this source-audit commit, the repository's existing Lean build, root coverage, placeholder scan, and axiom audit must be rerun on the exact new SHA before this checkpoint is considered validated.
