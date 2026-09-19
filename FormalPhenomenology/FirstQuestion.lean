@@ -84,10 +84,12 @@ theorem first_question_situated_nonExhaustible_witness :
 /--
 A semantic guardrail for reading `NonExhaustible` in the first-question model.
 
-`NonExhaustible p` only says that no *single situated horizon* exhausts all
-encoded aspects of `p`.  It does not say that the aspects cannot be covered
-one-by-one by horizons that depend on the aspect.  The finite `splitModel`
-realizes both properties at one actually appearing phenomenon.
+The same actually appearing witness has at least one situated horizon, is not
+exhausted by any single situated horizon, and still has every encoded aspect
+covered by some situated horizon that may depend on the aspect.  Retaining the
+`Structured p` conjunct here makes the first-question counterexample explicit:
+being in a horizon does not by itself imply that some one horizon exhausts the
+phenomenon.
 
 This is a thin re-use of the already verified split-model facts, not a new
 historical claim and not a formalization of Marion's stronger language about
@@ -96,9 +98,9 @@ single-horizon predicate from being over-read as that stronger thesis.
 -/
 theorem first_question_nonExhaustible_allows_aspectwise_horizon_cover :
     ∃ M : Presentation, ∃ p : M.Phenomenon,
-      M.appears p ∧ M.NonExhaustible p ∧ M.IndividuallyCoverable p := by
-  obtain ⟨p, hp, _, hn⟩ := splitModel_situatedExcess
-  refine ⟨splitModel, p, hp, hn, ?_⟩
+      M.appears p ∧ M.Structured p ∧ M.NonExhaustible p ∧ M.IndividuallyCoverable p := by
+  obtain ⟨p, hp, hs, hn⟩ := splitModel_situatedExcess
+  refine ⟨splitModel, p, hp, hs, hn, ?_⟩
   cases p
   exact splitModel_individual
 
@@ -108,9 +110,10 @@ needed for the first research question.
 
 It combines seven independently verified facts without strengthening their
 interpretation: bare horizon structure does not entail exhaustive closure; an
-explicit situated/non-exhaustible finite witness exists; no single horizon need
-exhaust even when every encoded aspect can still be covered by some horizon;
-weak conditioning-independence by itself does not entail non-exhaustibility; the
+explicit situated/non-exhaustible finite witness exists; the same appearing
+witness may have a situated horizon and fail single-horizon exhaustion even
+while every encoded aspect is covered by some horizon; weak
+conditioning-independence by itself does not entail non-exhaustibility; the
 exact appearing-domain condition for that implication is absence of a
 captured-independent witness; producing an actual conditioning witness requires
 exactly that exclusion plus captured-domain double-negation stability; and the
@@ -138,7 +141,7 @@ theorem first_question_complete_formal_answer :
     (¬ (∀ M : Presentation, M.UniversalStructure → M.ClosureBridge)) ∧
       (∃ M : Presentation, M.HasSituatedExcess) ∧
       (∃ M : Presentation, ∃ p : M.Phenomenon,
-        M.appears p ∧ M.NonExhaustible p ∧ M.IndividuallyCoverable p) ∧
+        M.appears p ∧ M.Structured p ∧ M.NonExhaustible p ∧ M.IndividuallyCoverable p) ∧
       (¬ (∀ (M : HorizonConditioning) (p : M.base.Phenomenon),
         M.Independent p → M.base.NonExhaustible p)) ∧
       (∀ M : HorizonConditioning,
