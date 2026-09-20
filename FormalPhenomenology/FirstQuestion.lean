@@ -129,6 +129,32 @@ theorem first_question_aspectwise_cover_is_strictly_weaker_than_capture :
     exact ⟨M, p, hp, hi, (nonExhaustible_iff_not_captured M p).mp hn⟩
 
 /--
+A finite-family guardrail stronger than bare aspectwise cover.
+
+The existing split model has two distinct related horizons.  No single related
+horizon exhausts its appearing phenomenon, while those two fixed horizons
+together cover every encoded aspect.  This remains deliberately weaker than a
+formal "combination of horizons" operation: the disjunction below only says
+that each aspect is admitted by one of the two named horizons.
+
+The theorem is therefore a model-scope clarification of the current relation
+language, not an attribution of Marion's stronger one/multiple/combined-horizon
+taxonomy and not a new philosophical primitive.
+-/
+theorem first_question_two_horizons_can_cover_without_single_horizon_capture :
+    ∃ M : Presentation, ∃ p : M.Phenomenon, ∃ h₀ h₁ : M.Horizon,
+      h₀ ≠ h₁ ∧ M.appears p ∧ M.situated p h₀ ∧ M.situated p h₁ ∧
+        M.NonExhaustible p ∧
+        ∀ a, M.presents p a → (M.admits h₀ a ∨ M.admits h₁ a) := by
+  refine ⟨splitModel, (), false, true, ?_, True.intro, True.intro, True.intro, ?_, ?_⟩
+  · simp
+  · obtain ⟨p, _, hn⟩ := splitModel_excess
+    cases p
+    exact hn
+  · intro a _
+    cases a <;> simp [splitModel]
+
+/--
 One kernel target collecting the complete *narrow formal* answer currently
 needed for the first research question.
 
