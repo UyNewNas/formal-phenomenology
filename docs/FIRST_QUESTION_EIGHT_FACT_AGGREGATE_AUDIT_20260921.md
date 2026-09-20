@@ -76,16 +76,26 @@ already-proved results.
 theorem and `first_question_complete_formal_answer`, so no audit exception or
 whitelist change is required.
 
-## Verification plan / status
+## Verification status
 
 The pre-change branch head was
 `37c39b44c0bdb2bcbd29ca63c7ac342ae0e0339e`, whose workflow run
 `35541092358` had already succeeded with the full build, root/source coverage,
 and 82/82 zero-axiom audit.
 
-The current execution environment cannot resolve `github.com` from the local
-container, so it cannot honestly claim a local `lake build`. After the code
-commit, verification must come from GitHub Actions on the **exact final SHA**,
-including `python3 scripts/check.py`, `lake build`, root import/source coverage,
-and the complete kernel axiom report. Until that succeeds, this round's code is
-only committed, not verified.
+The aggregate code commit is
+`5b9427ed6cfadd0026979f16b894eab27c39d070`. Both exact-code-SHA workflow paths
+completed successfully:
+
+- push run `35543244712`: `success`;
+- pull-request run `35543247246`: `success`.
+
+The PR run's `verify` job completed checkout, pinned Lean setup, and
+`Build, source coverage, and kernel axiom audit` successfully. No audit rule,
+whitelist, theorem target, or source-coverage requirement was weakened.
+
+The local container could not resolve `github.com`, so no local build is claimed;
+the recorded verification is the actual GitHub Actions result for the exact code
+SHA. This documentation follow-up changes no Lean source, so its own final SHA is
+still required to pass the same regression workflow before the round is handed
+off as fully verified.
