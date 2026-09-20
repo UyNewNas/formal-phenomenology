@@ -147,12 +147,15 @@ theorem first_question_two_horizons_can_cover_without_single_horizon_capture :
         M.NonExhaustible p ∧
         ∀ a, M.presents p a → (M.admits h₀ a ∨ M.admits h₁ a) := by
   refine ⟨splitModel, (), false, true, ?_, True.intro, True.intro, True.intro, ?_, ?_⟩
-  · simp
+  · intro h
+    cases h
   · obtain ⟨p, _, hn⟩ := splitModel_excess
     cases p
     exact hn
   · intro a _
-    cases a <;> simp [splitModel]
+    cases a
+    · exact Or.inl rfl
+    · exact Or.inr rfl
 
 /--
 One kernel target collecting the complete *narrow formal* answer currently
