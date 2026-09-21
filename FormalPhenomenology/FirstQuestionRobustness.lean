@@ -68,4 +68,31 @@ theorem first_question_positive_conditioning_robustness :
   · exact mutualSituatedConditioning_allows_conditioned_situatedExcess
   · exact mutualSituatedConditioning_conditioned_does_not_force_capture
 
+/--
+A direct quantifier guardrail for the "several horizons" side of the first question.
+
+Even an actually appearing phenomenon whose encoded aspects are all covered by one
+fixed pair of distinct related horizons need not be `Captured` by a single related
+horizon.  This is only a non-implication in the current aspect language: the pair is
+represented by disjunctive coverage and there is no horizon-combination operator.
+
+The theorem is a thin consequence of the already verified split-model witness.  It is
+kept separate from historical attribution because secondary reconstructions of
+`Being Given` distinguish a multiple-horizon case from the stronger claim that no
+combination of horizons can receive an absolutely saturated phenomenon; the present
+`NonExhaustible` predicate encodes only failure of single-horizon exhaustion.
+-/
+theorem first_question_fixed_pair_cover_does_not_force_capture :
+    ¬ (∀ (M : Presentation) (p : M.Phenomenon),
+      M.appears p →
+        (∃ h₀ h₁ : M.Horizon,
+          h₀ ≠ h₁ ∧ M.situated p h₀ ∧ M.situated p h₁ ∧
+            ∀ a, M.presents p a → (M.admits h₀ a ∨ M.admits h₁ a)) →
+          M.Captured p) := by
+  intro h
+  rcases first_question_two_horizons_can_cover_without_single_horizon_capture with
+    ⟨M, p, h₀, h₁, hne, hp, hs₀, hs₁, hn, hcover⟩
+  have hc := h M p hp ⟨h₀, h₁, hne, hs₀, hs₁, hcover⟩
+  exact ((nonExhaustible_iff_not_captured M p).mp hn) hc
+
 end FormalPhenomenology
