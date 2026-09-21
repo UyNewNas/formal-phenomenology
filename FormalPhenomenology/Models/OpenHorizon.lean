@@ -73,15 +73,11 @@ def expandingModelListBound : List Nat → Nat
 /-- Every horizon named by a finite list lies below its recursive sum bound. -/
 theorem expandingModel_mem_le_listBound {h : Nat} {hs : List Nat}
     (hh : h ∈ hs) : h ≤ expandingModelListBound hs := by
-  induction hs with
-  | nil =>
-      cases hh
-  | cons x xs ih =>
-      rcases List.mem_cons.mp hh with hEq | hmem
-      · subst h
-        exact Nat.le_add_right x (expandingModelListBound xs)
-      · exact Nat.le_trans (ih hmem)
-          (Nat.le_add_left (expandingModelListBound xs) x)
+  induction hh with
+  | head =>
+      exact Nat.le_add_right _ _
+  | tail _ ih =>
+      exact Nat.le_trans ih (Nat.le_add_left _ _)
 
 /--
 No finite list of horizons covers every presented aspect of the open natural-number
