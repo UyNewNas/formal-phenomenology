@@ -61,11 +61,16 @@ This is therefore a formal clarification of the strongest applicable baseline, n
 
 ## Validation bookkeeping
 
-Code commit: `93c17abb0dfd647706563c1c72e74e9358c4dea7`.
+Initial code commit: `93c17abb0dfd647706563c1c72e74e9358c4dea7`.
 Root-import commit: `a4d63fd6270d3e19aa5caf2a19aa2cfd0bfe4fd8`.
 Audit-registration commit: `d1669b497b1b766f4b233e4bdf2a220041a8a358`.
+Initial documentation head: `3eb020cbf71431a88d89736c5a63a0f7aaef0cf7`.
 
-This document commit is the final head for the round. It must receive its own exact-SHA `Lean verification` verdict; earlier green heads are not inherited. Required checks remain `python3 scripts/check.py`, full Lean build, root/source coverage, forbidden-placeholder scan, and the `Audit.lean` zero-axiom dependency check including the new theorem.
+The first exact-head PR run (`35617850788`) was informative rather than green. Static checks passed with 13 modules / 102 audited theorems and the full 16-job Lean build succeeded, but the zero-axiom audit reported that the new theorem depended on `propext`. The dependency came from using convenience singleton-membership lemmas in the forward witness proof; the theorem statement and model assumptions were not at fault.
+
+The proof was therefore rewritten by direct constructor/case analysis of singleton list membership, without `simp`, without weakening the audit, and without adding any axiom or dependency. Fix commit: `c7c8a42b1b104df52cb1564825e98f9fa22194c8`.
+
+This updated document is the final handoff commit for the round. Its exact SHA must receive its own `Lean verification` verdict; earlier green heads and the successful build portion of the failed run are not inherited. Required checks remain `python3 scripts/check.py`, full Lean build, root/source coverage, forbidden-placeholder scan, and the `Audit.lean` zero-axiom dependency check including the new theorem.
 
 ## Stop gate
 
