@@ -31,4 +31,41 @@ theorem first_question_mutual_conditioning_robustness :
   · exact first_question_formal_answer.1
   · exact mutualSituatedConditioning_does_not_force_closure
 
+/--
+A stronger project-level pressure test for the conditioning reading of the first
+question.
+
+The first conjunct exhibits an actually appearing, structured phenomenon that is
+*positively* conditioned by a horizon and nevertheless remains non-exhaustible, even
+when `situated` and `conditions` coincide extensionally in both directions and
+universal horizon structure holds.  The second conjunct records the corresponding
+implication-level counterexample: under those same assumptions, actual conditioning
+does not force `Captured`.
+
+This rules out the simple objection that the horizon/exhaustibility separation is an
+artifact of leaving the conditioning predicate free or using only the negative
+`Independent` predicate.  It is still a theorem about the current relation language,
+not an identification of `Conditioned`, `Captured`, or `NonExhaustible` with Marion's
+full saturated-phenomenon vocabulary.
+-/
+theorem first_question_positive_conditioning_robustness :
+    (∃ M : HorizonConditioning,
+      M.base.UniversalStructure ∧
+        M.ConditioningIsSituated ∧
+          M.SituatedImpliesConditioning ∧
+            ∃ p, M.base.appears p ∧
+              M.base.Structured p ∧
+                M.Conditioned p ∧
+                  M.base.NonExhaustible p) ∧
+      (¬ (∀ M : HorizonConditioning,
+        M.base.UniversalStructure →
+          M.ConditioningIsSituated →
+            M.SituatedImpliesConditioning →
+              ∀ p, M.base.appears p →
+                M.Conditioned p →
+                  M.base.Captured p)) := by
+  constructor
+  · exact mutualSituatedConditioning_allows_conditioned_situatedExcess
+  · exact mutualSituatedConditioning_conditioned_does_not_force_capture
+
 end FormalPhenomenology
