@@ -48,12 +48,21 @@ The comparison uses the strongest trivial direction available in the same object
 
 This means the result is not merely the weaker `forall aspect, exists horizon` quantifier swap already recorded by `first_question_aspectwise_cover_is_strictly_weaker_than_capture`; it explicitly closes the intermediate **fixed finite pair** case without introducing an abstract finite-family API that the first question does not require.
 
-## 5. Verification status at authoring time
+## 5. Verification
 
 Code commit: `77093958e5f29d0283abfb78b8a69b862402ee03`.
 
 Audit-list commit: `49d8bc74c0b4ccd346f3d0ced9b6b03cd518a957`.
 
-This documentation commit is the final commit of the round and must be judged only by its own exact-head GitHub Actions result. No local build is claimed in this runtime. A green parent or an earlier theorem build is not inherited as verification of the final SHA.
+First documentation checkpoint: `644d255b651e9a3b0de834521204e5e8c0733a1e`.
 
-The first research question remains open at the revised-primary interpretation gate unless the exact-head verification itself uncovers a formal defect; this finite-cover theorem does not by itself satisfy the stop condition.
+Both exact-SHA workflow paths for `644d255...` completed successfully:
+
+- push run `35547796956`: `success`;
+- pull-request run `35547799132`: `success`.
+
+The push run's `verify` job completed checkout, the pinned Lean setup, and the repository step `Build, source coverage, and kernel axiom audit` successfully. The workflow file confirms this step runs `python3 scripts/check.py`. Thus the new theorem, root/source coverage, and its `Audit.lean` axiom report were kernel-checked on that exact source tree; no audit policy or check was weakened.
+
+No local build is claimed in this runtime. This final verification-note commit changes documentation only and must itself receive the same regression workflow before it is treated as the round's final verified SHA.
+
+The first research question remains open at the revised-primary interpretation gate; this finite-cover theorem does not by itself satisfy the stop condition.
