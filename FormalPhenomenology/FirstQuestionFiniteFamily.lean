@@ -31,11 +31,12 @@ theorem first_question_captured_iff_exists_finite_family_with_dominator
   · rintro ⟨hStar, hsituated, hexhausts⟩
     refine ⟨[hStar], ?_, ⟨hStar, hsituated, ?_⟩⟩
     · intro a ha
-      exact ⟨hStar, List.mem_cons_self, hsituated, hexhausts a ha⟩
+      exact ⟨hStar, Or.inl rfl, hsituated, hexhausts a ha⟩
     · intro h hh a hadmits
-      have hEq : h = hStar := List.mem_singleton.mp hh
-      subst h
-      exact hadmits
+      rcases hh with hEq | hNil
+      · cases hEq
+        exact hadmits
+      · exact False.elim hNil
   · rintro ⟨hs, hcover, hdom⟩
     exact first_question_finite_family_cover_with_dominator_implies_capture
       M p hs hcover hdom
