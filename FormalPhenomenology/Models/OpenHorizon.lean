@@ -50,6 +50,21 @@ theorem expandingModel_no_fixed_pair_cover (h₀ h₁ : Nat) :
   · exact (Nat.not_lt_of_ge (Nat.le_add_right h₀ h₁)) h₀lt
   · exact (Nat.not_lt_of_ge (Nat.le_add_left h₁ h₀)) h₁lt
 
+/--
+No uniformly bounded family of horizons covers every aspect of the open
+natural-number model.  If every selected horizon `h` satisfies `h ≤ B`, then the
+single diagonal aspect `B` is admitted by none of them.  This strengthens the
+fixed-pair guardrail without introducing a horizon-combination operation.
+-/
+theorem expandingModel_no_bounded_family_cover
+    (B : Nat) (selected : Nat → Prop)
+    (hBound : ∀ h, selected h → h ≤ B) :
+    ¬ (∀ a, expandingModel.presents () a →
+      ∃ h, selected h ∧ expandingModel.admits h a) := by
+  intro hcover
+  rcases hcover B True.intro with ⟨h, hSelected, hAdmits⟩
+  exact (Nat.not_lt_of_ge (hBound h hSelected)) hAdmits
+
 /-- Open-ended enlargement does not by itself supply a final exhaustive horizon. -/
 theorem open_horizon_compatibility :
     expandingModel.UniversalStructure ∧ expandingModel.HasExcess ∧
