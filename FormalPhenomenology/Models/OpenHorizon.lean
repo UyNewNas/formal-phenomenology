@@ -65,6 +65,42 @@ theorem expandingModel_no_bounded_family_cover
   rcases hcover B True.intro with ⟨h, hSelected, hAdmits⟩
   exact (Nat.not_lt_of_ge (hBound h hSelected)) hAdmits
 
+/-- A Lean-Core upper bound for a finite list of natural-number horizons. -/
+def expandingModelListBound : List Nat → Nat
+  | [] => 0
+  | h :: hs => h + expandingModelListBound hs
+
+/-- Every horizon named by a finite list lies below its recursive sum bound. -/
+theorem expandingModel_mem_le_listBound {h : Nat} {hs : List Nat}
+    (hh : h ∈ hs) : h ≤ expandingModelListBound hs := by
+  induction hs with
+  | nil =>
+      cases hh
+  | cons x xs ih =>
+      cases hh with
+      | head =>
+          exact Nat.le_add_right x (expandingModelListBound xs)
+      | tail hmem =>
+          exact Nat.le_trans (ih hmem)
+            (Nat.le_add_left (expandingModelListBound xs) x)
+
+/--
+No finite list of horizons covers every presented aspect of the open natural-number
+model.  This closes the finite-family quantifier gap left by the more general bounded-
+family theorem: the list itself supplies a concrete bound, so no separate boundedness
+hypothesis is required.
+
+The theorem still speaks only about disjunctive coverage by named horizons.  It does
+not define a horizon-combination operation or identify such a finite family with
+Marion's stronger no-combination claim.
+-/
+theorem expandingModel_no_finite_list_cover (hs : List Nat) :
+    ¬ (∀ a, expandingModel.presents () a →
+      ∃ h, h ∈ hs ∧ expandingModel.admits h a) := by
+  exact expandingModel_no_bounded_family_cover
+    (expandingModelListBound hs) (fun h => h ∈ hs)
+    (fun h hh => expandingModel_mem_le_listBound hh)
+
 /-- Open-ended enlargement does not by itself supply a final exhaustive horizon. -/
 theorem open_horizon_compatibility :
     expandingModel.UniversalStructure ∧ expandingModel.HasExcess ∧
