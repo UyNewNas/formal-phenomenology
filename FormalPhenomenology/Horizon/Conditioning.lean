@@ -36,6 +36,20 @@ def ConditioningIsSituated (M : HorizonConditioning) : Prop :=
   ∀ p h, M.conditions p h → M.base.situated p h
 
 /--
+A competing interpretive pressure-test: every horizon already related to a
+phenomenon also counts as conditioning that phenomenon.
+
+This is the converse direction of `ConditioningIsSituated`.  It is kept as an
+explicit model hypothesis rather than built into `situated`, because current
+same-topic literature contains both readings that treat horizonal appearance as
+necessarily conditioned and readings that distinguish non-metaphysical
+horizontality from antecedent delimitation.  No attribution to Marion or
+Merleau-Ponty is encoded in the definition itself.
+-/
+def SituatedImpliesConditioning (M : HorizonConditioning) : Prop :=
+  ∀ p h, M.base.situated p h → M.conditions p h
+
+/--
 A pressure-test bridge: if a horizon is related to a phenomenon and exhausts
 all of its encoded aspects, then that horizon counts as conditioning the
 phenomenon.  This is deliberately an explicit hypothesis, not an attribution
@@ -91,6 +105,50 @@ theorem conditioningIsSituated_notStructured_implies_independent
     (p : M.base.Phenomenon) (hn : ¬ M.base.Structured p) : M.Independent p := by
   intro h hh
   exact hn ⟨h, hc p h hh⟩
+
+/--
+Under the converse reading that every related horizon conditions the
+phenomenon, weak horizon-independence rules out even having a related horizon.
+This isolates the exact reason the repository's existing
+`Structured ∧ Independent` compatibility witness depends on keeping
+`situated` and `conditions` distinct.
+-/
+theorem situatedImpliesConditioning_independent_implies_notStructured
+    (M : HorizonConditioning) (hc : M.SituatedImpliesConditioning)
+    (p : M.base.Phenomenon) (hi : M.Independent p) :
+    ¬ M.base.Structured p := by
+  intro hs
+  obtain ⟨h, hh⟩ := hs
+  exact hi h (hc p h hh)
+
+/--
+If relatedness and conditioning coincide in both directions, weak independence
+is exactly horizonlessness in the current relation language.  This is a FORMAL
+comparison theorem for an explicit competing encoding, not a historical claim
+that either philosopher identifies the two notions.
+-/
+theorem mutualSituatedConditioning_independent_iff_notStructured
+    (M : HorizonConditioning)
+    (hForward : M.SituatedImpliesConditioning)
+    (hBackward : M.ConditioningIsSituated)
+    (p : M.base.Phenomenon) :
+    M.Independent p ↔ ¬ M.base.Structured p := by
+  constructor
+  · exact situatedImpliesConditioning_independent_implies_notStructured M hForward p
+  · exact conditioningIsSituated_notStructured_implies_independent M hBackward p
+
+/--
+The same competing reading excludes an actually appearing witness that is both
+structured and weakly independent.  The `appears` component is not used in the
+logic, but retaining `HasStructuredIndependentAppearance` keeps the theorem on
+the exact domain used by the first research question.
+-/
+theorem situatedImpliesConditioning_refutes_structuredIndependentAppearance
+    (M : HorizonConditioning) (hc : M.SituatedImpliesConditioning) :
+    ¬ M.HasStructuredIndependentAppearance := by
+  intro hw
+  obtain ⟨p, _, hs, hi⟩ := hw
+  exact (situatedImpliesConditioning_independent_implies_notStructured M hc p hi) hs
 
 /--
 With the exhaustive-capture bridge made explicit, independence does imply
