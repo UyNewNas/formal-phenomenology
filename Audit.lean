@@ -60,6 +60,7 @@ import FormalPhenomenology
 #print axioms FormalPhenomenology.expandingModel_excess
 #print axioms FormalPhenomenology.expandingModel_individual
 #print axioms FormalPhenomenology.expandingModel_monotone
+#print axioms FormalPhenomenology.expandingModel_no_fixed_pair_cover
 #print axioms FormalPhenomenology.open_horizon_compatibility
 #print axioms FormalPhenomenology.finite_horizon_agrees
 #print axioms FormalPhenomenology.completedModel_capture
@@ -93,3 +94,4 @@ import FormalPhenomenology
 #print axioms FormalPhenomenology.first_question_mutual_conditioning_robustness
 #print axioms FormalPhenomenology.first_question_positive_conditioning_robustness
 #print axioms FormalPhenomenology.first_question_fixed_pair_cover_does_not_force_capture
+#print axioms FormalPhenomenology.first_question_aspectwise_cover_need_not_have_fixed_pair
