@@ -169,4 +169,30 @@ theorem first_question_nonExhaustible_aspectwise_cover_has_no_finite_family :
     rcases hcover a ha with ⟨h, hh, _, hadmits⟩
     exact ⟨h, hh, hadmits⟩
 
+/--
+A finite family of related horizons jointly covering all presented aspects does become
+sufficient for single-horizon `Captured` once one adds an explicit *dominating situated
+horizon*: a situated horizon that admits every aspect admitted by any member of the
+family.
+
+This is the positive companion to the finite-family non-implication above.  It isolates
+a concrete extra premise under which plural horizon coverage can be collapsed to the
+existing single-horizon capture notion, without introducing a new combination
+operator.  The premise is purely FORMAL and is not attributed to Merleau-Ponty or
+Marion; in particular, it must not be read as a formalization of Marion's historical
+"combination of horizons" phrase without further source work.
+-/
+theorem first_question_finite_family_cover_with_dominator_implies_capture
+    (M : Presentation) (p : M.Phenomenon) (hs : List M.Horizon)
+    (hcover : ∀ a, M.presents p a →
+      ∃ h, h ∈ hs ∧ M.situated p h ∧ M.admits h a)
+    (hdom : ∃ h⋆, M.situated p h⋆ ∧
+      ∀ h, h ∈ hs → ∀ a, M.admits h a → M.admits h⋆ a) :
+    M.Captured p := by
+  rcases hdom with ⟨h⋆, hsituated, hdominates⟩
+  refine ⟨h⋆, hsituated, ?_⟩
+  intro a ha
+  rcases hcover a ha with ⟨h, hh, _, hadmits⟩
+  exact hdominates h hh a hadmits
+
 end FormalPhenomenology
