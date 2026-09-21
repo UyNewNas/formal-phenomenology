@@ -61,6 +61,7 @@ import FormalPhenomenology
 #print axioms FormalPhenomenology.expandingModel_individual
 #print axioms FormalPhenomenology.expandingModel_monotone
 #print axioms FormalPhenomenology.expandingModel_no_fixed_pair_cover
+#print axioms FormalPhenomenology.expandingModel_no_bounded_family_cover
 #print axioms FormalPhenomenology.open_horizon_compatibility
 #print axioms FormalPhenomenology.finite_horizon_agrees
 #print axioms FormalPhenomenology.completedModel_capture
