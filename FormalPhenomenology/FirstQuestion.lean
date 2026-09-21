@@ -194,25 +194,26 @@ theorem first_question_fixed_pair_cover_is_strictly_weaker_than_capture :
 One kernel target collecting the complete *narrow formal* answer currently
 needed for the first research question.
 
-It combines eight independently verified facts without strengthening their
+It combines nine independently verified facts without strengthening their
 interpretation: bare horizon structure does not entail exhaustive closure; an
 explicit situated/non-exhaustible finite witness exists; the same appearing
 witness may have a situated horizon and fail single-horizon exhaustion even
 while every encoded aspect is covered by some horizon; two fixed distinct
 related horizons may jointly cover every encoded aspect while no single related
-horizon captures the phenomenon; there is also an actually appearing structured
-witness that is weakly conditioning-independent and nevertheless captured; the
-exact appearing-domain condition for `Independent → NonExhaustible` is absence
-of such a captured-independent witness; producing an actual conditioning
-witness requires exactly that exclusion plus captured-domain double-negation
-stability; and the weak related / independent / non-exhaustible profile is
-jointly consistent.
+horizon captures the phenomenon; fixed-pair cover is itself strictly weaker
+than single-horizon capture in the current relation language; there is also an
+actually appearing structured witness that is weakly conditioning-independent
+and nevertheless captured; the exact appearing-domain condition for
+`Independent → NonExhaustible` is absence of such a captured-independent
+witness; producing an actual conditioning witness requires exactly that
+exclusion plus captured-domain double-negation stability; and the weak related /
+independent / non-exhaustible profile is jointly consistent.
 
-The aspectwise-cover and fixed-two-horizon conjuncts are interpretation
-guardrails, not models of Marion's stronger one/multiple/combined-horizon
-taxonomy. They record only quantifier distinctions between one horizon covering
-every encoded aspect, horizons varying with the aspect, and one fixed pair whose
-disjunctive coverage reaches every aspect.
+The aspectwise-cover and fixed-pair conjuncts are interpretation guardrails, not
+models of Marion's stronger one/multiple/combined-horizon taxonomy. They record
+only quantifier distinctions between one horizon covering every encoded aspect,
+horizons varying with the aspect, and one fixed pair whose disjunctive coverage
+reaches every aspect.
 
 The explicit `Captured ∧ Independent` witness is important for scope: the
 repository's `Independent` predicate means only that no horizon is marked by the
@@ -223,11 +224,12 @@ witness inside the `appears` and `Structured` domain prevents a weaker global
 counterexample from obscuring the quantifiers of the research question.
 
 This is deliberately an aggregation theorem.  The existential conjuncts are
-only already verified finite-model witnesses, including
-`first_question_two_horizons_can_cover_without_single_horizon_capture` and
-`related_independent_captured_are_jointly_consistent`; it adds no philosophical
-primitive, no classical axiom, and no attribution to Merleau-Ponty or Marion.
-The historical/source gate therefore remains separate from this formal target.
+only already verified finite-model witnesses, and the fixed-pair strictness
+conjunct is exactly
+`first_question_fixed_pair_cover_is_strictly_weaker_than_capture`; it adds no
+philosophical primitive, no classical axiom, and no attribution to Merleau-Ponty
+or Marion.  The historical/source gate therefore remains separate from this
+formal target.
 -/
 theorem first_question_complete_formal_answer :
     (¬ (∀ M : Presentation, M.UniversalStructure → M.ClosureBridge)) ∧
@@ -238,6 +240,15 @@ theorem first_question_complete_formal_answer :
         h₀ ≠ h₁ ∧ M.appears p ∧ M.situated p h₀ ∧ M.situated p h₁ ∧
           M.NonExhaustible p ∧
           ∀ a, M.presents p a → (M.admits h₀ a ∨ M.admits h₁ a)) ∧
+      ((∀ (M : Presentation) (p : M.Phenomenon),
+        M.Captured p →
+          ∃ h₀ h₁ : M.Horizon,
+            M.situated p h₀ ∧ M.situated p h₁ ∧
+              ∀ a, M.presents p a → (M.admits h₀ a ∨ M.admits h₁ a)) ∧
+        (∃ M : Presentation, ∃ p : M.Phenomenon, ∃ h₀ h₁ : M.Horizon,
+          h₀ ≠ h₁ ∧ M.appears p ∧ M.situated p h₀ ∧ M.situated p h₁ ∧
+            M.NonExhaustible p ∧
+            ∀ a, M.presents p a → (M.admits h₀ a ∨ M.admits h₁ a))) ∧
       (∃ M : HorizonConditioning, ∃ p : M.base.Phenomenon,
         M.base.appears p ∧ M.base.Structured p ∧
           M.Independent p ∧ M.base.Captured p) ∧
@@ -259,6 +270,8 @@ theorem first_question_complete_formal_answer :
   · exact first_question_nonExhaustible_allows_aspectwise_horizon_cover
   constructor
   · exact first_question_two_horizons_can_cover_without_single_horizon_capture
+  constructor
+  · exact first_question_fixed_pair_cover_is_strictly_weaker_than_capture
   constructor
   · exact related_independent_captured_are_jointly_consistent
   constructor
