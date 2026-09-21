@@ -10,3 +10,4 @@ import FormalPhenomenology.ConstructiveBridge
 import FormalPhenomenology.ConditioningBoundary
 import FormalPhenomenology.FirstQuestion
 import FormalPhenomenology.FirstQuestionRobustness
+import FormalPhenomenology.FirstQuestionFiniteFamily
