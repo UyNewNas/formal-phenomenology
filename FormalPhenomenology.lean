@@ -7,4 +7,5 @@ import FormalPhenomenology.Models.Conditioning
 import FormalPhenomenology.Models.OpenHorizon
 import FormalPhenomenology.Models.HorizonExtension
 import FormalPhenomenology.ConstructiveBridge
+import FormalPhenomenology.ConditioningBoundary
 import FormalPhenomenology.FirstQuestion
