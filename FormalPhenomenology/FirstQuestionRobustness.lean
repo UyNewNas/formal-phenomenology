@@ -143,4 +143,30 @@ theorem first_question_aspectwise_cover_need_not_have_finite_family :
   rcases hcover a ha with ⟨h, hh, _, hadmits⟩
   exact ⟨h, hh, hadmits⟩
 
+/--
+The open-chain witness simultaneously realizes the three notions that matter for the
+first question's quantifier boundary: it actually appears, it is non-exhaustible by
+any single situated horizon, and every individual aspect is nevertheless covered by
+some situated horizon; moreover no finite list of situated horizons covers all of its
+presented aspects.
+
+This packages already verified facts about `expandingModel` into one project-facing
+witness.  It does not treat a finite list as a semantic horizon combination, and it
+therefore remains weaker than Marion's strongest historical no-combination figure.
+-/
+theorem first_question_nonExhaustible_aspectwise_cover_has_no_finite_family :
+    ∃ M : Presentation, ∃ p : M.Phenomenon,
+      M.appears p ∧ M.NonExhaustible p ∧ M.IndividuallyCoverable p ∧
+        ∀ hs : List M.Horizon,
+          ¬ (∀ a, M.presents p a →
+            ∃ h, h ∈ hs ∧ M.situated p h ∧ M.admits h a) := by
+  refine ⟨expandingModel, (), True.intro, ?_, expandingModel_individual, ?_⟩
+  · intro h _
+    exact expandingModel_no_horizon_exhausts h
+  · intro hs hcover
+    apply expandingModel_no_finite_list_cover hs
+    intro a ha
+    rcases hcover a ha with ⟨h, hh, _, hadmits⟩
+    exact ⟨h, hh, hadmits⟩
+
 end FormalPhenomenology
