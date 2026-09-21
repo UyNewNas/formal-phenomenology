@@ -40,4 +40,34 @@ theorem first_question_captured_iff_exists_finite_family_with_dominator
     exact first_question_finite_family_cover_with_dominator_implies_capture
       M p hs hcover hdom
 
+/--
+For a non-exhaustible phenomenon, a fixed two-horizon cover cannot secretly collapse
+back to single-horizon capture through a common situated dominator.
+
+The premise says the two named horizons jointly admit every presented aspect.  If a
+situated `hStar` admitted everything admitted by either of them, `hStar` would exhaust
+the phenomenon, contradicting `NonExhaustible`.  This pinpoints the exact structural
+failure behind the recent fixed-pair counterexamples without introducing a semantic
+horizon-combination operation.
+
+This is a FORMAL encoding guardrail only.  It is not attributed to Merleau-Ponty or
+Marion, and the two-horizon disjunction is not identified with Marion's historical
+"combination of horizons" language.
+-/
+theorem first_question_nonExhaustible_fixed_pair_cover_has_no_dominator
+    (M : Presentation) (p : M.Phenomenon) (h₀ h₁ : M.Horizon)
+    (hn : M.NonExhaustible p)
+    (hcover : ∀ a, M.presents p a →
+      (M.admits h₀ a ∨ M.admits h₁ a)) :
+    ¬ ∃ hStar, M.situated p hStar ∧
+      (∀ a, M.admits h₀ a → M.admits hStar a) ∧
+      (∀ a, M.admits h₁ a → M.admits hStar a) := by
+  rintro ⟨hStar, hsituated, hdom₀, hdom₁⟩
+  apply ((nonExhaustible_iff_not_captured M p).mp hn)
+  refine ⟨hStar, hsituated, ?_⟩
+  intro a ha
+  rcases hcover a ha with ha₀ | ha₁
+  · exact hdom₀ a ha₀
+  · exact hdom₁ a ha₁
+
 end FormalPhenomenology
