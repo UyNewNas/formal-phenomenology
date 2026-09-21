@@ -120,4 +120,27 @@ theorem first_question_aspectwise_cover_need_not_have_fixed_pair :
   rintro ⟨h₀, h₁, _, _, hcover⟩
   exact expandingModel_no_fixed_pair_cover h₀ h₁ hcover
 
+/--
+Aspectwise horizon coverage can hold even though no finite list of related horizons
+covers every presented aspect.
+
+This strengthens the fixed-pair guardrail to an arbitrary finite list by reusing the
+open natural-number chain.  It closes a pure quantifier gap in the current relation
+language; list membership is only a finite-family encoding and is not a horizon-
+combination operation.  In particular, this theorem is not identified with Marion's
+stronger historical claim about combinations of horizons.
+-/
+theorem first_question_aspectwise_cover_need_not_have_finite_family :
+    ∃ M : Presentation, ∃ p : M.Phenomenon,
+      M.appears p ∧ M.IndividuallyCoverable p ∧
+        ∀ hs : List M.Horizon,
+          ¬ (∀ a, M.presents p a →
+            ∃ h, h ∈ hs ∧ M.situated p h ∧ M.admits h a) := by
+  refine ⟨expandingModel, (), True.intro, expandingModel_individual, ?_⟩
+  intro hs hcover
+  apply expandingModel_no_finite_list_cover hs
+  intro a ha
+  rcases hcover a ha with ⟨h, hh, _, hadmits⟩
+  exact ⟨h, hh, hadmits⟩
+
 end FormalPhenomenology
