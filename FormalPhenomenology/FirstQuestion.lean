@@ -158,6 +158,39 @@ theorem first_question_two_horizons_can_cover_without_single_horizon_capture :
     · exact Or.inr rfl
 
 /--
+The fixed-pair cover relation induced by the existing language is strictly
+weaker than single-horizon capture.
+
+For the forward direction, a captured phenomenon supplies one exhaustive
+related horizon; using that same horizon twice gives a fixed pair whose
+disjunctive coverage reaches every encoded aspect.  The converse fails in the
+already verified split model, where two distinct related horizons jointly cover
+every aspect while the appearing phenomenon remains `NonExhaustible`.
+
+This theorem introduces no horizon-combination operator: repeated horizons are
+allowed in the forward implication, while the counterexample happens to have a
+distinct pair.  It is a quantifier/finitary-cover guardrail only and makes no
+historical attribution to Marion's stronger multiple/combined-horizon taxonomy.
+-/
+theorem first_question_fixed_pair_cover_is_strictly_weaker_than_capture :
+    (∀ (M : Presentation) (p : M.Phenomenon),
+      M.Captured p →
+        ∃ h₀ h₁ : M.Horizon,
+          M.situated p h₀ ∧ M.situated p h₁ ∧
+            ∀ a, M.presents p a → (M.admits h₀ a ∨ M.admits h₁ a)) ∧
+      (∃ M : Presentation, ∃ p : M.Phenomenon, ∃ h₀ h₁ : M.Horizon,
+        h₀ ≠ h₁ ∧ M.appears p ∧ M.situated p h₀ ∧ M.situated p h₁ ∧
+          M.NonExhaustible p ∧
+          ∀ a, M.presents p a → (M.admits h₀ a ∨ M.admits h₁ a)) := by
+  constructor
+  · intro M p hc
+    rcases hc with ⟨h, hs, he⟩
+    refine ⟨h, h, hs, hs, ?_⟩
+    intro a ha
+    exact Or.inl (he a ha)
+  · exact first_question_two_horizons_can_cover_without_single_horizon_capture
+
+/--
 One kernel target collecting the complete *narrow formal* answer currently
 needed for the first research question.
 
