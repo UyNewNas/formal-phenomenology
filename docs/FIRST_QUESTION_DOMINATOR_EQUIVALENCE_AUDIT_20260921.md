@@ -66,11 +66,14 @@ Root-import commit: `a4d63fd6270d3e19aa5caf2a19aa2cfd0bfe4fd8`.
 Audit-registration commit: `d1669b497b1b766f4b233e4bdf2a220041a8a358`.
 Initial documentation head: `3eb020cbf71431a88d89736c5a63a0f7aaef0cf7`.
 
-The first exact-head PR run (`35617850788`) was informative rather than green. Static checks passed with 13 modules / 102 audited theorems and the full 16-job Lean build succeeded, but the zero-axiom audit reported that the new theorem depended on `propext`. The dependency came from using convenience singleton-membership lemmas in the forward witness proof; the theorem statement and model assumptions were not at fault.
+Two deliberately unhidden verification failures were used to tighten the proof rather than the audit:
 
-The proof was therefore rewritten by direct constructor/case analysis of singleton list membership, without `simp`, without weakening the audit, and without adding any axiom or dependency. Fix commit: `c7c8a42b1b104df52cb1564825e98f9fa22194c8`.
+1. PR run `35617850788` completed the full build but the zero-axiom audit reported `propext` on the new theorem. The convenience singleton-membership lemma was removed (`c7c8a42b1b104df52cb1564825e98f9fa22194c8`).
+2. The next exact-head run `35618067503` showed that replacing that lemma with a raw `Or` proof was not definitionally accepted for `List.Mem`; the build failed in `FirstQuestionFiniteFamily.lean`. No prior green result was claimed for that head.
 
-This updated document is the final handoff commit for the round. Its exact SHA must receive its own `Lean verification` verdict; earlier green heads and the successful build portion of the failed run are not inherited. Required checks remain `python3 scripts/check.py`, full Lean build, root/source coverage, forbidden-placeholder scan, and the `Audit.lean` zero-axiom dependency check including the new theorem.
+The singleton proof was then rewritten against the actual inductive `List.Mem` constructors (`List.Mem.head` plus constructor case analysis), avoiding both the convenience iff lemma and any `simp`/propositional extensionality route. Final code-fix commit before this handoff: `ddc191983279556a9e1146f4faeeb74c5f1437bc`.
+
+This updated document is the final handoff commit for the round. Its exact SHA must receive its own `Lean verification` verdict; earlier green heads, partial builds, and failed attempts are not inherited. Required checks remain `python3 scripts/check.py`, full Lean build, root/source coverage, forbidden-placeholder scan, and the `Audit.lean` zero-axiom dependency check including the new theorem.
 
 ## Stop gate
 
