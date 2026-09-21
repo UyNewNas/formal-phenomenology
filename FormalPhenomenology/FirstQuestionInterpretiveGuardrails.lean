@@ -138,4 +138,46 @@ theorem first_question_mutual_conditioning_positive_polarity_underdetermines_exh
     · exact splitModel_structure () True.intro
     · exact ⟨false, True.intro⟩
 
+/--
+A same-witness guardrail connecting the first question's conditioning axis to its
+"several horizons" quantifier axis.
+
+In `splitDependentConditioning`, `situated` and `conditions` coincide in both
+directions.  The sole appearing phenomenon is conditioned by each of two distinct
+horizons; those two horizons jointly cover every presented aspect, yet no single
+situated horizon exhausts the phenomenon.  Thus even positive conditioning plus a
+fixed two-horizon cover does not collapse to single-horizon `Captured` in the
+current relation language.
+
+This is deliberately weaker than a semantic horizon-combination operator and is
+not attributed to Marion's historical "combination of horizons" claim.  It reuses
+the existing finite witness and adds no primitive or model family.
+-/
+theorem first_question_mutual_conditioning_two_horizons_joint_cover_still_nonExhaustible :
+    ∃ M : HorizonConditioning, ∃ p : M.base.Phenomenon,
+      ∃ h₀ h₁ : M.base.Horizon,
+        M.base.UniversalStructure ∧
+          M.ConditioningIsSituated ∧
+            M.SituatedImpliesConditioning ∧
+              h₀ ≠ h₁ ∧
+                M.base.appears p ∧
+                  M.base.situated p h₀ ∧ M.base.situated p h₁ ∧
+                    M.conditions p h₀ ∧ M.conditions p h₁ ∧
+                      M.base.NonExhaustible p ∧
+                        ∀ a, M.base.presents p a →
+                          (M.base.admits h₀ a ∨ M.base.admits h₁ a) := by
+  refine ⟨splitDependentConditioning, (), false, true,
+    splitModel_structure, ?_, ?_, ?_, True.intro, True.intro, True.intro,
+      True.intro, True.intro, splitDependentConditioning_nonExhaustible, ?_⟩
+  · intro _ _ _
+    exact True.intro
+  · intro _ _ _
+    exact True.intro
+  · intro h
+    cases h
+  · intro a _
+    cases a
+    · exact Or.inl rfl
+    · exact Or.inr rfl
+
 end FormalPhenomenology
