@@ -92,3 +92,4 @@ import FormalPhenomenology
 #print axioms FormalPhenomenology.first_question_complete_formal_answer
 #print axioms FormalPhenomenology.first_question_mutual_conditioning_robustness
 #print axioms FormalPhenomenology.first_question_positive_conditioning_robustness
+#print axioms FormalPhenomenology.first_question_fixed_pair_cover_does_not_force_capture
