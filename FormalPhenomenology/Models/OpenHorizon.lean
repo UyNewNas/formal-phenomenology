@@ -38,17 +38,17 @@ theorem expandingModel_monotone (h k a : Nat) (hk : h ≤ k) :
 
 /--
 No fixed pair of finite initial-segment horizons covers all aspects of the open
-natural-number model.  The diagonal aspect `max h₀ h₁` lies beyond both named
+natural-number model.  The diagonal aspect `h₀ + h₁` lies beyond both named
 horizons, even though every individual aspect is admitted by some larger horizon.
 -/
 theorem expandingModel_no_fixed_pair_cover (h₀ h₁ : Nat) :
     ¬ (∀ a, expandingModel.presents () a →
       (expandingModel.admits h₀ a ∨ expandingModel.admits h₁ a)) := by
   intro hcover
-  have hc := hcover (Nat.max h₀ h₁) True.intro
+  have hc := hcover (h₀ + h₁) True.intro
   rcases hc with h₀lt | h₁lt
-  · exact (Nat.not_lt_of_ge (Nat.le_max_left h₀ h₁)) h₀lt
-  · exact (Nat.not_lt_of_ge (Nat.le_max_right h₀ h₁)) h₁lt
+  · exact (Nat.not_lt_of_ge (Nat.le_add_right h₀ h₁)) h₀lt
+  · exact (Nat.not_lt_of_ge (Nat.le_add_left h₁ h₀)) h₁lt
 
 /-- Open-ended enlargement does not by itself supply a final exhaustive horizon. -/
 theorem open_horizon_compatibility :
