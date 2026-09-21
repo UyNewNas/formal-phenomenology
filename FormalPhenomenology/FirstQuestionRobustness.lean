@@ -186,11 +186,11 @@ theorem first_question_finite_family_cover_with_dominator_implies_capture
     (M : Presentation) (p : M.Phenomenon) (hs : List M.Horizon)
     (hcover : ∀ a, M.presents p a →
       ∃ h, h ∈ hs ∧ M.situated p h ∧ M.admits h a)
-    (hdom : ∃ h⋆, M.situated p h⋆ ∧
-      ∀ h, h ∈ hs → ∀ a, M.admits h a → M.admits h⋆ a) :
+    (hdom : ∃ hStar, M.situated p hStar ∧
+      ∀ h, h ∈ hs → ∀ a, M.admits h a → M.admits hStar a) :
     M.Captured p := by
-  rcases hdom with ⟨h⋆, hsituated, hdominates⟩
-  refine ⟨h⋆, hsituated, ?_⟩
+  rcases hdom with ⟨hStar, hsituated, hdominates⟩
+  refine ⟨hStar, hsituated, ?_⟩
   intro a ha
   rcases hcover a ha with ⟨h, hh, _, hadmits⟩
   exact hdominates h hh a hadmits
