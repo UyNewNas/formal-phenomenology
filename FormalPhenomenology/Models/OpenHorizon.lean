@@ -76,7 +76,7 @@ theorem expandingModel_mem_le_listBound {h : Nat} {hs : List Nat}
   induction hh with
   | head =>
       exact Nat.le_add_right _ _
-  | tail _ ih =>
+  | tail _ _ ih =>
       exact Nat.le_trans ih (Nat.le_add_left _ _)
 
 /--
