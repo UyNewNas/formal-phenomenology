@@ -41,6 +41,41 @@ theorem first_question_captured_iff_exists_finite_family_with_dominator
       M p hs hcover hdom
 
 /--
+For a non-exhaustible phenomenon, the exact negated finite-family normal form is the
+absence of any finite situated cover equipped with a single situated dominator.
+
+This is just the De Morgan side of the already verified capture equivalence together
+with `NonExhaustible p ↔ ¬ Captured p`.  It is useful because it states the structural
+boundary directly in the polarity of the research question: non-exhaustibility rules
+out not merely one exhaustive horizon, but every *finite named cover + common situated
+dominator* package, while still saying nothing about an unconstrained semantic
+"combination of horizons" operation.
+
+The theorem introduces no new primitive, model, classical principle, or historical
+attribution.  In particular the finite list and dominator remain features of the
+current extensional encoding only, not an identification with Marion's stronger
+one/several/no-combination distinction.
+-/
+theorem first_question_nonExhaustible_iff_no_finite_family_with_dominator
+    (M : Presentation) (p : M.Phenomenon) :
+    M.NonExhaustible p ↔
+      ¬ ∃ hs : List M.Horizon,
+        (∀ a, M.presents p a →
+          ∃ h, h ∈ hs ∧ M.situated p h ∧ M.admits h a) ∧
+        ∃ hStar, M.situated p hStar ∧
+          ∀ h, h ∈ hs → ∀ a, M.admits h a → M.admits hStar a := by
+  constructor
+  · intro hn hpack
+    have hCaptured : M.Captured p :=
+      (first_question_captured_iff_exists_finite_family_with_dominator M p).2 hpack
+    exact ((nonExhaustible_iff_not_captured M p).mp hn) hCaptured
+  · intro hNoPackage
+    apply (nonExhaustible_iff_not_captured M p).2
+    intro hCaptured
+    exact hNoPackage
+      ((first_question_captured_iff_exists_finite_family_with_dominator M p).1 hCaptured)
+
+/--
 For a non-exhaustible phenomenon, a fixed two-horizon cover cannot secretly collapse
 back to single-horizon capture through a common situated dominator.
 
