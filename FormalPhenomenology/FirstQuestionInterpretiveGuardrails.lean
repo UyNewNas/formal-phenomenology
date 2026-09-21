@@ -91,4 +91,51 @@ theorem first_question_conditioning_polarity_underdetermines_exhaustibility :
       ⟨M, hcoherent, p, hp, hs, hi, hn⟩
     exact ⟨M, p, hcoherent, hp, hs, hi, hn⟩
 
+/--
+Positive horizon-conditioning still does not determine exhaustibility even after
+removing the simplest free-relation objection: in both witnesses the project
+relations `situated` and `conditions` coincide extensionally in both directions.
+
+The captured witness uses the already-verified `closedModel` and marks its sole
+horizon as conditioning; the non-exhaustible witness reuses
+`splitDependentConditioning`, where every horizon is both situated and
+conditioning.  No new primitive or historical attribution is introduced.
+
+This is a model-theoretic pressure test only.  It does not identify either
+witness with a Marionian saturated phenomenon, nor does it assert that any
+historical account equates horizon relatedness with horizon conditioning.
+-/
+theorem first_question_mutual_conditioning_positive_polarity_underdetermines_exhaustibility :
+    (∃ M : HorizonConditioning, ∃ p : M.base.Phenomenon,
+      M.base.UniversalStructure ∧ M.ConditioningIsSituated ∧
+        M.SituatedImpliesConditioning ∧ M.base.appears p ∧
+          M.base.Structured p ∧ M.Conditioned p ∧ M.base.Captured p) ∧
+      (∃ M : HorizonConditioning, ∃ p : M.base.Phenomenon,
+        M.base.UniversalStructure ∧ M.ConditioningIsSituated ∧
+          M.SituatedImpliesConditioning ∧ M.base.appears p ∧
+            M.base.Structured p ∧ M.Conditioned p ∧
+              M.base.NonExhaustible p) := by
+  constructor
+  · let M : HorizonConditioning :=
+      { base := closedModel
+        conditions := fun _ _ => True }
+    refine ⟨M, (), ?_, ?_, ?_, True.intro, ?_, ?_, ?_⟩
+    · intro _ _
+      exact ⟨(), True.intro⟩
+    · intro _ _ _
+      exact True.intro
+    · intro _ _ _
+      exact True.intro
+    · exact ⟨(), True.intro⟩
+    · exact ⟨(), True.intro⟩
+    · exact closedModel_capture () True.intro
+  · refine ⟨splitDependentConditioning, (), splitModel_structure, ?_, ?_,
+      True.intro, ?_, ?_, splitDependentConditioning_nonExhaustible⟩
+    · intro _ _ _
+      exact True.intro
+    · intro _ _ _
+      exact True.intro
+    · exact splitModel_structure () True.intro
+    · exact ⟨false, True.intro⟩
+
 end FormalPhenomenology
