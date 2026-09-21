@@ -77,12 +77,11 @@ theorem expandingModel_mem_le_listBound {h : Nat} {hs : List Nat}
   | nil =>
       cases hh
   | cons x xs ih =>
-      cases hh with
-      | head =>
-          exact Nat.le_add_right x (expandingModelListBound xs)
-      | tail hmem =>
-          exact Nat.le_trans (ih hmem)
-            (Nat.le_add_left (expandingModelListBound xs) x)
+      rcases List.mem_cons.mp hh with hEq | hmem
+      · subst h
+        exact Nat.le_add_right x (expandingModelListBound xs)
+      · exact Nat.le_trans (ih hmem)
+          (Nat.le_add_left (expandingModelListBound xs) x)
 
 /--
 No finite list of horizons covers every presented aspect of the open natural-number
