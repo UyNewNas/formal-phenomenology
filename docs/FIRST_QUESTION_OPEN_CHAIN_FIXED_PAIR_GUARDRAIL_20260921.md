@@ -16,7 +16,9 @@ The previous split-model result showed that (2) need not imply (1).  This round 
 
 Targeted GitHub searches on 2026-09-21 rechecked `novaspivack/phenomenology-lean@75230e4eab333ad0fc47573747521ccc1a31a163` and `cbenzmueller/LogiKEy@b29954b0876d7991baf12f17378f31700f9de759` for a same-shaped fixed-pair / horizon-cover / exhaustivity API.  No indexed match was returned.  This is only a bounded reuse check, not a novelty claim.
 
-The proof uses only the already pinned Lean Core environment (`leanprover/lean4:v4.24.0`).  The pinned source `src/Init/Data/Nat/MinMax.lean` contains `Nat.le_max_left` and `Nat.le_max_right`, so no Mathlib, LogiKEy, AFP, Rocq/Coq, or Agda dependency is justified for the elementary diagonal step.
+The proof uses only the already pinned Lean Core environment (`leanprover/lean4:v4.24.0`).  The pinned core exposes the elementary addition inequalities `Nat.le_add_right` and `Nat.le_add_left`, so no Mathlib, LogiKEy, AFP, Rocq/Coq, or Agda dependency is justified for the diagonal step.
+
+The first implementation used `Nat.max` and its convenient max-bound lemmas.  Exact-SHA CI showed that this proof term inherited `propext`, violating this repository's stricter zero-axiom audit even though the module built successfully.  The implementation was therefore replaced rather than weakening the audit: it now chooses the aspect `h₀ + h₁` and contradicts `h₀ + h₁ < h₀` or `h₀ + h₁ < h₁` using only the core addition inequalities.  The failed audit is treated as a code-level proof-dependency issue, not as a mathematical counterexample failure.
 
 Methodologically, the quantifier/countermodel move remains covered by the project’s existing computational-hermeneutic / computational-metaphysics prior-art ledger.  This round does not claim that “interpretation → formalization → countermodel” or the logical fact `∀a∃h` versus finite fixed witnesses is original.
 
@@ -38,7 +40,7 @@ theorem expandingModel_no_fixed_pair_cover (h₀ h₁ : Nat) :
       (expandingModel.admits h₀ a ∨ expandingModel.admits h₁ a))
 ```
 
-The witness is the already-existing `expandingModel`: horizon `h` admits exactly the aspects `a < h`.  For any fixed `h₀, h₁`, the aspect `max h₀ h₁` is admitted by neither, while `expandingModel_individual` still proves that every individual aspect is admitted by some larger horizon.
+The witness is the already-existing `expandingModel`: horizon `h` admits exactly the aspects `a < h`.  For any fixed `h₀, h₁`, the aspect `h₀ + h₁` is admitted by neither, while `expandingModel_individual` still proves that every individual aspect is admitted by some larger horizon.
 
 The project-level theorem
 
