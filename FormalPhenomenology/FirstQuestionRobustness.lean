@@ -1,5 +1,6 @@
 import FormalPhenomenology.ConditioningBoundary
 import FormalPhenomenology.FirstQuestion
+import FormalPhenomenology.Models.OpenHorizon
 
 set_option autoImplicit false
 
@@ -94,5 +95,29 @@ theorem first_question_fixed_pair_cover_does_not_force_capture :
     ⟨M, p, h₀, h₁, hne, hp, hs₀, hs₁, hn, hcover⟩
   have hc := h M p hp ⟨h₀, h₁, hne, hs₀, hs₁, hcover⟩
   exact ((nonExhaustible_iff_not_captured M p).mp hn) hc
+
+/--
+Aspectwise horizon coverage is strictly weaker than coverage by one fixed pair of
+related horizons in the current aspect language.
+
+The witness is the already-existing open natural-number chain `expandingModel`:
+every aspect is admitted by some larger horizon, but for any two named horizons the
+diagonal aspect `max h₀ h₁` is admitted by neither.  This theorem therefore separates
+"the horizon may vary with the aspect" from "two fixed horizons suffice" without
+introducing a horizon-combination operation or another model family.
+
+This is a FORMAL quantifier guardrail only.  It does not identify the open chain with
+Marion's several-horizon or no-combination figures; those historical mappings remain
+source-controlled.
+-/
+theorem first_question_aspectwise_cover_need_not_have_fixed_pair :
+    ∃ M : Presentation, ∃ p : M.Phenomenon,
+      M.appears p ∧ M.IndividuallyCoverable p ∧
+        ¬ ∃ h₀ h₁ : M.Horizon,
+          M.situated p h₀ ∧ M.situated p h₁ ∧
+            ∀ a, M.presents p a → (M.admits h₀ a ∨ M.admits h₁ a) := by
+  refine ⟨expandingModel, (), True.intro, expandingModel_individual, ?_⟩
+  rintro ⟨h₀, h₁, _, _, hcover⟩
+  exact expandingModel_no_fixed_pair_cover h₀ h₁ hcover
 
 end FormalPhenomenology
