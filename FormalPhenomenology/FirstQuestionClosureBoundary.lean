@@ -66,4 +66,32 @@ theorem first_question_closureBridge_iff_no_situatedExcess_and_captured_stabilit
       ((first_question_no_situatedExcess_iff_double_negated_capture M).1
         hNoExcess p hp hStructured)
 
+/--
+Localized decidability is a sufficient source of the capture stability required above.
+
+If `Captured p` is decidable only on the actually appearing, structured domain relevant
+to `ClosureBridge`, then absence of a situated-excess counterexample is equivalent to the
+positive closure bridge.  No global classical logic or global decidability assumption is
+needed; the local `Decidable` instance is introduced exactly at the point where double
+negation is eliminated.
+
+This is a proof-theoretic corollary only.  The decidability premise has no historical
+attribution, and the theorem must not be read as saying that phenomenological horizons
+are effectively decidable in Merleau-Ponty or Marion.
+-/
+theorem first_question_closureBridge_iff_no_situatedExcess_of_captured_decidable
+    (M : Presentation)
+    (hDecidable :
+      ∀ p, M.appears p → M.Structured p → Decidable (M.Captured p)) :
+    M.ClosureBridge ↔ ¬ M.HasSituatedExcess := by
+  constructor
+  · intro hClosure hExcess
+    exact (situatedExcess_refutes_closureBridge M hExcess) hClosure
+  · intro hNoExcess p hp hStructured
+    have hDouble : ¬ ¬ M.Captured p :=
+      (first_question_no_situatedExcess_iff_double_negated_capture M).1
+        hNoExcess p hp hStructured
+    letI : Decidable (M.Captured p) := hDecidable p hp hStructured
+    exact (Decidable.not_not).1 hDouble
+
 end FormalPhenomenology
