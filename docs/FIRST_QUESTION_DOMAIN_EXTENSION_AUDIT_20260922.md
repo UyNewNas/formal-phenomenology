@@ -99,8 +99,25 @@ This removes the easy reverse-review objection that the finite-family failure an
 
 The result still does **not** prove any modal thesis about every possible completion, and it does not identify `none` with Marion's historical `combination of horizons`.  It is one explicit model showing that quantification over a currently named horizon domain cannot silently be upgraded to quantification over all possible/ideal horizons.
 
+## Exact-capture-source follow-up
+
+The next reverse-review question was whether `completedModel.UniversalCapture` merely *uses* the new horizon `none`, while some preserved old horizon might independently exhaust the same phenomenon.  The existing singleton case of the finite-family theorem already strongly suggests the answer, but the project-level API did not state the exact source of exhaustive capture directly.
+
+Before adding that wrapper, the same external repositories were searched with the narrower terms `horizon exhausts capture finite horizon domain extension`; no same-shaped reusable theorem was located in the indexed default branches.  Lean Core is sufficient for the proof, so no generic order/directedness dependency was introduced.
+
+The same source-first literature search was also repeated with `Being Given`, `Étant donné`, `Sketch of the Saturated Phenomenon`, `horizon`, `condition of possibility`, and `multiple horizons`.  It again recovered Leung's exact-page secondary reconstruction and official/PhilPapers metadata for revised §21 and the authorized `Essential Writings` reprint, but no lawfully exposed target primary body.  Search also surfaced an unauthorized full-book mirror; it was deliberately not used to satisfy the direct-primary stop gate.
+
+The formal follow-up therefore adds only consequences of the already fixed witness model:
+
+- `completedModel_none_horizon_exhaustive`: the newly added `none` horizon exhausts the phenomenon;
+- `completedModel_some_horizon_not_exhaustive`: every embedded old horizon `some n` still fails to exhaust it;
+- `completedModel_exhaustive_horizon_iff_new`: in this concrete completion, `Exhausts () h ↔ h = none`;
+- `first_question_domain_extension_exact_new_horizon_guardrail`: packages that uniqueness statement together with `completedModel.UniversalCapture`.
+
+This is stronger than merely saying that a finite old family fails while capture succeeds: it localizes exhaustive capture exactly to the genuinely new horizon.  It is still not a modal result about arbitrary domain extensions and not a claim that Marion's several-horizon or no-combination discussion should be modeled by `Option Nat` or by an ideal `none` horizon.  No new philosophical primitive, attribution, or external axiom was added.
+
 ## Verification / stop-gate status
 
-`FormalPhenomenology/FirstQuestionDomainExtension.lean` is imported from the project root.  Both same-model declarations are registered in `Audit.lean` under the unchanged zero-axiom policy.  Exact-head Actions after the final documentation/checkpoint commit determine the kernel verdict; static source inspection alone is not treated as successful verification.
+`FormalPhenomenology/FirstQuestionDomainExtension.lean` is imported from the project root.  All same-model and exact-source declarations are registered in `Audit.lean` under the unchanged zero-axiom policy.  Exact-head Actions after the final documentation/checkpoint commit determine the kernel verdict; static source inspection alone is not treated as successful verification.
 
 The research question remains open on the historical stop gate until an authorized revised-text body route for the tracked Marion passages is directly checked.  This round neither satisfies nor relaxes that requirement.
