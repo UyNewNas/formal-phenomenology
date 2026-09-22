@@ -67,6 +67,41 @@ theorem first_question_closureBridge_iff_no_situatedExcess_and_captured_stabilit
         hNoExcess p hp hStructured)
 
 /--
+Natural-language form of the same constructive boundary once horizon structure is fixed.
+
+If `UniversalStructure` says that every actually appearing phenomenon is in the encoded
+horizon structure, then saying that every appearing phenomenon is positively `Captured`
+is equivalent to two requirements: there is no appearing structured non-exhaustible
+counterexample, and `Captured` is double-negation stable on appearing phenomena.
+
+This is the exact formal premise boundary for the repository's narrow question
+"appearance in a horizon structure → exhaustive capture".  The theorem adds no new
+primitive and does not attribute the stability requirement to Merleau-Ponty or Marion.
+In particular, it keeps the historical source question separate from the constructive
+logic needed to turn absence of a counterexample into a positive capture witness.
+-/
+theorem first_question_universalStructure_appearance_capture_iff_no_situatedExcess_and_stability
+    (M : Presentation) (hStructure : M.UniversalStructure) :
+    (∀ p, M.appears p → M.Captured p) ↔
+      (¬ M.HasSituatedExcess) ∧
+        (∀ p, M.appears p → (¬ ¬ M.Captured p → M.Captured p)) := by
+  constructor
+  · intro hCapture
+    constructor
+    · intro hExcess
+      rcases hExcess with ⟨p, hp, _, hNonExhaustible⟩
+      exact ((nonExhaustible_iff_not_captured M p).1 hNonExhaustible)
+        (hCapture p hp)
+    · intro p hp _
+      exact hCapture p hp
+  · rintro ⟨hNoExcess, hStable⟩ p hp
+    have hStructured : M.Structured p := hStructure p hp
+    have hDouble : ¬ ¬ M.Captured p :=
+      (first_question_no_situatedExcess_iff_double_negated_capture M).1
+        hNoExcess p hp hStructured
+    exact hStable p hp hDouble
+
+/--
 Localized decidability is a sufficient source of the capture stability required above.
 
 If `Captured p` is decidable only on the actually appearing, structured domain relevant
