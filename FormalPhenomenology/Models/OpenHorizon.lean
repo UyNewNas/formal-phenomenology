@@ -80,6 +80,39 @@ theorem expandingModel_mem_le_listBound {h : Nat} {hs : List Nat}
       exact Nat.le_trans ih (Nat.le_add_left _ _)
 
 /--
+Every finite list of horizons in the open model has a single situated horizon that
+contains everything admitted by every horizon in the list.  The witness is only an
+order-theoretic dominator of the named finite family; it need not exhaust all
+presented aspects of the phenomenon.
+-/
+theorem expandingModel_finite_list_has_dominator (hs : List Nat) :
+    ∃ k, expandingModel.situated () k ∧
+      ∀ h, h ∈ hs → ∀ a,
+        expandingModel.admits h a → expandingModel.admits k a := by
+  refine ⟨expandingModelListBound hs, True.intro, ?_⟩
+  intro h hh a ha
+  exact expandingModel_monotone h (expandingModelListBound hs) a
+    (expandingModel_mem_le_listBound hh) ha
+
+/--
+Finite directedness is not global exhaustibility: even though every finite list of
+named horizons has a situated common dominator, the open model still has an
+actually appearing non-exhaustible phenomenon.
+
+This isolates the missing premise behind finite-upper-bound arguments.  A common
+upper bound for each finite *named family* does not imply that some finite family
+already covers every presented aspect.  No semantic horizon-combination operation
+is introduced or attributed to any historical author.
+-/
+theorem expandingModel_finite_dominators_do_not_force_capture :
+    (∀ hs : List Nat,
+      ∃ k, expandingModel.situated () k ∧
+        ∀ h, h ∈ hs → ∀ a,
+          expandingModel.admits h a → expandingModel.admits k a) ∧
+      expandingModel.HasExcess := by
+  exact ⟨expandingModel_finite_list_has_dominator, expandingModel_excess⟩
+
+/--
 No finite list of horizons covers every presented aspect of the open natural-number
 model.  This closes the finite-family quantifier gap left by the more general bounded-
 family theorem: the list itself supplies a concrete bound, so no separate boundedness
