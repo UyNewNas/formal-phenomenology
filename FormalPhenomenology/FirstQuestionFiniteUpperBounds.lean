@@ -47,27 +47,29 @@ theorem first_question_finite_family_pairwise_upper_bounds_imply_capture
         exact (hne' rfl).elim
     | cons h t ih =>
         intro _ hst
-        have hh : M.situated p h := hst h (by simp)
+        have hh : M.situated p h := hst h (List.Mem.head t)
         cases t with
         | nil =>
             refine ⟨h, hh, ?_⟩
             intro h' hm a ha
-            simp at hm
-            subst h'
-            exact ha
+            cases hm with
+            | head => exact ha
+            | tail _ hNil => cases hNil
         | cons h₂ t₂ =>
             have htail : ∀ h', h' ∈ h₂ :: t₂ → M.situated p h' := by
               intro h' hm
-              exact hst h' (by simp [hm])
-            rcases ih (by simp) htail with ⟨hTail, hTailSit, hTailDom⟩
+              exact hst h' (List.Mem.tail h hm)
+            have htailNonempty : h₂ :: t₂ ≠ [] := by
+              intro hEq
+              cases hEq
+            rcases ih htailNonempty htail with ⟨hTail, hTailSit, hTailDom⟩
             rcases hupper h hTail hh hTailSit with
               ⟨hStar, hStarSit, hHead, hTailUp⟩
             refine ⟨hStar, hStarSit, ?_⟩
             intro h' hm a ha
-            rcases List.mem_cons.mp hm with hEq | hmTail
-            · subst h'
-              exact hHead a ha
-            · exact hTailUp a (hTailDom h' hmTail a ha)
+            cases hm with
+            | head => exact hHead a ha
+            | tail _ hmTail => exact hTailUp a (hTailDom h' hmTail a ha)
   apply first_question_finite_family_cover_with_dominator_implies_capture M p hs
   · intro a ha
     rcases hcover a ha with ⟨h, hm, hadmits⟩
