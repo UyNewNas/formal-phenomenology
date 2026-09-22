@@ -58,13 +58,16 @@ Interpretive boundary:
 - `Captured` remains existential exhaustive capture in the aspect language, not Marion's saturated phenomenon;
 - the theorem is a FORMAL normalization and introduces no historical attribution, classical principle, or new phenomenological primitive.
 
-## Commit ledger
+## Commit and verification ledger
 
 - `c198cf9c6c6a123d190956a6b79dfdb3c93e9894` — added `FormalPhenomenology/FirstQuestionStructureNormalization.lean`;
 - `bd0d1785ab188ca6c142f4a3ad37db3b535a4317` — exposed the module from the root import;
-- `9fd68b2a1f9dbba4318749ee37d21aa78ff0c413` — registered the theorem in `Audit.lean`.
+- `9fd68b2a1f9dbba4318749ee37d21aa78ff0c413` — registered the theorem in `Audit.lean`;
+- `1201fa7191a40fec6303955fbe35afff8e7b80c8` — first complete code+audit+research-document head.
 
-This document commit must be followed by exact-head GitHub Actions verification.  Until that succeeds, the new theorem is **written + committed + root-reachable, pending kernel/build verification**.
+Exact-head pull-request workflow `35678848439` for `1201fa7191a40fec6303955fbe35afff8e7b80c8` completed **success**.  Its `verify` job completed the pinned Lean setup and the repository's `Build, source coverage, and kernel axiom audit` step successfully.  Thus the theorem is kernel/build verified at that exact source head; no earlier green run is being inherited.
+
+This follow-up commit only records that verified status in the audit document; it changes no Lean source or theorem statement.  The repository Actions record on the follow-up SHA remains the authoritative exact-head check for this documentation-only update.
 
 ## Remaining stop gate
 
