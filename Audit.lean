@@ -69,6 +69,8 @@ import FormalPhenomenology
 #print axioms FormalPhenomenology.expandingModel_no_fixed_pair_cover
 #print axioms FormalPhenomenology.expandingModel_no_bounded_family_cover
 #print axioms FormalPhenomenology.expandingModel_mem_le_listBound
+#print axioms FormalPhenomenology.expandingModel_finite_list_has_dominator
+#print axioms FormalPhenomenology.expandingModel_finite_dominators_do_not_force_capture
 #print axioms FormalPhenomenology.expandingModel_no_finite_list_cover
 #print axioms FormalPhenomenology.open_horizon_compatibility
 #print axioms FormalPhenomenology.finite_horizon_agrees
