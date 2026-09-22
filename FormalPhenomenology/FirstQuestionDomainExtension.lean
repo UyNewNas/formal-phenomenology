@@ -85,16 +85,32 @@ theorem completedModel_none_horizon_exhaustive :
   exact True.intro
 
 /--
+Embedding an old horizon into the completed domain preserves *exhaustiveness*
+exactly, not merely its pointwise `admits` relation.
+
+This is the strongest local preservation statement available in the concrete model:
+the phenomenon/aspect language is fixed, and `finite_horizon_agrees` transports the
+entire universal aspect condition in both directions.  Any new capture in the
+completion therefore cannot be attributed to altered behaviour of an old horizon.
+-/
+theorem completedModel_old_horizon_exhaustive_iff (n : Nat) :
+    completedModel.Exhausts () (some n) ↔ expandingModel.Exhausts () n := by
+  constructor
+  · intro hex a _
+    exact (finite_horizon_agrees n a).mp (hex a True.intro)
+  · intro hex a _
+    exact (finite_horizon_agrees n a).mpr (hex a True.intro)
+
+/--
 No embedded old horizon `some n` exhausts the phenomenon after the domain
-extension.  The proof transports any hypothetical exhaustion back through the
-exact old-horizon agreement and contradicts the already verified open-model result.
+extension.  The proof now factors through exact old-horizon exhaustiveness
+preservation, so the negative result is not merely inferred from a cover argument.
 -/
 theorem completedModel_some_horizon_not_exhaustive (n : Nat) :
     ¬ completedModel.Exhausts () (some n) := by
   intro hex
-  apply expandingModel_no_horizon_exhausts n
-  intro a _
-  exact (finite_horizon_agrees n a).mp (hex a True.intro)
+  exact expandingModel_no_horizon_exhausts n
+    ((completedModel_old_horizon_exhaustive_iff n).mp hex)
 
 /--
 Exact source of exhaustive capture in the concrete completion: a horizon exhausts
