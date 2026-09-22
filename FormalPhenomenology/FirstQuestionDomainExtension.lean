@@ -38,4 +38,40 @@ theorem first_question_finite_named_horizon_failure_is_domain_relative :
     exact expandingModel_no_finite_list_cover hs
   · exact completedModel_capture
 
+/--
+Even after passing to the completed model, no finite list consisting only of the
+embedded *old* horizons `some n` covers every presented aspect.
+
+This is the same-object reverse check missing from the cross-model packaging above:
+the failure is witnessed inside `completedModel` itself, so it does not rely on
+comparing `presents` across two presentations.  The only way the displayed
+completion changes capture is by admitting the additional ideal horizon `none`.
+-/
+theorem completedModel_no_finite_old_horizon_list_cover (hs : List Nat) :
+    ¬ (∀ a, completedModel.presents () a →
+      ∃ n, n ∈ hs ∧ completedModel.admits (some n) a) := by
+  intro hcover
+  apply expandingModel_no_finite_list_cover hs
+  intro a _
+  rcases hcover a True.intro with ⟨n, hn, hadmits⟩
+  exact ⟨n, hn, (finite_horizon_agrees n a).mp hadmits⟩
+
+/--
+Same-model form of the domain-extension guardrail.
+
+Every finite family drawn from the embedded old horizon domain still fails inside
+`completedModel`, while `completedModel` as a whole has universal capture because
+it contains the new ideal horizon.  This keeps the relevant phenomenon/aspect model
+fixed and isolates the changed quantifier domain as the operative difference.
+-/
+theorem first_question_domain_extension_same_model_guardrail :
+    (∀ hs : List Nat,
+      ¬ (∀ a, completedModel.presents () a →
+        ∃ n, n ∈ hs ∧ completedModel.admits (some n) a)) ∧
+      completedModel.UniversalCapture := by
+  constructor
+  · intro hs
+    exact completedModel_no_finite_old_horizon_list_cover hs
+  · exact completedModel_capture
+
 end FormalPhenomenology
