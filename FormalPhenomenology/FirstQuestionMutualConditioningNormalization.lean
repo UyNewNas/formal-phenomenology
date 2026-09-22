@@ -1,4 +1,5 @@
 import FormalPhenomenology.Horizon.Conditioning
+import FormalPhenomenology.Horizon.SituatedExcess
 
 set_option autoImplicit false
 
@@ -30,5 +31,35 @@ theorem first_question_mutual_conditioning_conditioned_iff_structured
       M hBackward p hConditioned
   · rintro ⟨h, hSituated⟩
     exact ⟨h, hForward p h hSituated⟩
+
+/--
+Under the same explicit mutual-identification pressure test, an actually
+appearing phenomenon that is conditioned yet non-exhaustible exists exactly
+when the base presentation has situated excess.
+
+This is only a profile-level normalization of the previous pointwise theorem.
+It is useful because it shows that the positive `Conditioned ∧ NonExhaustible`
+witness does not obtain extra historical content merely from the auxiliary
+conditioning vocabulary once `situated` and `conditions` are assumed to
+coincide.
+-/
+theorem first_question_mutual_conditioning_conditioned_excess_iff_situatedExcess
+    (M : HorizonConditioning)
+    (hForward : M.SituatedImpliesConditioning)
+    (hBackward : M.ConditioningIsSituated) :
+    (∃ p,
+        M.base.appears p ∧ M.Conditioned p ∧ M.base.NonExhaustible p) ↔
+      M.base.HasSituatedExcess := by
+  constructor
+  · rintro ⟨p, hAppears, hConditioned, hNonExhaustible⟩
+    refine ⟨p, hAppears, ?_, hNonExhaustible⟩
+    exact
+      (first_question_mutual_conditioning_conditioned_iff_structured
+        M hForward hBackward p).mp hConditioned
+  · rintro ⟨p, hAppears, hStructured, hNonExhaustible⟩
+    refine ⟨p, hAppears, ?_, hNonExhaustible⟩
+    exact
+      (first_question_mutual_conditioning_conditioned_iff_structured
+        M hForward hBackward p).mpr hStructured
 
 end FormalPhenomenology
