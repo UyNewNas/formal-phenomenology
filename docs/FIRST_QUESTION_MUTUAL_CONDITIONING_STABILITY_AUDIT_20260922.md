@@ -65,10 +65,60 @@ iff
 
 This strictly sharpens the previous decidability corollary: decidability remains a sufficient source of the stability premise, but the theorem records only the exact double-negation elimination actually needed.
 
+## 2026-09-22 follow-up: universal-structure quantifier normalization
+
+### Reuse / prior-art recheck
+
+Before adding another theorem, a fresh bounded GitHub code search used the shape `horizon captured closure exhaust condition` against:
+
+- `novaspivack/phenomenology-lean`;
+- `cbenzmueller/LogiKEy`;
+- `alexoltean61/msphml-lean`.
+
+The search returned no same-shaped reusable API. This is again only a bounded reuse check; it is not a claim of philosophical or logical novelty. The result is proved by composing the existing mutual-conditioning normalization and stability theorem, so no new dependency or general logical infrastructure was added.
+
+The same-topic source check also added two provenance facts without upgrading the evidence level:
+
+- De Gruyter/Stanford's official book record identifies §21 as **“Sketch of the Saturated Phenomenon: The Horizon,” pp. 199–212**, with chapter DOI `10.1515/9780804785723-024`; the chapter body was not exposed by the current public retrieval path, so this remains publisher metadata rather than direct-body review.
+- Open Library's record for the 1997 PUF *Étant donné* (ISBN `2-13-048677-0`) identifies Internet Archive item `etantdonneessaid0000mari_w5n7` behind a borrow-controlled route. No login, loan session, access control, or restricted file was bypassed; the body was not read in this run, so the route is not counted as `PRIMARY-DIRECT-PAGE` evidence.
+
+These checks leave the current interpretation unchanged: `UniversalStructure` may be used as the weak Merleau-Ponty-facing horizon-structure compression already documented in the project, while mutual `situated ↔ conditions` remains an explicit competing encoding rather than an attribution to either author.
+
+### Formal increment
+
+The same module now also contains:
+
+`first_question_mutual_conditioning_universalStructure_closureBridge_iff_no_conditioned_excess_and_stability`
+
+Under the explicit assumptions
+
+- `UniversalStructure`;
+- `SituatedImpliesConditioning`;
+- `ConditioningIsSituated`;
+
+the theorem proves:
+
+`ClosureBridge`
+
+iff
+
+1. there is no actually appearing `Conditioned ∧ NonExhaustible` witness; and
+2. `Captured` is double-negation stable on the **actual-appearance domain**.
+
+The point of the theorem is a quantifier-domain audit: once every actual appearance is structured and mutual identification turns structure into positive conditioning, the extra `Conditioned p` premise in the stability conjunct is redundant. This does not make the mutual identification historically true; it shows exactly what follows **if** that stronger competing encoding is adopted.
+
+Code commit: `bff692bac274aba4ab42488e3e1e4e45920091f6`.
+
+Axiom-audit registration commit: `a24af3d87edf48dfedf27520d00e21901e0ae292`.
+
 ## Validation status
 
-Code commits for this round begin at `7ea79ee912f3f4afb8794b96efe289a4e963fb08` (new theorem), followed by root import and `Audit.lean` registration. Exact-head GitHub Actions is the authoritative build/source-coverage/kernel-audit verdict. No success is claimed here until the final exact SHA completes CI.
+The earlier increment began at `7ea79ee912f3f4afb8794b96efe289a4e963fb08` and subsequently reached exact-head CI success before this follow-up.
+
+For the follow-up theorem, exact-head GitHub Actions after the final documentation/checkpoint commit is the authoritative verdict. No successful Lean build, root-coverage result, or axiom report is claimed here until that final exact SHA completes CI.
 
 ## Remaining stop gate
 
-The first research question remains open until the revised-primary interpretation mapping is lawfully checked in body text (BG 209–212 plus the tracked later passage; early ED 292–297 plus 314–315; mapped authorized Spanish route; or a reliably mapped authorized revised reprint/translation). If that direct body preserves the current relatedness/conditioning distinction, freeze the interpretation and rerun the complete proof and axiom audit on the final SHA. If it forces a mismatch, change only the smallest first-question interface required by the text.
+The first research question remains open until the revised-primary interpretation mapping is directly checked in body text (BG 209–212 plus the tracked later passage; early ED 292–297 plus 314–315; mapped authorized Spanish route; or a reliably mapped authorized revised reprint/translation). The De Gruyter chapter DOI and Open Library borrow route improve provenance/access routing only; they do not satisfy this body-text gate by themselves.
+
+If direct body review preserves the current relatedness/conditioning distinction, freeze the interpretation and rerun the complete proof and axiom audit on the final SHA. If it forces a mismatch, change only the smallest first-question interface required by the text.
