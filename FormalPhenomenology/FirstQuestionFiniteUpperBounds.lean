@@ -64,8 +64,7 @@ theorem first_question_finite_family_pairwise_upper_bounds_imply_capture
               ⟨hStar, hStarSit, hHead, hTailUp⟩
             refine ⟨hStar, hStarSit, ?_⟩
             intro h' hm a ha
-            simp only [List.mem_cons] at hm
-            rcases hm with hEq | hmTail
+            rcases List.mem_cons.mp hm with hEq | hmTail
             · subst h'
               exact hHead a ha
             · exact hTailUp a (hTailDom h' hmTail a ha)
