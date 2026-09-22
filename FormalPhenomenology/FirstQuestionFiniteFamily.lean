@@ -105,4 +105,41 @@ theorem first_question_nonExhaustible_fixed_pair_cover_has_no_dominator
   · exact hdom₀ a ha₀
   · exact hdom₁ a ha₁
 
+/--
+Finite joint coverage by related horizons alone does not force single-horizon capture.
+
+The witness is the already verified split model: two distinct situated horizons jointly
+cover every presented aspect, while no single situated horizon exhausts the appearing
+phenomenon.  Repackaging that pair as the finite list `[h₀, h₁]` makes the negative
+baseline explicit next to the positive dominator theorem above: the common situated
+dominator is genuine extra structure, not something supplied merely by finiteness.
+
+This theorem adds no model, primitive, dependency, classical principle, or historical
+attribution.  In particular, a finite `List Horizon` is only a list of named horizons
+in the current relation language and is not identified with Marion's semantic phrase
+"combination of horizons".
+-/
+theorem first_question_finite_family_cover_alone_does_not_force_capture :
+    ¬ (∀ (M : Presentation) (p : M.Phenomenon) (hs : List M.Horizon),
+      M.appears p →
+        hs ≠ [] →
+          (∀ h, h ∈ hs → M.situated p h) →
+            (∀ a, M.presents p a →
+              ∃ h, h ∈ hs ∧ M.admits h a) →
+              M.Captured p) := by
+  intro h
+  rcases first_question_two_horizons_can_cover_without_single_horizon_capture with
+    ⟨M, p, h₀, h₁, _, hp, hs₀, hs₁, hn, hcover⟩
+  have hc := h M p [h₀, h₁] hp (by simp) (by
+    intro h' hh
+    simp at hh
+    rcases hh with rfl | rfl
+    · exact hs₀
+    · exact hs₁) (by
+      intro a ha
+      rcases hcover a ha with ha₀ | ha₁
+      · exact ⟨h₀, by simp, ha₀⟩
+      · exact ⟨h₁, by simp, ha₁⟩)
+  exact ((nonExhaustible_iff_not_captured M p).mp hn) hc
+
 end FormalPhenomenology
