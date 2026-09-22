@@ -74,4 +74,66 @@ theorem first_question_domain_extension_same_model_guardrail :
     exact completedModel_no_finite_old_horizon_list_cover hs
   · exact completedModel_capture
 
+/--
+The added ideal horizon `none` really does exhaust the unique appearing phenomenon
+of `completedModel`.  This is stated separately so the later uniqueness theorem
+does not hide the positive witness inside `UniversalCapture`.
+-/
+theorem completedModel_none_horizon_exhaustive :
+    completedModel.Exhausts () none := by
+  intro a _
+  exact True.intro
+
+/--
+No embedded old horizon `some n` exhausts the phenomenon after the domain
+extension.  The proof transports any hypothetical exhaustion back through the
+exact old-horizon agreement and contradicts the already verified open-model result.
+-/
+theorem completedModel_some_horizon_not_exhaustive (n : Nat) :
+    ¬ completedModel.Exhausts () (some n) := by
+  intro hex
+  apply expandingModel_no_horizon_exhausts n
+  intro a _
+  exact (finite_horizon_agrees n a).mp (hex a True.intro)
+
+/--
+Exact source of exhaustive capture in the concrete completion: a horizon exhausts
+the phenomenon iff it is the newly added ideal horizon `none`.
+
+This strengthens the same-model guardrail without adding any modal claim: it is a
+fact only about this explicit `Option Nat` horizon extension.
+-/
+theorem completedModel_exhaustive_horizon_iff_new (h : Option Nat) :
+    completedModel.Exhausts () h ↔ h = none := by
+  cases h with
+  | none =>
+      constructor
+      · intro _
+        rfl
+      · intro _
+        exact completedModel_none_horizon_exhaustive
+  | some n =>
+      constructor
+      · intro hex
+        exact False.elim (completedModel_some_horizon_not_exhaustive n hex)
+      · intro hnone
+        cases hnone
+
+/--
+Project-level exact-domain-extension guardrail: in the fixed completed presentation,
+`none` is not merely one convenient capture witness but the unique exhaustive
+horizon, while the model has universal capture.
+
+Hence the change in exhaustibility is localized to the genuinely new horizon in
+this witness model.  This remains an encoding pressure test, not an attribution to
+Marion's notion of a horizon-combination or an ideal horizon.
+-/
+theorem first_question_domain_extension_exact_new_horizon_guardrail :
+    (∀ h : Option Nat, completedModel.Exhausts () h ↔ h = none) ∧
+      completedModel.UniversalCapture := by
+  constructor
+  · intro h
+    exact completedModel_exhaustive_horizon_iff_new h
+  · exact completedModel_capture
+
 end FormalPhenomenology
