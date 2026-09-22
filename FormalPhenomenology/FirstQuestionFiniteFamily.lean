@@ -130,16 +130,20 @@ theorem first_question_finite_family_cover_alone_does_not_force_capture :
   intro h
   rcases first_question_two_horizons_can_cover_without_single_horizon_capture with
     ⟨M, p, h₀, h₁, _, hp, hs₀, hs₁, hn, hcover⟩
-  have hc := h M p [h₀, h₁] hp (by simp) (by
-    intro h' hh
-    simp at hh
-    rcases hh with rfl | rfl
-    · exact hs₀
-    · exact hs₁) (by
-      intro a ha
-      rcases hcover a ha with ha₀ | ha₁
-      · exact ⟨h₀, by simp, ha₀⟩
-      · exact ⟨h₁, by simp, ha₁⟩)
+  have hc := h M p [h₀, h₁] hp (by
+    intro hNil
+    cases hNil) (by
+      intro h' hh
+      cases hh with
+      | head => exact hs₀
+      | tail _ hhTail =>
+          cases hhTail with
+          | head => exact hs₁
+          | tail _ hNil => cases hNil) (by
+            intro a ha
+            rcases hcover a ha with ha₀ | ha₁
+            · exact ⟨h₀, List.Mem.head _, ha₀⟩
+            · exact ⟨h₁, List.Mem.tail _ (List.Mem.head _), ha₁⟩)
   exact ((nonExhaustible_iff_not_captured M p).mp hn) hc
 
 end FormalPhenomenology
