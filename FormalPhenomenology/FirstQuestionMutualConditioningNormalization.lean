@@ -64,6 +64,35 @@ theorem first_question_mutual_conditioning_conditioned_excess_iff_situatedExcess
         M hForward hBackward p).mpr hStructured
 
 /--
+With the same explicit mutual identification, `ClosureBridge` is exactly the
+positive appearing-domain claim that every conditioned phenomenon is captured.
+
+Unlike the negative counterexample normal form below, this equivalence needs no
+`Decidable` or stability premise: mutual identification already gives the exact
+pointwise conversion `Conditioned p ↔ Structured p`.  This theorem is therefore
+a logical normal form for the competing encoding, not a historical claim that
+Merleau-Ponty or Marion identifies relatedness with conditioning or endorses the
+resulting closure principle.
+-/
+theorem first_question_mutual_conditioning_closureBridge_iff_conditioned_capture
+    (M : HorizonConditioning)
+    (hForward : M.SituatedImpliesConditioning)
+    (hBackward : M.ConditioningIsSituated) :
+    M.base.ClosureBridge ↔
+      ∀ p, M.base.appears p → M.Conditioned p → M.base.Captured p := by
+  constructor
+  · intro hClosure p hAppears hConditioned
+    apply hClosure p hAppears
+    exact
+      (first_question_mutual_conditioning_conditioned_iff_structured
+        M hForward hBackward p).mp hConditioned
+  · intro hConditionedCapture p hAppears hStructured
+    apply hConditionedCapture p hAppears
+    exact
+      (first_question_mutual_conditioning_conditioned_iff_structured
+        M hForward hBackward p).mpr hStructured
+
+/--
 If `situated` and `conditions` are mutually identified, then the positive
 `Conditioned ∧ NonExhaustible` profile is exactly the counterexample profile to
 `ClosureBridge`, once capture is locally decidable on the appearing/structured
