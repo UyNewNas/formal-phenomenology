@@ -138,8 +138,40 @@ This is deliberately a **FORMAL normalization**, not a Marion claim. The theorem
 
 Implementation commit: `2d8e4866237600472165efebbd4f5685085cd05c`; audit registration commit: `a39b71856497fd55e23102603491608c75012d72`. Exact-final-SHA CI is still required before any verified status is claimed.
 
+## 2026-09-22 positive closure normal form
+
+This round first re-read the exact branch head and re-ran the mandatory external code search with the narrower theorem shape
+
+`conditioned captured horizon closure`.
+
+The registered Lean/method baselines `novaspivack/phenomenology-lean`, `cbenzmueller/LogiKEy`, and `alexoltean61/msphml-lean` returned no same-shaped reusable theorem. That negative search is scoped only to those baselines and does not support a novelty claim. Same-topic source review was also refreshed against Murga 2024 and the public Marion / *Being Given* evidence already in the ledger; none supplies a historical `Conditioned → Captured` bridge.
+
+The theorem
+
+`first_question_mutual_conditioning_closureBridge_iff_conditioned_capture`
+
+now gives the exact positive normal form, under the same explicit mutual-identification pressure test:
+
+```text
+ClosureBridge
+↔
+∀ p, appears p → Conditioned p → Captured p.
+```
+
+No decidability or double-negation stability is needed here. The proof is just transport along the already-audited pointwise equivalence
+
+```text
+Conditioned p ↔ Structured p.
+```
+
+This matters because it isolates the missing assumption without negative predicates: if one deliberately identifies the current `situated` and `conditions` relations, the disputed extra bridge is exactly the claim that every appearing conditioned phenomenon is captured. The theorem therefore sharpens the formal answer while making the historical boundary more explicit; neither Merleau-Ponty nor Marion is credited with that bridge.
+
+Source routing also advanced without weakening the gate. PUF's 2025 author collection *Le phénomène et le donné* (ISBN `9782130886686`) is now recorded in `MARION_REPRINT_PROVENANCE.md` as an authorized collected-edition route because PUF / Académie française publication metadata explicitly says that the volume republishes *Étant donné*. Current public previews still do not expose the target revised §21 / §22 body, so the evidence grade remains publisher metadata / authorized route rather than direct-primary body review. Fordham's official *The Visible and the Revealed* page and Google Books preview independently keep the earlier `The Saturated Phenomenon` essay lineage available as author-primary corroboration, not as a substitute for the revised book.
+
+Implementation commit: `aedb3fa24783e9cd6a409d8ca0437f3887163428`; audit registration commit: `f56f2d968ea91bef903219b0b37796a867a2eb85`; source-route commit: `ffed747e8ebda548d99dc00766717d6352ab5832`.
+
 ## Validation / stop check
 
-`FormalPhenomenology.lean` imports the normalization module and `Audit.lean` now lists all three normalization theorems for the zero-axiom policy. Exact-final-SHA GitHub Actions is the authoritative build/root-coverage/placeholder/kernel-audit verdict; no pre-write workflow is reused as validation of this increment.
+`FormalPhenomenology.lean` already imports the normalization module and `Audit.lean` now lists all four normalization theorems for the zero-axiom policy. Exact-final-SHA GitHub Actions is the authoritative build/root-coverage/placeholder/kernel-audit verdict; no pre-write workflow is reused as validation of this increment.
 
-The first research question is not complete in this checkpoint. The formal increment only normalizes an already-declared competing pressure test. The remaining material gate is still lawful direct review of revised Marion §21 body (BG pp.209–212 plus the tracked later passage, early ED pp.292–297 plus 314–315, or a reliably mapped authorized revised reprint/translation).
+The first research question is not complete in this checkpoint. The new theorem only normalizes the already-declared competing pressure test, and the new PUF route still lacks direct target-body access. The remaining material gate is lawful direct review of revised Marion §21 body (BG pp.209–212 plus the tracked later passage, early ED pp.292–297 plus 314–315, or a reliably mapped authorized revised reprint/translation).
