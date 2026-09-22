@@ -116,8 +116,25 @@ The formal follow-up therefore adds only consequences of the already fixed witne
 
 This is stronger than merely saying that a finite old family fails while capture succeeds: it localizes exhaustive capture exactly to the genuinely new horizon.  It is still not a modal result about arbitrary domain extensions and not a claim that Marion's several-horizon or no-combination discussion should be modeled by `Option Nat` or by an ideal `none` horizon.  No new philosophical primitive, attribution, or external axiom was added.
 
+## Exact preservation follow-up
+
+A further reverse check asked whether the previous argument had proved only the *negative* statement that old horizons fail after completion, while leaving open the possibility that their exhaustiveness semantics changed in some subtler way.  Before changing the proof, a narrower external code search for `horizon extension exhausts capture old horizon preservation` was run across the three registered formal baselines above; it returned no same-shaped reusable API in their indexed default branches.  This remains a bounded reuse search, not a novelty claim.
+
+The strongest local statement is now made explicit:
+
+```text
+completedModel_old_horizon_exhaustive_iff (n : Nat) :
+  completedModel.Exhausts () (some n) ↔ expandingModel.Exhausts () n
+```
+
+The proof transports the universal aspect condition in both directions using the already verified pointwise equality `finite_horizon_agrees`.  `completedModel_some_horizon_not_exhaustive` is refactored through this equivalence plus `expandingModel_no_horizon_exhausts`, so the negative conclusion is now visibly downstream of exact preservation rather than of a weaker finite-cover argument.
+
+This closes the natural local reverse-review objection for the concrete model: **old horizon behaviour is preserved at the level actually consumed by `Captured`; the new capture really comes from the new horizon**.  It still says nothing modal about arbitrary completions or historical horizon-combination semantics.
+
+The source-first pass also checked an additional lawful author-primary route: Fordham University Press's official record for Marion's *The Visible and the Revealed* (2008) confirms that the volume contains `The Saturated Phenomenon`, and Google Books exposes the table of contents with that chapter at pp. 18–48.  An open De Gruyter article independently cites the chapter as Marion, `The Saturated Phenomenon`, *The Visible and the Revealed*, pp. 18–48, DOI `10.5840/philtoday199640137`, tying it bibliographically to the 1996 essay lineage.  The available lawful pages do **not** expose the chapter body, and this route is not established as a textual reprint of the revised *Being Given* §21; therefore it is useful provenance/alternate-primary navigation only and does not satisfy the revised-text stop gate.  Unauthorized full-book mirrors that did expose body text were not used as evidence.
+
 ## Verification / stop-gate status
 
-`FormalPhenomenology/FirstQuestionDomainExtension.lean` is imported from the project root.  All same-model and exact-source declarations are registered in `Audit.lean` under the unchanged zero-axiom policy.  Exact-head Actions after the final documentation/checkpoint commit determine the kernel verdict; static source inspection alone is not treated as successful verification.
+`FormalPhenomenology/FirstQuestionDomainExtension.lean` is imported from the project root.  All same-model, exact-source, and exact-preservation declarations are registered in `Audit.lean` under the unchanged zero-axiom policy.  Exact-head Actions after the final documentation/checkpoint commit determine the kernel verdict; static source inspection alone is not treated as successful verification.
 
 The research question remains open on the historical stop gate until an authorized revised-text body route for the tracked Marion passages is directly checked.  This round neither satisfies nor relaxes that requirement.
