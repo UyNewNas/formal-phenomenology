@@ -88,4 +88,38 @@ theorem first_question_closureBridge_iff_finite_cover_of_pairwise_upper_bounds
     exact first_question_finite_cover_pairwise_upper_bounds_imply_closureBridge
       M hcover hupper
 
+/--
+Without any global pairwise-upper-bound hypothesis, the project-level `ClosureBridge`
+is exactly the requirement that every appearing structured phenomenon admit some
+finite situated cover together with a single situated horizon dominating that chosen
+family.
+
+This is the direct lifting of
+`first_question_captured_iff_exists_finite_family_with_dominator` to the quantifier
+domain used by `ClosureBridge`.  It keeps the strongest baseline visible: existentially
+choosing a finite family *with* a common dominator adds no content beyond ordinary
+single-horizon capture.  Pairwise upper bounds are only one sufficient mechanism for
+producing such a dominator when it is not already supplied.
+
+This is a FORMAL quantifier-normalization result.  The finite family and dominator are
+not identified with Marion's historical language of one, several, or a combination of
+horizons, and no new philosophical primitive or attribution is introduced.
+-/
+theorem first_question_closureBridge_iff_exists_finite_family_with_dominator
+    (M : Presentation) :
+    M.ClosureBridge ↔
+      ∀ p, M.appears p → M.Structured p →
+        ∃ hs : List M.Horizon,
+          (∀ a, M.presents p a →
+            ∃ h, h ∈ hs ∧ M.situated p h ∧ M.admits h a) ∧
+          ∃ hStar, M.situated p hStar ∧
+            ∀ h, h ∈ hs → ∀ a, M.admits h a → M.admits hStar a := by
+  constructor
+  · intro hBridge p happ hstructured
+    exact (first_question_captured_iff_exists_finite_family_with_dominator M p).1
+      (hBridge p happ hstructured)
+  · intro hpack p happ hstructured
+    exact (first_question_captured_iff_exists_finite_family_with_dominator M p).2
+      (hpack p happ hstructured)
+
 end FormalPhenomenology
