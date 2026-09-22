@@ -152,4 +152,41 @@ theorem first_question_domain_extension_exact_new_horizon_guardrail :
     exact completedModel_exhaustive_horizon_iff_new h
   · exact completedModel_capture
 
+/--
+Finite directedness of the *old* horizons survives unchanged inside the completed
+presentation, yet exhaustive capture is still supplied only by the genuinely new
+ideal horizon.
+
+This theorem closes the comparison left implicit by the separate directedness and
+domain-extension guardrails.  Every finite list of embedded old horizons `some h`
+has another embedded old horizon `some k` that contains everything admitted by the
+list, while `completedModel_exhaustive_horizon_iff_new` proves that no such old
+horizon is exhaustive.
+
+The result is purely formal.  It does not identify the recursive finite dominator
+with Marion's semantic language of a "combination of horizons", and it does not
+claim that adding an ideal horizon is a historical thesis.  It isolates the exact
+model-theoretic distinction between finite upper-bound closure and a global
+completion point.
+-/
+theorem first_question_finite_directedness_survives_but_completion_is_new :
+    (∀ hs : List Nat,
+      ∃ k, completedModel.situated () (some k) ∧
+        ∀ h, h ∈ hs → ∀ a,
+          completedModel.admits (some h) a →
+            completedModel.admits (some k) a) ∧
+      (∀ h : Option Nat, completedModel.Exhausts () h ↔ h = none) := by
+  constructor
+  · intro hs
+    rcases expandingModel_finite_list_has_dominator hs with ⟨k, _, hdom⟩
+    refine ⟨k, True.intro, ?_⟩
+    intro h hh a ha
+    have haOpen : expandingModel.admits h a :=
+      (finite_horizon_agrees h a).mp ha
+    have hkOpen : expandingModel.admits k a :=
+      hdom h hh a haOpen
+    exact (finite_horizon_agrees k a).mpr hkOpen
+  · intro h
+    exact completedModel_exhaustive_horizon_iff_new h
+
 end FormalPhenomenology
