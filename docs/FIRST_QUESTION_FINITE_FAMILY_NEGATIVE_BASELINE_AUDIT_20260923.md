@@ -4,7 +4,7 @@ Date: 2026-09-23
 
 Branch: `research/first-question-main-theorem-20260918`
 
-Pre-document code/audit head: `cc4bbfd9fcc05c6ff93dd64755f1276dc18a914d`.
+Pre-round branch head: `62bc547db9ca0f69148c3d40efb09f7328112189`.
 
 ## Object of this round
 
@@ -51,13 +51,19 @@ The lawful revised-primary-body stop gate remains unchanged. The public PUF/Lavo
 
 ## Formal change
 
-Code commit:
+Initial code commit:
 
 `294850a49b7efe5d734d43e21dd5a01f960f547a`
 
 Audit registration commit:
 
 `cc4bbfd9fcc05c6ff93dd64755f1276dc18a914d`
+
+A first exact-head verification of documentation head `b9ac44a8c7fa9c6549083b9861c3910325073dd0` reached the full Lean build successfully but correctly failed the repository's strict axiom audit because `simp` in the new witness proof introduced a `propext` dependency. The audit was **not** weakened. The proof was rewritten using only explicit `List.Mem.head` / `List.Mem.tail` constructors and direct membership case splits.
+
+Repair commit:
+
+`26eadcff5c3f96b46d618aa533143d23010fad9e`
 
 New declaration:
 
@@ -69,6 +75,6 @@ No definition, model family, classical principle, axiom, unsafe feature, or exte
 
 ## Validation status and handoff
 
-The new declaration is registered in `Audit.lean`. The final documentation SHA produced by this file still requires its own exact-head GitHub Actions verdict before the round can be called build/source-coverage/kernel-audit verified. A successful earlier SHA must not be reused as that verdict.
+The new declaration is registered in `Audit.lean`. The final documentation SHA produced by this update requires its own exact-head GitHub Actions verdict before the round can be called build/source-coverage/kernel-audit verified. A successful earlier SHA must not be reused as that verdict, and the failed `propext` attempt must not be described as an accepted proof.
 
 If exact-head verification succeeds, the correct interpretation is still modest: finite joint coverage alone is explicitly insufficient, while the already-proved common situated dominator is the relevant stronger structural premise. The first research question itself remains open solely at the lawful revised-primary interpretation/source gate, not at this finite-family formal boundary.
