@@ -129,4 +129,34 @@ theorem first_question_closureBridge_iff_no_situatedExcess_of_captured_decidable
     letI : Decidable (M.Captured p) := hDecidable p hp hStructured
     exact (Decidable.not_not).1 hDouble
 
+/--
+Question-shaped decidability corollary on the actual-appearance domain.
+
+Once `UniversalStructure` is fixed, local decidability of `Captured p` only for actually
+appearing phenomena removes the constructive stability residue from the exact boundary:
+"every appearance is captured" is then equivalent to the absence of a situated-excess
+counterexample.  The decidability hypothesis is deliberately narrower than the preceding
+`ClosureBridge` corollary because `UniversalStructure` already supplies `Structured p`.
+
+This is a FORMAL proof-theoretic corollary.  It adds no philosophical primitive and does
+not attribute decidability, exhaustive capture, or classical reasoning to Merleau-Ponty
+or Marion.
+-/
+theorem first_question_universalStructure_appearance_capture_iff_no_situatedExcess_of_captured_decidable
+    (M : Presentation) (hStructure : M.UniversalStructure)
+    (hDecidable : ∀ p, M.appears p → Decidable (M.Captured p)) :
+    (∀ p, M.appears p → M.Captured p) ↔ ¬ M.HasSituatedExcess := by
+  constructor
+  · intro hCapture hExcess
+    rcases hExcess with ⟨p, hp, _, hNonExhaustible⟩
+    exact ((nonExhaustible_iff_not_captured M p).1 hNonExhaustible)
+      (hCapture p hp)
+  · intro hNoExcess p hp
+    have hStructured : M.Structured p := hStructure p hp
+    have hDouble : ¬ ¬ M.Captured p :=
+      (first_question_no_situatedExcess_iff_double_negated_capture M).1
+        hNoExcess p hp hStructured
+    letI : Decidable (M.Captured p) := hDecidable p hp
+    exact (Decidable.not_not).1 hDouble
+
 end FormalPhenomenology
