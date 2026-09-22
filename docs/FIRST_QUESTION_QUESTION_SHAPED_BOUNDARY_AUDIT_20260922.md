@@ -74,8 +74,23 @@ The increment was checked against the strongest same-object baseline rather than
 
 The already formalized decidability corollaries remain *stronger sufficient sources* of the stability premise and are not silently substituted for the exact boundary.
 
-## Validation and stop check
+## Exact-head validation
 
-This documentation commit follows the code and audit-list commits above. Exact-head GitHub Actions must still run `lake build`, `python3 scripts/check.py`, root/source coverage, forbidden-placeholder scanning and the full `#print axioms` audit before the increment is treated as verified. The workflow status attached to the final SHA is the authoritative build/kernel record; pre-write success is not reused.
+The first documentation checkpoint was `9c700fad8627145790544daaf3df5c8aae03aaf7`. Both exact-head workflow paths completed successfully:
+
+- push run `35683092895`: `completed/success`;
+- pull-request run `35683095565`: `completed/success`.
+
+The PR run's `verify` job `106604097682` confirms the complete verification stack rather than only a status badge:
+
+- `python3 scripts/check.py`: **16 modules, 115 audited theorems**;
+- Lean 4.24.0 / Lake 5.0.0 installed successfully;
+- full build: **19 jobs completed successfully**;
+- root/source coverage and the repository's forbidden-placeholder hygiene step completed in the combined verification job;
+- kernel audit: **115/115 theorems without axiom dependencies**, including `first_question_universalStructure_closureBridge_iff_no_situatedExcess_and_stability`.
+
+This final documentation update records those results; its own exact SHA must likewise remain green before a later run may cite it as the branch checkpoint. No check was weakened, skipped as a substitute, or replaced by a static-only claim.
+
+## Stop check and next entry
 
 The first research question is **not yet complete** because the revised Marion direct-body evidence gate remains open. The next entry remains source-first: obtain lawful direct revised §21 body, compare the ordering of related horizon / prior conditioning / one-several-combination horizon cases against the weak `situated / conditions / Exhausts` encoding, and change the Lean language only if that direct text forces a mismatch.
