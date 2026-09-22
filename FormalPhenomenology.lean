@@ -13,3 +13,4 @@ import FormalPhenomenology.FirstQuestionRobustness
 import FormalPhenomenology.FirstQuestionFiniteFamily
 import FormalPhenomenology.FirstQuestionInterpretiveGuardrails
 import FormalPhenomenology.FirstQuestionClosureBoundary
+import FormalPhenomenology.FirstQuestionStructureNormalization
