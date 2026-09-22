@@ -105,8 +105,41 @@ This closes a useful interpretive guardrail around the previously verified posit
 
 The source-side search also located the 2008 Spanish translation *Siendo dado* (Síntesis, ISBN `9788497565561`) and a 2026 UNED doctoral thesis that quotes ED pp.292–293 while cross-referencing the Spanish translation at pp.341–342. This improves the lawful crosswalk route but remains **secondary quotation / bibliographic mapping**, not direct-primary reading of the revised book body. It does not close the stop gate.
 
+## 2026-09-22 closure-normalization follow-up
+
+Before adding the next corollary, the registered external code baselines were searched again with the narrower shape
+
+`conditioned horizon exhaustible capture closure counterexample`
+
+and `conditioned horizon situated exhaustible excess structured`.
+
+The scoped searches in `novaspivack/phenomenology-lean`, `cbenzmueller/LogiKEy`, and `alexoltean61/msphml-lean` again returned no same-shaped reusable API. The web/source pass also rechecked current same-topic Marion horizon literature. Murga 2024 remains the strongest open same-topic interpretive baseline in this pass: it explicitly argues that Marion does not simply discard horizon but rejects its metaphysical, a-priori delimiting use. That constrains historical interpretation, but it does not supply the proof-theoretic `Decidable (Captured p)` premise or the extensional closure equivalence below. No new external dependency is warranted.
+
+The new theorem
+
+`first_question_mutual_conditioning_closureBridge_iff_no_conditioned_excess_of_captured_decidable`
+
+combines two already-audited exact statements rather than introducing a new semantic primitive:
+
+1. under explicit `SituatedImpliesConditioning + ConditioningIsSituated`,
+   `Conditioned ∧ NonExhaustible` existence is exactly `HasSituatedExcess`;
+2. under local decidability of `Captured` on the appearing/structured domain,
+   `ClosureBridge ↔ ¬ HasSituatedExcess`.
+
+It therefore proves, under the same mutual-identification pressure test and the same local proof-theoretic premise,
+
+```text
+ClosureBridge
+↔
+¬ ∃ p, appears p ∧ Conditioned p ∧ NonExhaustible p.
+```
+
+This is deliberately a **FORMAL normalization**, not a Marion claim. The theorem says only that once the two relation vocabularies are explicitly identified, the positive conditioned-excess profile becomes exactly the counterexample profile to closure after local double-negation elimination for capture. It does not imply that historical horizons are decidable, that Marion identifies `situated` with `conditions`, or that `Conditioned ∧ NonExhaustible` is his saturated phenomenon.
+
+Implementation commit: `2d8e4866237600472165efebbd4f5685085cd05c`; audit registration commit: `a39b71856497fd55e23102603491608c75012d72`. Exact-final-SHA CI is still required before any verified status is claimed.
+
 ## Validation / stop check
 
-`FormalPhenomenology.lean` imports the normalization module and `Audit.lean` now lists both normalization theorems for the zero-axiom policy. Exact-final-SHA GitHub Actions is the authoritative build/root-coverage/placeholder/kernel-audit verdict; no pre-write workflow is reused as validation of this increment.
+`FormalPhenomenology.lean` imports the normalization module and `Audit.lean` now lists all three normalization theorems for the zero-axiom policy. Exact-final-SHA GitHub Actions is the authoritative build/root-coverage/placeholder/kernel-audit verdict; no pre-write workflow is reused as validation of this increment.
 
 The first research question is not complete in this checkpoint. The formal increment only normalizes an already-declared competing pressure test. The remaining material gate is still lawful direct review of revised Marion §21 body (BG pp.209–212 plus the tracked later passage, early ED pp.292–297 plus 314–315, or a reliably mapped authorized revised reprint/translation).
