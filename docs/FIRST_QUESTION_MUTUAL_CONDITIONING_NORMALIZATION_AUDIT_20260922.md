@@ -81,8 +81,32 @@ The forward direction reuses `conditioningIsSituated_conditioned_implies_structu
 
 Interpretive boundary: this theorem says what follows **if** the two model relations are mutually identified. It does not say Merleau-Ponty or Marion endorses that identification. In fact, the source ledger and current same-topic literature remain reasons not to bake the equivalence into the definitions.
 
+## Follow-up: conditioned excess profile normalization
+
+A second targeted check in the same registered external code baselines searched
+
+`conditioned horizon situated exhaustible excess structured`
+
+and again found no same-shaped reusable API. Since the new statement is only an existential lifting of the already proved pointwise equivalence, no new logic framework or dependency was introduced.
+
+The follow-up theorem
+
+`first_question_mutual_conditioning_conditioned_excess_iff_situatedExcess`
+
+proves, under the exact same two explicit relation-identification hypotheses,
+
+```text
+(∃ p, appears p ∧ Conditioned p ∧ NonExhaustible p)
+↔
+HasSituatedExcess(base).
+```
+
+This closes a useful interpretive guardrail around the previously verified positive witness: once `situated` and `conditions` are mutually identified, a `Conditioned ∧ NonExhaustible` witness is not a stronger Marion-like object than the repository's existing `Structured ∧ NonExhaustible` situated-excess profile. It is the same encoded profile under the competing identification assumptions. The theorem therefore prevents the auxiliary conditioning vocabulary from creating spurious historical strength.
+
+The source-side search also located the 2008 Spanish translation *Siendo dado* (Síntesis, ISBN `9788497565561`) and a 2026 UNED doctoral thesis that quotes ED pp.292–293 while cross-referencing the Spanish translation at pp.341–342. This improves the lawful crosswalk route but remains **secondary quotation / bibliographic mapping**, not direct-primary reading of the revised book body. It does not close the stop gate.
+
 ## Validation / stop check
 
-`FormalPhenomenology.lean` imports the new module and `Audit.lean` lists the theorem for the zero-axiom policy. Exact-final-SHA GitHub Actions is the authoritative build/root-coverage/placeholder/kernel-audit verdict; no pre-write workflow is reused as validation of this increment.
+`FormalPhenomenology.lean` imports the normalization module and `Audit.lean` now lists both normalization theorems for the zero-axiom policy. Exact-final-SHA GitHub Actions is the authoritative build/root-coverage/placeholder/kernel-audit verdict; no pre-write workflow is reused as validation of this increment.
 
-The first research question is not complete in this checkpoint. The formal increment closes only the positive polarity of one already-declared pressure test. The remaining material gate is still lawful direct review of revised Marion §21 body (BG pp.209–212 plus the tracked later passage, early ED pp.292–297 plus 314–315, or a reliably mapped authorized revised reprint/translation).
+The first research question is not complete in this checkpoint. The formal increment only normalizes an already-declared competing pressure test. The remaining material gate is still lawful direct review of revised Marion §21 body (BG pp.209–212 plus the tracked later passage, early ED pp.292–297 plus 314–315, or a reliably mapped authorized revised reprint/translation).
