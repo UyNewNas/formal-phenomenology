@@ -1,5 +1,6 @@
 import FormalPhenomenology.Horizon.Conditioning
 import FormalPhenomenology.Horizon.SituatedExcess
+import FormalPhenomenology.FirstQuestionClosureBoundary
 
 set_option autoImplicit false
 
@@ -61,5 +62,44 @@ theorem first_question_mutual_conditioning_conditioned_excess_iff_situatedExcess
     exact
       (first_question_mutual_conditioning_conditioned_iff_structured
         M hForward hBackward p).mpr hStructured
+
+/--
+If `situated` and `conditions` are mutually identified, then the positive
+`Conditioned ∧ NonExhaustible` profile is exactly the counterexample profile to
+`ClosureBridge`, once capture is locally decidable on the appearing/structured
+domain.
+
+The `Decidable` premise is proof-theoretic only: it is the same local premise
+used by `first_question_closureBridge_iff_no_situatedExcess_of_captured_decidable`
+to turn absence of a counterexample into a positive capture witness.  Nothing
+here attributes decidability or the mutual-identification assumptions to
+Merleau-Ponty or Marion.
+-/
+theorem first_question_mutual_conditioning_closureBridge_iff_no_conditioned_excess_of_captured_decidable
+    (M : HorizonConditioning)
+    (hForward : M.SituatedImpliesConditioning)
+    (hBackward : M.ConditioningIsSituated)
+    (hDecidable :
+      ∀ p, M.base.appears p → M.base.Structured p →
+        Decidable (M.base.Captured p)) :
+    M.base.ClosureBridge ↔
+      ¬ ∃ p,
+        M.base.appears p ∧ M.Conditioned p ∧ M.base.NonExhaustible p := by
+  constructor
+  · intro hClosure hConditionedExcess
+    have hSituatedExcess : M.base.HasSituatedExcess :=
+      (first_question_mutual_conditioning_conditioned_excess_iff_situatedExcess
+        M hForward hBackward).mp hConditionedExcess
+    exact (situatedExcess_refutes_closureBridge M.base hSituatedExcess) hClosure
+  · intro hNoConditionedExcess
+    have hNoSituatedExcess : ¬ M.base.HasSituatedExcess := by
+      intro hSituatedExcess
+      apply hNoConditionedExcess
+      exact
+        (first_question_mutual_conditioning_conditioned_excess_iff_situatedExcess
+          M hForward hBackward).mpr hSituatedExcess
+    exact
+      (first_question_closureBridge_iff_no_situatedExcess_of_captured_decidable
+        M.base hDecidable).mpr hNoSituatedExcess
 
 end FormalPhenomenology
