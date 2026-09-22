@@ -78,3 +78,44 @@ Therefore the first-question stop gate remains open and PR #31 must stay unmerge
 ## Validation state
 
 The code, root import and `Audit.lean` entries are committed together with this note.  Exact-head GitHub Actions is the authoritative build/root-coverage/kernel-axiom verdict.  Do not upgrade this note to a verified result until that exact SHA succeeds.
+
+---
+
+## Follow-up round: project-level closure packaging
+
+### Fresh external check
+
+Before adding a project-level theorem, this round repeated the three-layer gate for the **new object** rather than treating the previous local theorem as sufficient prior-art review.
+
+- **Lean/Core.**  The repository is pinned to `leanprover/lean4:v4.24.0` with no Mathlib dependency.  Current Lean source exposes `Init.Data.List.Pairwise`, but the proposed theorem does not need a new list relation or generic order API: it only packages the already-proved finite induction.  Reusing the local theorem is therefore narrower than adding a dependency or rebuilding a generic directedness library.
+- **Formal-philosophy repositories.**  Fresh code searches in `novaspivack/phenomenology-lean`, `cbenzmueller/LogiKEy`, and `alexoltean61/msphml-lean` again found no same-shaped `horizon` / `Captured` / finite-cover closure theorem.  LogiKEy's indexed `horizon` hits remain unrelated natural-language uses such as “horizontal distribution of power.”  This is a bounded reuse check, not a novelty claim.
+- **Same-topic literature.**  Leung (2022), “Sartre and Marion on Intentionality and Phenomenality,” directly quotes *Being Given* pp. 211–212 and 225–226 in support of horizon-independence and the failure of the constituting I to synthesize excessive intuition into an object delimited by a horizon.  Mackinlay's published analysis likewise distinguishes the one-horizon, additional-horizons, and “no combination of horizons” cases around BG 209–211 / ED 292–295.  These are stronger historical baselines than the repository's extensional finite-list language, so the new theorem is deliberately described only as a formal sufficient condition.
+
+Reuse decision: **reuse the existing local finite-family theorem; add only a thin `ClosureBridge` wrapper.**
+
+### New formal statement
+
+The new theorem
+
+`first_question_finite_cover_pairwise_upper_bounds_imply_closureBridge`
+
+states that `ClosureBridge` follows if every actually appearing structured phenomenon admits:
+
+1. some nonempty finite list of situated horizons jointly covering all presented aspects; and
+2. a phenomenon-local pairwise upper-bound operation on situated horizons, stated extensionally through `admits` and returning a situated upper bound.
+
+The proof performs no new induction.  It instantiates
+`first_question_finite_family_pairwise_upper_bounds_imply_capture`
+for the current `p` and therefore makes the **stronger baseline explicit**: the real consumer-level engine is still the common-dominator result for a particular finite family.  The new theorem merely packages one uniform sufficient route to B / `ClosureBridge`.
+
+This matters to the first question because it records exactly what extra formal structure can turn plural finite horizon coverage into exhaustive capture without pretending that ordinary “appears within horizons” already has that consequence.  It does **not** assert that pairwise upper bounds are historically Merleau-Ponty's or Marion's premise, nor that the premise is necessary.
+
+### Revised-primary route recheck
+
+A fresh publisher search located the official De Gruyter/Fordham record for *The Essential Writings* (2013) and its `Sketch of the Saturated Phenomenon`, pp. 108–134, DOI `10.1515/9780823292905-006`.  The official route confirms the anthology/chapter provenance but the target chapter body was not exposed by the current retrieval path.  This therefore remains **PRIMARY-METADATA / AUTHORIZED-ROUTE**, not direct-body review.
+
+Secondary exact-page evidence from Leung and Mackinlay continues to support the existing interpretation ledger, but under the project rule it cannot satisfy the revised-primary stop gate.  No access restriction was bypassed and unauthorized mirrors were excluded from evidence.
+
+### Validation status for this follow-up
+
+The new theorem is root-reachable through the existing `FormalPhenomenology.FirstQuestionFiniteUpperBounds` import and has been added to `Audit.lean`.  Exact-head Actions after the documentation commit remains the only accepted build/root-coverage/axiom verdict for this round.  Until that run succeeds, this follow-up remains **committed, pending kernel verification**.
