@@ -196,4 +196,41 @@ theorem first_question_total_relatedness_horizonwise_conditioning_does_not_force
   exact ((nonExhaustible_iff_not_captured mixedConditioningWitness.base p).mp
     hnonexhaustible) hcaptured
 
+/--
+Reverse-check the latest total-relatedness result against the stronger mutual-identification
+baseline.  The existing `splitDependentConditioning` witness has maximal relatedness and
+maximal conditioning on its actual appearance: every horizon is related and every horizon
+conditions it.  Thus `situated` and `conditions` coincide in both directions, yet the two
+partial horizons still fail to produce exhaustive capture.
+
+This removes the remaining simple objection that the closure failure above depends on
+one-way freedom between the two relations.  The result remains a FORMAL pressure test of
+the current extensional language; it does not attribute total relatedness or mutual
+identification to Merleau-Ponty or Marion.
+-/
+theorem first_question_total_relatedness_mutual_conditioning_does_not_force_closure :
+    ∃ M : HorizonConditioning,
+      (∀ (p : M.base.Phenomenon) (h : M.base.Horizon),
+        M.base.appears p → M.base.situated p h) ∧
+        M.ConditioningIsSituated ∧
+          M.SituatedImpliesConditioning ∧
+            (∀ (p : M.base.Phenomenon) (h : M.base.Horizon),
+              M.base.appears p → M.conditions p h) ∧
+              ¬ M.base.ClosureBridge := by
+  refine ⟨splitDependentConditioning, ?_, ?_, ?_, ?_, ?_⟩
+  · intro _ _ _
+    exact True.intro
+  · intro _ _ _
+    exact True.intro
+  · intro _ _ _
+    exact True.intro
+  · intro _ _ _
+    exact True.intro
+  · intro hclosure
+    have hstructured : splitDependentConditioning.base.Structured () :=
+      splitModel_structure () True.intro
+    have hcaptured := hclosure () True.intro hstructured
+    exact ((nonExhaustible_iff_not_captured splitDependentConditioning.base ()).mp
+      splitDependentConditioning_nonExhaustible) hcaptured
+
 end FormalPhenomenology
