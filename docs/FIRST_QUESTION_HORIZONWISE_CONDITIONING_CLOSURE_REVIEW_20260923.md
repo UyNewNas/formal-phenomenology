@@ -80,4 +80,13 @@ The first research question remains open only at the established revised-primary
 
 ## Verification status
 
-Code and audit entries were committed first. Exact-head GitHub Actions is the authoritative verification for this round; the result must not be described as kernel-verified until the workflow for the final documentation head succeeds. The repository audit policy remains unchanged: root-module coverage, forbidden proof shortcuts, `lake build`, and `#print axioms` coverage with zero theorem axiom dependencies.
+The code/audit/documentation head `deb42a246862c5f795e488f7f5994d91d618a202` was checked by PR workflow `35834986892`, which completed `success`. The job checked out the merge ref formed from that exact branch head and current `master`, then ran the repository's `python3 scripts/check.py` verification step.
+
+The log reports:
+
+- **24 modules / 153 audited theorems** in the static/root/audit ledger;
+- **27 Lean build jobs**, all successful;
+- root/source coverage successful;
+- kernel audit **153/153 without axiom dependencies**, explicitly including `mixedConditioningWitness_universalStructure` and `first_question_horizonwise_conditioning_does_not_force_closure`.
+
+No check, whitelist, or source gate was weakened. This documentation follow-up itself must receive the same exact-head workflow verdict before it becomes the final handoff SHA for the round.
