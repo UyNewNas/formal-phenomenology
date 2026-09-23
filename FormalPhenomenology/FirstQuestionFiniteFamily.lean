@@ -76,6 +76,40 @@ theorem first_question_nonExhaustible_iff_no_finite_family_with_dominator
       ((first_question_captured_iff_exists_finite_family_with_dominator M p).1 hCaptured)
 
 /--
+Equivalently, non-exhaustibility says that *every* finite situated cover of the encoded
+aspect-domain lacks a common situated dominator.
+
+This is the family-by-family polarity of
+`first_question_nonExhaustible_iff_no_finite_family_with_dominator`.  It is useful for
+keeping two claims separate: a phenomenon may admit a finite plurality of related
+horizons that jointly cover all currently encoded aspects, while non-exhaustibility
+requires that no situated horizon dominate such a cover.  The latter missing dominator
+is exactly what would collapse the finite cover back to single-horizon `Captured`.
+
+The proof is constructive and adds no horizon-combination primitive, external
+dependency, or historical attribution.  In particular, "finite cover with no common
+dominator" remains an extensional guardrail in this model language and is not identified
+with Marion's stronger semantic claim that no combination of horizons can suffice.
+-/
+theorem first_question_nonExhaustible_iff_every_finite_cover_has_no_dominator
+    (M : Presentation) (p : M.Phenomenon) :
+    M.NonExhaustible p ↔
+      ∀ hs : List M.Horizon,
+        (∀ a, M.presents p a →
+          ∃ h, h ∈ hs ∧ M.situated p h ∧ M.admits h a) →
+        ¬ ∃ hStar, M.situated p hStar ∧
+          ∀ h, h ∈ hs → ∀ a, M.admits h a → M.admits hStar a := by
+  constructor
+  · intro hn hs hcover hdom
+    exact
+      ((first_question_nonExhaustible_iff_no_finite_family_with_dominator M p).1 hn)
+        ⟨hs, hcover, hdom⟩
+  · intro hNoDominator
+    apply (first_question_nonExhaustible_iff_no_finite_family_with_dominator M p).2
+    rintro ⟨hs, hcover, hdom⟩
+    exact hNoDominator hs hcover hdom
+
+/--
 For a non-exhaustible phenomenon, a fixed two-horizon cover cannot secretly collapse
 back to single-horizon capture through a common situated dominator.
 
