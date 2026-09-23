@@ -165,4 +165,48 @@ theorem first_question_mutual_conditioning_captured_iff_nonempty_finite_conditio
         M.base p hupper).2
     exact ⟨hs, hne, fun h hh => hBackward p h (hconditioned h hh), hcover⟩
 
+/--
+Lift the fixed-phenomenon mutual-conditioning finite-cover normal form to the full
+`ClosureBridge` quantifier domain.
+
+Assume the explicit competing encoding in both directions (`situated ↔ conditions`)
+and, only on actually appearing structured phenomena, the same pairwise situated
+upper-bound mechanism used by the neutral finite-cover theorem. Then closure is
+*exactly* the assertion that every such phenomenon has a nonempty finite family of
+conditioning horizons jointly covering all presented aspects.
+
+This adds no new semantic combination operator and no historical attribution. It is a
+quantifier-level adapter showing that the conditioning vocabulary does not secretly
+strengthen the already verified finite-cover baseline once the two relations are
+explicitly identified.
+-/
+theorem first_question_mutual_conditioning_closureBridge_iff_finite_conditioning_cover_of_pairwise_upper_bounds
+    (M : HorizonConditioning)
+    (hForward : M.SituatedImpliesConditioning)
+    (hBackward : M.ConditioningIsSituated)
+    (hupper : ∀ p, M.base.appears p → M.base.Structured p →
+      ∀ h₀ h₁,
+        M.base.situated p h₀ → M.base.situated p h₁ →
+          ∃ hStar, M.base.situated p hStar ∧
+            (∀ a, M.base.admits h₀ a → M.base.admits hStar a) ∧
+            (∀ a, M.base.admits h₁ a → M.base.admits hStar a)) :
+    M.base.ClosureBridge ↔
+      ∀ p, M.base.appears p → M.base.Structured p →
+        ∃ hs : List M.base.Horizon,
+          hs ≠ [] ∧
+          (∀ h, h ∈ hs → M.conditions p h) ∧
+          (∀ a, M.base.presents p a →
+            ∃ h, h ∈ hs ∧ M.base.admits h a) := by
+  constructor
+  · intro hBridge p happ hstructured
+    exact
+      (first_question_mutual_conditioning_captured_iff_nonempty_finite_conditioning_cover_of_pairwise_upper_bounds
+        M p hForward hBackward (hupper p happ hstructured)).1
+        (hBridge p happ hstructured)
+  · intro hcover p happ hstructured
+    exact
+      (first_question_mutual_conditioning_captured_iff_nonempty_finite_conditioning_cover_of_pairwise_upper_bounds
+        M p hForward hBackward (hupper p happ hstructured)).2
+        (hcover p happ hstructured)
+
 end FormalPhenomenology
