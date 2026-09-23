@@ -110,6 +110,39 @@ theorem first_question_nonExhaustible_iff_every_finite_cover_has_no_dominator
     exact hNoDominator hs hcover hdom
 
 /--
+Project-level witness normal form for situated excess in the finite-family language.
+
+`HasSituatedExcess` is exactly the existence of an actually appearing, structured
+phenomenon for which every finite situated cover lacks a common situated dominator.
+This is a direct lifting of the pointwise theorem above; it introduces no new model,
+primitive, classical principle, or historical attribution.
+
+The formulation is useful for keeping the scope of the negative result explicit.  It
+says that the obstruction to the repository's single-horizon `Captured` predicate can
+be read family-by-family as failure of a common situated dominator.  A finite list is
+still only a list of named horizons in this encoding, not Marion's semantic notion of a
+"combination of horizons".
+-/
+theorem first_question_hasSituatedExcess_iff_exists_finite_cover_obstruction
+    (M : Presentation) :
+    M.HasSituatedExcess ↔
+      ∃ p, M.appears p ∧ M.Structured p ∧
+        ∀ hs : List M.Horizon,
+          (∀ a, M.presents p a →
+            ∃ h, h ∈ hs ∧ M.situated p h ∧ M.admits h a) →
+          ¬ ∃ hStar, M.situated p hStar ∧
+            ∀ h, h ∈ hs → ∀ a, M.admits h a → M.admits hStar a := by
+  constructor
+  · rintro ⟨p, happ, hstructured, hnonExhaustible⟩
+    exact ⟨p, happ, hstructured,
+      (first_question_nonExhaustible_iff_every_finite_cover_has_no_dominator M p).1
+        hnonExhaustible⟩
+  · rintro ⟨p, happ, hstructured, hObstruction⟩
+    exact ⟨p, happ, hstructured,
+      (first_question_nonExhaustible_iff_every_finite_cover_has_no_dominator M p).2
+        hObstruction⟩
+
+/--
 For a non-exhaustible phenomenon, a fixed two-horizon cover cannot secretly collapse
 back to single-horizon capture through a common situated dominator.
 
