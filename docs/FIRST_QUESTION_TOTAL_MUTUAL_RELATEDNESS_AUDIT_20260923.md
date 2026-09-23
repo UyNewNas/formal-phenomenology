@@ -52,7 +52,19 @@ The new theorem is the conjunction-strengthening of those two robustness axes in
 
 ## Validation status
 
-The new declaration is registered in `Audit.lean`; the audit policy is unchanged.  Exact-head GitHub Actions must run `python3 scripts/check.py`, the root/source coverage check, the Lean build, and the kernel axiom audit before this checkpoint is called verified.  Static source inspection is not a substitute for that run.
+Exact code+audit+documentation head before this validation note: `70212d936e1f3636a0c67c79357f5f121379274f`.
+
+PR workflow run `35848419307` completed `success` on the merge ref combining that exact head with `master@c6f527875c0a905c33dac68176ed01a2c64b97c3`.  The `verify` job checked out merge commit `63bceff3f8b40d15d7521701fb1a612f097bbc32`; `actions/checkout`, the pinned Lean `v4.24.0` setup, and `Build, source coverage, and kernel axiom audit` all completed successfully.
+
+The workflow log reports:
+
+- `python3 scripts/check.py`: **24 modules / 156 audited theorems**;
+- full Lean build: **27 jobs, success**;
+- root/source coverage: success;
+- kernel audit: **156/156 theorems without axiom dependencies**;
+- the log explicitly includes `first_question_total_relatedness_mutual_conditioning_does_not_force_closure` as axiom-free.
+
+No check or audit policy was weakened.  This validation establishes the Lean statement as kernel-checked at the tested exact code head; it does not upgrade the FORMAL pressure test into a historical claim.
 
 ## Stop-gate status
 
