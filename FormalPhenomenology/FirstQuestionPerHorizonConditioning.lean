@@ -69,4 +69,43 @@ theorem first_question_every_related_conditioning_horizon_is_nontrivially_partia
         intro hbad
         cases hbad
 
+/--
+Package the non-vacuity witness together with the project's actual `NonExhaustible`
+predicate.  The same appearing structured phenomenon is non-exhaustible relative to
+all situated horizons, while every admitted horizon is itself positively informative
+and genuinely partial on the presented-aspect domain.
+
+This is a thin reuse theorem over `splitDependentConditioning`; it adds no new model,
+primitive, classical principle, horizon-combination semantics, or historical attribution.
+-/
+theorem first_question_nontrivially_partial_horizons_support_nonExhaustible :
+    ∃ M : HorizonConditioning, ∃ p : M.base.Phenomenon,
+      M.base.appears p ∧
+        M.base.Structured p ∧
+          M.base.NonExhaustible p ∧
+            ∀ h : M.base.Horizon,
+              M.base.situated p h ∧
+                M.conditions p h ∧
+                  (∃ a : M.base.Aspect,
+                    M.base.presents p a ∧ M.base.admits h a) ∧
+                    (∃ a : M.base.Aspect,
+                      M.base.presents p a ∧ ¬ M.base.admits h a) := by
+  refine ⟨splitDependentConditioning, (), True.intro,
+    splitModel_structure () True.intro,
+    splitDependentConditioning_nonExhaustible, ?_⟩
+  intro h
+  cases h with
+  | false =>
+      refine ⟨True.intro, True.intro, ?_, ?_⟩
+      · exact ⟨false, True.intro, rfl⟩
+      · refine ⟨true, True.intro, ?_⟩
+        intro hbad
+        cases hbad
+  | true =>
+      refine ⟨True.intro, True.intro, ?_, ?_⟩
+      · exact ⟨true, True.intro, rfl⟩
+      · refine ⟨false, True.intro, ?_⟩
+        intro hbad
+        cases hbad
+
 end FormalPhenomenology
