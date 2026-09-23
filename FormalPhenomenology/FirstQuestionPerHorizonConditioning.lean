@@ -108,4 +108,32 @@ theorem first_question_nontrivially_partial_horizons_support_nonExhaustible :
         intro hbad
         cases hbad
 
+/--
+A direct non-entailment form of the same pressure test.
+
+Even after restricting to an actually appearing, already structured phenomenon, a
+horizon's being both related to the phenomenon and marked as conditioning does not by
+itself entail that this very horizon exhausts the phenomenon.  The Boolean split witness
+makes the failure local at one concrete horizon rather than only packaging it through
+`NonExhaustible` or global `¬ ClosureBridge`.
+
+This is a FORMAL consequence of the existing relation language only.  It does not say
+that historical horizon-conditioning is exhausted by `conditions`, and it does not
+identify local non-exhaustion with Marion's full saturated-phenomenon notion.
+-/
+theorem first_question_appearing_structured_related_conditioning_does_not_force_horizon_exhaustion :
+    ¬ (∀ (M : HorizonConditioning) (p : M.base.Phenomenon) (h : M.base.Horizon),
+      M.base.appears p →
+        M.base.Structured p →
+          M.base.situated p h →
+            M.conditions p h →
+              M.base.Exhausts p h) := by
+  intro hbridge
+  have hexhausts : splitDependentConditioning.base.Exhausts () false :=
+    hbridge splitDependentConditioning () false True.intro
+      (splitModel_structure () True.intro) True.intro True.intro
+  have hnot : ¬ splitDependentConditioning.base.Exhausts () false :=
+    splitDependentConditioning_nonExhaustible false True.intro
+  exact hnot hexhausts
+
 end FormalPhenomenology
