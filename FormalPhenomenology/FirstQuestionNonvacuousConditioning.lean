@@ -1,0 +1,78 @@
+import FormalPhenomenology.Models.Conditioning
+
+set_option autoImplicit false
+
+namespace FormalPhenomenology
+open Presentation HorizonConditioning
+
+/--
+A small finite pressure-test in which the conditioning relation is genuinely used.
+
+Both phenomena appear and both have related horizons.  The `false` phenomenon is
+independent of every conditioning horizon, while the `true` phenomenon is positively
+conditioned.  Each horizon admits exactly the matching Boolean aspect, so neither
+phenomenon is exhausted by a single horizon.
+
+This model exists only to rule out the objection that the project's
+`Structured ∧ Independent ∧ NonExhaustible` compatibility witness depends on making
+`conditions` globally empty.  It does not identify any Boolean component with a
+historical phenomenological category.
+-/
+def mixedConditioningWitness : HorizonConditioning where
+  base :=
+    { Phenomenon := Bool
+      Horizon := Bool
+      Aspect := Bool
+      appears := fun _ => True
+      situated := fun _ _ => True
+      presents := fun _ _ => True
+      admits := fun h a => h = a }
+  conditions := fun p _ => p = true
+
+/-- The mixed witness respects the one-way coherence condition. -/
+theorem mixedConditioningWitness_coherent :
+    mixedConditioningWitness.ConditioningIsSituated := by
+  intro _ _ _
+  exact True.intro
+
+/--
+The `false` phenomenon is actually appearing, structured, independent of conditioning,
+and non-exhaustible even though the same model has nonempty conditioning elsewhere.
+-/
+theorem mixedConditioningWitness_hasSituatedIndependentExcess :
+    mixedConditioningWitness.HasSituatedIndependentExcess := by
+  refine ⟨false, True.intro, ?_, ?_, ?_⟩
+  · exact ⟨false, True.intro⟩
+  · simp [HorizonConditioning.Independent, mixedConditioningWitness]
+  · intro h _
+    cases h <;> intro hexhausts
+    · simpa [mixedConditioningWitness] using hexhausts true True.intro
+    · simpa [mixedConditioningWitness] using hexhausts false True.intro
+
+/-- The same model contains an actually appearing phenomenon with a conditioning witness. -/
+theorem mixedConditioningWitness_hasConditionedAppearance :
+    ∃ p : mixedConditioningWitness.base.Phenomenon,
+      mixedConditioningWitness.base.appears p ∧ mixedConditioningWitness.Conditioned p := by
+  refine ⟨true, True.intro, ?_⟩
+  exact ⟨false, rfl⟩
+
+/--
+Project-facing robustness statement: relatedness + independence + non-exhaustibility
+remain jointly satisfiable under `ConditioningIsSituated` in a model whose conditioning
+relation is itself inhabited by an actually appearing phenomenon.
+
+This strengthens only the model-theoretic robustness of the first-question separation.
+It does not show that Marion's or Merleau-Ponty's historical horizon concepts are
+independent predicates.
+-/
+theorem first_question_nonvacuous_conditioning_profile :
+    ∃ M : HorizonConditioning,
+      M.ConditioningIsSituated ∧
+        M.HasSituatedIndependentExcess ∧
+          ∃ p : M.base.Phenomenon, M.base.appears p ∧ M.Conditioned p := by
+  exact ⟨mixedConditioningWitness,
+    mixedConditioningWitness_coherent,
+    mixedConditioningWitness_hasSituatedIndependentExcess,
+    mixedConditioningWitness_hasConditionedAppearance⟩
+
+end FormalPhenomenology
