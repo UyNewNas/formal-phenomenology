@@ -94,3 +94,31 @@ Thus the robustness witness is kernel-checked under the repository's zero-axiom 
 This closes only the modelling objection “the separation works because `conditions` is globally empty.” It does not overcome the stronger objection that the relations are intentionally separate primitives; historical independence still requires textual constraints rather than a freely chosen finite model.
 
 The first research question therefore remains open only on its established source side: lawful direct body review of BG 209–212 plus 225–226, early ED 292–297 plus 314–315, or a reliably mapped authorized revised reprint/translation. No new `priorDelimits`, horizon-combination, intention, or intuition primitive is justified by this round.
+
+## 7. Horizonwise strengthening in the same model
+
+A follow-up reverse check asked a stronger vacuity question: perhaps `conditions` is nonempty but some horizons remain completely unused by conditioning. No new model or primitive is needed to test this, because `mixedConditioningWitness.conditions p h` depends only on `p` and therefore the appearing `true` phenomenon is conditioned by **every** horizon in the finite domain.
+
+Before adding the two thin wrappers, the exact stronger shape was re-searched against the same registered Lean/formal-logic baselines with horizon / conditions / conditioned / exhaustible / capture terms. The bounded code search again found no same-shaped reusable API. This remains a reuse decision only, not a novelty claim; the elementary finite-relational content does not justify a new external dependency.
+
+Two audited declarations were added:
+
+- `mixedConditioningWitness_every_horizon_conditions_appearing`;
+- `first_question_horizonwise_nonvacuous_conditioning_profile`.
+
+The project-facing statement is:
+
+```text
+∃ M : HorizonConditioning,
+  M.ConditioningIsSituated ∧
+  M.HasSituatedIndependentExcess ∧
+  ∀ h : M.base.Horizon,
+    ∃ p : M.base.Phenomenon,
+      M.base.appears p ∧ M.conditions p h
+```
+
+Thus the existing separation survives after requiring **each horizon** to participate in genuine conditioning of an actual appearance somewhere in the very same model. The result deliberately keeps the independent/non-exhaustible witness (`false`) distinct from the positively conditioned appearance (`true`); forcing the same phenomenon to be both `Independent` and positively conditioned would contradict the project definitions rather than strengthen the philosophical claim.
+
+Exact audited code head `b0bfbc21f91af703629a1332bb989109dc891d7a` passed PR workflow `35829610765`: checkout, pinned Lean setup, and the repository's `Build, source coverage, and kernel axiom audit` step all completed successfully. The workflow invokes `python3 scripts/check.py`, which checks root-module coverage, forbidden proof shortcuts, full theorem/audit-ledger coverage, runs `lake build`, and rejects any audited theorem with axiom dependencies. No check or whitelist was weakened.
+
+This strengthening still does **not** close the historical source gate or convert formal predicate freedom into a claim about Merleau-Ponty or Marion. The revised-primary target remains BG 209–212 plus 225–226, early ED 292–297 plus 314–315, or an authorized revised text that can be reliably cross-mapped and directly read.
