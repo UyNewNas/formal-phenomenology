@@ -154,4 +154,46 @@ theorem first_question_horizonwise_conditioning_does_not_force_closure :
   exact ((nonExhaustible_iff_not_captured mixedConditioningWitness.base p).mp
     hnonexhaustible) hcaptured
 
+/--
+The same finite witness has *maximal* relatedness on actual appearances: every horizon is
+related to every appearing phenomenon.  This records explicitly that the failure of
+`ClosureBridge` above is not caused by a sparse `situated` relation.
+-/
+theorem mixedConditioningWitness_total_relatedness :
+    ∀ (p : mixedConditioningWitness.base.Phenomenon)
+      (h : mixedConditioningWitness.base.Horizon),
+      mixedConditioningWitness.base.appears p → mixedConditioningWitness.base.situated p h := by
+  intro _ _ _
+  exact True.intro
+
+/--
+A stronger reverse-check against a simple relational loophole: even when every actual
+appearance is related to every horizon, every horizon genuinely conditions some actual
+appearance, and conditioning is coherent with relatedness, horizon structure still does
+not force exhaustive closure.
+
+This is only a model-theoretic pressure test of the project's relation language.  It does
+not attribute total relatedness, the conditioning relation, or the countermodel to either
+Merleau-Ponty or Marion.
+-/
+theorem first_question_total_relatedness_horizonwise_conditioning_does_not_force_closure :
+    ∃ M : HorizonConditioning,
+      (∀ (p : M.base.Phenomenon) (h : M.base.Horizon),
+        M.base.appears p → M.base.situated p h) ∧
+        M.ConditioningIsSituated ∧
+          (∀ h : M.base.Horizon,
+            ∃ p : M.base.Phenomenon, M.base.appears p ∧ M.conditions p h) ∧
+            ¬ M.base.ClosureBridge := by
+  refine ⟨mixedConditioningWitness,
+    mixedConditioningWitness_total_relatedness,
+    mixedConditioningWitness_coherent,
+    mixedConditioningWitness_every_horizon_conditions_appearing,
+    ?_⟩
+  intro hclosure
+  obtain ⟨p, hp, hstructured, _, hnonexhaustible⟩ :=
+    mixedConditioningWitness_hasSituatedIndependentExcess
+  have hcaptured := hclosure p hp hstructured
+  exact ((nonExhaustible_iff_not_captured mixedConditioningWitness.base p).mp
+    hnonexhaustible) hcaptured
+
 end FormalPhenomenology
