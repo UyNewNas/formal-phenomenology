@@ -43,11 +43,21 @@ theorem mixedConditioningWitness_hasSituatedIndependentExcess :
     mixedConditioningWitness.HasSituatedIndependentExcess := by
   refine ⟨false, True.intro, ?_, ?_, ?_⟩
   · exact ⟨false, True.intro⟩
-  · simp [HorizonConditioning.Independent, mixedConditioningWitness]
+  · intro h hh
+    change (false : Bool) = true at hh
+    cases hh
   · intro h _
-    cases h <;> intro hexhausts
-    · simpa [mixedConditioningWitness] using hexhausts true True.intro
-    · simpa [mixedConditioningWitness] using hexhausts false True.intro
+    cases h with
+    | false =>
+        intro hexhausts
+        have hbad := hexhausts true True.intro
+        change (false : Bool) = true at hbad
+        cases hbad
+    | true =>
+        intro hexhausts
+        have hbad := hexhausts false True.intro
+        change (true : Bool) = false at hbad
+        cases hbad
 
 /-- The same model contains an actually appearing phenomenon with a conditioning witness. -/
 theorem mixedConditioningWitness_hasConditionedAppearance :
