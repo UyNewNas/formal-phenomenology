@@ -83,4 +83,41 @@ theorem first_question_universalStructure_closureBridge_iff_no_finite_cover_obst
       ((first_question_universalStructure_hasSituatedExcess_iff_exists_finite_cover_obstruction
         M hstructure).1 hExcess)
 
+/--
+Local decidability removes exactly the constructive stability residue from the finite-cover
+normal form.
+
+Once `UniversalStructure` is fixed, if `Captured p` is decidable only for actually appearing
+phenomena, then positive `ClosureBridge` is equivalent to the bare absence of an appearing
+finite-cover/common-dominator obstruction.  The proof does not assume global classical logic:
+`Decidable.not_not` is used only at the appearing phenomenon where a capture witness is needed.
+
+This is a FORMAL proof-theoretic corollary.  It adds no new horizon-combination semantics and
+does not attribute decidability, finite directedness, or exhaustive capture to Merleau-Ponty or
+Marion.
+-/
+theorem first_question_universalStructure_closureBridge_iff_no_finite_cover_obstruction_of_captured_decidable
+    (M : Presentation) (hstructure : M.UniversalStructure)
+    (hDecidable : ∀ p, M.appears p → Decidable (M.Captured p)) :
+    M.ClosureBridge ↔
+      ¬ ∃ p, M.appears p ∧
+        ∀ hs : List M.Horizon,
+          (∀ a, M.presents p a →
+            ∃ h, h ∈ hs ∧ M.situated p h ∧ M.admits h a) →
+          ¬ ∃ hStar, M.situated p hStar ∧
+            ∀ h, h ∈ hs → ∀ a, M.admits h a → M.admits hStar a := by
+  constructor
+  · intro hClosure
+    exact
+      ((first_question_universalStructure_closureBridge_iff_no_finite_cover_obstruction_and_stability
+        M hstructure).1 hClosure).1
+  · intro hNoObstruction
+    apply
+      (first_question_universalStructure_closureBridge_iff_no_finite_cover_obstruction_and_stability
+        M hstructure).2
+    refine ⟨hNoObstruction, ?_⟩
+    intro p hp hDouble
+    letI : Decidable (M.Captured p) := hDecidable p hp
+    exact (Decidable.not_not).1 hDouble
+
 end FormalPhenomenology
