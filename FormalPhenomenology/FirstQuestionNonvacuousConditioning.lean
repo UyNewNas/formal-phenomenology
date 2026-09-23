@@ -119,4 +119,39 @@ theorem first_question_horizonwise_nonvacuous_conditioning_profile :
     mixedConditioningWitness_hasSituatedIndependentExcess,
     mixedConditioningWitness_every_horizon_conditions_appearing⟩
 
+/-- Every appearance in the mixed witness has a related horizon. -/
+theorem mixedConditioningWitness_universalStructure :
+    mixedConditioningWitness.base.UniversalStructure := by
+  intro _ _
+  exact ⟨false, True.intro⟩
+
+/--
+Reverse-check the horizonwise-nonvacuous conditioning profile against the actual B-target.
+Even after requiring universal horizon structure, one-way conditioning coherence, and
+real conditioning use by every horizon in the model, exhaustive closure still need not
+follow.
+
+The counterexample is the same finite witness already used above.  Thus this theorem
+adds no philosophical primitive or new model; it only prevents the nonvacuity condition
+from being mistaken for the missing `ClosureBridge` premise.
+-/
+theorem first_question_horizonwise_conditioning_does_not_force_closure :
+    ∃ M : HorizonConditioning,
+      M.base.UniversalStructure ∧
+        M.ConditioningIsSituated ∧
+          (∀ h : M.base.Horizon,
+            ∃ p : M.base.Phenomenon, M.base.appears p ∧ M.conditions p h) ∧
+            ¬ M.base.ClosureBridge := by
+  refine ⟨mixedConditioningWitness,
+    mixedConditioningWitness_universalStructure,
+    mixedConditioningWitness_coherent,
+    mixedConditioningWitness_every_horizon_conditions_appearing,
+    ?_⟩
+  intro hclosure
+  obtain ⟨p, hp, hstructured, _, hnonexhaustible⟩ :=
+    mixedConditioningWitness_hasSituatedIndependentExcess
+  have hcaptured := hclosure p hp hstructured
+  exact ((nonExhaustible_iff_not_captured mixedConditioningWitness.base p).mp
+    hnonexhaustible) hcaptured
+
 end FormalPhenomenology
