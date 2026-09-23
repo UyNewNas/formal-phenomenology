@@ -85,4 +85,38 @@ theorem first_question_nonvacuous_conditioning_profile :
     mixedConditioningWitness_hasSituatedIndependentExcess,
     mixedConditioningWitness_hasConditionedAppearance⟩
 
+/--
+The robustness witness does not merely use `conditions` somewhere: every horizon in
+its horizon domain conditions an actually appearing phenomenon (the `true` one).
+
+This closes a stronger finite-model vacuity objection without changing the language or
+adding a historical attribution.  The independent/non-exhaustible witness remains the
+separate `false` phenomenon.
+-/
+theorem mixedConditioningWitness_every_horizon_conditions_appearing :
+    ∀ h : mixedConditioningWitness.base.Horizon,
+      ∃ p : mixedConditioningWitness.base.Phenomenon,
+        mixedConditioningWitness.base.appears p ∧ mixedConditioningWitness.conditions p h := by
+  intro h
+  exact ⟨true, True.intro, rfl⟩
+
+/--
+Horizonwise-nonvacuous strengthening of the first-question pressure test: the model has
+an actually appearing structured/independent/non-exhaustible phenomenon while every
+horizon is also genuinely used as a conditioning horizon for some actual appearance.
+
+This remains a model-theoretic consistency result only.  In particular, it does not
+infer historical independence from the freedom of the two project relations.
+-/
+theorem first_question_horizonwise_nonvacuous_conditioning_profile :
+    ∃ M : HorizonConditioning,
+      M.ConditioningIsSituated ∧
+        M.HasSituatedIndependentExcess ∧
+          ∀ h : M.base.Horizon,
+            ∃ p : M.base.Phenomenon, M.base.appears p ∧ M.conditions p h := by
+  exact ⟨mixedConditioningWitness,
+    mixedConditioningWitness_coherent,
+    mixedConditioningWitness_hasSituatedIndependentExcess,
+    mixedConditioningWitness_every_horizon_conditions_appearing⟩
+
 end FormalPhenomenology
