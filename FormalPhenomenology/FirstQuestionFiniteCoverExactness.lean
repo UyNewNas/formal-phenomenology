@@ -1,9 +1,10 @@
 import FormalPhenomenology.FirstQuestionFiniteUpperBounds
+import FormalPhenomenology.Horizon.Conditioning
 
 set_option autoImplicit false
 
 namespace FormalPhenomenology
-open Presentation
+open Presentation HorizonConditioning
 
 /--
 Under the pairwise situated upper-bound assumption, single-horizon capture is
@@ -121,5 +122,47 @@ theorem first_question_closureBridge_iff_exists_finite_family_with_dominator
   · intro hpack p happ hstructured
     exact (first_question_captured_iff_exists_finite_family_with_dominator M p).2
       (hpack p happ hstructured)
+
+/--
+Under the explicit competing reading where `situated` and `conditions` coincide in
+both directions, the same pairwise-upper-bound hypothesis turns finite conditioning
+coverage into an exact characterization of single-horizon capture.
+
+The forward direction starts from the existing situated-cover normal form and uses
+`SituatedImpliesConditioning` to relabel every member of the singleton/finite cover as
+conditioning.  The reverse direction uses `ConditioningIsSituated` to forget the extra
+conditioning label and then applies the situated finite-cover theorem above.
+
+This theorem is only a thin FORMAL adapter over the already verified finite-cover
+baseline.  It does not identify a finite list with Marion's stronger semantic language
+of a combination of horizons, and it does not attribute pairwise upper bounds to any
+historical author.
+-/
+theorem first_question_mutual_conditioning_captured_iff_nonempty_finite_conditioning_cover_of_pairwise_upper_bounds
+    (M : HorizonConditioning) (p : M.base.Phenomenon)
+    (hForward : M.SituatedImpliesConditioning)
+    (hBackward : M.ConditioningIsSituated)
+    (hupper : ∀ h₀ h₁,
+      M.base.situated p h₀ → M.base.situated p h₁ →
+        ∃ hStar, M.base.situated p hStar ∧
+          (∀ a, M.base.admits h₀ a → M.base.admits hStar a) ∧
+          (∀ a, M.base.admits h₁ a → M.base.admits hStar a)) :
+    M.base.Captured p ↔
+      ∃ hs : List M.base.Horizon,
+        hs ≠ [] ∧
+        (∀ h, h ∈ hs → M.conditions p h) ∧
+        (∀ a, M.base.presents p a →
+          ∃ h, h ∈ hs ∧ M.base.admits h a) := by
+  constructor
+  · intro hCaptured
+    rcases
+      (first_question_captured_iff_nonempty_finite_situated_cover_of_pairwise_upper_bounds
+        M.base p hupper).1 hCaptured with ⟨hs, hne, hsituated, hcover⟩
+    exact ⟨hs, hne, fun h hh => hForward p h (hsituated h hh), hcover⟩
+  · rintro ⟨hs, hne, hconditioned, hcover⟩
+    apply
+      (first_question_captured_iff_nonempty_finite_situated_cover_of_pairwise_upper_bounds
+        M.base p hupper).2
+    exact ⟨hs, hne, fun h hh => hBackward p h (hconditioned h hh), hcover⟩
 
 end FormalPhenomenology
