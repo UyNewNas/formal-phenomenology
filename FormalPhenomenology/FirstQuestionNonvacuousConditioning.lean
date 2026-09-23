@@ -233,4 +233,34 @@ theorem first_question_total_relatedness_mutual_conditioning_does_not_force_clos
     exact ((nonExhaustible_iff_not_captured splitDependentConditioning.base ()).mp
       splitDependentConditioning_nonExhaustible) hcaptured
 
+/--
+The same maximal mutual-conditioning witness also exhibits the failure positively rather
+than only through `¬ ClosureBridge`: its actual phenomenon is both `Conditioned` and
+`NonExhaustible` while every horizon is related to it and the two horizon relations agree
+in both directions.
+
+This is a thin pressure-test wrapper around `splitDependentConditioning`.  It adds no new
+model, primitive, logical principle, or historical attribution, and it does not identify
+`NonExhaustible` with Marion's full saturated-phenomenon notion.
+-/
+theorem first_question_total_relatedness_mutual_conditioning_has_conditioned_excess :
+    ∃ M : HorizonConditioning,
+      (∀ (p : M.base.Phenomenon) (h : M.base.Horizon),
+        M.base.appears p → M.base.situated p h) ∧
+        M.ConditioningIsSituated ∧
+          M.SituatedImpliesConditioning ∧
+            ∃ p : M.base.Phenomenon,
+              M.base.appears p ∧ M.base.Structured p ∧
+                M.Conditioned p ∧ M.base.NonExhaustible p := by
+  refine ⟨splitDependentConditioning, ?_, ?_, ?_, ?_⟩
+  · intro _ _ _
+    exact True.intro
+  · intro _ _ _
+    exact True.intro
+  · intro _ _ _
+    exact True.intro
+  · refine ⟨(), True.intro, splitModel_structure () True.intro, ?_,
+      splitDependentConditioning_nonExhaustible⟩
+    exact ⟨false, True.intro⟩
+
 end FormalPhenomenology
