@@ -84,3 +84,40 @@ Google Books 的 Taylor & Francis 书目页也独立确认 Volume 4 的编辑、
 - Fordham / De Gruyter Brill 2013 `Sketch` 章节页仍显示正文不可访问。
 
 所以本轮没有把 `PRIMARY-PUBLISHER-METADATA`、`SECONDARY-EXACT-REPRINT-PROVENANCE` 或 selected preview 升格成 `PRIMARY-DIRECT-PAGE`。这一负结果是访问审计，不是哲学结论；首问停止门保持不变。
+
+## 7. 2026-09-20：把 *Being Given* §21 收窄到章节级出版社入口
+
+本轮继续从官方／授权路线核对尚未关闭的 direct-primary 门，并补齐一项此前在 `SOURCES.md` 已登记、但本页尚未集中记录的章节级 provenance。
+
+De Gruyter Brill 当前的 *Being Given* 电子书目录把相关章节明确列为：
+
+- Jean-Luc Marion, `§21 Sketch of the Saturated Phenomenon: The Horizon`；
+- **pp. 199–212**；
+- chapter DOI **`10.1515/9780804785723-024`**；
+- 官方章节入口：<https://www.degruyterbrill.com/document/doi/10.1515/9780804785723-024/html>。
+
+PhilPapers 的章节书目记录独立给出同一题名、页段与 DOI；De Gruyter 的免费目录材料同时确认下一节 §22 从 p. 212 开始。因此 BG pp. 209–212 的目标范围现在不再只是“整本书中的一组页码”，而是被精确锁定在一个可引用的出版社章节对象内部。
+
+本轮实际尝试直接打开该官方 chapter-level HTML／正文入口时，当前研究运行时仍不能取得章节正文；公开检索只能返回章节元数据／目录层。另行重试已登记的 PUF/Lavoisier 公共 excerpt endpoint `https://e.lavoisier.fr/extract/523630` 时，网页工具确认其内容类型为 `application/epub+zip`，但当前运行时不能摄取该二进制 excerpt，容器下载也未成功。未逆向 reader API、未绕过 DRM／登录／访问控制。
+
+因此本轮新增证据状态是：
+
+`PRIMARY-PUBLISHER-CHAPTER-METADATA / EXACT-CHAPTER-DOI / BODY-NOT-REVIEWED`
+
+而不是 `PRIMARY-DIRECT-PAGE`。
+
+这个收敛只改变合法获取路线的精度，不改变解释结论：`Independent` 仍保持为当前模型中“无 `conditions` witness”的弱接口，`NonExhaustible` 仍只表示无单一 related horizon 穷尽全部已编码 aspect；在直接读到 BG 209–212（或已映射 ED/SD／可靠重印正文）之前，不把二者升级成 Marion 完整 saturated-phenomenon 的历史定义，也不新增 horizon-combination primitive。
+
+## 8. 2026-09-22：PUF 2025/2026 汇编本作为新的授权主文本路线
+
+本轮继续只走公开且授权的版本路线。PUF 2025 汇编本 *Le phénomène et le donné*（ISBN `9782130886686`）得到多条正式／书商元数据交叉确认：法国科学院 2025-10-24 的作者出版公告与 PUF 发行材料都明确说明，该卷重新收录 Marion 的 *Étant donné*，并与 *Réduction et donation*、*De surcroît*、*Reprise du donné*、*Figures de phénoménologie* 一并收入；官方宣传材料给出 Quadrige « Grands classiques » 系列与 2025 年秋季发行信息。Google Books／大型书商当前可见信息仍停留在目录、常用词或“feuilleter”入口层，没有在本研究运行时公开目标 §21 / §22 正文。
+
+因此，这条路径新增登记为：
+
+`PRIMARY-AUTHOR-COLLECTED-EDITION / PUBLISHER-METADATA / ALTERNATE-AUTHORIZED-ROUTE / BODY-NOT-REVIEWED`
+
+它比非正式转载更适合作为后续 direct-primary 搜索入口，因为载体本身是 PUF 的 Marion 作者汇编；但在没有直接看到汇编本中对应 *Étant donné* 段落并完成文本锚点映射前，不能据“重新收录”四字推断它与 1997/2013 的具体分页或措辞完全相同，也不能用书商的 `Feuilleter` 按钮存在性冒充正文已读。
+
+同一轮还重新检查了 Fordham University Press 的 *The Visible and the Revealed* 官方页与 Google Books 授权预览。Fordham 明确把 `The Saturated Phenomenon` 列为该书核心章节，Google Books 列出该章从 p.18 开始；这证明另一条正式作者文本路线仍可用来核实 1992/1996 essay lineage。它不等于 *Being Given* revised-book body，因此继续只作作者主文本旁证，不关闭 revised-§21 stop gate。
+
+当前优先级因此调整为：先继续尝试 PUF 2025 汇编本与 Stanford/De Gruyter chapter DOI 的公开预览；只有取得正文后再做 BG/ED/SD/汇编本之间的文本锚点核对。没有取得正文时，不增加新的 Marion-specific semantic primitive，也不把二手 exact quotation 升级为 direct-primary evidence。

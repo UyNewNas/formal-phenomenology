@@ -299,3 +299,33 @@ Jaime Llorente Cardo, “Encrucijadas de la fenomenología acontecial. Entre el 
 本轮再次检查 *Being Given* §21（pp.199–212，chapter DOI `10.1515/9780804785723-024`）、§23（pp.221–233）以及 BG pp.209–212、225–226 / early ED pp.292–297、314–315 的合法公开路径。仍只取得书目／章节元数据、secondary exact quotation 与既有 crosswalk，没有取得目标作者书页的 direct-primary 正文；不使用非正式转载关闭停止门。
 
 **最终复用判断。** 本轮只降低 decidability 的无关量词强度；精确 proof-theoretic premise 仍然是 appearing+captured 域的 double-negation stability。历史解释没有升级，Marion 书本版本的 direct-primary stop gate 继续保持。详细审计见 [DECIDABLE_CONDITIONING_BRIDGE.md](DECIDABLE_CONDITIONING_BRIDGE.md)。
+
+## 14. 2026-09-22：mutual `situated ↔ conditions` 的正向存在量词正规化
+
+### 强制前置查重
+
+在新增 `Conditioned p ↔ Structured p` 的薄正规化前，本轮用查询
+
+`horizon conditioning structured conditioned exhausted exhaustible situated`
+
+对已登记的三条代码基线做定向检索：
+
+- `novaspivack/phenomenology-lean@75230e4eab333ad0fc47573747521ccc1a31a163`；
+- `cbenzmueller/LogiKEy@b29954b0876d7991baf12f17378f31700f9de759`；
+- `alexoltean61/msphml-lean@9d6559db6502bc9813dcf028d7ea26ae80e9dc93`。
+
+该 scoped search 没有返回同型 horizon/conditioning/exhaustibility API。更宽的 web 检索也没有定位到应替换本仓关系层薄适配的 proof-assistant implementation。这里的负结果只限定在本轮实际检索范围，不宣称不存在其他前人工作。
+
+**复用决定。** 新 theorem 只复用本仓既有 `conditioningIsSituated_conditioned_implies_structured` 与 `SituatedImpliesConditioning` witness；不移植逻辑框架、不新增依赖，也不把初等存在量词等价宣称为原创逻辑。
+
+### 同题增量：Schatz 2025/2026 与 Lind 2026
+
+Timothy J. Schatz, “Whose reduction? Which givenness? Michel Henry, Jean-Luc Marion, and the fourth principle of phenomenology,” *Continental Philosophy Review* 59 (2026), 125–152，DOI `10.1007/s11007-025-09706-1`，open-access version of record 2025-09-07。出版社全文把 Marionian saturation 描述为给定物在无尽可能显现方式中的 excess，并强调持续的 hermeneutic openness。
+
+Andreas Goncalves Lind, “Givenness as the Opening of All Phenomenological Possibility: Marion’s Overcoming of Henry Through Heidegger,” *Philosophies* 11(4), 145 (2026)，DOI `10.3390/philosophies11040145`。出版社全文继续把 Marion 的方向描述为超出 constitution / anticipation horizon 的开放给予。
+
+**复用判断。** 两者都进一步限制把 `situated ↔ conditions` 当作历史默认 reading 的可能性；它们没有提供 `Conditioned ↔ Structured` 的形式 API，也不替代 Marion revised-book direct-primary body。因而 mutual identification 继续只作为显式 competing pressure test，不写入基础定义。
+
+### source gate
+
+De Gruyter / Stanford 官方书页本轮仍只直接确认 *Being Given* §21 从 p.199 开始、§22 从 p.212 开始；没有合法暴露 BG pp.209–212 / 225–226 的目标正文。停止门未升级。详细记录见 [FIRST_QUESTION_MUTUAL_CONDITIONING_NORMALIZATION_AUDIT_20260922.md](FIRST_QUESTION_MUTUAL_CONDITIONING_NORMALIZATION_AUDIT_20260922.md)。
