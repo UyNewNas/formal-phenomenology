@@ -19,7 +19,7 @@ Fresh 2026-09-24 scoped GitHub searches checked the proposed relation-separation
 
 Search terms combined `horizon`, `conditioning`, `situated`, `related`, and `exhaustibility`; no same-shaped reusable API was returned.  This is a bounded reuse search, not a novelty claim.  The theorem below is intentionally a thin package of already-verified local finite-model facts, so importing a modal-logic or semantic-embedding framework would be disproportionate.
 
-The same-topic primary-source gate was also rechecked through the already registered lawful routes.  Public De Gruyter/Stanford and Google Books access still exposes revised `Being Given` metadata/chapter boundaries, not the target revised body; the authorized reprint routes likewise did not expose the needed chapter text in this runtime.  No access restriction was bypassed.  Therefore the historical stop gate remains unchanged.
+The same-topic primary-source gate was also rechecked through the already registered lawful routes.  Public De Gruyter/Stanford and Google Books access still exposes revised `Being Given` metadata/chapter boundaries, not the target revised body; the authorized reprint routes likewise did not expose the needed chapter text in this runtime.  A further French search for the mapped early-ED ranges returned the 1997 Google Books bibliographic/index record and secondary discussion, but not target author-body pages.  No access restriction was bypassed.  Therefore the historical stop gate remains unchanged.
 
 ## Formal increment
 
@@ -45,9 +45,17 @@ This is not a new logical discovery.  It packages information already distribute
 
 The theorem does not establish historical independence of Merleau-Ponty's and Marion's concepts, does not identify `conditions` with Marion's complete notion of delimiting anteriority, and does not identify `NonExhaustible` with the saturated phenomenon.
 
-## Verification status
+## Exact-head verification
 
-The new module is imported by the root `FormalPhenomenology.lean`, and the theorem is registered in `Audit.lean`.  No local build is claimed in this automation runtime; exact-head GitHub Actions is the required kernel/build/source-coverage verdict.  The commit created from this audit must be checked before the round is handed off as verified.
+Code/audit commit `b24fb3b3cd71362bf36fa20e6a666e79db0af0b6` was checked by GitHub Actions run `35959028803` and completed `success`.  The workflow checked the PR merge ref containing that exact head, then:
+
+- `python3 scripts/check.py`: **28 modules / 169 audited theorems**;
+- full `lake build`: **31 jobs**, successful;
+- kernel axiom audit: **169/169 theorems without axiom dependencies**, including `first_question_total_relatedness_nonvacuous_conditioning_still_separates_relations`.
+
+The module is root-reachable through `FormalPhenomenology.lean` and the new theorem has its dedicated `#print axioms` entry in `Audit.lean`.  No local build is claimed for this automation runtime; the above is the actual GitHub-hosted verification record.
+
+This documentation follow-up itself must retain the ordinary exact-head workflow verdict before being treated as the final handoff SHA; an earlier green code SHA is not silently substituted for the final branch head.
 
 ## Remaining stop condition
 
