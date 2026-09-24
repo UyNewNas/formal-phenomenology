@@ -180,4 +180,33 @@ theorem first_question_mutual_conditioning_two_horizons_joint_cover_still_nonExh
     · exact Or.inl rfl
     · exact Or.inr rfl
 
+/--
+A direct relation-separation witness for the source-controlled reading of
+"horizon" versus "horizon as a prior condition".
+
+The already verified `splitIndependentConditioning` has universal horizon
+structure, and every conditioning horizon (there are none) is required to be a
+related horizon.  Nevertheless its actually appearing phenomenon has a concrete
+related horizon which is not a conditioning horizon.  Thus neither universal
+horizon structure nor the one-way coherence condition
+`ConditioningIsSituated` collapses `situated` into `conditions`.
+
+This is a FORMAL guardrail only.  It introduces no new primitive or model and
+makes no attribution to Merleau-Ponty or Marion; the revised-primary source gate
+continues to control whether either relation is a faithful historical mapping.
+-/
+theorem first_question_related_horizon_need_not_condition :
+    ∃ M : HorizonConditioning, ∃ p : M.base.Phenomenon,
+      ∃ h : M.base.Horizon,
+        M.base.UniversalStructure ∧
+          M.ConditioningIsSituated ∧
+            M.base.appears p ∧
+              M.base.situated p h ∧
+                ¬ M.conditions p h := by
+  refine ⟨splitIndependentConditioning, (), false,
+    splitModel_structure, splitIndependentConditioning_coherent,
+      True.intro, True.intro, ?_⟩
+  intro hcondition
+  exact hcondition
+
 end FormalPhenomenology
