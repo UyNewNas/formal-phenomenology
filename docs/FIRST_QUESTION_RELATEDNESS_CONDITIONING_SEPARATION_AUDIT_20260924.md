@@ -59,11 +59,13 @@ It does not affect the stronger existing facts that:
 
 No historical attribution is upgraded from the theorem.
 
-## Verification plan/status
+## Exact-head verification
 
-The theorem is root-reachable because `FormalPhenomenology.lean` already imports `FirstQuestionInterpretiveGuardrails`. `Audit.lean` now contains a dedicated `#print axioms FormalPhenomenology.first_question_related_horizon_need_not_condition` line.
+The theorem is root-reachable because `FormalPhenomenology.lean` already imports `FirstQuestionInterpretiveGuardrails`. `Audit.lean` contains a dedicated `#print axioms FormalPhenomenology.first_question_related_horizon_need_not_condition` line.
 
-Exact-head verification must still be read from GitHub Actions after this audit commit. Required success is the existing repository workflow: source/placeholder checks, root import coverage, full `lake build`, and the kernel axiom audit. A documentation commit or an earlier green SHA is not reused as proof verification for the final head.
+The code+audit head `033977ab6a516792ae773f241968bf1fc169e7c7` was checked by GitHub Actions run `35952909267` and completed `success`. The job checked out that exact SHA, ran `python3 scripts/check.py`, and reported **27 modules / 168 audited theorems**; `lake build` completed successfully with **30 jobs**. The kernel audit reported **168/168 theorems without axiom dependencies**, including the new `first_question_related_horizon_need_not_condition` declaration.
+
+This documentation follow-up records that verdict. Its own final SHA must also retain the existing exact-head workflow before the round is considered fully handed off; no earlier green SHA is silently substituted for the final branch head.
 
 ## Remaining stop condition
 
